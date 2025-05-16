@@ -785,19 +785,31 @@ def clear_output_directory(output_dir):
         os.makedirs(output_dir)
 
 def main():
-    # Create and clear output directory
+    # Create output directory if it doesn't exist
     output_dir = "./xml-decoded"
-    clear_output_directory(output_dir)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print(f"Created output directory: {output_dir}")
+    else:
+        clear_output_directory(output_dir)
     
-    # Get all XML files from input directory
+    # Create input directory if it doesn't exist
     input_dir = "./xml"
+    if not os.path.exists(input_dir):
+        os.makedirs(input_dir)
+        print(f"Created input directory: {input_dir}")
+        print("Please place your XML files in the ./xml directory and run the script again.")
+        return
+    
+    # Aggiungi questa riga prima di usare xml_files
     xml_files = [f for f in os.listdir(input_dir) if f.endswith('.xml')]
     
     if not xml_files:
         print(f"No XML files found in {input_dir}")
+        print("Please place your XML files in the ./xml directory and run the script again.")
         return
     
-    print(f"Found {len(xml_files)} XML files to process.")
+    print(f"Found {len(xml_files)} XML files to process.")  # Ora xml_files è definito
     
     # Process each XML file
     decoded_trees = {}
