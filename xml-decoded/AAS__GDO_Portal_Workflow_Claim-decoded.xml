@@ -1,0 +1,934 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1591965443493</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11500</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION">import com.atlassian.jira.component.ComponentAccessor
+
+issue.getIssueType().name.equals("Claim") or issue.getIssueType().name.equals("Repair") |||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Set custom field "Customer request description" with the description of the selected request type</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT" />
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_SetCustomerRequestDescription.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Set Next Status Description - customer portal description</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT" />
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_SetNextStatusDescription.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">`!`</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">assistenza.gdo@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">С╖╤с╥шу╬ъqГ÷Ц~ш^Ув╕╣Ц]_k╞s▌y</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30"&gt;
+                                                              &lt;b&gt;GDO Support Portal&lt;/b&gt;
+															&lt;/a&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15800"))%&gt;
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15801"))%&gt; &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="comment-box"&gt;									
+									
+									&lt;p class="details-box-title"&gt;
+										&lt;b&gt;&lt;span style='font-family:"Verdana"'&gt;Details&lt;/span&gt;&lt;/b&gt;
+										
+									&lt;/p&gt;
+									&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%;'&gt;										
+										&lt;!-- Custom field: Request description --&gt;
+                                        &lt;tr&gt;
+                                        	&lt;td width="30%" class="details-field-name"&gt;
+                                        		&lt;b&gt;Request description&lt;/b&gt;
+                                        	&lt;/td&gt;
+                                        	&lt;td class="details-field-value"&gt;
+                                            &lt;% if (issue.description) { %&gt;
+                                        		&lt;% if (issue.description.contains("{html}")) { %&gt;
+                                        			&lt;% out &lt;&lt; issue.description.toString().substring(issue.description.toString().indexOf("{html}")+6, issue.description.toString().lastIndexOf("{html}")) %&gt;
+                                        		&lt;% }else{ %&gt;
+                                        			&lt;% out &lt;&lt; issue.description %&gt;
+                                        		&lt;% } %&gt;
+                                            &lt;% } %&gt;
+                                        	&lt;/td&gt;
+                                        &lt;/tr&gt;
+										
+										
+										
+									&lt;/table&gt;
+									
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC GDO Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[$issue.project.name Portal][$issue.key] $issue.summary</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("assistenza.gdo@faacgroup.com")
+
+issue.getIssueType().name.equals("Claim")
+mail.setBcc("Luca.Massari@faacgroup.com")|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name=":—§">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+        <action id="11" name="Closed">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Set custom field "Customer request description" with the description of the selected request type</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_SetCustomerRequestDescription.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Set Next Status Description - customer portal description</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_SetNextStatusDescription.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Update public comments and attachments tables on DB</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_UpdatePublicCommentsAttachments.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Invio notifica email in CCN a email utente che ha creato + CCN email richiedente (se compilata e diversa dalla precedente)</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">assistenza.gdo@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+                  <arg name="FIELD_FUNCTION_ID">õ§üÙÎøm¶Û×­ôqÎÜ÷N7{g]õÎ{wéÆ½</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:10pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:9pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30"&gt;
+                                                              &lt;b&gt;GDO Support Portal&lt;/b&gt;
+															&lt;/a&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15800"))%&gt;
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+                                        &lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15801"))%&gt; &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/table&gt;
+                            &lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+                                &lt;tr&gt;
+                                    &lt;td class="comment-box"&gt;									
+                                        &lt;% if (com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue).size() != 0 &amp;&amp; lastComment != null &amp;&amp; lastComment != "") { %&gt;
+                                            &lt;p class="title-comment"&gt;
+                                                &lt;b&gt;&lt;u&gt;New comment added to the request&lt;/u&gt;&lt;/b&gt;
+                                            &lt;/p&gt;
+                                            &lt;p class="author-comment"&gt;
+                                                &lt;b&gt;&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.userUtil.getUserObject(com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue)?.last()?.author.toString()).getDisplayName() %&gt;&lt;/b&gt;
+                                                &lt;b&gt;&lt;span style='font-size:10.0pt;font-family:"Segoe UI Symbol";color:#1F497D'&gt;&lt;/span&gt;&lt;/b&gt;
+                                            &lt;/p&gt;
+                                            &lt;p style='margin-top:6.0pt'&gt;
+                                                &lt;span style='font-family:"Segoe UI Symbol";color:#003050'&gt;
+                                                    &lt;% out &lt;&lt; lastComment %&gt;
+                                                &lt;/span&gt;
+                                            &lt;/p&gt;
+                                        &lt;% } %&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                           	&lt;/table&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC GDO Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[$issue.project.name Portal][$issue.key] $issue.summary</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">mail.setFrom("assistenza.gdo@faacgroup.com")
+
+issue.getIssueType().name.equals("Claim")|||</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="21" name="Canale mail non corretto">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Set Next Status Description - customer portal description</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/GDO_SetNextStatusDescription.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Set custom field "Customer request description" with the description of the selected request type</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/AAS_SetCustomerRequestDescription.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Invio mail automatico per invalidità indirizzo mail</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">assistenza.gdo@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">customfield_22204</arg>
+                  <arg name="FIELD_FUNCTION_ID">÷½Úéý÷ÛÞ5í®½mîöë;é·»uÇ}ö¶w^ö</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:10pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:9pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30"&gt;
+                                                              &lt;b&gt;GDO Support Portal&lt;/b&gt;
+															
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://gdo-support.faacgroup.com/servicedesk-ui/customer/portal/30/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+                                        &lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								
+							&lt;/table&gt;
+                            &lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+                                &lt;tr&gt;
+                                    &lt;td class="comment-box"&gt;									
+                                        &lt;p style='margin-top:6.0pt'&gt;
+                                        	&lt;span style='font-family:"Segoe UI Symbol";color:#003050'&gt;
+                                                &lt;p&gt;A partire dal &amp;nbsp;03/06/2020&amp;nbsp; tutte le richieste di assistenza in loco dovranno essere effettuate presso il sito web https://gdo-support.faacgroup.com. Vi riportiamo le condizioni generali di intervento:&lt;/p&gt;
+                                                &lt;p&gt;Per i KIT a marchio FAAC CKS , HKS , DKS e GENIUS GS e GB,&amp;nbsp;&amp;nbsp; viene garantita all&amp;rsquo;acquirente,&amp;nbsp;&amp;nbsp; la prima uscita gratuita&amp;nbsp; di assistenza in garanzia on site&amp;nbsp; per 12 mesi dall&amp;rsquo;acquisto, purch&amp;eacute; venga verificato da un nostro installatore qualificato l&amp;rsquo;effettiva difettosit&amp;agrave; di prodotto.&lt;/p&gt;
+                                                &lt;p&gt;Sono da ritenersi fuori garanzia problematiche non attribuibili al prodotto, errate programmazioni, personalizzazioni del prodotto o incompletezza dell&amp;rsquo;impianto.&lt;/p&gt;
+                                                &lt;p&gt;Condizioni vincolanti:&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                &lt;li&gt;Documento fiscale valido&lt;/li&gt;
+                                                &lt;li&gt;L&amp;rsquo;impianto deve essere completo di tutte le sue parti e non manomesso.&lt;/li&gt;
+                                                &lt;li&gt;Non devono essere presenti nell&amp;rsquo;impianto dispositivi di altre marche&lt;/li&gt;
+                                                &lt;li&gt;Devono essere presenti sui prodotti tutte le matricole identificative&lt;/li&gt;
+                                                &lt;li&gt;Devono essere presenti tutti i manuali di installazioni, comprensivi di dichiarazione di conformit&amp;agrave;.&lt;/li&gt;
+                                                &lt;li&gt;L&amp;rsquo;impianto elettrico deve essere realizzato completamente, e secondo le normative vigenti&lt;/li&gt;
+                                                &lt;li&gt;Deve essere presente l&amp;rsquo;installatore e deve essere disponibile a verifiche.&lt;/li&gt;
+                                                &lt;li&gt;Nel caso sia gi&amp;agrave; stato messo in funzione l&amp;rsquo;impianto deve essere stata redatta la dichiarazione di conformit&amp;agrave; e consultabile a richiesta.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                                &lt;p&gt;La garanzia non &amp;egrave; riconosciuta per:&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                &lt;li&gt;Mancanza di manutenzione dell&amp;rsquo;impianto&lt;/li&gt;
+                                                &lt;li&gt;Mancanza di documento fiscale&lt;/li&gt;
+                                                &lt;li&gt;L&amp;rsquo;installazione deve rispettare quanto descritto dai manuali e non devono essere presenti palesi errori installativi&lt;/li&gt;
+                                                &lt;li&gt;Installazioni ove siano presenti fattori esterni al prodotto che ne compromettano il funzionamento (Es. disturbi radio, eventi atmosferici, sovratensioni, atti vandalici ecc..)&lt;/li&gt;
+                                                &lt;li&gt;Materiali soggetti ad usura ( es testine, accumulatori ecc..)&lt;/li&gt;
+                                                &lt;li&gt;Materiali di consumo usati in fase installativa o manutentiva&lt;/li&gt;
+                                                &lt;li&gt;Uso improprio del prodotto&lt;/li&gt;
+                                                &lt;li&gt;Manomissione del prodotto&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                                &lt;p&gt;Distinti Saluti&lt;/p&gt;
+                                                &lt;p&gt;SAT ITALIA&lt;/p&gt;
+                                                &lt;p&gt;Servizio Assistenza Tecnica&lt;/p&gt;
+											&lt;/span&gt;
+                                         &lt;/p&gt;
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+                           	&lt;/table&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC GDO Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[$issue.project.name Portal][$issue.key] $issue.summary</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">mail.setFrom("assistenza.gdo@faacgroup.com")
+
+issue.getIssueType().name.equals("Claim")|||</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">AAS-1790</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Closed">
+      <meta name="jira.status.id">6</meta>
+    </step>
+  </steps>
+</workflow>

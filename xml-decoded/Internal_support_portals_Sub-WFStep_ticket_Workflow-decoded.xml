@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1687847524838</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11201</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10007</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send mail to approval subtask to assignee</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">jË"w</arg>
+              <arg name="FIELD_FUNCTION_ID">Нуyouэдиу^хuП[}ЙkWчi═8▀О█О«{</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+														&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                        &lt;b&gt;IDTS Support Portal&lt;/b&gt;&lt;/a&gt;
+														&lt;% if (issue.issueType.name == "Sub-WFStep") { %&gt;
+                                                        	- Sub task Approval Change Request 
+                                                        &lt;% } %&gt;
+                                                        &lt;% if (issue.issueType.name == "Sub-PRStep") { %&gt;
+                                                            - Sub task Approval Production Change Request 
+														&lt;% } %&gt;	
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; Created &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue.parentObject"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        in regards to the change request &lt;b&gt;&lt;% out &lt;&lt; issue.parentObject %&gt;&lt;/b&gt; with subject &lt;b&gt;&lt;% out &lt;&lt; issue.parentObject.summary %&gt;&lt;/b&gt;, the approval ticket &lt;b&gt;&lt;% out &lt;&lt; issue%&gt;&lt;/b&gt; has been created.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        relativamente alla richiesta di change request &lt;b&gt;&lt;% out &lt;&lt; issue.parentObject %&gt;&lt;/b&gt; con oggetto &lt;b&gt;&lt;% out &lt;&lt; issue.parentObject.summary %&gt;&lt;/b&gt;, è stato creato il ticket di approvazione &lt;b&gt;&lt;% out &lt;&lt; issue%&gt;&lt;/b&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Approval Change Request Ticket [$issue.key] $issue.summary: created</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("faacithelpdesk@faacgroup.com")|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">IDTS-13435</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name=":—§">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+        <action id="11" name="EèÞr×" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">19426</meta>
+          <validators>
+            <validator name="" type="class">
+              <arg name="contextHandling" />
+              <arg name="hidFieldsList">customfield_22306@@</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.15.1</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+              <arg name="customErrorMessage-textValue" />
+            </validator>
+          </validators>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">ÛW¹ÓMüõ¦ýï·ôßÍíÞ»ïfù×N]{w·Ùï7</arg>
+                  <arg name="FIELD_NOTES">aggiunto il commento al db del portale così che possa essere visibile agli utenti, il commento lo preso da Comment/notes che aggiungo ai commenti</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.comments.CommentManager
+//Project Service Desk - key: SD
+import org.apache.log4j.Category
+import com.atlassian.jira.issue.comments.Comment
+import com.atlassian.jira.issue.comments.MutableComment
+import org.ofbiz.core.entity.GenericValue
+import com.atlassian.jira.issue.history.ChangeItemBean
+
+import groovy.sql.Sql
+import java.sql.Connection
+import org.ofbiz.core.entity.ConnectionFactory
+import org.ofbiz.core.entity.DelegatorInterface
+
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+
+//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase("IDTS-6397")
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+
+CustomField CommentNotes = customFieldManager.getCustomFieldObject(Long.parseLong("22306"))
+def CommentNotesV = issue.getCustomFieldValue(CommentNotes)
+
+CommentManager commentMgr = ComponentAccessor.getCommentManager()
+//commentMgr = (CommentManager) ComponentAccessor.getComponentInstanceOfType(CommentManager.class)
+
+Comment comment=commentMgr.create(issue, issue.getAssignee(), CommentNotesV.toString(), false)
+log.debug comment.id
+
+
+def delegator = (DelegatorInterface) ComponentAccessor.getComponent(DelegatorInterface)
+String helperName = delegator.getGroupHelperName("default");
+def sqlStmt
+Connection conn
+Sql sql
+
+if (comment != null){
+
+    MutableComment comment_to_be_updated = ComponentAccessor.getCommentManager().getMutableComment(comment.getId());
+    comment_to_be_updated.setRoleLevelId("10300".toLong())
+    ComponentAccessor.getCommentManager().update(comment_to_be_updated, false);
+
+    sqlStmt = "INSERT INTO FC_SD_REQUESTCOMMENTS (JIRA_COMMENT_ID, JIRA_ISSUE_KEY) VALUES (" + comment.id + ", '" + issue.key + "')"
+    
+    conn = ConnectionFactory.getConnection(helperName);
+    sql = new Sql(conn)
+    
+    try {
+        StringBuffer sb = new StringBuffer()
+        sql.execute(sqlStmt)
+    }
+    finally {
+        sql.close()
+    }    
+}
+
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="v+nWù">false</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">МЮ[ш╬^sќЏвovqТЩoи^ы┐_Нийk]┤№јџ</arg>
+                  <arg name="FIELD_NOTES">se un solo subtask è rejected allora la issue padre diventa rejected</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.bc.issue.IssueService\nimport com.atlassian.jira.workflow.TransitionOptions\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\n\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\n\nMutableIssue parentIssue = issue.parentObject;\n\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCollection subTasks = parentIssue.getSubTaskObjects();\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nissueManager = ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\n//Categoria approvazione PROD 22261 - TEST 21908\ndef categoriaWF = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261))\n\ndef jqlSearch = \"\"\n\nif (categoriaWF == \"Approval Workflow\")\n\tjqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Sub-WFStep' AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"'\"\nelse\n    jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Sub-PRStep' AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"'\"\n\ndef query = jqlQueryParser.parseQuery(jqlSearch)\ndef search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\nlog.debug search.results.size()\n\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n\nIssueService issueService = ComponentAccessor.getIssueService()\nIssueService.TransitionValidationResult result;\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\nif (categoriaWF == \"Approval Workflow\"){\n    result = issueService.validateTransition(currentUser, parentIssue.getId(),111, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n        issueService.transition(currentUser, result)\n    }\n}\nif (categoriaWF == \"Production Session Workflow\"){\n    result = issueService.validateTransition(currentUser, parentIssue.getId(),91, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n        issueService.transition(currentUser, result)\n    }\n}\n\n//WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n//workflowTransitionUtil.setIssue(parentIssue);\n//log.debug \"categori transazione \" + categoriaWF\n\n//if (categoriaWF == \"Approval Workflow\")\n//    workflowTransitionUtil.setAction(111);\n//if (categoriaWF == \"Production Session Workflow\")\n//    workflowTransitionUtil.setAction(91);\n//Issue Rejected PROD 22265 - TEST 22020\ndef issueProdRejected = parentIssue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22265))\n\nif (issueProdRejected==null)\n\tissueProdRejected = \"\"\n\n//workflowTransitionUtil.validate();\n//workflowTransitionUtil.progress();\n\ndef resolutionManager = ComponentAccessor.getComponent(ResolutionManager)\n\n// update solo sub task con risoluzione Unresolved   \nfor (currI in search.results)\n{    \n    MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)\n   \t\n    if (issueProdRejected == \"\")\n        \tissueProdRejected = currIssue.key.toString()\n\t\telse \n           \tissueProdRejected = issueProdRejected.toString() + \", \" + currIssue.key.toString()\n    //Issue Rejected PROD 22265 - TEST 22020\n    parentIssue.setCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22265), issueProdRejected)\n    \n    if (categoriaWF == \"Approval Workflow\")\n    \tcurrIssue.setResolution(resolutionManager.getResolutionByName(\"Approval Rejected\"))\n    \n    if (categoriaWF == \"Production Session Workflow\"){\n    \tcurrIssue.setResolution(resolutionManager.getResolutionByName(\"Production Rejected\"))\n    }\n    \n    issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)\n    issueIndexingService.reIndex(currIssue)\n    issueManager.updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false)\n\tissueIndexingService.reIndex(parentIssue)\n}\n\nif (categoriaWF == \"Approval Workflow\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Approval Rejected\"))\n\nif (categoriaWF == \"Production Session Workflow\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Production Rejected\"))\n\nissueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\nissueIndexingService.reIndex(issue)\n\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.opensymphony.workflow.WorkflowContext;
+import com.atlassian.jira.config.SubTaskManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.status.Status
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.user.util.UserUtil
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.config.ResolutionManager
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import org.apache.log4j.Category
+Category log = Category.getInstance("com.onresolve.jira.groovy.PostFunction")
+
+log.setLevel(org.apache.log4j.Level.DEBUG)
+
+SearchService 		searchService 		= ComponentAccessor.getComponent(SearchService.class)
+UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+
+MutableIssue parentIssue = issue.parentObject;
+
+SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();
+Collection subTasks = parentIssue.getSubTaskObjects();
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+issueManager = ComponentAccessor.getIssueManager()
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+//Categoria approvazione PROD 22261 - TEST 21908
+def categoriaWF = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261))
+
+def jqlSearch = ""
+
+if (categoriaWF == "Approval Workflow")
+	jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Sub-WFStep' AND resolution = Unresolved AND parent = '" + parentIssue.key + "'"
+else
+    jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Sub-PRStep' AND resolution = Unresolved AND parent = '" + parentIssue.key + "'"
+
+def query = jqlQueryParser.parseQuery(jqlSearch)
+def search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+log.debug search.results.size()
+
+def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+
+WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+workflowTransitionUtil.setIssue(parentIssue);
+log.debug "categori transazione " + categoriaWF
+if (categoriaWF == "Approval Workflow")
+workflowTransitionUtil.setAction(111);
+if (categoriaWF == "Production Session Workflow")
+workflowTransitionUtil.setAction(91);
+//Issue Rejected PROD 22265 - TEST 22020
+def issueProdRejected = parentIssue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22265))
+
+if (issueProdRejected==null)
+	issueProdRejected = ""
+
+workflowTransitionUtil.validate();
+workflowTransitionUtil.progress();
+
+def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)
+
+// update solo sub task con risoluzione Unresolved   
+for (currI in search.results)
+{    
+    MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)
+   	
+    if (issueProdRejected == "")
+        	issueProdRejected = currIssue.key.toString()
+		else 
+           	issueProdRejected = issueProdRejected.toString() + ", " + currIssue.key.toString()
+    //Issue Rejected PROD 22265 - TEST 22020
+    parentIssue.setCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22265), issueProdRejected)
+    
+    if (categoriaWF == "Approval Workflow")
+    	currIssue.setResolution(resolutionManager.getResolutionByName("Approval Rejected"))
+    
+    if (categoriaWF == "Production Session Workflow"){
+    	currIssue.setResolution(resolutionManager.getResolutionByName("Production Rejected"))
+    }
+    
+    issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)
+    issueIndexingService.reIndex(currIssue)
+    issueManager.updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false)
+	issueIndexingService.reIndex(parentIssue)
+}
+
+if (categoriaWF == "Approval Workflow")
+	issue.setResolution(resolutionManager.getResolutionByName("Approval Rejected"))
+
+if (categoriaWF == "Production Session Workflow")
+	issue.setResolution(resolutionManager.getResolutionByName("Production Rejected"))
+
+issueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)
+issueIndexingService.reIndex(issue)
+
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="21" name="k¢÷">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">mþÑç»÷Wå¦ÙæÛwÚñ¿7ónógÞq·}</arg>
+                  <arg name="FIELD_NOTES">se tutti i subtask sono approved allora allora la issue padre diventa approved</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport com.atlassian.jira.bc.issue.IssueService\nimport com.atlassian.jira.workflow.TransitionOptions\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\n\nMutableIssue parentIssue = issue.parentObject;\n\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCollection subTasks = parentIssue.getSubTaskObjects();\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nissueManager = ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\n\n//Categoria approvazione PROD 22261 - TEST 21908\ndef categoriaWF = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261))\n\ndef jqlSearch = \"\"\n\nif (categoriaWF == \"Approval Workflow\")\n\tjqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Sub-WFStep' AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"' AND key != '\" + issue.key + \"'\"\nelse\n   \tjqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Sub-PRStep' AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"' AND key != '\" + issue.key + \"'\"\n\ndef query = jqlQueryParser.parseQuery(jqlSearch)\ndef search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n\n\ndef changeTransaction= true\n//devo cercare i subtask con risoluzione Unresolved \nfor (currIssue in search.results)\n{\n    //Categoria approvazione PROD 22261 - TEST 21908\n    if (currIssue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261)) == categoriaWF){\n    \tif (currIssue.getStatusObject().name != \"Approved\")\n    \t\tchangeTransaction = false\n    }\n}\n\nif (changeTransaction==true)\n{   \n    def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)\n\n    // update solo sub task con risoluzione Unresolved   \n    for (currI in search.results)\n    {    \n        MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)\n\n        if (categoriaWF == \"Approval Workflow\")\n            currIssue.setResolution(resolutionManager.getResolutionByName(\"Approval Completed\"))\n\n         if (categoriaWF == \"Production Session Workflow\")\n            currIssue.setResolution(resolutionManager.getResolutionByName(\"Production Completed\"))\n\n        issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)\n    }\n\n    if (categoriaWF == \"Approval Workflow\")\n        issue.setResolution(resolutionManager.getResolutionByName(\"Approval Completed\"))\n\n    if (categoriaWF == \"Production Session Workflow\")\n        issue.setResolution(resolutionManager.getResolutionByName(\"Production Completed\"))\n\n    issueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n    issueIndexingService.reIndex(issue)\n}\n\nif (changeTransaction==true)\n{   \n    \n    ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\n\tdef currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n    IssueService issueService = ComponentAccessor.getIssueService()\n    IssueService.TransitionValidationResult result;\n    TransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n    if (categoriaWF == \"Approval Workflow\"){\n        result = issueService.validateTransition(currentUser, parentIssue.getId(),21, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n            issueService.transition(currentUser, result)\n        }\n    }\n    if (categoriaWF == \"Production Session Workflow\"){\n        result = issueService.validateTransition(currentUser, parentIssue.getId(),81, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n            issueService.transition(currentUser, result)\n        }\n    }\n\n    /*WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n    workflowTransitionUtil.setIssue(parentIssue);\n    \n    if (categoriaWF == \"Approval Workflow\")\n    \tworkflowTransitionUtil.setAction(21);\n    if (categoriaWF == \"Production Session Workflow\")\n    \tworkflowTransitionUtil.setAction(81);\n\n    workflowTransitionUtil.validate();\n    workflowTransitionUtil.progress();*/\n}\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.opensymphony.workflow.WorkflowContext;
+import com.atlassian.jira.config.SubTaskManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.status.Status
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.user.util.UserUtil
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.config.ResolutionManager
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+
+SearchService 		searchService 		= ComponentAccessor.getComponent(SearchService.class)
+UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+
+MutableIssue parentIssue = issue.parentObject;
+
+SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();
+Collection subTasks = parentIssue.getSubTaskObjects();
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+issueManager = ComponentAccessor.getIssueManager()
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+
+//Categoria approvazione PROD 22261 - TEST 21908
+def categoriaWF = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261))
+
+def jqlSearch = ""
+
+if (categoriaWF == "Approval Workflow")
+	jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Sub-WFStep' AND resolution = Unresolved AND parent = '" + parentIssue.key + "' AND key != '" + issue.key + "'"
+else
+   	jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Sub-PRStep' AND resolution = Unresolved AND parent = '" + parentIssue.key + "' AND key != '" + issue.key + "'"
+
+def query = jqlQueryParser.parseQuery(jqlSearch)
+def search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+
+
+def changeTransaction= true
+//devo cercare i subtask con risoluzione Unresolved 
+for (currIssue in search.results)
+{
+    //Categoria approvazione PROD 22261 - TEST 21908
+    if (currIssue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22261)) == categoriaWF){
+    	if (currIssue.getStatusObject().name != "Approved")
+    		changeTransaction = false
+    }
+}
+
+if (changeTransaction==true)
+{   
+    def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)
+
+    // update solo sub task con risoluzione Unresolved   
+    for (currI in search.results)
+    {    
+        MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)
+
+        if (categoriaWF == "Approval Workflow")
+            currIssue.setResolution(resolutionManager.getResolutionByName("Approval Completed"))
+
+         if (categoriaWF == "Production Session Workflow")
+            currIssue.setResolution(resolutionManager.getResolutionByName("Production Completed"))
+
+        issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)
+    }
+
+    if (categoriaWF == "Approval Workflow")
+        issue.setResolution(resolutionManager.getResolutionByName("Approval Completed"))
+
+    if (categoriaWF == "Production Session Workflow")
+        issue.setResolution(resolutionManager.getResolutionByName("Production Completed"))
+
+    issueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)
+    issueIndexingService.reIndex(issue)
+}
+
+if (changeTransaction==true)
+{   
+    
+    ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+	def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+
+    WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+    workflowTransitionUtil.setIssue(parentIssue);
+    
+    if (categoriaWF == "Approval Workflow")
+    	workflowTransitionUtil.setAction(21);
+    if (categoriaWF == "Production Session Workflow")
+    	workflowTransitionUtil.setAction(81);
+
+    workflowTransitionUtil.validate();
+    workflowTransitionUtil.progress();
+}
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="EèÞr×">
+      <meta name="jira.status.id">11436</meta>
+    </step>
+    <step id="3" name="k¢÷">
+      <meta name="jira.status.id">10932</meta>
+    </step>
+  </steps>
+</workflow>

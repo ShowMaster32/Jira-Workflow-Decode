@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+  <meta name="jira.description"></meta>
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1613726462882</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="null" status="open" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11602</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION"></arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">315ba78f9ddc23628c26df70e30c83b891f5b480</arg>
+              <arg name="FIELD_NOTES">YCFgRGVmaW5lIFJlcXVlc3QgUGFydGljaXBhbnRzICYgQ0MgQWRkcmVzc2Vz</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">YCFgLy9BZ2dpb3JuYW1lbnRvICJSZXF1ZXN0IFBhcnRpY2lwYW50cyIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS51dGlsLkltcG9ydFV0aWxzCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUudXRpbC5Jc3N1ZUNoYW5nZUhvbGRlcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLnV0aWwuRGVmYXVsdElzc3VlQ2hhbmdlSG9sZGVyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWUKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Nb2RpZmllZFZhbHVlCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuQ3VzdG9tRmllbGRNYW5hZ2VyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuZmllbGRzLkN1c3RvbUZpZWxkCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuaW5kZXguSXNzdWVJbmRleE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pbmRleC5JbmRleC5NYW5hZ2VyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuZXZlbnQudHlwZS5FdmVudERpc3BhdGNoT3B0aW9uCmltcG9ydCBjb20uYXRsYXNzaWFuLmNyb3dkLmVtYmVkZGVkLmFwaS5Vc2VyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEudXNlci5BcHBsaWNhdGlvblVzZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uY3Jvd2QuZW1iZWRkZWQuYXBpLlVzZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS51c2VyLnV0aWwuVXNlck1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uY3Jvd2QuZW1iZWRkZWQuYXBpLkdyb3VwCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuaW5kZXguSXNzdWVJbmRleGluZ1NlcnZpY2UKCmltcG9ydCBvcmcuYXBhY2hlLmxvZzRqLkNhdGVnb3J5CkNhdGVnb3J5IGxvZyA9IENhdGVnb3J5LmdldEluc3RhbmNlKCJjb20ub25yZXNvbHZlLmppcmEuZ3Jvb3Z5LlBvc3RGdW5jdGlvbiIpCgpsb2cuc2V0TGV2ZWwob3JnLmFwYWNoZS5sb2c0ai5MZXZlbC5ERUJVRykKCmRlZiBncm91cE1hbmFnZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRHcm91cE1hbmFnZXIoKQoKZGVmIGN1c3RvbUZpZWxkTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpCklzc3VlSW5kZXhpbmdTZXJ2aWNlIGlzc3VlSW5kZXhpbmdTZXJ2aWNlID0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q29tcG9uZW50KElzc3VlSW5kZXhpbmdTZXJ2aWNlKQpJc3N1ZUNoYW5nZUhvbGRlciBjaGFuZ2VIb2xkZXIgPSBuZXcgRGVmYXVsdElzc3VlQ2hhbmdlSG9sZGVyKCkKCi8vMjcuMTIuMjAxNjogc29zdGl0dWl0byBjYW1wbyBSZXF1ZXN0IHBhcnRpY2lwYW50cyAtIDE0MTAwIC0gZGVsIHBsdWdpbiBTZXJ2aWNlIERlc2sgY29uIGlsIG51b3ZvIGNhbXBvIGN1c3RvbSAxNzEwMApDdXN0b21GaWVsZCByZXF1ZXN0UGFydGljaXBhbnRzID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KCIxNzEwMCIudG9Mb25nKCkpCkN1c3RvbUZpZWxkIGNjQWRkcmVzc2VzID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KCIxNDQwNCIudG9Mb25nKCkpCgovL0luIHByb2R1emlvbmUgYWdnaXVuZ2VyZSBpbCBjYW1iaW8gdXRlbnRlIGluIG1vZG8gY2hlIGxhIG1vZGlmaWNhIGxhIGZhY2NpYSAnYXRsYXNzaWFuJwpkZWYgb2xkVXNlciA9IENvbXBvbmVudEFjY2Vzc29yLmppcmFBdXRoZW50aWNhdGlvbkNvbnRleHQubG9nZ2VkSW5Vc2VyCkNvbXBvbmVudEFjY2Vzc29yLmppcmFBdXRoZW50aWNhdGlvbkNvbnRleHQuc2V0TG9nZ2VkSW5Vc2VyKENvbXBvbmVudEFjY2Vzc29yLmdldFVzZXJNYW5hZ2VyKCkuZ2V0VXNlckJ5S2V5KCJhdGxhc3NpYW5fZmFhY19zZXJ2aWNlX2Rlc2siKSkKCmRlZiB1c2VyVXRpbCA9IENvbXBvbmVudEFjY2Vzc29yLmdldFVzZXJVdGlsKCkKTGlzdDxBcHBsaWNhdGlvblVzZXI+IHJlcXVlc3RQYXJ0aWNpcGFudHNMaXN0ID0gW10KTGlzdDxBcHBsaWNhdGlvblVzZXI+IGNjQWRkcmVzc2VzTGlzdCA9IFtdCmRlZiB2X2ppcmFHcm91cCA9ICIiCmRlZiBuX2ppcmFHcm91cCA9IG51bGwKY29tLmF0bGFzc2lhbi5jcm93ZC5lbWJlZGRlZC5hcGkuR3JvdXAgbm90X2ppcmFHcm91cCA9IG51bGwKZGVmIHJldFZhbHVlCgp1c2VyVXRpbC5nZXRHcm91cE5hbWVzRm9yVXNlcihpc3N1ZS5yZXBvcnRlci5uYW1lKS5lYWNoIHsgZ3JvdXAgLT4KICAgIC8vIFJpY2VyY28gaWwgZ3J1cHBvIGRpIGFwcGFydGVuZW56YSBkZWxsJ3V0ZW50ZSAtIG5vbiBIUy1jdXN0b21lcnMgYSBjdWkgYXBwYXJ0ZW5nb25vIHR1dHRpIGdsaSB1dGVudGkgbWEgcXVlbGxvIHNwZWNpZmljbyBkZWwgdGVhbSBkaSB2aXNpYmlsaXTvv70KCWlmKGdyb3VwICE9ICJIUy1jdXN0b21lcnMiICYmIGdyb3VwLmNvbnRhaW5zKCJIUy1WaXNpYmlsaXR5LUNQUSIpKXsKICAgICAgICB2X2ppcmFHcm91cCA9IGdyb3VwCiAgICAgICAgcmV0VmFsdWUgPSBncm91cE1hbmFnZXIuZ2V0VXNlcnNJbkdyb3VwKGdyb3VwKS5lYWNoeyB1c2VyIC0+CiAgICAgICAgICAgIGlmKHVzZXIuZ2V0TmFtZSgpICE9IGlzc3VlLnJlcG9ydGVyLm5hbWUpewogICAgICAgICAgICAJcmVxdWVzdFBhcnRpY2lwYW50c0xpc3QuYWRkKENvbXBvbmVudEFjY2Vzc29yLmdldFVzZXJNYW5hZ2VyKCkuZ2V0VXNlckJ5TmFtZSh1c2VyLmdldE5hbWUoKSkpOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9CgovKgppZiAodl9qaXJhR3JvdXAgIT0gbnVsbCAmJiB2X2ppcmFHcm91cC5jb250YWlucygiVmlzaWJpbGl0eS0iKSl7CgluX2ppcmFHcm91cCA9ICJIUy1Ob3RpZmljYXRpb25zLSIgKyB2X2ppcmFHcm91cC5zdWJzdHJpbmcoMCt2X2ppcmFHcm91cC5pbmRleE9mKCJWaXNpYmlsaXR5LSIpKzExLHZfamlyYUdyb3VwLnNpemUoKSkKCW5vdF9qaXJhR3JvdXAgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRVc2VyTWFuYWdlcigpLmdldEdyb3VwKG5famlyYUdyb3VwKTsKfSAgICAKCmlmIChub3RfamlyYUdyb3VwICE9IG51bGwpewogICAgcmV0VmFsdWUgPSBncm91cE1hbmFnZXIuZ2V0VXNlcnNJbkdyb3VwKG5vdF9qaXJhR3JvdXApLmVhY2h7IHVzZXIgLT4KICAgICAgICAgICAJY2NBZGRyZXNzZXNMaXN0LmFkZChDb21wb25lbnRBY2Nlc3Nvci5nZXRVc2VyTWFuYWdlcigpLmdldFVzZXJCeU5hbWUodXNlci5nZXROYW1lKCkpKTsKICAgIH0KfQoqLwoKaWYocmVxdWVzdFBhcnRpY2lwYW50c0xpc3Quc2l6ZSgpID4gMCl7CglyZXF1ZXN0UGFydGljaXBhbnRzLnVwZGF0ZVZhbHVlKG51bGwsIGlzc3VlLCBuZXcgTW9kaWZpZWRWYWx1ZShpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKHJlcXVlc3RQYXJ0aWNpcGFudHMpLHJlcXVlc3RQYXJ0aWNpcGFudHNMaXN0KSxjaGFuZ2VIb2xkZXIpCiAgICBpc3N1ZS5zZXRDdXN0b21GaWVsZFZhbHVlKHJlcXVlc3RQYXJ0aWNpcGFudHMsIHJlcXVlc3RQYXJ0aWNpcGFudHNMaXN0KQogICAgaXNzdWVJbmRleGluZ1NlcnZpY2UucmVJbmRleChpc3N1ZSkKfQoKLyoKaWYoY2NBZGRyZXNzZXNMaXN0LnNpemUoKSA+IDApewoJY2NBZGRyZXNzZXMudXBkYXRlVmFsdWUobnVsbCwgaXNzdWUsIG5ldyBNb2RpZmllZFZhbHVlKGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY2NBZGRyZXNzZXMpLGNjQWRkcmVzc2VzTGlzdCksY2hhbmdlSG9sZGVyKQogICAgaXNzdWUuc2V0Q3VzdG9tRmllbGRWYWx1ZShjY0FkZHJlc3NlcywgY2NBZGRyZXNzZXNMaXN0KQogICAgaXNzdWVJbmRleGluZ1NlcnZpY2UucmVJbmRleChpc3N1ZSkKfQoqLwpDb21wb25lbnRBY2Nlc3Nvci5qaXJhQXV0aGVudGljYXRpb25Db250ZXh0LnNldExvZ2dlZEluVXNlcihvbGRVc2VyKQ==</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE"></arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">support@hubparking.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS">customfield_17100</arg>
+              <arg name="FIELD_TO_USER_FIELDS">reporter</arg>
+              <arg name="FIELD_FUNCTION_ID">3587779d06f96ee34769f5135a0c0abb665f75da</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiY2FsaWJyaSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmh1Yi1zdW1tYXJ5ewogICAgICAgIAljb2xvcjojNkJBNTM5OwogICAgICAgIAl0ZXh0LWRlY29yYXRpb246bm9uZTsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3BhY2VkewogICAgICAgIAlwYWRkaW5nOjE1LjBwdCA3LjVwdCA3LjVwdCA3LjVwdDsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3VtbWFyeXsKICAgICAgICAJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxOHB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwogICAgICAgICAgICBmb250LXNpemU6MTJwdDsKICAgICAgICAgICAgZm9udC13ZWlnaHQ6Ym9sZDsKCQkJdGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTsKCQl9CgkJcC5hdXRob3ItY29tbWVudHsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxMXB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwoJCX0KCQl0ZC5jb21tZW50LWJveHsKCQkJYmFja2dyb3VuZDojRjJGMkYyOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCXRkLmRldGFpbHMtZmllbGQtbmFtZXsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6MTFwdDsKCQkJZm9udC13ZWlnaHQ6Ym9sZDsKCQkJcGFkZGluZy10b3A6IDE1cHg7CgkJCXBhZGRpbmctYm90dG9tOiAxMHB4OwoJCX0KCQl0ZC5kZXRhaWxzLWZpZWxkLXZhbHVlewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CgkJCXZlcnRpY2FsLWFsaWduOm1pZGRsZTsKCQkJcGFkZGluZy10b3A6IDJweDsKCQkJcGFkZGluZy1ib3R0b206IDJweDsKCQl9CgkJcC5odWItaGVhZGVyLWZpcm1hewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCXBhZGRpbmctYm90dG9tOiAwcHg7CgkJfQoJCXNwYW4uaHViLWNvbnRlbnQtZmlybWF7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6OHB0OwoJCQlwYWRkaW5nLXRvcDogMHB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJfQoJCXNwYW4uaHViLWhlYWRlci1maXJtYS1ibHVlewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQl9CgkJc3Bhbi5odWItaGVhZGVyLWZpcm1hLWdyZWVuewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM2QkE1Mzk7CgkJfQoJCWEudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJcGFkZGluZy10b3A6IDVweDsKCQkJcGFkZGluZy1ib3R0b206IDVweDsKCQkJcGFkZGluZy1sZWZ0OiAxMHB4OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQljb2xvcjojMDAzMDUwOwoJCX0KCQlwLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLXJpZ2h0OiAxMHB4OwoJCQl0ZXh0LWFsaWduOnJpZ2h0OwoJCQlsaW5lLWhlaWdodDoxM3B0OwoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWNvbG9yOiMwMDMwNTA7CgkJfQoJCXAudHlwZS1hYm92ZXsKCQkJZm9udC1mYW1pbHk6ImNhbGlicmkiOwoJCQlmb250LXNpemU6OHB0OwoJCQlmb250LXdlaWdodDpib2xkOwoJCQljb2xvcjojNTA1MDUwOwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLXllbGxvd3sKCQkJYm9yZGVyLXJhZGl1czogM3B4OyAKCQkJZm9udC1zaXplOiAxMXB4OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNmZmQzNTE7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjZmZkMzUxOyAKCQkJY29sb3I6ICNmZmZmZmY7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCQlmb250LXNpemU6IDE0cHg7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtZ3JlZW57CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjMTQ4OTJDOyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzE0ODkyQzsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLWJsdWV7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjNEE2Nzg1OyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzRBNjc4NTsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cgk8cCBjbGFzcz0idHlwZS1hYm92ZSI+IyNQbGVhc2UgdHlwZSB5b3VyIHJlcGx5IGFib3ZlIHRoaXMgbGluZSMjPC9wPgo8L2Rpdj4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPHRhYmxlIGNsYXNzPSJjdXN0b20tb3V0Z29pbmctbWFpbCIgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIj4KCTx0cj4KCQk8dGQgY2xhc3M9InRkLXNwYWNlZCI+CgkJCTxkaXYgYWxpZ249ImNlbnRlciI+CgkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPTYwMCBzdHlsZT0nd2lkdGg6NDUwcHQnPgoJCQkJCTx0cj4KCQkJCQkJPHRkIHN0eWxlPSdwYWRkaW5nOjBjbSAwY20gMGNtIDBjbSc+CgkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQ+CgkJCQkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJCQkJPHRyPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtJz4KCQkJCQkJCQkJCQkJCTxwPgoJCQkJCQkJCQkJCQkJCQk8YSBjbGFzcz0idGl0bGUtbWFpbC1yZWZlcmVuY2UiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiPkhVQiBTdXBwb3J0IFBvcnRhbDwvYj4JLSBTdXBwb3J0IFJlcXVlc3QKCQkJCQkJCQkJCQkJCQkJPC9hPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtO3RleHQtYWxpZ246cmlnaHQ7Jz4KCQkJCQkJCQkJCQkJCTxwIGNsYXNzPSJ0aXRsZS1tYWlsLXJlZmVyZW5jZSIgPgoJCQkJCQkJCQkJCQkJCQlSZWZlcmVuY2U6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkIj4kaXNzdWU8L3N0cm9uZz4KCQkJCQkJCQkJCQkJCTwvcD4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPC90YWJsZT4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1zdW1tYXJ5Ij4KCQkJCQkJCQkJCTxici8+CgkJCQkJCQkJCQk8YSBjbGFzcz0iaHViLXN1bW1hcnkiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQvbXlyZXF1ZXN0cy8kaXNzdWUiPgoJCQkJCQkJCQkJCSRpc3N1ZS5zdW1tYXJ5CgkJCQkJCQkJCQk8L2E+CgkJCQkJCQkJCQk8IS0tIEN1c3RvbSBmaWVsZDogTmV4dCBTdGF0dXMgRGVzY3JpcHRpb24gLS0+CgkJCQkJCQkJCQk8IS0tIElEIFN2aWw6IDE1NjAyIC0tPgoJCQkJCQkJCQkJPCEtLSBJRCBQcm9kOiAxNTgwMSAtLT4KCQkJCQkJCQkJCTwhLS0gQ3VzdG9tIGZpZWxkOiBOZXh0IFN0YXR1cyBDb2xvciAtLT4KCQkJCQkJCQkJCTwhLS0gSUQgU3ZpbDogMTY1MDAgLS0+CgkJCQkJCQkJCQk8IS0tIElEIFByb2Q6IDE3MTExIC0tPgoJCQkJCQkJCQkJPHNwYW4gY2xhc3M9InN0YXR1cy1uYW1lLWJsdWUiPiA8JSBvdXQgPDwgIk9QRU4iJT4gPC9zcGFuPgoJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCTwvdHI+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQgY2xhc3M9InRkLXJlZmVyZW5jZSI+CgkJCQkJCQkJCQlZb3UgY2FuIAkJCQkJCQkJCQkKCQkJCQkJCQkJCQk8YSBjbGFzcz0idGQtcmVmZXJlbmNlIiBocmVmPSJodHRwczovL3N1cHBvcnQuaHVicGFya2luZy5jb20vc2VydmljZWRlc2stdWkvY3VzdG9tZXIvcG9ydGFsLzI0L215cmVxdWVzdHMvJGlzc3VlIj4KCQkJCQkJCQkJCQkJdmlldyB0aGUgZnVsbCByZXF1ZXN0CgkJCQkJCQkJCQkJPC9hPgoJCQkJCQkJCTwvdGQ+CgkJCQkJCQk8L3RyPgoJCQkJCQk8L3RhYmxlPgoKCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJPHRyPgoJCQkJCQkJCTx0ZCBjbGFzcz0iY29tbWVudC1ib3giPgkJCQkJCQkJCQoJCQkJCQkJCQkKCQkJCQkJCQkJPHAgY2xhc3M9ImRldGFpbHMtYm94LXRpdGxlIj4KCQkJCQkJCQkJCTxiPjxzcGFuIHN0eWxlPSdmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIic+RGV0YWlsczwvc3Bhbj48L2I+CgkJCQkJCQkJCQkKCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJTsnPgoJCQkJCQkJCQkJPCUgaWYgKGlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkuY29udGFpbnMoIntodG1sfSIpKSB7ICU+CgkJCQkJCQkJCQkJPHRyPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjMwJSIgY2xhc3M9ImRldGFpbHMtZmllbGQtbmFtZSI+CgkJCQkJCQkJCQkJCSAgPGI+RGVzY3JpcHRpb248L2I+CgkJCQkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCBjbGFzcz0iZGV0YWlscy1maWVsZC12YWx1ZSI+CgkJCQkJCQkJCQkJCQk8JSBvdXQgPDwgaXNzdWUuZGVzY3JpcHRpb24udG9TdHJpbmcoKS5zdWJzdHJpbmcoaXNzdWUuZGVzY3JpcHRpb24udG9TdHJpbmcoKS5pbmRleE9mKCJ7aHRtbH0iKSs2LCBpc3N1ZS5kZXNjcmlwdGlvbi50b1N0cmluZygpLmxhc3RJbmRleE9mKCJ7aHRtbH0iKSkgJT4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPCUgfSAlPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCUgaWYgKCFpc3N1ZS5kZXNjcmlwdGlvbi50b1N0cmluZygpLmNvbnRhaW5zKCJ7aHRtbH0iKSkgeyAlPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIHdpZHRoPSIzMCUiIGNsYXNzPSJkZXRhaWxzLWZpZWxkLW5hbWUiPgoJCQkJCQkJCQkJCQkgIDxiPkRlc2NyaXB0aW9uPC9iPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCQk8dGQgY2xhc3M9ImRldGFpbHMtZmllbGQtdmFsdWUiPgoJCQkJCQkJCQkJCQkJJGlzc3VlLmRlc2NyaXB0aW9uCgkJCQkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJCQkJPC90cj4KCQkJCQkJCQkJCTwlIH0gJT4KCQkJCQkJCQkJCQoJCQkJCQkJCQkJCgkJCQkJCQkJCTwvdGFibGU+CgkJCQkJCQkJCQoJCQkJCQkJCTwvdGQ+CgkJCQkJCQk8L3RyPgoJCQkJCQkJPHRyPgoJCQkJCQkJCTx0ZD4KCQkJCQkJCQk8cCBjbGFzcz0iaHViLWhlYWRlci1maXJtYSI+CgkJCQkJCQkJCTxzcGFuIGNsYXNzPSJodWItaGVhZGVyLWZpcm1hLWJsdWUiPkhVQiBQYXJraW5nIDwvc3Bhbj48c3BhbiBjbGFzcz0iaHViLWhlYWRlci1maXJtYS1ncmVlbiI+VGVjaG5vbG9neTwvc3Bhbj48YnIvPgoJCQkJCQkJCQk8c3BhbiBjbGFzcz0iaHViLWNvbnRlbnQtZmlybWEiPmEgQnVzaW5lc3MgVW5pdCBvZiB0aGUgRkFBQyBHcm91cDwvc3Bhbj4KCQkJCQkJCQk8L3A+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjtjb2xvcjojMDAzMDUwJz5UaGlzIG1lc3NhZ2UgaXMgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgSFVCIFN1cHBvcnQgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPg==</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgW0hVQiBTdXBwb3J0IFBvcnRhbCAtIE5ldyBSZXF1ZXN0IENyZWF0ZWRdWyRpc3N1ZS5rZXldICRpc3N1ZS5zdW1tYXJ5</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJzdXBwb3J0QGh1YnBhcmtpbmcuY29tIil8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">HS-14847</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <common-actions>
+    <action id="81" name="To Be Tested SBX">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="4">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="51" name="In progress PDM/ERP">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="71" name="Waiting for Customer" view="fieldscreen">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id">15000</meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="7">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">0ccb91257b3470e6417918792fbc1002aad73e7d</arg>
+              <arg name="FIELD_NOTES">YCFgU2V0IFByZVN0YXR1cw==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3I7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuQ3VzdG9tRmllbGRNYW5hZ2VyOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLmZpZWxkcy5DdXN0b21GaWVsZDsKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Jc3N1ZU1hbmFnZXI7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWU7CmltcG9ydCBvcmcuYXBhY2hlLmxvZzRqLkNhdGVnb3J5CgpDYXRlZ29yeSBsb2cgPSBDYXRlZ29yeS5nZXRJbnN0YW5jZSgiY29tLm9ucmVzb2x2ZS5qaXJhLmdyb292eS5Qb3N0RnVuY3Rpb24iKQpsb2cuc2V0TGV2ZWwob3JnLmFwYWNoZS5sb2c0ai5MZXZlbC5ERUJVRykKCgpDdXN0b21GaWVsZE1hbmFnZXIgY3VzdG9tRmllbGRNYW5hZ2VyID0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCk7CgpDdXN0b21GaWVsZCBwcmVTdGF0dXMgPSBjdXN0b21GaWVsZE1hbmFnZXIuZ2V0Q3VzdG9tRmllbGRPYmplY3RzQnlOYW1lKCJQcmVTdGF0dXMiKVswXQpkZWYgb3JpZ2luYWxJc3N1ZSA9IENvbXBvbmVudEFjY2Vzc29yLmdldElzc3VlTWFuYWdlcigpLmdldElzc3VlT2JqZWN0KGlzc3VlLmlkKQoKbG9nLmRlYnVnICJvcmlnaW5hbElzc3VlOiAiICsgb3JpZ2luYWxJc3N1ZS5nZXRTdGF0dXMoKS5uYW1lCmxvZy5kZWJ1ZyAicHJlU3RhdHVzICIgKyBwcmVTdGF0dXMKCmlmIChvcmlnaW5hbElzc3VlLmdldFN0YXR1cygpLm5hbWUgPT0gIkFuYWxpc3lzIil7CiAgICBpc3N1ZS5zZXRDdXN0b21GaWVsZFZhbHVlKHByZVN0YXR1cywiQW5hbGlzeXMiLnRvU3RyaW5nKCkpCn0KZWxzZXsKICAgIGlmKG9yaWdpbmFsSXNzdWUuZ2V0U3RhdHVzKCkubmFtZSA9PSAiSU4gUFJPR1JFU1MgUERNL0VSUCIpewogICAgICAgIGlzc3VlLnNldEN1c3RvbUZpZWxkVmFsdWUocHJlU3RhdHVzLCJJTiBQUk9HUkVTUyBQRE0vRVJQIi50b1N0cmluZygpKQogICAgfQogICAgZWxzZXsgICAKICAgICAgICBpc3N1ZS5zZXRDdXN0b21GaWVsZFZhbHVlKHByZVN0YXR1cywiSU4gUFJPR1JFU1MgQ1BRIi50b1N0cmluZygpKQogICAgfQp9</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE"></arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgVXBkYXRlIHB1YmxpYyBjb21tZW50cyBhbmQgYXR0YWNobWVudHMgdGFibGVzIG9uIERC</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT"></arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/IDTS_UpdatePublicCommentsAttachments.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">support@hubparking.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">reporter</arg>
+              <arg name="FIELD_FUNCTION_ID">28a6b0d0740b982c2a46bec155328546771e05b7</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiY2FsaWJyaSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmh1Yi1zdW1tYXJ5ewogICAgICAgIAljb2xvcjojNkJBNTM5OwogICAgICAgIAl0ZXh0LWRlY29yYXRpb246bm9uZTsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3BhY2VkewogICAgICAgIAlwYWRkaW5nOjE1LjBwdCA3LjVwdCA3LjVwdCA3LjVwdDsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3VtbWFyeXsKICAgICAgICAJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxOHB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwogICAgICAgICAgICBmb250LXNpemU6MTJwdDsKICAgICAgICAgICAgZm9udC13ZWlnaHQ6Ym9sZDsKCQkJdGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTsKCQl9CgkJcC5hdXRob3ItY29tbWVudHsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxMXB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwoJCX0KCQl0ZC5jb21tZW50LWJveHsKCQkJYmFja2dyb3VuZDojRjJGMkYyOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCXRkLmRldGFpbHMtZmllbGQtbmFtZXsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6MTFwdDsKCQkJZm9udC13ZWlnaHQ6Ym9sZDsKCQkJcGFkZGluZy10b3A6IDE1cHg7CgkJCXBhZGRpbmctYm90dG9tOiAxMHB4OwoJCX0KCQl0ZC5kZXRhaWxzLWZpZWxkLXZhbHVlewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CgkJCXZlcnRpY2FsLWFsaWduOm1pZGRsZTsKCQkJcGFkZGluZy10b3A6IDJweDsKCQkJcGFkZGluZy1ib3R0b206IDJweDsKCQl9CgkJcC5odWItaGVhZGVyLWZpcm1hewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCXBhZGRpbmctYm90dG9tOiAwcHg7CgkJfQoJCXNwYW4uaHViLWNvbnRlbnQtZmlybWF7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6OHB0OwoJCQlwYWRkaW5nLXRvcDogMHB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJfQoJCXNwYW4uaHViLWhlYWRlci1maXJtYS1ibHVlewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQl9CgkJc3Bhbi5odWItaGVhZGVyLWZpcm1hLWdyZWVuewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM2QkE1Mzk7CgkJfQoJCWEudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJcGFkZGluZy10b3A6IDVweDsKCQkJcGFkZGluZy1ib3R0b206IDVweDsKCQkJcGFkZGluZy1sZWZ0OiAxMHB4OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQljb2xvcjojMDAzMDUwOwoJCX0KCQlwLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLXJpZ2h0OiAxMHB4OwoJCQl0ZXh0LWFsaWduOnJpZ2h0OwoJCQlsaW5lLWhlaWdodDoxM3B0OwoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWNvbG9yOiMwMDMwNTA7CgkJfQoJCXAudHlwZS1hYm92ZXsKCQkJZm9udC1mYW1pbHk6ImNhbGlicmkiOwoJCQlmb250LXNpemU6OHB0OwoJCQlmb250LXdlaWdodDpib2xkOwoJCQljb2xvcjojNTA1MDUwOwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLXllbGxvd3sKCQkJYm9yZGVyLXJhZGl1czogM3B4OyAKCQkJZm9udC1zaXplOiAxMXB4OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNmZmQzNTE7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjZmZkMzUxOyAKCQkJY29sb3I6ICNmZmZmZmY7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCQlmb250LXNpemU6IDE0cHg7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtZ3JlZW57CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjMTQ4OTJDOyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzE0ODkyQzsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLWJsdWV7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjNEE2Nzg1OyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzRBNjc4NTsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cgk8cCBjbGFzcz0idHlwZS1hYm92ZSI+IyNQbGVhc2UgdHlwZSB5b3VyIHJlcGx5IGFib3ZlIHRoaXMgbGluZSMjPC9wPgo8L2Rpdj4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPHRhYmxlIGNsYXNzPSJjdXN0b20tb3V0Z29pbmctbWFpbCIgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIj4KCTx0cj4KCQk8dGQgY2xhc3M9InRkLXNwYWNlZCI+CgkJCTxkaXYgYWxpZ249ImNlbnRlciI+CgkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPTYwMCBzdHlsZT0nd2lkdGg6NDUwcHQnPgoJCQkJCTx0cj4KCQkJCQkJPHRkIHN0eWxlPSdwYWRkaW5nOjBjbSAwY20gMGNtIDBjbSc+CgkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQ+CgkJCQkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJCQkJPHRyPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtJz4KCQkJCQkJCQkJCQkJCTxwPgoJCQkJCQkJCQkJCQkJCQk8YSBjbGFzcz0idGl0bGUtbWFpbC1yZWZlcmVuY2UiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiPkhVQiBTdXBwb3J0IFBvcnRhbDwvYj4JLSBTdXBwb3J0IFJlcXVlc3QKCQkJCQkJCQkJCQkJCQkJPC9hPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtO3RleHQtYWxpZ246cmlnaHQ7Jz4KCQkJCQkJCQkJCQkJCTxwIGNsYXNzPSJ0aXRsZS1tYWlsLXJlZmVyZW5jZSIgPgoJCQkJCQkJCQkJCQkJCQlSZWZlcmVuY2U6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkIj4kaXNzdWU8L3N0cm9uZz4KCQkJCQkJCQkJCQkJCTwvcD4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPC90YWJsZT4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1zdW1tYXJ5Ij4KCQkJCQkJCQkJCQkJPGEgY2xhc3M9Imh1Yi1zdW1tYXJ5IiBocmVmPSJodHRwczovL3N1cHBvcnQuaHVicGFya2luZy5jb20vc2VydmljZWRlc2stdWkvY3VzdG9tZXIvcG9ydGFsLzI0L215cmVxdWVzdHMvJGlzc3VlIj4KCQkJCQkJCQkJCQkJCSRpc3N1ZS5zdW1tYXJ5CgkJCQkJCQkJCQkJCTwvYT4KCQkJCQkJCQkJCQkJPCEtLSBDdXN0b20gZmllbGQ6IE5leHQgU3RhdHVzIERlc2NyaXB0aW9uIC0tPgoJCQkJCQkJCQkJCQk8IS0tIElEIFN2aWw6IDE1NjAyIC0tPgoJCQkJCQkJCQkJCQk8IS0tIElEIFByb2Q6IDE1ODAxIC0tPgoJCQkJCQkJCQkJCQk8IS0tIEN1c3RvbSBmaWVsZDogTmV4dCBTdGF0dXMgQ29sb3IgLS0+CgkJCQkJCQkJCQkJCTwhLS0gSUQgU3ZpbDogMTY1MDAgLS0+CgkJCQkJCQkJCQkJCTwhLS0gSUQgUHJvZDogMTcxMTEgLS0+CgkJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCQk8c3BhbiBjbGFzcz0ic3RhdHVzLW5hbWUtYmx1ZSI+IDwlIG91dCA8PCAiV0FJVElORyBGT1IgQ1VTVE9NRVIiJT4gPC9zcGFuPgoJCQkJCQkJCQkJCQkKCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiPgoJCQkJCQkJCQkJWW91IGNhbiAJCQkJCQkJCQkJCgkJCQkJCQkJCQkJPGEgY2xhc3M9InRkLXJlZmVyZW5jZSIgaHJlZj0iaHR0cHM6Ly9zdXBwb3J0Lmh1YnBhcmtpbmcuY29tL3NlcnZpY2VkZXNrLXVpL2N1c3RvbWVyL3BvcnRhbC8yNC9teXJlcXVlc3RzLyRpc3N1ZSI+CgkJCQkJCQkJCQkJCXZpZXcgdGhlIGZ1bGwgcmVxdWVzdAoJCQkJCQkJCQkJCTwvYT4KCQkJCQkJCQk8L3RkPgoJCQkJCQkJPC90cj4KCQkJCQkJPC90YWJsZT4KCgkJCQkJCTx0YWJsZSBib3JkZXI9MCBjZWxsc3BhY2luZz0wIGNlbGxwYWRkaW5nPTAgd2lkdGg9IjEwMCUiIHN0eWxlPSd3aWR0aDoxMDAlJz4KCQkJCQkJCTx0cj4KCQkJCQkJCQk8dGQgY2xhc3M9ImNvbW1lbnQtYm94Ij4JCQkJCQkJCQkKCQkJCQkJCQkJPCUgaWYgKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuY29tbWVudE1hbmFnZXIuZ2V0Q29tbWVudHMoaXNzdWUpLnNpemUoKSAhPSAwICYmIGxhc3RDb21tZW50ICE9IG51bGwgJiYgbGFzdENvbW1lbnQgIT0gIiIpIHsgJT4KCQkJCQkJCQkJCTxwIGNsYXNzPSJ0aXRsZS1jb21tZW50Ij4KCQkJCQkJCQkJCQk8Yj48dT5OZXcgY29tbWVudCBhZGRlZCB0byB0aGUgcmVxdWVzdDwvdT48L2I+CgkJCQkJCQkJCQk8L3A+CgkJCQkJCQkJCQk8cCBjbGFzcz0iYXV0aG9yLWNvbW1lbnQiPgoJCQkJCQkJCQkJCTxiPjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLnVzZXJVdGlsLmdldFVzZXJPYmplY3QoY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3Nvci5jb21tZW50TWFuYWdlci5nZXRDb21tZW50cyhpc3N1ZSk/Lmxhc3QoKT8uYXV0aG9yLnRvU3RyaW5nKCkpLmdldERpc3BsYXlOYW1lKCkgJT48L2I+CgkJCQkJCQkJCQkJPGI+PHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZToxMC4wcHQ7Zm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7Y29sb3I6IzFGNDk3RCc+PC9zcGFuPjwvYj4KCQkJCQkJCQkJCTwvcD4KCQkJCQkJCQkJCTxwIHN0eWxlPSdtYXJnaW4tdG9wOjYuMHB0Jz4KCQkJCQkJCQkJCQk8c3BhbiBzdHlsZT0nZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7Y29sb3I6IzAwMzA1MCc+CgkJCQkJCQkJCQkJCTwlIG91dCA8PCBsYXN0Q29tbWVudCAlPgoJCQkJCQkJCQkJCTwvc3Bhbj4KCQkJCQkJCQkJCTwvcD4KCQkJCQkJCQkJPCUgfSAlPgoJCQkJCQkJCQk8cCBjbGFzcz0iZGV0YWlscy1ib3gtdGl0bGUiPgoJCQkJCQkJCQkJPGI+PHNwYW4gc3R5bGU9J2ZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiJz5EZXRhaWxzPC9zcGFuPjwvYj4KCQkJCQkJCQkJCQoJCQkJCQkJCQk8L3A+CgkJCQkJCQkJCTx0YWJsZSBib3JkZXI9MCBjZWxsc3BhY2luZz0wIGNlbGxwYWRkaW5nPTAgd2lkdGg9IjEwMCUiIHN0eWxlPSd3aWR0aDoxMDAlOyc+CgkJCQkJCQkJCQoJCQkJCQkJCQkJPCUgaWYgKGlzc3VlLmRlc2NyaXB0aW9uICE9IG51bGwpIHsgJT4KCQkJCQkJCQkJCQk8dHI+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iMzAlIiBjbGFzcz0iZGV0YWlscy1maWVsZC1uYW1lIj4KCQkJCQkJCQkJCQkJICA8Yj5EZXNjcmlwdGlvbjwvYj4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQkJPHRkIGNsYXNzPSJkZXRhaWxzLWZpZWxkLXZhbHVlIj4KCQkJCQkJCQkJCQkJCTwlIGlmKGlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkuY29udGFpbnMoIntodG1sfSIpKSB7ICU+CgkJCQkJCQkJCQkJCQkJPCUgb3V0IDw8IGlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkuc3Vic3RyaW5nKGlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkuaW5kZXhPZigie2h0bWx9IikrNiwgaXNzdWUuZGVzY3JpcHRpb24udG9TdHJpbmcoKS5sYXN0SW5kZXhPZigie2h0bWx9IikpICU+CgkJCQkJCQkJCQkJCQk8JSB9ICU+CgkJCQkJCQkJCQkJCQk8JSBpZighaXNzdWUuZGVzY3JpcHRpb24udG9TdHJpbmcoKS5jb250YWlucygie2h0bWx9IikpIHsgJT4KCQkJCQkJCQkJCQkJCQkkaXNzdWUuZGVzY3JpcHRpb24KCQkJCQkJCQkJCQkJCTwlIH0gJT4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPCUgfSAlPgoJCQkJCQkJCQkJCgkKCQkJCQkKCQkJCQkJCgkJCQkJCQkJCTwvdGFibGU+CgkJCQkJCQkJCQoJCQkJCQkJCTwvdGQ+CgkJCQkJCQk8L3RyPgoJCQkJCQkJPHRyPgoJCQkJCQkJCTx0ZD4KCQkJCQkJCQk8cCBjbGFzcz0iaHViLWhlYWRlci1maXJtYSI+CgkJCQkJCQkJCTxzcGFuIGNsYXNzPSJodWItaGVhZGVyLWZpcm1hLWJsdWUiPkhVQiBQYXJraW5nIDwvc3Bhbj48c3BhbiBjbGFzcz0iaHViLWhlYWRlci1maXJtYS1ncmVlbiI+VGVjaG5vbG9neTwvc3Bhbj48YnIvPgoJCQkJCQkJCQk8c3BhbiBjbGFzcz0iaHViLWNvbnRlbnQtZmlybWEiPmEgQnVzaW5lc3MgVW5pdCBvZiB0aGUgRkFBQyBHcm91cDwvc3Bhbj4KCQkJCQkJCQk8L3A+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjtjb2xvcjojMDAzMDUwJz5UaGlzIG1lc3NhZ2UgaXMgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgSFVCIFN1cHBvcnQgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPg==</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgW0hVQiBTdXBwb3J0IFBvcnRhbCAtIE5ldyBDb21tZW50XVskaXNzdWUua2V5XSAkaXNzdWUuc3VtbWFyeQ==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJzdXBwb3J0QGh1YnBhcmtpbmcuY29tIil8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE"></arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="41" name="Back To Analisys">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="91" name="SBX TESTED">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="61" name="In Progress CPQ">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="6">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="31" name="Closed">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="8">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">support@hubparking.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS">customfield_17100</arg>
+              <arg name="FIELD_TO_USER_FIELDS">reporter</arg>
+              <arg name="FIELD_FUNCTION_ID">cd27f53ab359532121d9f4cf59c88c52f617c7ca</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiY2FsaWJyaSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmh1Yi1zdW1tYXJ5ewogICAgICAgIAljb2xvcjojNkJBNTM5OwogICAgICAgIAl0ZXh0LWRlY29yYXRpb246bm9uZTsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3BhY2VkewogICAgICAgIAlwYWRkaW5nOjE1LjBwdCA3LjVwdCA3LjVwdCA3LjVwdDsKICAgICAgICB9CiAgICAgICAgdGQudGQtc3VtbWFyeXsKICAgICAgICAJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxOHB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwogICAgICAgICAgICBmb250LXNpemU6MTJwdDsKICAgICAgICAgICAgZm9udC13ZWlnaHQ6Ym9sZDsKCQkJdGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTsKCQl9CgkJcC5hdXRob3ItY29tbWVudHsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxMXB0OwogICAgICAgICAgICBmb250LXdlaWdodDpib2xkOwoJCX0KCQl0ZC5jb21tZW50LWJveHsKCQkJYmFja2dyb3VuZDojRjJGMkYyOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCXRkLmRldGFpbHMtZmllbGQtbmFtZXsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6MTFwdDsKCQkJZm9udC13ZWlnaHQ6Ym9sZDsKCQkJcGFkZGluZy10b3A6IDE1cHg7CgkJCXBhZGRpbmctYm90dG9tOiAxMHB4OwoJCX0KCQl0ZC5kZXRhaWxzLWZpZWxkLXZhbHVlewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlNlZ29lIFVJIFN5bWJvbCI7CgkJCXZlcnRpY2FsLWFsaWduOm1pZGRsZTsKCQkJcGFkZGluZy10b3A6IDJweDsKCQkJcGFkZGluZy1ib3R0b206IDJweDsKCQl9CgkJcC5odWItaGVhZGVyLWZpcm1hewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCXBhZGRpbmctYm90dG9tOiAwcHg7CgkJfQoJCXNwYW4uaHViLWNvbnRlbnQtZmlybWF7CgkJCWZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiOwoJCQlmb250LXNpemU6OHB0OwoJCQlwYWRkaW5nLXRvcDogMHB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJfQoJCXNwYW4uaHViLWhlYWRlci1maXJtYS1ibHVlewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQl9CgkJc3Bhbi5odWItaGVhZGVyLWZpcm1hLWdyZWVuewoJCQlmb250LWZhbWlseToiU2Vnb2UgVUkgU3ltYm9sIjsKCQkJZm9udC1zaXplOjEwcHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM2QkE1Mzk7CgkJfQoJCWEudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCWZvbnQtZmFtaWx5OiJjYWxpYnJpIjsKCQkJcGFkZGluZy10b3A6IDVweDsKCQkJcGFkZGluZy1ib3R0b206IDVweDsKCQkJcGFkZGluZy1sZWZ0OiAxMHB4OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQljb2xvcjojMDAzMDUwOwoJCX0KCQlwLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLXJpZ2h0OiAxMHB4OwoJCQl0ZXh0LWFsaWduOnJpZ2h0OwoJCQlsaW5lLWhlaWdodDoxM3B0OwoJCQlmb250LWZhbWlseToiY2FsaWJyaSI7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQlkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CgkJCWNvbG9yOiMwMDMwNTA7CgkJfQoJCXAudHlwZS1hYm92ZXsKCQkJZm9udC1mYW1pbHk6ImNhbGlicmkiOwoJCQlmb250LXNpemU6OHB0OwoJCQlmb250LXdlaWdodDpib2xkOwoJCQljb2xvcjojNTA1MDUwOwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLXllbGxvd3sKCQkJYm9yZGVyLXJhZGl1czogM3B4OyAKCQkJZm9udC1zaXplOiAxMXB4OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNmZmQzNTE7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjZmZkMzUxOyAKCQkJY29sb3I6ICNmZmZmZmY7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCQlmb250LXNpemU6IDE0cHg7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtZ3JlZW57CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjMTQ4OTJDOyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzE0ODkyQzsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KCQlzcGFuLnN0YXR1cy1uYW1lLWJsdWV7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogMTFweDsgCgkJCXRleHQtYWxpZ246IGNlbnRlcjsgCgkJCXRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IAoJCQliYWNrZ3JvdW5kLWNvbG9yOiAjNEE2Nzg1OyAKCQkJYm9yZGVyOiAxcHggc29saWQgIzRBNjc4NTsgCgkJCWNvbG9yOiAjZmZmZmZmOyAKCQkJbWFyZ2luLWxlZnQ6IDVweDsgCgkJCWZvbnQtd2VpZ2h0OiBib2xkOyAKCQkJZm9udC1zaXplOiAxNHB4OwoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cgk8cCBjbGFzcz0idHlwZS1hYm92ZSI+IyNQbGVhc2UgdHlwZSB5b3VyIHJlcGx5IGFib3ZlIHRoaXMgbGluZSMjPC9wPgo8L2Rpdj4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPHRhYmxlIGNsYXNzPSJjdXN0b20tb3V0Z29pbmctbWFpbCIgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIj4KCTx0cj4KCQk8dGQgY2xhc3M9InRkLXNwYWNlZCI+CgkJCTxkaXYgYWxpZ249ImNlbnRlciI+CgkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPTYwMCBzdHlsZT0nd2lkdGg6NDUwcHQnPgoJCQkJCTx0cj4KCQkJCQkJPHRkIHN0eWxlPSdwYWRkaW5nOjBjbSAwY20gMGNtIDBjbSc+CgkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQ+CgkJCQkJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQkJCQkJPHRyPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtJz4KCQkJCQkJCQkJCQkJCTxwPgoJCQkJCQkJCQkJCQkJCQk8YSBjbGFzcz0idGl0bGUtbWFpbC1yZWZlcmVuY2UiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiPkhVQiBTdXBwb3J0IFBvcnRhbDwvYj4JLSBTdXBwb3J0IFJlcXVlc3QKCQkJCQkJCQkJCQkJCQkJPC9hPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjUwJSIgc3R5bGU9J3dpZHRoOjUwLjAlO3BhZGRpbmc6MGNtIDBjbSAwY20gMGNtO3RleHQtYWxpZ246cmlnaHQ7Jz4KCQkJCQkJCQkJCQkJCTxwIGNsYXNzPSJ0aXRsZS1tYWlsLXJlZmVyZW5jZSIgPgoJCQkJCQkJCQkJCQkJCQlSZWZlcmVuY2U6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkIj4kaXNzdWU8L3N0cm9uZz4KCQkJCQkJCQkJCQkJCTwvcD4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPC90YWJsZT4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1zdW1tYXJ5Ij4KCQkJCQkJCQkJCTxici8+CgkJCQkJCQkJCQk8YSBjbGFzcz0iaHViLXN1bW1hcnkiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQvbXlyZXF1ZXN0cy8kaXNzdWUiPgoJCQkJCQkJCQkJCSRpc3N1ZS5zdW1tYXJ5CgkJCQkJCQkJCQk8L2E+CgkJCQkJCQkJCQk8IS0tIEN1c3RvbSBmaWVsZDogTmV4dCBTdGF0dXMgRGVzY3JpcHRpb24gLS0+CgkJCQkJCQkJCQk8IS0tIElEIFN2aWw6IDE1NjAyIC0tPgoJCQkJCQkJCQkJPCEtLSBJRCBQcm9kOiAxNTgwMSAtLT4KCQkJCQkJCQkJCTwhLS0gQ3VzdG9tIGZpZWxkOiBOZXh0IFN0YXR1cyBDb2xvciAtLT4KCQkJCQkJCQkJCTwhLS0gSUQgU3ZpbDogMTY1MDAgLS0+CgkJCQkJCQkJCQk8IS0tIElEIFByb2Q6IDE3MTExIC0tPgoJCQkJCQkJCQkJPHNwYW4gY2xhc3M9InN0YXR1cy1uYW1lLWJsdWUiPiA8JSBvdXQgPDwgIkNMT1NFRCIlPiA8L3NwYW4+CgkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJPC90cj4KCQkJCQkJCQk8dHI+CgkJCQkJCQkJCTx0ZCBjbGFzcz0idGQtcmVmZXJlbmNlIj4KCQkJCQkJCQkJCVlvdSBjYW4gCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTxhIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiIGhyZWY9Imh0dHBzOi8vc3VwcG9ydC5odWJwYXJraW5nLmNvbS9zZXJ2aWNlZGVzay11aS9jdXN0b21lci9wb3J0YWwvMjQvbXlyZXF1ZXN0cy8kaXNzdWUiPgoJCQkJCQkJCQkJCQl2aWV3IHRoZSBmdWxsIHJlcXVlc3QKCQkJCQkJCQkJCQk8L2E+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgoJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQk8dHI+CgkJCQkJCQkJPHRkIGNsYXNzPSJjb21tZW50LWJveCI+CQkJCQkJCQkJCgkJCQkJCQkJCQoJCQkJCQkJCQk8cCBjbGFzcz0iZGV0YWlscy1ib3gtdGl0bGUiPgoJCQkJCQkJCQkJPGI+PHNwYW4gc3R5bGU9J2ZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiJz5EZXRhaWxzPC9zcGFuPjwvYj4KCQkJCQkJCQkJCQoJCQkJCQkJCQk8L3A+CgkJCQkJCQkJCTx0YWJsZSBib3JkZXI9MCBjZWxsc3BhY2luZz0wIGNlbGxwYWRkaW5nPTAgd2lkdGg9IjEwMCUiIHN0eWxlPSd3aWR0aDoxMDAlOyc+CgkJCQkJCQkJCQk8JSBpZiAoaXNzdWUuZGVzY3JpcHRpb24udG9TdHJpbmcoKS5jb250YWlucygie2h0bWx9IikpIHsgJT4KCQkJCQkJCQkJCQk8dHI+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iMzAlIiBjbGFzcz0iZGV0YWlscy1maWVsZC1uYW1lIj4KCQkJCQkJCQkJCQkJICA8Yj5EZXNjcmlwdGlvbjwvYj4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQkJPHRkIGNsYXNzPSJkZXRhaWxzLWZpZWxkLXZhbHVlIj4KCQkJCQkJCQkJCQkJCTwlIG91dCA8PCBpc3N1ZS5kZXNjcmlwdGlvbi50b1N0cmluZygpLnN1YnN0cmluZyhpc3N1ZS5kZXNjcmlwdGlvbi50b1N0cmluZygpLmluZGV4T2YoIntodG1sfSIpKzYsIGlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkubGFzdEluZGV4T2YoIntodG1sfSIpKSAlPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCTwvdHI+CgkJCQkJCQkJCQk8JSB9ICU+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JSBpZiAoIWlzc3VlLmRlc2NyaXB0aW9uLnRvU3RyaW5nKCkuY29udGFpbnMoIntodG1sfSIpKSB7ICU+CgkJCQkJCQkJCQkJPHRyPgoJCQkJCQkJCQkJCQk8dGQgd2lkdGg9IjMwJSIgY2xhc3M9ImRldGFpbHMtZmllbGQtbmFtZSI+CgkJCQkJCQkJCQkJCSAgPGI+RGVzY3JpcHRpb248L2I+CgkJCQkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCBjbGFzcz0iZGV0YWlscy1maWVsZC12YWx1ZSI+CgkJCQkJCQkJCQkJCQkkaXNzdWUuZGVzY3JpcHRpb24KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJPCUgfSAlPgoJCQkJCQkJCQkJCgkJCQkJCQkJCQkKCQkJCQkJCQkJPC90YWJsZT4KCQkJCQkJCQkJCgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCQk8dHI+CgkJCQkJCQkJPHRkPgoJCQkJCQkJCTxwIGNsYXNzPSJodWItaGVhZGVyLWZpcm1hIj4KCQkJCQkJCQkJPHNwYW4gY2xhc3M9Imh1Yi1oZWFkZXItZmlybWEtYmx1ZSI+SFVCIFBhcmtpbmcgPC9zcGFuPjxzcGFuIGNsYXNzPSJodWItaGVhZGVyLWZpcm1hLWdyZWVuIj5UZWNobm9sb2d5PC9zcGFuPjxici8+CgkJCQkJCQkJCTxzcGFuIGNsYXNzPSJodWItY29udGVudC1maXJtYSI+YSBCdXNpbmVzcyBVbml0IG9mIHRoZSBGQUFDIEdyb3VwPC9zcGFuPgoJCQkJCQkJCTwvcD4KCQkJCQkJCQk8L3RkPgoJCQkJCQkJPC90cj4KCQkJCQkJPC90YWJsZT4KCQkJCQkJCgkJCQkJCTwvdGQ+CgkJCQkJPC90cj4KCQkJCTwvdGFibGU+CgkJCTwvZGl2PgoJCTwvdGQ+Cgk8L3RyPgoJPHRyPgoJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDE1LjBwdCAwY207Jz4KCQkJPHAgYWxpZ249Y2VudGVyIHN0eWxlPSdtYXJnaW46MGNtO21hcmdpbi1ib3R0b206LjAwMDFwdDt0ZXh0LWFsaWduOmNlbnRlcic+CgkJCQk8c3BhbiBzdHlsZT0nZm9udC1zaXplOjkuMHB0O2ZvbnQtZmFtaWx5OiJTZWdvZSBVSSBTeW1ib2wiO2NvbG9yOiMwMDMwNTAnPlRoaXMgbWVzc2FnZSBpcyBhdXRvbWF0aWNhbGx5IGdlbmVyYXRlZCBieSBIVUIgU3VwcG9ydCBQb3J0YWwuPC9zcGFuPgoJCQk8L3A+CgkJPC90ZD4KCTwvdHI+CjwvdGFibGU+CjwvZGl2Pgo8L2Rpdj4KPC9ib2R5Pgo8L2h0bWw+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgW0hVQiBTdXBwb3J0IFBvcnRhbCAtIFJlcXVlc3QgQ2xvc2VkXVskaXNzdWUua2V5XSAkaXNzdWUuc3VtbWFyeQ==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJzdXBwb3J0QGh1YnBhcmtpbmcuY29tIil8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">HS-20111</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="1" name="Open">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+<common-action id="31" />
+        <action id="11" name="To Analysis">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Analisys">
+      <meta name="jira.status.id">10010</meta>
+      <actions>
+<common-action id="31" />
+<common-action id="51" />
+<common-action id="61" />
+<common-action id="71" />
+        <action id="21" name="Back to Open">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="1">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="In progress PDM/ERP">
+      <meta name="jira.status.id">14439</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="71" />
+<common-action id="81" />
+      </actions>
+    </step>
+    <step id="4" name="TO BE TESTED SBX">
+      <meta name="jira.status.id">14440</meta>
+      <actions>
+<common-action id="51" />
+<common-action id="61" />
+<common-action id="91" />
+      </actions>
+    </step>
+    <step id="5" name="SBX TESTED">
+      <meta name="jira.status.id">14441</meta>
+      <actions>
+<common-action id="31" />
+<common-action id="51" />
+<common-action id="61" />
+<common-action id="81" />
+      </actions>
+    </step>
+    <step id="6" name="IN PROGRESS CPQ">
+      <meta name="jira.status.id">14442</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="71" />
+<common-action id="81" />
+      </actions>
+    </step>
+    <step id="7" name="Waiting for Customer">
+      <meta name="jira.status.id">10024</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="51" />
+<common-action id="61" />
+      </actions>
+    </step>
+    <step id="8" name="Closed">
+      <meta name="jira.status.id">6</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="91" />
+      </actions>
+    </step>
+  </steps>
+</workflow>

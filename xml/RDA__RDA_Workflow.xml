@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+  <meta name="jira.description"></meta>
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1640862747031</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="null" status="open" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT"></arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/RDA_CreateSubTaskControllingOrCC.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">41 Waiting For CFO Credit Card</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1B1cmNoYXNlIGJ5IGNyZWRpdCBjYXJkJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnUHVyY2hhc2UgYnkgY3JlZGl0IGNhcmQnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">3bcb812a2a8a31f561b7b23929ef657834c8b3f6</arg>
+              <arg name="FIELD_ACTION">141 Waiting For Controllers</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQovL0Zsb3cgdHlwZSB0ZXN0IDIyODAxIC0gcHJvZCAyMjcxOQpDdXN0b21GaWVsZCBSZGFUeXBlRmllbGQgPSBjdXN0b21GaWVsZE1hbmFnZXIuZ2V0Q3VzdG9tRmllbGRPYmplY3QoTG9uZy5wYXJzZUxvbmcoIjIyNzE5IikpCmRlZiBSZGFUeXBlViA9IGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoUmRhVHlwZUZpZWxkKQpsb2cuZGVidWcgICJSZGFUeXBlICIgKyBSZGFUeXBlVgpsb2cuZGVidWcgUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnQ29udHJvbGxpbmcgZnVuY3Rpb24nCmlmIChSZGFUeXBlVi50b1N0cmluZygpID09ICdDb250cm9sbGluZyBmdW5jdGlvbicpCgl0cnVlCmVsc2UKICAgIGZhbHNlfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">71 Waiting for technical approval</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RlY2huaWNhbCBBcHByb3ZhbCcKaWYgKFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RlY2huaWNhbCBBcHByb3ZhbCcpCgl0cnVlCmVsc2UKICAgIGZhbHNlfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">61 Waiting For First Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ0ZpcnN0IExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnRmlyc3QgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">81 Waiting For Second Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQovL0Zsb3cgVHlwZSB0ZXN0IDIyODAxIC0gcHJvZCAyMjcxOSAKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1NlY29uZCBMZXZlbCBBcHByb3ZhbCcKaWYgKFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1NlY29uZCBMZXZlbCBBcHByb3ZhbCcpCgl0cnVlCmVsc2UKICAgIGZhbHNlfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">91 Waiting For Third Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RoaXJkIExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnVGhpcmQgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">101 Waiting For Group Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ0dyb3VwIExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnR3JvdXAgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBhbCByaWNoaWVkZW50ZSBwZXIgUkRB</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">fbdfd7d3b4960076c89396df0d1a77094d3ded75</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJCVBSRVEgTnVtYmVyOiA8c3Ryb25nIHN0eWxlPSJmb250LXdlaWdodDogYm9sZDtmb250LXNpemU6MTFwdDtjb2xvcjojQ0Y2NDAwOyI+PCUgb3V0IDw8IGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKS5nZXRDdXN0b21GaWVsZE9iamVjdCgiY3VzdG9tZmllbGRfMjI3MjUiKSklPjwvc3Ryb25nPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCTwvdHI+CgkJCQkJCQkJCQk8L3RhYmxlPgoJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCTwvdHI+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQgY2xhc3M9InRkLXN1bW1hcnkiPgoJCQkJCQkJCQkJUFJFUSBOdW1iZXI6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkO2NvbG9yOiNDRjY0MDA7Ij48JSBvdXQgPDwgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpLmdldEN1c3RvbUZpZWxkT2JqZWN0KCJjdXN0b21maWVsZF8yMjcyNSIpKSU+PC9zdHJvbmc+CgkJCQkJCQkJCQk8c3BhbiBjbGFzcz0ic3RhdHVzLW5hbWUtYWEiPiBDcmVhdGVkIDwvc3Bhbj4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiPgoJCQkJCQkJCQkJWW91IGNhbiAJCQkJCQkJCQkJCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBjbGFzcz0idGQtcmVmZXJlbmNlIiBocmVmPSJodHRwOi8vcHVyY2hhc2VyZXF1ZXN0LmZhYWNzcGEubG9jYWwvZmFhYy1yZGEtdWkvIyEvcmRhL3BlbmRpbmdhcHByb3ZhbC8kaXNzdWUuc3VtbWFyeSI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3IHRoZSBmdWxsIHJlcXVlc3QKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvYT4KCQkJCQkJCQkJPC90ZD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L3RyPgoJCQkJCQk8L3RhYmxlPgoKCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJPHRyPgoJCQkJCQkJCTx0ZCBjbGFzcz0iZGV0YWlscy1maWVsZC12YWx1ZSI+CQkJCQkJCQkJCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCQk8YnIgLz4KCQkJCQkJCQkJCURlYXIgdXNlciwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQSBuZXcgUFJFUSBoYXMgYmVlbiBjcmVhdGVkIGZvciB5b3VyIHJlcXVlc3QgYW5kIHN1Ym1pdHRlZCB0byB0aGUgYXBwcm92YWwgZmxvdy4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgS2luZCByZWdhcmRzPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCZWxvdyByZXBlYXRlZCBpbiBpdGFsaWFuPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBHZW50aWxlIHV0ZW50ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVsYXRpdmFtZW50ZSBhbGxhIHZvc3RyYSByaWNoaWVzdGEgw6ggc3RhdGEgY3JlYXRhIHVuYSBudW92YSBSREEgZSBzb3R0b3Bvc3RhIGFsIGZsdXNzbyBhcHByb3ZhdGl2by4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvcmRpYWxpIHNhbHV0aTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiVmVyZGFuYSI7Y29sb3I6IzAwMDAwMCc+VGhpcyBtZXNzYWdlIGlzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIGJ5IFB1cmNoYXNlIFJlcXVlc3QgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPgo=</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgUFJFUSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzI1IikpJT4gLSBDcmVhdGVk</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKCmNmVmFsdWVzWydJbnZvaWNlIGRpZmZlcmVuY2UnXSA9PSBudWxsfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-309</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBhbCByaWNoaWVkZW50ZSBwZXIgZmF0dHVyZQ==</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS"></arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">5f3d351d43f10aaf1b04c1aba9900bfaed99adac</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJCUludm9pY2UgTnVtYmVyOiA8c3Ryb25nIHN0eWxlPSJmb250LXdlaWdodDogYm9sZDtmb250LXNpemU6MTFwdDtjb2xvcjojQ0Y2NDAwOyI+PCUgb3V0IDw8IGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKS5nZXRDdXN0b21GaWVsZE9iamVjdCgiY3VzdG9tZmllbGRfMjI3NTEiKSklPjwvc3Ryb25nPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCTwvdHI+CgkJCQkJCQkJCQk8L3RhYmxlPgoJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCTwvdHI+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQgY2xhc3M9InRkLXN1bW1hcnkiPgoJCQkJCQkJCQkJSW52b2ljZSBOdW1iZXI6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkO2NvbG9yOiNDRjY0MDA7Ij48JSBvdXQgPDwgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpLmdldEN1c3RvbUZpZWxkT2JqZWN0KCJjdXN0b21maWVsZF8yMjc1MSIpKSU+PC9zdHJvbmc+CgkJCQkJCQkJCQk8c3BhbiBjbGFzcz0ic3RhdHVzLW5hbWUtYWEiPiBDcmVhdGVkIDwvc3Bhbj4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiPgoJCQkJCQkJCQkJWW91IGNhbiAJCQkJCQkJCQkJCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBjbGFzcz0idGQtcmVmZXJlbmNlIiBocmVmPSJodHRwOi8vcHVyY2hhc2VyZXF1ZXN0LmZhYWNzcGEubG9jYWwvZmFhYy1yZGEtdWkvIyEvcmRhL2ludm9pY2VkaWZmZXJlbmNlcyI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3IGludm9pY2UgbGlzdAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9hPgoJCQkJCQkJCQk8L3RkPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdHI+CgkJCQkJCTwvdGFibGU+CgoJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQk8dHI+CgkJCQkJCQkJPHRkIGNsYXNzPSJkZXRhaWxzLWZpZWxkLXZhbHVlIj4JCQkJCQkJCQkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAJCTxiciAvPgoJCQkJCQkJCQkJRGVhciB1c2VyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB5b3VyIGludm9pY2UgaGFzIGJlZW4gc3VibWl0dGVkIHRvIHRoZSBhcHByb3ZhbCBmbG93LgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBLaW5kIHJlZ2FyZHM8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS08YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEJlbG93IHJlcGVhdGVkIGluIGl0YWxpYW48YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEdlbnRpbGUgdXRlbnRlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYSB2b3N0cmEgZmF0dHVyYSDDqCBzdGF0YSBzb3R0b3Bvc3RhIGFsIGZsdXNzbyBhcHByb3ZhdGl2by4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvcmRpYWxpIHNhbHV0aTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiVmVyZGFuYSI7Y29sb3I6IzAwMDAwMCc+VGhpcyBtZXNzYWdlIGlzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIGJ5IFB1cmNoYXNlIFJlcXVlc3QgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPgo=</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgSW52b2ljZSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzUxIikpJT4gLSBDcmVhdGVk</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKY2ZWYWx1ZXNbJ0ludm9pY2UgZGlmZmVyZW5jZSddICE9IG51bGx8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-112</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <global-actions>
+    <action id="11" name="Approved RDA">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="11">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBmYXR0dXJhIGFwcHJvdmF0YSBhbCByaWNoaWVkZW50ZSA=</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">b7ec1cc1400ffffcd45fc2eb8e476e5e934f0170</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJSW52b2ljZSBOdW1iZXI6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkO2ZvbnQtc2l6ZToxMXB0O2NvbG9yOiNDRjY0MDA7Ij48JSBvdXQgPDwgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpLmdldEN1c3RvbUZpZWxkT2JqZWN0KCJjdXN0b21maWVsZF8yMjc1MSIpKSU+PC9zdHJvbmc+CgkJCQkJCQkJCQkJCQk8L3A+CgkJCQkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJCQkJPC90cj4KCQkJCQkJCQkJCTwvdGFibGU+CgkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJPC90cj4KCQkJCQkJCQk8dHI+CgkJCQkJCQkJCTx0ZCBjbGFzcz0idGQtc3VtbWFyeSI+CgkJCQkJCQkJCQlJbnZvaWNlIE51bWJlcjogPHN0cm9uZyBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7Y29sb3I6I0NGNjQwMDsiPjwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzUxIikpJT48L3N0cm9uZz4KCQkJCQkJCQkJCTxzcGFuIGNsYXNzPSJzdGF0dXMtbmFtZS1hYSI+IEFwcHJvdmVkIDwvc3Bhbj4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiPgoJCQkJCQkJCQkJWW91IGNhbiAJCQkJCQkJCQkJCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBjbGFzcz0idGQtcmVmZXJlbmNlIiBocmVmPSJodHRwOi8vcHVyY2hhc2VyZXF1ZXN0LmZhYWNzcGEubG9jYWwvZmFhYy1yZGEtdWkvIyEvcmRhL2ludm9pY2VkaWZmZXJlbmNlcyI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3IGludm9pY2UgbGlzdAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9hPgoJCQkJCQkJCQk8L3RkPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdHI+CgkJCQkJCTwvdGFibGU+CgoJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQk8dHI+CgkJCQkJCQkJPHRkIGNsYXNzPSJkZXRhaWxzLWZpZWxkLXZhbHVlIj4JCQkJCQkJCQkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAJCTxiciAvPgoJCQkJCQkJCQkJRGVhciB1c2VyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB5b3VyIGludm9pY2UgaGFzIGJlZW4gYXBwcm92ZWQuCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEtpbmQgcmVnYXJkczxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQmVsb3cgcmVwZWF0ZWQgaW4gaXRhbGlhbjxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS08YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgR2VudGlsZSB1dGVudGUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhIHZvc3RyYSBmYXR0dXJhIMOoIHN0YXRhIGFwcHJvdmF0YS4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ29yZGlhbGkgc2FsdXRpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KCQkJCQkJCQk8L3RkPgoJCQkJCQkJPC90cj4KCQkJCQkJPC90YWJsZT4KCQkJCQkJCgkJCQkJCTwvdGQ+CgkJCQkJPC90cj4KCQkJCTwvdGFibGU+CgkJCTwvZGl2PgoJCTwvdGQ+Cgk8L3RyPgoJPHRyPgoJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDE1LjBwdCAwY207Jz4KCQkJPHAgYWxpZ249Y2VudGVyIHN0eWxlPSdtYXJnaW46MGNtO21hcmdpbi1ib3R0b206LjAwMDFwdDt0ZXh0LWFsaWduOmNlbnRlcic+CgkJCQk8c3BhbiBzdHlsZT0nZm9udC1zaXplOjkuMHB0O2ZvbnQtZmFtaWx5OiJWZXJkYW5hIjtjb2xvcjojMDAwMDAwJz5UaGlzIG1lc3NhZ2UgaXMgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgUHVyY2hhc2UgUmVxdWVzdCBQb3J0YWwuPC9zcGFuPgoJCQk8L3A+CgkJPC90ZD4KCTwvdHI+CjwvdGFibGU+CjwvZGl2Pgo8L2Rpdj4KPC9ib2R5Pgo8L2h0bWw+Cg==</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgSW52b2ljZSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzUxIikpJT4gLSBBcHByb3ZlZA==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKCmNmVmFsdWVzWydJbnZvaWNlIGRpZmZlcmVuY2UnXSAhPSBudWxsfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-309</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBSREEgYXBwcm92YXRhIGFsIHJpY2hpZWRlbnRlIA==</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">0dc5b14534708241907f7e16f29386be6b570363</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJCVBSRVEgTnVtYmVyOiA8c3Ryb25nIHN0eWxlPSJmb250LXdlaWdodDogYm9sZDtmb250LXNpemU6MTFwdDtjb2xvcjojQ0Y2NDAwOyI+PCUgb3V0IDw8IGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKS5nZXRDdXN0b21GaWVsZE9iamVjdCgiY3VzdG9tZmllbGRfMjI3MjUiKSklPjwvc3Ryb25nPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCTwvdHI+CgkJCQkJCQkJCQk8L3RhYmxlPgoJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCTwvdHI+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQgY2xhc3M9InRkLXN1bW1hcnkiPgoJCQkJCQkJCQkJCgkJCQkJCQkJCQkKCQkJCQkJCQkJCQlQUkVRIE51bWJlcjogPHN0cm9uZyBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7Y29sb3I6I0NGNjQwMDsiPjwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzI1IikpJT48L3N0cm9uZz4KCQkJCQkJCQkJCQoJCQkJCQkJCQkJPHNwYW4gY2xhc3M9InN0YXR1cy1uYW1lLWFhIj4gQXBwcm92ZWQgPC9zcGFuPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCgkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJPC90cj4KCQkJCQkJCQk8dHI+CgkJCQkJCQkJCTx0ZCBjbGFzcz0idGQtcmVmZXJlbmNlIj4KCQkJCQkJCQkJCVlvdSBjYW4gCQkJCQkJCQkJCQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgY2xhc3M9InRkLXJlZmVyZW5jZSIgaHJlZj0iaHR0cDovL3B1cmNoYXNlcmVxdWVzdC5mYWFjc3BhLmxvY2FsL2ZhYWMtcmRhLXVpLyMhL3JkYS9wZW5kaW5nYXBwcm92YWwvJGlzc3VlLnN1bW1hcnkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmlldyB0aGUgZnVsbCByZXF1ZXN0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2E+CgkJCQkJCQkJCTwvdGQ+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC90cj4KCQkJCQkJPC90YWJsZT4KCgkJCQkJCTx0YWJsZSBib3JkZXI9MCBjZWxsc3BhY2luZz0wIGNlbGxwYWRkaW5nPTAgd2lkdGg9IjEwMCUiIHN0eWxlPSd3aWR0aDoxMDAlJz4KCQkJCQkJCTx0cj4KCQkJCQkJCQk8dGQgY2xhc3M9ImRldGFpbHMtZmllbGQtdmFsdWUiPgkJCQkJCQkJCQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAkJPGJyIC8+CgkJCQkJCQkJCQlEZWFyIHVzZXIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFlvdXIgcmVxdWVzdCBoYXMgYmVlbiBhcHByb3ZlZC4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgS2luZCByZWdhcmRzPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCZWxvdyByZXBlYXRlZCBpbiBpdGFsaWFuPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBHZW50aWxlIHV0ZW50ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGEgdm9zdHJhIHJpY2hpZXN0YSDDqCBzdGF0YSBhcHByb3ZhdGEuCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvcmRpYWxpIHNhbHV0aQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiVmVyZGFuYSI7Y29sb3I6IzAwMDAwMCc+VGhpcyBtZXNzYWdlIGlzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIGJ5IFB1cmNoYXNlIFJlcXVlc3QgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPgo=</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgUFJFUSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzI1IikpJT4gLSBBcHByb3ZlZA==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKY2ZWYWx1ZXNbJ0ludm9pY2UgZGlmZmVyZW5jZSddID09IG51bGx8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-309</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="21" name="Deleted">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="12">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="31" name="Rejected">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="13">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBSREEgYXBwcm92YXRhIGFsIHJpY2hpZWRlbnRlIA==</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">0dc5b14534708241907f7e16f29386be6b570363</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJCVBSRVEgTnVtYmVyOiA8c3Ryb25nIHN0eWxlPSJmb250LXdlaWdodDogYm9sZDtmb250LXNpemU6MTFwdDtjb2xvcjojQ0Y2NDAwOyI+PCUgb3V0IDw8IGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKS5nZXRDdXN0b21GaWVsZE9iamVjdCgiY3VzdG9tZmllbGRfMjI3MjUiKSklPjwvc3Ryb25nPgoJCQkJCQkJCQkJCQkJPC9wPgoJCQkJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCQkJCTwvdHI+CgkJCQkJCQkJCQk8L3RhYmxlPgoJCQkJCQkJCQk8L3RkPgoJCQkJCQkJCTwvdHI+CgkJCQkJCQkJPHRyPgoJCQkJCQkJCQk8dGQgY2xhc3M9InRkLXN1bW1hcnkiPgoJCQkJCQkJCQkJUFJFUSBOdW1iZXI6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkO2NvbG9yOiNDRjY0MDA7Ij48JSBvdXQgPDwgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpLmdldEN1c3RvbUZpZWxkT2JqZWN0KCJjdXN0b21maWVsZF8yMjcyNSIpKSU+PC9zdHJvbmc+CgkJCQkJCQkJCQk8c3BhbiBjbGFzcz0ic3RhdHVzLW5hbWUtYWEiPiBSZWplY3RlZCA8L3NwYW4+CgkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJPC90cj4KCQkJCQkJCQk8dHI+CgkJCQkJCQkJCTx0ZCBjbGFzcz0idGQtcmVmZXJlbmNlIj4KCQkJCQkJCQkJCVlvdSBjYW4gCQkJCQkJCQkJCQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGEgY2xhc3M9InRkLXJlZmVyZW5jZSIgaHJlZj0iaHR0cDovL3B1cmNoYXNlcmVxdWVzdC5mYWFjc3BhLmxvY2FsL2ZhYWMtcmRhLXVpLyMhL3JkYS9wZW5kaW5nYXBwcm92YWwvJGlzc3VlLnN1bW1hcnkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmlldyB0aGUgZnVsbCByZXF1ZXN0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8L2E+CgkJCQkJCQkJCTwvdGQ+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC90cj4KCQkJCQkJPC90YWJsZT4KCgkJCQkJCTx0YWJsZSBib3JkZXI9MCBjZWxsc3BhY2luZz0wIGNlbGxwYWRkaW5nPTAgd2lkdGg9IjEwMCUiIHN0eWxlPSd3aWR0aDoxMDAlJz4KCQkJCQkJCTx0cj4KCQkJCQkJCQk8dGQgY2xhc3M9ImRldGFpbHMtZmllbGQtdmFsdWUiPgkJCQkJCQkJCQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAkJPGJyIC8+CgkJCQkJCQkJCQlEZWFyIHVzZXIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHlvdXIgcmVxdWVzdCBoYXMgYmVlbiByZWplY3RlZC4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgS2luZCByZWdhcmRzPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBCZWxvdyByZXBlYXRlZCBpbiBpdGFsaWFuPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBHZW50aWxlIHV0ZW50ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGEgdm9zdHJhIHJpY2hpZXN0YSDDqCBzdGF0YSByaWZpdXRhdGEuCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIENvcmRpYWxpIHNhbHV0aQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CgkJCQkJCQkJPC90ZD4KCQkJCQkJCTwvdHI+CgkJCQkJCTwvdGFibGU+CgkJCQkJCQoJCQkJCQk8L3RkPgoJCQkJCTwvdHI+CgkJCQk8L3RhYmxlPgoJCQk8L2Rpdj4KCQk8L3RkPgoJPC90cj4KCTx0cj4KCQk8dGQgc3R5bGU9J3BhZGRpbmc6MGNtIDBjbSAxNS4wcHQgMGNtOyc+CgkJCTxwIGFsaWduPWNlbnRlciBzdHlsZT0nbWFyZ2luOjBjbTttYXJnaW4tYm90dG9tOi4wMDAxcHQ7dGV4dC1hbGlnbjpjZW50ZXInPgoJCQkJPHNwYW4gc3R5bGU9J2ZvbnQtc2l6ZTo5LjBwdDtmb250LWZhbWlseToiVmVyZGFuYSI7Y29sb3I6IzAwMDAwMCc+VGhpcyBtZXNzYWdlIGlzIGF1dG9tYXRpY2FsbHkgZ2VuZXJhdGVkIGJ5IFB1cmNoYXNlIFJlcXVlc3QgUG9ydGFsLjwvc3Bhbj4KCQkJPC9wPgoJCTwvdGQ+Cgk8L3RyPgo8L3RhYmxlPgo8L2Rpdj4KPC9kaXY+CjwvYm9keT4KPC9odG1sPgo=</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgUFJFUSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzI1IikpJT4gLSBSZWplY3RlZA==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKY2ZWYWx1ZXNbJ0ludm9pY2UgZGlmZmVyZW5jZSddID09IG51bGx8fHw=</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-309</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">YCFgaW52aW8gbWFpbCBmYXR0dXJhIHJpZ2V0dGF0YSBhbCByaWNoaWVkZW50ZSA=</arg>
+              <arg name="FIELD_DISABLE_VALIDATION"></arg>
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES"></arg>
+              <arg name="FIELD_CC_ADDRESSES"></arg>
+              <arg name="FIELD_CC_USER_FIELDS"></arg>
+              <arg name="FIELD_TO_USER_FIELDS">customfield_19300</arg>
+              <arg name="FIELD_FUNCTION_ID">b7ec1cc1400ffffcd45fc2eb8e476e5e934f0170</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">YCFg</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">YCFgPGh0bWw+CjxoZWFkPgoJPHN0eWxlPgogICAgCXRhYmxlLmN1c3RvbS1vdXRnb2luZy1tYWlsewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgCXdpZHRoOjEwMCU7CiAgICAgICAgCWJvcmRlci1zcGFjaW5nOiA4cHggMnB4OwogICAgICAgIH0KICAgICAgICBhLmFhLXN1bW1hcnl7CiAgICAgICAgCWNvbG9yOiMwMDAwMDA7CiAgICAgICAgCXRleHQtZGVjb3JhdGlvbjpub25lOwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zcGFjZWR7CiAgICAgICAgCXBhZGRpbmc6MTUuMHB0IDcuNXB0IDcuNXB0IDcuNXB0OwogICAgICAgIH0KICAgICAgICB0ZC50ZC1zdW1tYXJ5ewogICAgICAgIAlmb250LWZhbWlseToiVmVyZGFuYSI7CiAgICAgICAgICAgIGZvbnQtc2l6ZToxNHB0OwogICAgICAgIAlib3JkZXItdG9wOndoaXRlc21va2UgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1sZWZ0OiNEREREREQgMS4wcHQ7CiAgICAgICAgCWJvcmRlci1ib3R0b206I0RERERERCAxLjBwdDsKICAgICAgICAJYm9yZGVyLXJpZ2h0OiNEREREREQgMS41cHQ7CiAgICAgICAgCWJvcmRlci1zdHlsZTpzb2xpZDsKICAgICAgICAJYmFja2dyb3VuZDp3aGl0ZTsKCQkJcGFkZGluZy1sZWZ0OjEwcHg7CiAgICAgICAgfQoJCXRkLnRkLXJlZmVyZW5jZXsKCQkJYm9yZGVyLXRvcDp3aGl0ZSAxLjBwdDsKCQkJYm9yZGVyLWxlZnQ6I0RERERERCAxLjBwdDsKCQkJYm9yZGVyLWJvdHRvbTojREREREREIDEuNXB0OwoJCQlib3JkZXItcmlnaHQ6I0RERERERCAxLjVwdDsKCQkJYm9yZGVyLXN0eWxlOnNvbGlkOwoJCQliYWNrZ3JvdW5kOndoaXRlOwoJCQlwYWRkaW5nOjEwcHggMTBweCAxMHB4IDEwcHg7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJY29sb3I6IzAwMzA1MDsKCQkJZm9udC1zaXplOjExcHQ7CgkJfQoJCWEudGQtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWNvbG9yOiMwMDMwNTA7CgkJCWZvbnQtc2l6ZToxMXB0OwoJCQl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOwoJCX0KCQlwLnRpdGxlLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjEycHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJCXRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7CgkJfQoJCXAuYXV0aG9yLWNvbW1lbnR7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKICAgICAgICAgICAgZm9udC1zaXplOjExcHQ7CiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OmJvbGQ7CgkJfQoJCXRkLmNvbW1lbnQtYm94ewoJCQliYWNrZ3JvdW5kOiNGRkZGRkY7CgkJCXBhZGRpbmc6MTBweCAxMHB4IDEwcHggMTBweDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlmb250LXNpemU6MTFwdDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC1uYW1lewoJCQlmb250LXNpemU6MTBwdDsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQl2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7CgkJCXBhZGRpbmctdG9wOiAycHg7CgkJCXBhZGRpbmctYm90dG9tOiAycHg7CgkJfQoJCXAuZGV0YWlscy1ib3gtdGl0bGV7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCXBhZGRpbmctdG9wOiAxNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMTBweDsKCQl9CgkJdGQuZGV0YWlscy1maWVsZC12YWx1ZXsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJdmVydGljYWwtYWxpZ246bWlkZGxlOwoJCQlwYWRkaW5nLXRvcDogMnB4OwoJCQlwYWRkaW5nLWJvdHRvbTogMnB4OwoJCX0KCQlhLnRpdGxlLW1haWwtcmVmZXJlbmNlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctbGVmdDogMTBweDsKCQkJZGlzcGxheTogaW5saW5lLWJsb2NrOwoJCQlmb250LXNpemU6MTFwdDsKCQkJY29sb3I6I0NGNjQwMDsKCQl9CgkJYS50aXRsZS1tYWlsLXBvcnRhbHsKCQkJZm9udC1mYW1pbHk6IlZlcmRhbmEiOwoJCQlwYWRkaW5nLXRvcDogNXB4OwoJCQlwYWRkaW5nLWJvdHRvbTogNXB4OwoJCQlwYWRkaW5nLWxlZnQ6IDEwcHg7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWNvbG9yOiNDRjY0MDA7CgkJfQoJCXAudGl0bGUtbWFpbC1yZWZlcmVuY2V7CgkJCXBhZGRpbmctdG9wOiA1cHg7CgkJCXBhZGRpbmctYm90dG9tOiA1cHg7CgkJCXBhZGRpbmctcmlnaHQ6IDEwcHg7CgkJCXRleHQtYWxpZ246cmlnaHQ7CgkJCWxpbmUtaGVpZ2h0OjEzcHQ7CgkJCWZvbnQtZmFtaWx5OiJWZXJkYW5hIjsKCQkJZm9udC1zaXplOjExcHQ7CgkJCWRpc3BsYXk6IGlubGluZS1ibG9jazsKCQkJY29sb3I6IzAwMDAwMDsKCQl9CgkJcC50eXBlLWFib3ZlewoJCQlmb250LWZhbWlseToiVmVyZGFuYSI7CgkJCWZvbnQtc2l6ZTo4cHQ7CgkJCWZvbnQtd2VpZ2h0OmJvbGQ7CgkJCWNvbG9yOiM1MDUwNTA7CgkJfQoJCXNwYW4uc3RhdHVzLW5hbWUtYWF7CgkJCWJvcmRlci1yYWRpdXM6IDNweDsgCgkJCWZvbnQtc2l6ZTogOHB0OyAKCQkJdGV4dC1hbGlnbjogY2VudGVyOyAKCQkJdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgCgkJCWJhY2tncm91bmQtY29sb3I6ICNGRkZGRkY7IAoJCQlib3JkZXI6IDFweCBzb2xpZCAjQ0Y2NDAwOyAKCQkJY29sb3I6ICMwMDAwMDA7IAoJCQltYXJnaW4tbGVmdDogNXB4OyAKCQkJZm9udC13ZWlnaHQ6IGJvbGQ7IAoJCX0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgYWxpZ249ImNlbnRlciI+Cjx0YWJsZSBjbGFzcz0iY3VzdG9tLW91dGdvaW5nLW1haWwiIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSI+Cgk8dHI+CgkJPHRkIGNsYXNzPSJ0ZC1zcGFjZWQiPgoJCQk8ZGl2IGFsaWduPSJjZW50ZXIiPgoJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD02MDAgc3R5bGU9J3dpZHRoOjQ1MHB0Jz4KCQkJCQk8dHI+CgkJCQkJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDBjbSAwY20nPgoJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkPgoJCQkJCQkJCQkJPHRhYmxlIGJvcmRlcj0wIGNlbGxzcGFjaW5nPTAgY2VsbHBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgc3R5bGU9J3dpZHRoOjEwMCUnPgoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkIGNvbHNwYW49IjIiPgoJCQkJCQkJCQkJCQkJPGltZyBzcmM9IjwlIG91dCA8PCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEFwcGxpY2F0aW9uUHJvcGVydGllcygpLmdldFN0cmluZygiamlyYS5iYXNldXJsIikgJT4vaW1hZ2VzL2xvZ2hpL2xvZ29fRkFBQ19Hcm91cC5wbmciLz4KCQkJCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQkJCQk8L3RyPgoJCQkJCQkJCQkJCQoJCQkJCQkJCQkJCTx0cj4KCQkJCQkJCQkJCQkJPHRkPjwvdGQ+CgkJCQkJCQkJCQkJCTx0ZCB3aWR0aD0iNTAlIiBzdHlsZT0nd2lkdGg6NTAuMCU7cGFkZGluZzowY20gMGNtIDBjbSAwY207dGV4dC1hbGlnbjpyaWdodDsnPgoJCQkJCQkJCQkJCQkJPHAgY2xhc3M9InRpdGxlLW1haWwtcmVmZXJlbmNlIiA+CgkJCQkJCQkJCQkJCQkJSW52b2ljZSBOdW1iZXI6IDxzdHJvbmcgc3R5bGU9ImZvbnQtd2VpZ2h0OiBib2xkO2ZvbnQtc2l6ZToxMXB0O2NvbG9yOiNDRjY0MDA7Ij48JSBvdXQgPDwgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpLmdldEN1c3RvbUZpZWxkT2JqZWN0KCJjdXN0b21maWVsZF8yMjc1MSIpKSU+PC9zdHJvbmc+CgkJCQkJCQkJCQkJCQk8L3A+CgkJCQkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJCQkJPC90cj4KCQkJCQkJCQkJCTwvdGFibGU+CgkJCQkJCQkJCTwvdGQ+CgkJCQkJCQkJPC90cj4KCQkJCQkJCQk8dHI+CgkJCQkJCQkJCTx0ZCBjbGFzcz0idGQtc3VtbWFyeSI+CgkJCQkJCQkJCQlJbnZvaWNlIE51bWJlcjogPHN0cm9uZyBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7Y29sb3I6I0NGNjQwMDsiPjwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzUxIikpJT48L3N0cm9uZz4KCQkJCQkJCQkJCTxzcGFuIGNsYXNzPSJzdGF0dXMtbmFtZS1hYSI+IFJlamVjdGVkIDwvc3Bhbj4KCQkJCQkJCQkJPC90ZD4KCQkJCQkJCQk8L3RyPgoJCQkJCQkJCTx0cj4KCQkJCQkJCQkJPHRkIGNsYXNzPSJ0ZC1yZWZlcmVuY2UiPgoJCQkJCQkJCQkJWW91IGNhbiAJCQkJCQkJCQkJCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YSBjbGFzcz0idGQtcmVmZXJlbmNlIiBocmVmPSJodHRwOi8vcHVyY2hhc2VyZXF1ZXN0LmZhYWNzcGEubG9jYWwvZmFhYy1yZGEtdWkvIyEvcmRhL2ludm9pY2VkaWZmZXJlbmNlcyI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2aWV3IGludm9pY2UgbGlzdAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9hPgoJCQkJCQkJCQk8L3RkPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvdHI+CgkJCQkJCTwvdGFibGU+CgoJCQkJCQk8dGFibGUgYm9yZGVyPTAgY2VsbHNwYWNpbmc9MCBjZWxscGFkZGluZz0wIHdpZHRoPSIxMDAlIiBzdHlsZT0nd2lkdGg6MTAwJSc+CgkJCQkJCQk8dHI+CgkJCQkJCQkJPHRkIGNsYXNzPSJkZXRhaWxzLWZpZWxkLXZhbHVlIj4JCQkJCQkJCQkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAJCTxiciAvPgoJCQkJCQkJCQkJRGVhciB1c2VyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB5b3VyIGludm9pY2UgaGFzIGJlZW4gcmVqZWN0ZWQuCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEtpbmQgcmVnYXJkczxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQmVsb3cgcmVwZWF0ZWQgaW4gaXRhbGlhbjxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS08YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgR2VudGlsZSB1dGVudGUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxhIHZvc3RyYSBmYXR0dXJhIMOoIHN0YXRhIHJpZml1dGF0YS4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxiciAvPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQ29yZGlhbGkgc2FsdXRpPGJyIC8+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8YnIgLz4KCQkJCQkJCQk8L3RkPgoJCQkJCQkJPC90cj4KCQkJCQkJPC90YWJsZT4KCQkJCQkJCgkJCQkJCTwvdGQ+CgkJCQkJPC90cj4KCQkJCTwvdGFibGU+CgkJCTwvZGl2PgoJCTwvdGQ+Cgk8L3RyPgoJPHRyPgoJCTx0ZCBzdHlsZT0ncGFkZGluZzowY20gMGNtIDE1LjBwdCAwY207Jz4KCQkJPHAgYWxpZ249Y2VudGVyIHN0eWxlPSdtYXJnaW46MGNtO21hcmdpbi1ib3R0b206LjAwMDFwdDt0ZXh0LWFsaWduOmNlbnRlcic+CgkJCQk8c3BhbiBzdHlsZT0nZm9udC1zaXplOjkuMHB0O2ZvbnQtZmFtaWx5OiJWZXJkYW5hIjtjb2xvcjojMDAwMDAwJz5UaGlzIG1lc3NhZ2UgaXMgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgUHVyY2hhc2UgUmVxdWVzdCBQb3J0YWwuPC9zcGFuPgoJCQk8L3A+CgkJPC90ZD4KCTwvdHI+CjwvdGFibGU+CjwvZGl2Pgo8L2Rpdj4KPC9ib2R5Pgo8L2h0bWw+Cg==</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">YCFgSW52b2ljZSBOdW1iZXI6IDwlIG91dCA8PCBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q3VzdG9tRmllbGRNYW5hZ2VyKCkuZ2V0Q3VzdG9tRmllbGRPYmplY3QoImN1c3RvbWZpZWxkXzIyNzUxIikpJT4gLSBSZWplY3RlZA==</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="disabled">false</arg>
+              <arg name="FIELD_CONDITION">YCFgbWFpbC5zZXRGcm9tKCJub3JlcGx5LXJkYUBmYWFjZ3JvdXAuY29tIikKCmNmVmFsdWVzWydJbnZvaWNlIGRpZmZlcmVuY2UnXSAhPSBudWxsfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-112</arg>
+              <arg name="FIELD_EMAIL_FORMAT">HTML</arg>
+              <arg name="events"></arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="41" name="Waiting For CFO Credit Card">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="10">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="51" name="To Waiting For Controllers">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="6">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT"></arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/RDA_CreateSubTaskControlling.groovy</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="61" name="Waiting For First Level">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="4">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="71" name="Waiting for technical approval">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="81" name="Waiting For Second Level">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="91" name="Waiting For Third Level">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="101" name="Waiting For Group Level">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="7">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="111" name="Waiting For General Manager">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="8">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="121" name="Waiting For General Manager &amp; CFO">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="9">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="131" name="Reopen">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT"></arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/RDA_CreateSubTaskControllingOrCC.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">41 Waiting For CFO Credit Card</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1B1cmNoYXNlIGJ5IGNyZWRpdCBjYXJkJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnUHVyY2hhc2UgYnkgY3JlZGl0IGNhcmQnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">141 Waiting For Controllers</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ0NvbnRyb2xsaW5nIGZ1bmN0aW9uJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnQ29udHJvbGxpbmcgZnVuY3Rpb24nKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">71 Waiting for technical approval</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RlY2huaWNhbCBBcHByb3ZhbCcKaWYgKFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RlY2huaWNhbCBBcHByb3ZhbCcpCgl0cnVlCmVsc2UKICAgIGZhbHNlfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">61 Waiting For First Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ0ZpcnN0IExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnRmlyc3QgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">81 Waiting For Second Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1NlY29uZCBMZXZlbCBBcHByb3ZhbCcKaWYgKFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1NlY29uZCBMZXZlbCBBcHByb3ZhbCcpCgl0cnVlCmVsc2UKICAgIGZhbHNlfHx8</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">91 Waiting For Third Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ1RoaXJkIExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnVGhpcmQgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_ACTION">101 Waiting For Group Level</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpDdXN0b21GaWVsZE1hbmFnZXIgCWN1c3RvbUZpZWxkTWFuYWdlciAJPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKQoKLy9GbG93IHR5cGUgdGVzdCAyMjgwMSAtIHByb2QgMjI3MTkKQ3VzdG9tRmllbGQgUmRhVHlwZUZpZWxkID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIyMjcxOSIpKQpkZWYgUmRhVHlwZVYgPSBpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKFJkYVR5cGVGaWVsZCkKbG9nLmRlYnVnICAiUmRhVHlwZSAiICsgUmRhVHlwZVYKbG9nLmRlYnVnIFJkYVR5cGVWLnRvU3RyaW5nKCkgPT0gJ0dyb3VwIExldmVsIEFwcHJvdmFsJwppZiAoUmRhVHlwZVYudG9TdHJpbmcoKSA9PSAnR3JvdXAgTGV2ZWwgQXBwcm92YWwnKQoJdHJ1ZQplbHNlCiAgICBmYWxzZXx8fA==</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS"></arg>
+              <arg name="FIELD_ADDITIONAL_SCRIPT">YCFg</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </global-actions>
+  <steps>
+    <step id="1" name="Open">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+        <action id="141" name="Waiting For Controllers">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Waiting For Third Level">
+      <meta name="jira.status.id">14427</meta>
+    </step>
+    <step id="3" name="Waiting For Second Level">
+      <meta name="jira.status.id">14428</meta>
+    </step>
+    <step id="4" name="Waiting For First Level">
+      <meta name="jira.status.id">14429</meta>
+    </step>
+    <step id="5" name="Waiting for technical approval">
+      <meta name="jira.status.id">14430</meta>
+    </step>
+    <step id="6" name="Waiting For Controllers">
+      <meta name="jira.status.id">14431</meta>
+    </step>
+    <step id="7" name="Waiting For Group Level">
+      <meta name="jira.status.id">14432</meta>
+    </step>
+    <step id="8" name="Waiting For General Manager">
+      <meta name="jira.status.id">14433</meta>
+    </step>
+    <step id="9" name="Waiting For General Manager &amp; CFO">
+      <meta name="jira.status.id">14434</meta>
+    </step>
+    <step id="10" name="Waiting For CFO Credit Card">
+      <meta name="jira.status.id">14435</meta>
+      <actions>
+        <action id="151" name="Waiting For Controllers">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="11" name="Approved RDA">
+      <meta name="jira.status.id">14436</meta>
+    </step>
+    <step id="12" name="Deleted">
+      <meta name="jira.status.id">10335</meta>
+    </step>
+    <step id="13" name="Rejected">
+      <meta name="jira.status.id">11436</meta>
+    </step>
+  </steps>
+</workflow>

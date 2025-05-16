@@ -1,0 +1,1699 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1678358901273</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="7">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.copyFieldSource2" />
+              <arg name="field.copyFieldSource1">customfield_22740</arg>
+              <arg name="scopeSource-linkEnd" />
+              <arg name="maxAllowed-integerValue" />
+              <arg name="field.createTargetValue1" />
+              <arg name="runAsUser-user" />
+              <arg name="field.copyFieldMode1">OVERWRITE</arg>
+              <arg name="ºè">a12d2a14-f644-4f9a-afad-d71b733436e9</arg>
+              <arg name="field.copyFieldDestination1">customfield_22740</arg>
+              <arg name="field.copyFieldSeparator1" />
+              <arg name="scopeType">PARENT</arg>
+              <arg name="destination-scopeTarget">ISSUE_IN_TRANSITION</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiescopyValueFromOtherField-function</arg>
+              <arg name="scopeDestination-linkEnd" />
+              <arg name="preconditionAwareFunctionMode-textValue">ALWAYS</arg>
+              <arg name="source-scopeTarget">PARENT</arg>
+              <arg name="scopeDestination-jql" />
+              <arg name="class.name">com.googlecode.jsu.workflow.function.CopyValueFromOtherFieldPostFunction</arg>
+              <arg name="scopeSource-jql" />
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">send email ad approvatore</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">customfield_22723</arg>
+              <arg name="FIELD_FUNCTION_ID">áÿ:é½zç¿ç¯õ¾¸Ý¾uu¶ùç¾í×ÚwÍ</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															PREQ Number: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22725"))%&gt;&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										PREQ Number: &lt;strong style="font-weight: bold;color:#CF6400;"&gt;&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22725"))%&gt;&lt;/strong&gt;
+										&lt;span class="status-name-aa"&gt; Waiting for approval&lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/list/&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22725"))%&gt;"&gt;
+												view PREQ details
+											&lt;/a&gt;
+									&lt;/td&gt;
+                                &lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear user,
+                                        &lt;br /&gt;
+                                        The purchase requests in question is awaiting your approval. &lt;a class="td-reference"  href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/pendingapproval"&gt;You can view your pending requests&lt;/a&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile utente,
+                                        &lt;br /&gt;
+                                        La richiesta di acquisto in oggetto è in attesa della sua approvazione. &lt;a class="td-reference"  href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/pendingapproval"&gt;Puoi visualizzare le tue richieste in attesa&lt;/a&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by Purchase Request Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">PREQ Number: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22725"))%&gt; - Waiting for approval</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="v+nWù">false</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("noreply-rda@faacgroup.com")
+
+
+import com.atlassian.jira.component.ComponentAccessor
+
+import com.atlassian.jira.issue.fields.CustomField
+
+//Invoice Number test 23508 - prod 22751
+def value = issue.parentObject.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22751))
+if (value==null)
+	return true
+else
+    return false|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-310</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send mail fattura ad approvatore</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">noreply-rda@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">customfield_22723</arg>
+              <arg name="FIELD_FUNCTION_ID">oп▌╛Э╫ЗZ╙^|яз7}z█]┤╙Э=ё╞ї╒п</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Invoice Number: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22751"))%&gt;&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										Invoice Number: &lt;strong style="font-weight: bold;color:#CF6400;"&gt;&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22751"))%&gt;&lt;/strong&gt;
+										&lt;span class="status-name-aa"&gt; Waiting for approval&lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/invoicedifferences"&gt;
+												view invoice list
+											&lt;/a&gt;
+									&lt;/td&gt;
+                                &lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear user,
+                                        &lt;br /&gt;
+                                        The invoice in question is awaiting your approval. &lt;a class="td-reference"  href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/pendingapproval"&gt;You can view your pending requests&lt;/a&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile utente,
+                                        &lt;br /&gt;
+                                        La fattura in oggetto è in attesa della sua approvazione. &lt;a class="td-reference"  href="http://purchaserequest.faacspa.local/faac-rda-ui/#!/rda/pendingapproval"&gt;Puoi visualizzare le tue richieste in attesa&lt;/a&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by Purchase Request Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Invoice Number: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_22751"))%&gt; - Waiting for approval</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="v+nWù">false</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("noreply-rda@faacgroup.com")
+import com.atlassian.jira.component.ComponentAccessor
+
+import com.atlassian.jira.issue.fields.CustomField
+//Invoice Number test 23508 - prod 22751
+def value = issue.parentObject.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22751))
+if (value!=null)
+	return true
+else
+    return false|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RDA-310</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <global-actions>
+    <action id="11" name="Deleted">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </global-actions>
+  <common-actions>
+    <action id="41" name="Old Flow">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="4">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="2" name="Deleted">
+      <meta name="jira.status.id">10335</meta>
+    </step>
+    <step id="3" name="EèÞr×">
+      <meta name="jira.status.id">11436</meta>
+      <actions>
+<common-action id="41" />
+        <action id="71" name="To Waitinig for Approval">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="Old Flow">
+      <meta name="jira.status.id">14437</meta>
+    </step>
+    <step id="5" name="Approved RDA">
+      <meta name="jira.status.id">14436</meta>
+      <actions>
+<common-action id="41" />
+      </actions>
+    </step>
+    <step id="7" name="Waiting for Approval">
+      <meta name="jira.status.id">13527</meta>
+      <actions>
+<common-action id="41" />
+        <action id="51" name="Approve">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">o╫9ўЭ№їо7{╢╢є▌]сп5ёэtяm▄с╫_m╢Ї</arg>
+                  <arg name="FIELD_NOTES">Creo Flusso approvativo RDA</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\n//import com.atlassian.jira.workflow.WorkflowTransitionUtil;\n//import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.workflow.TransitionOptions\nimport com.atlassian.jira.bc.issue.IssueService\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\n\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"RDA-2426\")\nMutableIssue parentIssue = issue.parentObject;\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nIssueService issueService = ComponentAccessor.getIssueService()\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\n\n//total price test 22704 - prod 22732\n//sostituisco 22732 con il campo total price in valuta locale 22733 - IDTS-50067\nCustomField TotalPriceField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22733\"))\ndef TotPriceV = parentIssue.getCustomFieldValue(TotalPriceField)\n\n//RDA Type test 22707 - prod 22735\nCustomField RdaTypeField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22735\"))\ndef RdaTypeV = parentIssue.getCustomFieldValue(RdaTypeField)\n\n//Function test 22701 - prod 22729\nCustomField FunctionField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22729\"))\ndef FunctionName = parentIssue.getCustomFieldValue(FunctionField)\n\n//Material Group test 23400 - prod 22743\nCustomField materialGroup = customFieldManager.getCustomFieldObject(Long.parseLong(\"22743\"))\ndef materialGroupV = parentIssue.getCustomFieldValue(materialGroup)\ndef matGroups = []\nif (materialGroupV!=null)\n \tmatGroups= materialGroupV.split(\";\")\n\n//Extra Budget test 22706 - prod 22734\ndef ExtraBudget = false\nCustomField ExtraBudgetField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22734\"))\nExtraBudget = parentIssue.getCustomFieldValue(ExtraBudgetField)\nif (ExtraBudget != null){\n    if (ExtraBudget[0].toString() == \"Yes\")\n        ExtraBudget = true\n}\nif (ExtraBudget == null){\n    ExtraBudget = false\n}\n\n//Invoice Difference test 23501 - prod 22748\ndef DiffInvoice = false\nCustomField DiffInvoiceField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22748\"))\nDiffInvoice = parentIssue.getCustomFieldValue(DiffInvoiceField)\nif (DiffInvoice != null){\n    if (DiffInvoice[0].toString() == \"Yes\")\n        DiffInvoice = true\n}\nif (DiffInvoice == null){\n    DiffInvoice = false\n}\nlog.debug \"DiffInvoice \" + DiffInvoice\nlog.debug \"ExtraBudget \" + ExtraBudget\n\n//Flow Type test 22801 - prod 22719\ndef flowType = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22719))\n\ndef jqlSearch = \"\"\ndef query\ndef search\n\ndef resolutionManager = ComponentAccessor.getComponent(ResolutionManager)\n\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n\nif (flowType.toString()=='Controlling function' ){\n    log.debug \"flowType: \" + flowType\n    jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW' AND Status != 'DELETED' AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"' AND key != '\" + issue.key + \"'\"\n\tquery = jqlQueryParser.parseQuery(jqlSearch)\n    search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n    \n    // set Resolution dei subtask che non sia quello corrente e metto lo status in approved tranne per il caso di approvazione congiunta CFO+CEO\n    for (currI in search.results)\n    {\n        MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)\n        \n        //ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\n        //def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n    \n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, currIssue.getId(),61, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n            issueService.transition(currentUser, result)\n        }\n       /* WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n        workflowTransitionUtil.setIssue(currIssue);\n\t\t//transazione sui subtask ToApproved test 31 - prod 61\n        workflowTransitionUtil.setAction(61);\n\t\tif (workflowTransitionUtil.validate()) {\n        \tworkflowTransitionUtil.progress();\n\t\t}*/\n\t\t//Hide test 23300 - prod 22720\n        CustomField hide = customFieldManager.getCustomFieldObject(Long.parseLong(\"22720\"))\n        currIssue.setCustomFieldValue(hide, [ComponentAccessor.optionsManager.getOptions(hide.getRelevantConfig(currIssue))?.find { it.toString() == \"Yes\" }])\n        log.debug currIssue\n        log.debug \"entro in controlling e setto hide\"\n        issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)\n    }\n}\n\n// set resolution del subtask corrente - lo status sar\u00e0 gi\u00e0 impostato ad approved\nif (flowType.toString() == \"Controlling function\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Controlling function\"))\nif (flowType.toString() == \"Technical Approval\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Technical Approval\"))\nif (flowType.toString() == \"Purchase by credit card\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Purchase by credit card\"))\nif (flowType.toString() == \"First Level Approval\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"First Level Approval\"))\nif (flowType.toString() == \"Second Level Approval\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Second Level Approval\"))\nif (flowType.toString() == \"Third Level Approval\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Third Level Approval\"))\nif (flowType.toString() == \"Group Level Approval\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"Group Level Approval\"))\nif (flowType.toString() == \"CEO+CFO\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"CEO+CFO\"))\nif (flowType.toString() == \"General Manager\")\n\tissue.setResolution(resolutionManager.getResolutionByName(\"General Manager\"))\n\nissueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n\n//WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n//workflowTransitionUtil.setIssue(parentIssue);\n\n//se sono nella approvazione fattura e sono controlling, dopo aver approvato il secondo controlling in automatico chiudo la issue padre perch\u00e8 non ci sono ulterioni step approvativi\nif (flowType.toString() == \"Controlling function\" &amp;&amp; DiffInvoice){\n    log.debug \"Controlling function - approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n    //Transazione padre Approved RDA test 101 - prod 11\n    IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n            issueService.transition(currentUser, result)\n    }\n    /*\n    workflowTransitionUtil.setAction(11);\n    if (workflowTransitionUtil.validate()) {\n        workflowTransitionUtil.progress();\n    }*/\n    flowType = \"\"\n}  \n//ricerca dello step approvativo  \nString queryParam = \"\\\"\" + FunctionName[0].getName() + \"\\\"\"\n\ndef objectsFunction = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAFunctions\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); \n\n//Company insight RDAFunction test 3198 - prod 2570\ndef company = \"\\\"\" + objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2570).getObjectAttributeValueBeans()[0].getValue() + \"\\\"\"\n\ndef groupController\ndef objectsControlling\n//Group Controllig insight RDAFunction test 3175 - prod 2567\nif (objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) != null){\n    //Group Controllig insight RDAFunction test 3175 - prod 2567\n\tgroupController = objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567).getObjectAttributeValueBeans()[0].getValue()\n    objectsControlling = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAControlling\\\" AND object HAVING outboundReferences(objectid = \" + groupController + \")\")\n}\n//Group Name insight RDAFunction  test 3172 - prod 2566\ndef functionGroup = objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2566).getObjectAttributeValueBeans()[0].getValue()\n\ndef objectsGroups = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAGroups\\\" AND (objectid = \" + functionGroup + \")\")\n\n//String queryCdc = \"\\\"\" + cdcV + \"\\\"\"\n//def objectsCDC = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDACDC\\\" AND \\\"Name\\\" IN (\" + queryCdc + \")\"); \n\n//ricerca approvazione tecnica\ndef objectsTecn = []\nfor(matGroup in matGroups){\n    if (objectsTecn.size()==0){\n        String queryTecn = \"\\\"\" + matGroup + \"\\\"\"\n        objectsTecn = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDATechnicalApproval\\\" AND \\\"Name\\\" IN (\" + queryTecn + \") AND \\\"Function name\\\" = \" + queryParam); \n        \n    }\n}\n\n//ricerca per approvazione livello 2 \ndef objectsIntervalsL2\ndef objectsIntervalsL3 \ndef objectsIntervalsLFunction1\ndef objectsIntervalsLFunction2\ndef objectsIntervalsLFunction3\n\nif (RdaTypeV.toString()==\"OPEX\"){\n    objectsIntervalsLFunction1 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 1 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n    objectsIntervalsLFunction2 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 2 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n\tobjectsIntervalsLFunction3 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 3 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n\tobjectsIntervalsL2 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 4 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n\tobjectsIntervalsL3 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 5 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n}   \nelse{\n    objectsIntervalsLFunction1 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 1 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Extra Budget\\\" = \" + ExtraBudget + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n    objectsIntervalsLFunction2 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 2 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Extra Budget\\\" = \" + ExtraBudget + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n\tobjectsIntervalsLFunction3 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 3 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Extra Budget\\\" = \" + ExtraBudget + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n    objectsIntervalsL2 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 4 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Extra Budget\\\" = \" + ExtraBudget + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n\tobjectsIntervalsL3 = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAIntervals\\\" AND object HAVING outboundReferences(objectid = \" + company + \") AND \\\"Level\\\" = 5 AND \\\"Type\\\" = \" + RdaTypeV + \" AND \\\"Extra Budget\\\" = \" + ExtraBudget + \" AND \\\"Value From\\\" &lt;= \" + TotPriceV  )\n}\nlog.debug objectsIntervalsL3\ndef FlowType = \"\"\n\n//decido l'approver e il flow type, compongo approver\nApplicationUser apprUser\ndef value=\"\"\nCustomField flowTypeField\ndef approverRDA = []\ndef displayName = []\ndef hide1 = []\n\n\ndef creaAutoSubTask = false\ndef creaControllingFattura = false\n\nif (flowType.toString() == \"Purchase by credit card\"){\n//creo sub task per Controlling\n    log.debug \"flowType: \" + flowType\n    approverRDA = []\n    hide1=[]\n    FlowType='Controlling function'\n    //Group Controllig insight RDAFunction test 3175 - prod 2567\n    if (objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567)!=null){\n        for (objContr in objectsControlling){\n            //Approver insight RDAControlling test 4415 - prod 2578\n            jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n            log.debug jqlSearch\n            query = jqlQueryParser.parseQuery(jqlSearch)\n            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n            if (search.results.size()&gt;0){\n                creaAutoSubTask = true\n                hide1.add(\"No\")\n            }\n            else{\n                hide1.add(\"Si\")\n            }\n            //Approver insight RDAControlling test 4415 - prod 2578\n            approverRDA.add(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue())\n\n        }\n\t\t//Waiting For Controllers test 21 - prod 151\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),151, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n\n        /*workflowTransitionUtil.setAction(151);\n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n\n        if (creaAutoSubTask==true){\n            def j = 0\n             for (appr in approverRDA){\n                createSubTaskApproved(appr, currentUser, parentIssue, FlowType, hide1[j], issue)\n                j=j+1\n             }   \n            flowType = \"Controlling function\"\n            approverRDA = []\n        }\n     }\n     else{\n         flowType = \"Controlling function\"\n    }       \n}\n \nif (flowType.toString() == \"Controlling function\"){\n    log.debug \"flowType: \" + flowType\n    approverRDA = []\n    \n    //se ho una approvazione tecnica in base al cdc allora faccio l'approvazione tecnica altriment ivado con il primo livello\n    if (objectsTecn.size()&gt;0){\n        FlowType='Technical Approval'\n        //Approver schema RDATechnicalApproval test 4416 - prod 2573\n        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsTecn[0].getId(), 2573).getObjectAttributeValueBeans()[0].getValue())\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsTecn[0].getId(), 2573).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n        \n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n        \n\t\tif (search.results.size()&gt;0){\n            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n            flowType = \"Technical Approval\"\n            approverRDA = []\n        }\n        //Waiting for technical approval test 191 - prod 71\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),71, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*workflowTransitionUtil.setAction(71); \n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n    else {\n        if (objectsIntervalsLFunction1.size()&gt;0){\n            //creo sub task per Controlling\n            FlowType='First Level Approval'\n            //Approver schema RDAFunction test 4417 - prod 2568\n            approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue())\n\n            jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA'  AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n            query = jqlQueryParser.parseQuery(jqlSearch)\n            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n\n            if (search.results.size()&gt;0){   \n                createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n                flowType = \"First Level Approval\"\n                approverRDA = []\n            }\n            //Wiating For First Level  test 41 - prod 61\n            IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),61, issueService.newIssueInputParameters(), transitionOptions)\n            if (result.isValid()) {\n                    issueService.transition(currentUser, result)\n            }\n            /*workflowTransitionUtil.setAction(61); \n            if (workflowTransitionUtil.validate()) {\n                workflowTransitionUtil.progress();\n            }*/\n        }\n        else{\n            flowType = \"First Level Approval\"\n            approverRDA = []\n        }  \n    }\n}\n\nif (flowType.toString() == \"Technical Approval\"){\n    if (objectsIntervalsLFunction1.size()&gt;0){\n        log.debug \"flowType: \" + flowType\n        approverRDA = []\n\n        //se ho una approvazione tecnica vado con il primo livello\n        FlowType='First Level Approval' \n        //Approver schema RDAFunction test 4417 - prod 2568\n        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue())\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n\n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n        if (search.results.size()&gt;0){\n            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n            flowType = \"First Level Approval\"\n            approverRDA = []\n        }\n        //Transazione Waiting For Second Level  test 41 - prod 61\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),61, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*\n        workflowTransitionUtil.setAction(61); \n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n     }\n    else{\n        approverRDA = []\n        flowType = \"First Level Approval\"\n    }\n}\n                                                       \nif (flowType.toString() == \"First Level Approval\"){\n    log.debug \"flowType: \" + flowType\n    approverRDA = []\n\t\n    //se ho una approvazione funzione secondo livello \n    //Approver Second Level schema RDAFunction test 4442 - prod 3409\n    if (objectsIntervalsLFunction2.size()&gt;0 &amp;&amp; objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409) != null){\n        FlowType='Second Level Approval'\n        //Approver Second Level schema RDAFunction test 4442 - prod 3409\n        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409).getObjectAttributeValueBeans()[0].getValue())\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n        \n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n        \n\t\tif (search.results.size()&gt;0){\n            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n            flowType = \"Second Level Approval\"\n            approverRDA = []\n        }\n        //Transazione Waiting For Second Level  test 201 - prod 81\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),81, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /* \n        workflowTransitionUtil.setAction(81); \n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n    else{\n        flowType = \"Second Level Approval\"\n        approverRDA = []\n    }  \n}\n    \nif (flowType.toString() == \"Second Level Approval\"){\n    log.debug \"flowType: \" + flowType\n    approverRDA = []\n   \n    //se ho un terzo livello vado al terzo livello altrimenti vado a livello di gruppo\n    //Approver Third Level schema RDAFunction test 4443 - prod 3410\n    if (objectsIntervalsLFunction3.size()&gt;0 &amp;&amp; objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410) != null){\n        FlowType='Third Level Approval' \n        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410).getObjectAttributeValueBeans()[0].getValue())\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n\n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n        log.debug \"jqlSearch \" + jqlSearch\n        log.debug \"search.results \" + search.results\n        \n        if (search.results.size()&gt;0){\n            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n            flowType = \"Third Level Approval\"\n            approverRDA = []\n        }\n        //Transazione Waiting For Third Level test 211 - prod 91 \n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),91, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*\n        workflowTransitionUtil.setAction(91); \n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n    else{\n        flowType = \"Third Level Approval\"\n        approverRDA = []\n    }  \n}\n\nif (flowType.toString() == \"Third Level Approval\"){\n    approverRDA = []\n\tFlowType='Group Level Approval'\n    //GroupApprover\n    if (objectsIntervalsL2.size()&gt;0){\n        //Approver Third Level schema RDAGroup  test 4418 - prod 2565\n        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 2565).getObjectAttributeValueBeans()[0].getValue())\n\n        // se assignee del secondo livello \u00e8 diverso da assignee dei promo livello allora metto lo status del padre come waiting for approval 2 level  altrimenti imposto Flow = secodn livel e procedo al if successivo\n        //if (ComponentAccessor.getUserUtil().getUserByName(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 3170).getObjectAttributeValueBeans()[0].getValue())!=issue.getAssignee()){\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 2565).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n        if (search.results.size()&gt;0){\n            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n            flowType = \"Group Level Approval\"\n            approverRDA = []\n        }\n        \n        //Waiting For Group Level test 61 -  prod 101\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),101, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*\n        workflowTransitionUtil.setAction(101);\n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n    else if (objectsIntervalsL3.size()&gt;0) {\n            flowType = \"Group Level Approval\"\n            approverRDA = []\n    }  \n    else{\n        //Group Controllig insight RDAFunction test 3175 - prod 2567\n        if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){\n            //chiudo issue approved\n            log.debug \"First level - approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n            //Approved RDA test 101 - prod 11\n            IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n            if (result.isValid()) {\n                    issueService.transition(currentUser, result)\n            }\n            /*\n            workflowTransitionUtil.setAction(11);\n            if (workflowTransitionUtil.validate()) {\n                workflowTransitionUtil.progress();\n            }*/\n        }\n        else{\n            //se sono fattura allora come ultimo step c'\u00e8 il controlling\n            creaControllingFattura = true\n        }  \n    }\n}\n\n\nlog.debug flowType\nif (flowType.toString() == \"Group Level Approval\"){\n    log.debug \"flowType: \" + flowType\n    approverRDA = []\n    hide1 = []\n    \n\tif (objectsIntervalsL3.size()&gt;0){\n        //def objectsCEO = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDACEO\\\" AND object HAVING outboundReferences(objectid = \" + company + \")\")\n        def objectsCEO = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDACEO\\\" AND object HAVING outboundReferences(objectid = \" + company + \" ) AND \\\"Function\\\" = \" + queryParam)\n        def objectsCFO = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDACFO\\\" AND object HAVING outboundReferences(objectid = \" + company + \")\")\n        \n        //CEO+CFO schema RDAIntervals test 3169 -  prod 3407\n        if (objectFacade.loadObjectAttributeBean(objectsIntervalsL3[0].getId(), 3407).getObjectAttributeValueBeans()[0].getValue().toString() ==\"true\"){\n        // se il flag CFO \u00e8 true allora creo 2 sub sub task uno per CFO e uno per CEO perch\u00e8 hanno firma congiunta, altrimenti creo solo quello per CEO\n            FlowType = 'CEO+CFO'\n            //Approver  schema RDACFO test 4412 -  prod 2583\n            jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n            query = jqlQueryParser.parseQuery(jqlSearch)\n            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n            \n            if (search.results.size()==0){\n                approverRDA.add(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue())\n            }\n            else {\n                createSubTaskApproved(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue(), currentUser, parentIssue, FlowType, \"No\", issue)\n            }\n            \n            //Approver schema RDACEO test 4414 -  prod 2585\n            jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n            query = jqlQueryParser.parseQuery(jqlSearch)\n            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n            if (search.results.size()==0){\n               \tapproverRDA.add(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue())\n            }\n            else{\n                createSubTaskApproved(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue(), currentUser, parentIssue, FlowType, \"No\", issue)\n            }\n                \n            if (approverRDA.size()&gt;0){\n                log.debug \"CEO+CFO - imposto il padre in waiting CEO+CFO\"\n                //Waiting For General Manager &amp; CFO test 151 -  prod 121\n                IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),121, issueService.newIssueInputParameters(), transitionOptions)\n                if (result.isValid()) {\n                        issueService.transition(currentUser, result)\n                }\n                /*\n            \tworkflowTransitionUtil.setAction(121);\n                if (workflowTransitionUtil.validate()) {\n                    workflowTransitionUtil.progress();\n                }*/\n           \t}\n            else{\n                approverRDA = []\n                //createSubTaskApproved(approverRDA[0], displayName[0], currentUser, parentIssue, FlowType)\n                //Group Controllig insight RDAFunction test 3175 - prod 2567\n                if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){\n                    log.debug \"CEO+CFO - creo subtask autoapprovati e approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n                    //Approverd RDA test 101 - prod 11\n                    IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n                    if (result.isValid()) {\n                            issueService.transition(currentUser, result)\n                    }\n                    /*\n                    workflowTransitionUtil.setAction(11);\n                    if (workflowTransitionUtil.validate()) {\n                        workflowTransitionUtil.progress();\n                    }*/\n                }\n                else{\n                    creaControllingFattura = true\n                }\n           \t}\n\t\t}\n        else {\n            FlowType='General Manager'\n            //Approver schema RDACEO test 4414 -  prod 2585\n            approverRDA.add(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue())\n            \n            jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n            log.debug jqlSearch\n            query = jqlQueryParser.parseQuery(jqlSearch)\n            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n            if (search.results.size()&gt;0){\n                createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, \"No\", issue)\n                approverRDA = []\n                \n                log.debug \"General Manager - creo subtask autoapprovato e approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n        \t\tif (DiffInvoice == false){\n                    //Approved RDA test 101 - prod 11\n                    IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n                    if (result.isValid()) {\n                            issueService.transition(currentUser, result)\n                    }\n                    /*\n                    workflowTransitionUtil.setAction(11);\n                    if (workflowTransitionUtil.validate()) {\n                        workflowTransitionUtil.progress();\n                    }*/\n                }\n                else{\n                    creaControllingFattura = true\n                }\n           \t}\n            else{\n                //Waiting For General Manager test 141 - prod 111\n                IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),111, issueService.newIssueInputParameters(), transitionOptions)\n                if (result.isValid()) {\n                        issueService.transition(currentUser, result)\n                }\n                /*\n                workflowTransitionUtil.setAction(111);\n                if (workflowTransitionUtil.validate()) {\n                    workflowTransitionUtil.progress();\n                }*/\n        \t}\n    \t}\n    }\n    else{\n        log.debug \"Group level - approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n         //Group Controllig insight RDAFunction test 3175 - prod 2567\n        if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){\n            //Approved RDA test 101 - prod 11\n            IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n            if (result.isValid()) {\n                    issueService.transition(currentUser, result)\n            }\n            /*\n            workflowTransitionUtil.setAction(11);\n            if (workflowTransitionUtil.validate()) {\n                workflowTransitionUtil.progress();\n            }*/\n        }\n        else{\n            creaControllingFattura = true\n        }\n    }\n}\n\n//devo verificare che entrambi CEO e CFO abbiamo approvato prima di approvare la issue, devo chiude approvazione quando entrambi sono approvati \nif (flowType.toString() == \"CEO+CFO\"){\n    log.debug \"flowType: \" + flowType\n    jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND 'Flow Type'='CEO+CFO' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND resolution = Unresolved AND parent = '\" + parentIssue.key + \"' AND key != '\" + issue.key + \"'\"\n    query = jqlQueryParser.parseQuery(jqlSearch)\n    search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n\n    if (search.results.size()==0){\n        log.debug \"CEO+CFO - approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n        //Group Controllig insight RDAFunction test 3175 - prod 2567\n\t\tif (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){\n            //Approved RDA test 101 - prod 11\n            IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n            if (result.isValid()) {\n                    issueService.transition(currentUser, result)\n            }\n            /*\n            workflowTransitionUtil.setAction(11);\n            if (workflowTransitionUtil.validate()) {\n                workflowTransitionUtil.progress();\n            }*/\n        }\n        else{\n            creaControllingFattura = true\n        }\n    }  \n}\n\nif (flowType.toString() == \"General Manager\"){\n    log.debug \"flowType: \" + flowType\n    log.debug \"General manager - approvo il padre perch\u00e8 non ci sono altri step di approvazione\"\n    //Group Controllig insight RDAFunction test 3175 - prod 2567\n    if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){\n        //Approved RDA test 101 - prod 11\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*\n        workflowTransitionUtil.setAction(11);\n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n    else{\n        creaControllingFattura = true\n    }\n}\n\nlog.debug \"approverRDA \"+ approverRDA\nlog.debug \"displayName \" + displayName\ndef i = 0\n\n//creo ultimo step del controlling per le fatture\nif (creaControllingFattura == true){\n\tlog.debug \"flowType: \" + flowType\n    approverRDA = []\n    hide1=[]\n    FlowType='Controlling function'\n    \n    for (objContr in objectsControlling){\n        //Approver insight RDAControlling test 4415 - prod 2578\n        jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND 'Approver RDA' = '\" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue().toString()) + \"' AND parent = '\" + parentIssue.key + \"'\"\n        log.debug jqlSearch\n        query = jqlQueryParser.parseQuery(jqlSearch)\n        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n\t\tif (search.results.size()&gt;0){\n        \tcreaAutoSubTask = true\n        \thide1.add(\"No\")\n        }\n        else{\n            hide1.add(\"Si\")\n        }\n        approverRDA.add(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue())\n    }\n    //To Waiting For Controllers test 171 - prod 51\n    IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),51, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n            issueService.transition(currentUser, result)\n    }\n    /*\n    workflowTransitionUtil.setAction(51);\n    if (workflowTransitionUtil.validate()) {\n        workflowTransitionUtil.progress();\n    }*/\n\n    if (creaAutoSubTask==true){\n        def j = 0\n         for (appr in approverRDA){\n         \tcreateSubTaskApproved(appr, currentUser, parentIssue, FlowType, hide1[j], issue)\n            j=j+1\n         }   \n        flowType = \"Controlling function\"\n        approverRDA = []\n        //se ho autotask allora devo chiudere la issue padre perch\u00e8 non ci sono altri step approvativi\n        //Approver RDA test 101 - prod 11\n        result = issueService.validateTransition(currentUser, parentIssue.getId(),11, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n                issueService.transition(currentUser, result)\n        }\n        /*\n        workflowTransitionUtil.setAction(11);\n        if (workflowTransitionUtil.validate()) {\n            workflowTransitionUtil.progress();\n        }*/\n    }\n}\n\n//creo subtask per approver composti in precedenza\nfor (obj in approverRDA){\t\n    MutableIssue newSubTask = issueFactory.getIssue()\n    //newSubTask.setAssignee(apprUser)\n    newSubTask.setReporter(currentUser)\n    //Flow Type test 22801 - prod 22719\n    flowTypeField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22719\"))\n   \t\n    def cfConfig = flowTypeField.getRelevantConfig(parentIssue)\n    value = ComponentAccessor.optionsManager.getOptions(cfConfig)?.find { it.toString() == FlowType }\n    newSubTask.setCustomFieldValue(flowTypeField, value)\n    \n    def appr = \"\\\"\" + obj + \"\\\"\"\n\tdef objectsApprover = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAApprover\\\" AND objectid = \" + appr)\n   \n\tif (objectsApprover.size()&gt;0){\n        //Approver RDA test 23504 - prod 22721\n        //Name schema RDAApprover test 4407 - prod  2554\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22721\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue())   \n        //Display Name test 23505 - prod 22722\n        //Display Name schema RDAApprover test 4410 - prod 2586\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22722\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2586).getObjectAttributeValueBeans()[0].getValue())\n        //Approver Email test 23512 - prod 22723\n        //Email schema RDAApprover test 4411 - prod 2587\n        if (objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2587) != null)\n        \tnewSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22723\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2587).getObjectAttributeValueBeans()[0].getValue())\n        //Name schema RDAApprover test 4407 - prod  2554\n        newSubTask.setSummary(FlowType + \" - \" + objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue() + \" - \" + parentIssue.getSummary())\n    }\n    else{\n         newSubTask.setSummary(FlowType + \" - \" + parentIssue.getSummary())\n\t}\n     \n    newSubTask.setParentObject(parentIssue)\n    newSubTask.setProjectObject(parentIssue.getProjectObject())\n    \n    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n        it.getName() == \"Approval RDA\"\n    }.id)\n\n    def newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\n\n    issueManager.createIssueObject(currentUser, newIssueParams)\n    subTaskManager.createSubTaskIssueLink(parentIssue, newSubTask, currentUser)\n\n    issueIndexingService.reIndex(newSubTask)\n    parentIssue.setCustomFieldValue(flowTypeField, value)\n    ComponentAccessor.getIssueManager().updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);\n    issueIndexingService.reIndex(parentIssue)\n    i = i + 1\n}\n\ndef createSubTaskApproved(Integer approver, ApplicationUser currentUser, MutableIssue parentIssue, String FlowType, String hide, MutableIssue currIssue) { \n    UserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\n    IssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\n    IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n    IssueService issueService = ComponentAccessor.getIssueService()\n    TransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n    SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\n    CustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n    def issueFactory = ComponentAccessor.getIssueFactory()\n    def constantManager = ComponentAccessor.getConstantsManager()\n\t\n    /* Get Insight IQL Facade from plugin accessor */\n    Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \n    def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n    /* Get Insight Object Facade from plugin accessor */\n    Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\n    def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\n    \n    MutableIssue newSubTask = issueFactory.getIssue()\n\n    newSubTask.setReporter(currentUser)\n    //Flow Type test 22801 - prod 22719\n    def flowTypeField = customFieldManager.getCustomFieldObject(Long.parseLong(\"22719\"))\n\n    def cfConfig = flowTypeField.getRelevantConfig(parentIssue)\n    def value = ComponentAccessor.optionsManager.getOptions(cfConfig)?.find { it.toString() == FlowType }\n    newSubTask.setCustomFieldValue(flowTypeField, value)\n    \n    //salvo displayname e approver RDA\n    \n    def appr = \"\\\"\" + approver + \"\\\"\"\n\tdef objectsApprover = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAApprover\\\" AND objectid = \" + appr)\n   \n\tif (objectsApprover.size()&gt;0){\n        //Approver RDA test 23504 - prod 22721\n        //Name schema RDAApprover test 4407 - prod  2554\n    \tnewSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22721\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue())   \n        //Display Name test 23505 - prod 22722\n        //Display Name schema RDAApprover test 4410 - prod 2586\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22722\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2586).getObjectAttributeValueBeans()[0].getValue())\n        //newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23512\")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 4411).getObjectAttributeValueBeans()[0].getValue())\n        //Name schema RDAApprover test 4407 - prod  2554\n        newSubTask.setSummary(FlowType + \" - \" + objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue() + \" - \" + parentIssue.getSummary())\n    }\n    else{\n         newSubTask.setSummary(FlowType + \" - \" + parentIssue.getSummary())\n\t}\n\t//Hide test 23300 - prod 22720\n\tif (hide == \"Si\")      \n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22720\")), [ComponentAccessor.optionsManager.getOptions(customFieldManager.getCustomFieldObject(Long.parseLong(\"22720\")).getRelevantConfig(currIssue))?.find { it.toString() == \"Yes\" }])\n    \t\n    newSubTask.setParentObject(parentIssue)\n    newSubTask.setProjectObject(parentIssue.getProjectObject())\n\n    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n        it.getName() == \"Approval RDA\"\n    }.id)\n\n    def newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\n\n    issueManager.createIssueObject(currentUser, newIssueParams)\n    subTaskManager.createSubTaskIssueLink(parentIssue, newSubTask, currentUser)\n\n    issueIndexingService.reIndex(newSubTask)\n    parentIssue.setCustomFieldValue(flowTypeField, value)\n    ComponentAccessor.getIssueManager().updateIssue(currentUser, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);\n    issueIndexingService.reIndex(parentIssue)\n    ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\n    currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n\t\n    IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, newSubTask.getId(),61, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n            issueService.transition(currentUser, result)\n    }\n    /*\n    WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n    workflowTransitionUtil.setIssue(newSubTask);\n\t//ToApproved transazione subtask test 31 - prod 61\n    workflowTransitionUtil.setAction(61);\n    if (workflowTransitionUtil.validate()) {\n        workflowTransitionUtil.progress();\n    }\t*/\n}\n\ndef returnApproverUsername(String approver)\n{\n    /* Get Insight IQL Facade from plugin accessor */\n    Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \n    def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n    /* Get Insight Object Facade from plugin accessor */\n    Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\n    def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\n\n    approver = \"\\\"\" + approver + \"\\\"\"\n    def objectApprover = iqlFacade.findObjectsByIQLAndSchema(27, \"objectType=\\\"RDAApprover\\\" AND objectid = \" + approver )\n    //Name schema RDAApprover test 4407 - prod  2554\n    def approverUsername = objectFacade.loadObjectAttributeBean(objectApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue()\n\n    return approverUsername\n}\n\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.opensymphony.workflow.WorkflowContext;
+import com.atlassian.jira.config.SubTaskManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.status.Status
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.user.util.UserUtil
+import com.atlassian.jira.config.ResolutionManager
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import org.apache.log4j.Category
+
+SearchService 		searchService 		= ComponentAccessor.getComponent(SearchService.class)
+UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();
+CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+def issueFactory = ComponentAccessor.getIssueFactory()
+def constantManager = ComponentAccessor.getConstantsManager()
+
+//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase("RDA-2426")
+MutableIssue parentIssue = issue.parentObject;
+
+Category log = Category.getInstance("com.onresolve.jira.groovy.PostFunction")
+log.setLevel(org.apache.log4j.Level.DEBUG)
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+
+/* Get Insight IQL Facade from plugin accessor */
+Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade"); 
+def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);
+/* Get Insight Object Facade from plugin accessor */
+Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade");
+def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);
+
+//total price test 22704 - prod 22732
+CustomField TotalPriceField = customFieldManager.getCustomFieldObject(Long.parseLong("22732"))
+def TotPriceV = parentIssue.getCustomFieldValue(TotalPriceField)
+
+//RDA Type test 22707 - prod 22735
+CustomField RdaTypeField = customFieldManager.getCustomFieldObject(Long.parseLong("22735"))
+def RdaTypeV = parentIssue.getCustomFieldValue(RdaTypeField)
+
+//Function test 22701 - prod 22729
+CustomField FunctionField = customFieldManager.getCustomFieldObject(Long.parseLong("22729"))
+def FunctionName = parentIssue.getCustomFieldValue(FunctionField)
+
+//Material Group test 23400 - prod 22743
+CustomField materialGroup = customFieldManager.getCustomFieldObject(Long.parseLong("22743"))
+def materialGroupV = parentIssue.getCustomFieldValue(materialGroup)
+def matGroups = []
+if (materialGroupV!=null)
+ 	matGroups= materialGroupV.split(";")
+
+//Extra Budget test 22706 - prod 22734
+def ExtraBudget = false
+CustomField ExtraBudgetField = customFieldManager.getCustomFieldObject(Long.parseLong("22734"))
+ExtraBudget = parentIssue.getCustomFieldValue(ExtraBudgetField)
+if (ExtraBudget != null){
+    if (ExtraBudget[0].toString() == "Yes")
+        ExtraBudget = true
+}
+if (ExtraBudget == null){
+    ExtraBudget = false
+}
+
+//Invoice Difference test 23501 - prod 22748
+def DiffInvoice = false
+CustomField DiffInvoiceField = customFieldManager.getCustomFieldObject(Long.parseLong("22748"))
+DiffInvoice = parentIssue.getCustomFieldValue(DiffInvoiceField)
+if (DiffInvoice != null){
+    if (DiffInvoice[0].toString() == "Yes")
+        DiffInvoice = true
+}
+if (DiffInvoice == null){
+    DiffInvoice = false
+}
+log.debug "DiffInvoice " + DiffInvoice
+log.debug "ExtraBudget " + ExtraBudget
+
+//Flow Type test 22801 - prod 22719
+def flowType = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22719))
+
+def jqlSearch = ""
+def query
+def search
+
+def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)
+
+if (flowType.toString()=='Controlling function' ){
+    log.debug "flowType: " + flowType
+    jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW' AND Status != 'DELETED' AND resolution = Unresolved AND parent = '" + parentIssue.key + "' AND key != '" + issue.key + "'"
+	query = jqlQueryParser.parseQuery(jqlSearch)
+    search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+    
+    // set Resolution dei subtask che non sia quello corrente e metto lo status in approved tranne per il caso di approvazione congiunta CFO+CEO
+    for (currI in search.results)
+    {
+        MutableIssue currIssue =issueManager.getIssueByKeyIgnoreCase(currI.key)
+        
+        ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+        def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+		
+        WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+        workflowTransitionUtil.setIssue(currIssue);
+		//transazione sui subtask ToApproved test 31 - prod 61
+        workflowTransitionUtil.setAction(61);
+		if (workflowTransitionUtil.validate()) {
+        	workflowTransitionUtil.progress();
+		}
+		//Hide test 23300 - prod 22720
+        CustomField hide = customFieldManager.getCustomFieldObject(Long.parseLong("22720"))
+        currIssue.setCustomFieldValue(hide, [ComponentAccessor.optionsManager.getOptions(hide.getRelevantConfig(currIssue))?.find { it.toString() == "Yes" }])
+        log.debug currIssue
+        log.debug "entro in controlling e setto hide"
+        issueManager.updateIssue(user, currIssue, EventDispatchOption.DO_NOT_DISPATCH, false)
+    }
+}
+
+// set resolution del subtask corrente - lo status sarà già impostato ad approved
+if (flowType.toString() == "Controlling function")
+	issue.setResolution(resolutionManager.getResolutionByName("Controlling function"))
+if (flowType.toString() == "Technical Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Technical Approval"))
+if (flowType.toString() == "Purchase by credit card")
+	issue.setResolution(resolutionManager.getResolutionByName("Purchase by credit card"))
+if (flowType.toString() == "First Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("First Level Approval"))
+if (flowType.toString() == "Second Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Second Level Approval"))
+if (flowType.toString() == "Third Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Third Level Approval"))
+if (flowType.toString() == "Group Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Group Level Approval"))
+if (flowType.toString() == "CEO+CFO")
+	issue.setResolution(resolutionManager.getResolutionByName("CEO+CFO"))
+if (flowType.toString() == "General Manager")
+	issue.setResolution(resolutionManager.getResolutionByName("General Manager"))
+
+issueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)
+
+WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+workflowTransitionUtil.setIssue(parentIssue);
+
+//se sono nella approvazione fattura e sono controlling, dopo aver approvato il secondo controlling in automatico chiudo la issue padre perchè non ci sono ulterioni step approvativi
+if (flowType.toString() == "Controlling function" &amp;&amp; DiffInvoice){
+    log.debug "Controlling function - approvo il padre perchè non ci sono altri step di approvazione"
+    //Transazione padre Approved RDA test 101 - prod 11
+    workflowTransitionUtil.setAction(11);
+    if (workflowTransitionUtil.validate()) {
+        workflowTransitionUtil.progress();
+    }
+    flowType = ""
+}  
+//ricerca dello step approvativo  
+String queryParam = "\"" + FunctionName[0].getName() + "\""
+
+def objectsFunction = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAFunctions\" AND \"Name\" IN (" + queryParam + ")"); 
+
+//Company insight RDAFunction test 3198 - prod 2570
+def company = "\"" + objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2570).getObjectAttributeValueBeans()[0].getValue() + "\""
+
+def groupController
+def objectsControlling
+//Group Controllig insight RDAFunction test 3175 - prod 2567
+if (objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) != null){
+    //Group Controllig insight RDAFunction test 3175 - prod 2567
+	groupController = objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567).getObjectAttributeValueBeans()[0].getValue()
+    objectsControlling = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAControlling\" AND object HAVING outboundReferences(objectid = " + groupController + ")")
+}
+//Group Name insight RDAFunction  test 3172 - prod 2566
+def functionGroup = objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2566).getObjectAttributeValueBeans()[0].getValue()
+
+def objectsGroups = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAGroups\" AND (objectid = " + functionGroup + ")")
+
+//String queryCdc = "\"" + cdcV + "\""
+//def objectsCDC = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDACDC\" AND \"Name\" IN (" + queryCdc + ")"); 
+
+//ricerca approvazione tecnica
+def objectsTecn = []
+for(matGroup in matGroups){
+    if (objectsTecn.size()==0){
+        String queryTecn = "\"" + matGroup + "\""
+        objectsTecn = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDATechnicalApproval\" AND \"Name\" IN (" + queryTecn + ") AND \"Function name\" = " + queryParam); 
+        
+    }
+}
+
+//ricerca per approvazione livello 2 
+def objectsIntervalsL2
+def objectsIntervalsL3 
+def objectsIntervalsLFunction1
+def objectsIntervalsLFunction2
+def objectsIntervalsLFunction3
+
+if (RdaTypeV.toString()=="OPEX"){
+    objectsIntervalsLFunction1 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 1 AND \"Type\" = " + RdaTypeV + " AND \"Value From\" &lt;= " + TotPriceV  )
+    objectsIntervalsLFunction2 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 2 AND \"Type\" = " + RdaTypeV + " AND \"Value From\" &lt;= " + TotPriceV  )
+	objectsIntervalsLFunction3 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 3 AND \"Type\" = " + RdaTypeV + " AND \"Value From\" &lt;= " + TotPriceV  )
+	objectsIntervalsL2 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 4 AND \"Type\" = " + RdaTypeV + " AND \"Value From\" &lt;= " + TotPriceV  )
+	objectsIntervalsL3 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 5 AND \"Type\" = " + RdaTypeV + " AND \"Value From\" &lt;= " + TotPriceV  )
+}   
+else{
+    objectsIntervalsLFunction1 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 1 AND \"Type\" = " + RdaTypeV + " AND \"Extra Budget\" = " + ExtraBudget + " AND \"Value From\" &lt;= " + TotPriceV  )
+    objectsIntervalsLFunction2 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 2 AND \"Type\" = " + RdaTypeV + " AND \"Extra Budget\" = " + ExtraBudget + " AND \"Value From\" &lt;= " + TotPriceV  )
+	objectsIntervalsLFunction3 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 3 AND \"Type\" = " + RdaTypeV + " AND \"Extra Budget\" = " + ExtraBudget + " AND \"Value From\" &lt;= " + TotPriceV  )
+    objectsIntervalsL2 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 4 AND \"Type\" = " + RdaTypeV + " AND \"Extra Budget\" = " + ExtraBudget + " AND \"Value From\" &lt;= " + TotPriceV  )
+	objectsIntervalsL3 = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAIntervals\" AND object HAVING outboundReferences(objectid = " + company + ") AND \"Level\" = 5 AND \"Type\" = " + RdaTypeV + " AND \"Extra Budget\" = " + ExtraBudget + " AND \"Value From\" &lt;= " + TotPriceV  )
+}
+log.debug objectsIntervalsL3
+def FlowType = ""
+
+//decido l'approver e il flow type, compongo approver
+ApplicationUser apprUser
+def value=""
+CustomField flowTypeField
+def approverRDA = []
+def displayName = []
+def hide1 = []
+
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+
+def creaAutoSubTask = false
+def creaControllingFattura = false
+
+if (flowType.toString() == "Purchase by credit card"){
+//creo sub task per Controlling
+    log.debug "flowType: " + flowType
+    approverRDA = []
+    hide1=[]
+    FlowType='Controlling function'
+    //Group Controllig insight RDAFunction test 3175 - prod 2567
+    if (objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567)!=null){
+        for (objContr in objectsControlling){
+            //Approver insight RDAControlling test 4415 - prod 2578
+            jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+            log.debug jqlSearch
+            query = jqlQueryParser.parseQuery(jqlSearch)
+            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+            if (search.results.size()&gt;0){
+                creaAutoSubTask = true
+                hide1.add("No")
+            }
+            else{
+                hide1.add("Si")
+            }
+            //Approver insight RDAControlling test 4415 - prod 2578
+            approverRDA.add(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue())
+
+        }
+		//Waiting For Controllers test 21 - prod 151
+        workflowTransitionUtil.setAction(151);
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+
+        if (creaAutoSubTask==true){
+            def j = 0
+             for (appr in approverRDA){
+                createSubTaskApproved(appr, currentUser, parentIssue, FlowType, hide1[j], issue)
+                j=j+1
+             }   
+            flowType = "Controlling function"
+            approverRDA = []
+        }
+     }
+     else{
+         flowType = "Controlling function"
+    }       
+}
+ 
+if (flowType.toString() == "Controlling function"){
+    log.debug "flowType: " + flowType
+    approverRDA = []
+    
+    //se ho una approvazione tecnica in base al cdc allora faccio l'approvazione tecnica altriment ivado con il primo livello
+    if (objectsTecn.size()&gt;0){
+        FlowType='Technical Approval'
+        //Approver schema RDATechnicalApproval test 4416 - prod 2573
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsTecn[0].getId(), 2573).getObjectAttributeValueBeans()[0].getValue())
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsTecn[0].getId(), 2573).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+        
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+        
+		if (search.results.size()&gt;0){
+            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+            flowType = "Technical Approval"
+            approverRDA = []
+        }
+        //Waiting for technical approval test 191 - prod 71
+        workflowTransitionUtil.setAction(71); 
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+    else {
+        if (objectsIntervalsLFunction1.size()&gt;0){
+            //creo sub task per Controlling
+            FlowType='First Level Approval'
+            //Approver schema RDAFunction test 4417 - prod 2568
+            approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue())
+
+            jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA'  AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+            query = jqlQueryParser.parseQuery(jqlSearch)
+            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+
+            if (search.results.size()&gt;0){   
+                createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+                flowType = "First Level Approval"
+                approverRDA = []
+            }
+            //Wiating For First Level  test 41 - prod 61
+            workflowTransitionUtil.setAction(61); 
+            if (workflowTransitionUtil.validate()) {
+                workflowTransitionUtil.progress();
+            }
+        }
+        else{
+            flowType = "First Level Approval"
+            approverRDA = []
+        }  
+    }
+}
+
+if (flowType.toString() == "Technical Approval"){
+    if (objectsIntervalsLFunction1.size()&gt;0){
+        log.debug "flowType: " + flowType
+        approverRDA = []
+
+        //se ho una approvazione tecnica vado con il primo livello
+        FlowType='First Level Approval' 
+        //Approver schema RDAFunction test 4417 - prod 2568
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue())
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2568).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+        if (search.results.size()&gt;0){
+            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+            flowType = "First Level Approval"
+            approverRDA = []
+        }
+        //Transazione Waiting For Second Level  test 41 - prod 61
+        workflowTransitionUtil.setAction(61); 
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+     }
+    else{
+        approverRDA = []
+        flowType = "First Level Approval"
+    }
+}
+                                                       
+if (flowType.toString() == "First Level Approval"){
+    log.debug "flowType: " + flowType
+    approverRDA = []
+	
+    //se ho una approvazione funzione secondo livello 
+    //Approver Second Level schema RDAFunction test 4442 - prod 3409
+    if (objectsIntervalsLFunction2.size()&gt;0 &amp;&amp; objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409) != null){
+        FlowType='Second Level Approval'
+        //Approver Second Level schema RDAFunction test 4442 - prod 3409
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409).getObjectAttributeValueBeans()[0].getValue())
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3409).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+        
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+        
+		if (search.results.size()&gt;0){
+            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+            flowType = "Second Level Approval"
+            approverRDA = []
+        }
+        //Transazione Waiting For Second Level  test 201 - prod 81 
+        workflowTransitionUtil.setAction(81); 
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+    else{
+        flowType = "Second Level Approval"
+        approverRDA = []
+    }  
+}
+    
+if (flowType.toString() == "Second Level Approval"){
+    log.debug "flowType: " + flowType
+    approverRDA = []
+   
+    //se ho un terzo livello vado al terzo livello altrimenti vado a livello di gruppo
+    //Approver Third Level schema RDAFunction test 4443 - prod 3410
+    if (objectsIntervalsLFunction3.size()&gt;0 &amp;&amp; objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410) != null){
+        FlowType='Third Level Approval' 
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410).getObjectAttributeValueBeans()[0].getValue())
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 3410).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+        log.debug "jqlSearch " + jqlSearch
+        log.debug "search.results " + search.results
+        
+        if (search.results.size()&gt;0){
+            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+            flowType = "Third Level Approval"
+            approverRDA = []
+        }
+        //Transazione Waiting For Third Level test 211 - prod 91 
+        workflowTransitionUtil.setAction(91); 
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+    else{
+        flowType = "Third Level Approval"
+        approverRDA = []
+    }  
+}
+
+if (flowType.toString() == "Third Level Approval"){
+    approverRDA = []
+	FlowType='Group Level Approval'
+    //GroupApprover
+    if (objectsIntervalsL2.size()&gt;0){
+        //Approver Third Level schema RDAGroup  test 4418 - prod 2565
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 2565).getObjectAttributeValueBeans()[0].getValue())
+
+        // se assignee del secondo livello è diverso da assignee dei promo livello allora metto lo status del padre come waiting for approval 2 level  altrimenti imposto Flow = secodn livel e procedo al if successivo
+        //if (ComponentAccessor.getUserUtil().getUserByName(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 3170).getObjectAttributeValueBeans()[0].getValue())!=issue.getAssignee()){
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsGroups[0].getId(), 2565).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+        if (search.results.size()&gt;0){
+            createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+            flowType = "Group Level Approval"
+            approverRDA = []
+        }
+        
+        //Waiting For Group Level test 61 -  prod 101
+        workflowTransitionUtil.setAction(101);
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+    else if (objectsIntervalsL3.size()&gt;0) {
+            flowType = "Group Level Approval"
+            approverRDA = []
+    }  
+    else{
+        //Group Controllig insight RDAFunction test 3175 - prod 2567
+        if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){
+            //chiudo issue approved
+            log.debug "First level - approvo il padre perchè non ci sono altri step di approvazione"
+            //Approved RDA test 101 - prod 11
+            workflowTransitionUtil.setAction(11);
+            if (workflowTransitionUtil.validate()) {
+                workflowTransitionUtil.progress();
+            }
+        }
+        else{
+            //se sono fattura allora come ultimo step c'è il controlling
+            creaControllingFattura = true
+        }  
+    }
+}
+
+
+log.debug flowType
+if (flowType.toString() == "Group Level Approval"){
+    log.debug "flowType: " + flowType
+    approverRDA = []
+    hide1 = []
+    
+	if (objectsIntervalsL3.size()&gt;0){
+        def objectsCEO = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDACEO\" AND object HAVING outboundReferences(objectid = " + company + ")")
+        def objectsCFO = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDACFO\" AND object HAVING outboundReferences(objectid = " + company + ")")
+        
+        //CEO+CFO schema RDAIntervals test 3169 -  prod 3407
+        if (objectFacade.loadObjectAttributeBean(objectsIntervalsL3[0].getId(), 3407).getObjectAttributeValueBeans()[0].getValue().toString() =="true"){
+        // se il flag CFO è true allora creo 2 sub sub task uno per CFO e uno per CEO perchè hanno firma congiunta, altrimenti creo solo quello per CEO
+            FlowType = 'CEO+CFO'
+            //Approver  schema RDACFO test 4412 -  prod 2583
+            jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+            query = jqlQueryParser.parseQuery(jqlSearch)
+            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+            
+            if (search.results.size()==0){
+                approverRDA.add(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue())
+            }
+            else {
+                createSubTaskApproved(objectFacade.loadObjectAttributeBean(objectsCFO[0].getId(), 2583).getObjectAttributeValueBeans()[0].getValue(), currentUser, parentIssue, FlowType, "No", issue)
+            }
+            
+            //Approver schema RDACEO test 4414 -  prod 2585
+            jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+            query = jqlQueryParser.parseQuery(jqlSearch)
+            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+            if (search.results.size()==0){
+               	approverRDA.add(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue())
+            }
+            else{
+                createSubTaskApproved(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue(), currentUser, parentIssue, FlowType, "No", issue)
+            }
+                
+            if (approverRDA.size()&gt;0){
+                log.debug "CEO+CFO - imposto il padre in waiting CEO+CFO"
+                //Waiting For General Manager &amp; CFO test 151 -  prod 121
+            	workflowTransitionUtil.setAction(121);
+                if (workflowTransitionUtil.validate()) {
+                    workflowTransitionUtil.progress();
+                }
+           	}
+            else{
+                approverRDA = []
+                //createSubTaskApproved(approverRDA[0], displayName[0], currentUser, parentIssue, FlowType)
+                //Group Controllig insight RDAFunction test 3175 - prod 2567
+                if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){
+                    log.debug "CEO+CFO - creo subtask autoapprovati e approvo il padre perchè non ci sono altri step di approvazione"
+                    //Approverd RDA test 101 - prod 11
+                    workflowTransitionUtil.setAction(11);
+                    if (workflowTransitionUtil.validate()) {
+                        workflowTransitionUtil.progress();
+                    }
+                }
+                else{
+                    creaControllingFattura = true
+                }
+           	}
+		}
+        else {
+            FlowType='General Manager'
+            //Approver schema RDACEO test 4414 -  prod 2585
+            approverRDA.add(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue())
+            
+            jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objectsCEO[0].getId(), 2585).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+            log.debug jqlSearch
+            query = jqlQueryParser.parseQuery(jqlSearch)
+            search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+            if (search.results.size()&gt;0){
+                createSubTaskApproved(approverRDA[0], currentUser, parentIssue, FlowType, "No", issue)
+                approverRDA = []
+                
+                log.debug "General Manager - creo subtask autoapprovato e approvo il padre perchè non ci sono altri step di approvazione"
+        		if (DiffInvoice == false){
+                    //Approved RDA test 101 - prod 11
+                    workflowTransitionUtil.setAction(11);
+                    if (workflowTransitionUtil.validate()) {
+                        workflowTransitionUtil.progress();
+                    }
+                }
+                else{
+                    creaControllingFattura = true
+                }
+           	}
+            else{
+                //Waiting For General Manager test 141 - prod 111
+                workflowTransitionUtil.setAction(111);
+                if (workflowTransitionUtil.validate()) {
+                    workflowTransitionUtil.progress();
+                }
+        	}
+    	}
+    }
+    else{
+        log.debug "Group level - approvo il padre perchè non ci sono altri step di approvazione"
+         //Group Controllig insight RDAFunction test 3175 - prod 2567
+        if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){
+            //Approved RDA test 101 - prod 11
+            workflowTransitionUtil.setAction(11);
+            if (workflowTransitionUtil.validate()) {
+                workflowTransitionUtil.progress();
+            }
+        }
+        else{
+            creaControllingFattura = true
+        }
+    }
+}
+
+//devo verificare che entrambi CEO e CFO abbiamo approvato prima di approvare la issue, devo chiude approvazione quando entrambi sono approvati 
+if (flowType.toString() == "CEO+CFO"){
+    log.debug "flowType: " + flowType
+    jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND 'Flow Type'='CEO+CFO' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND Hide is EMPTY AND resolution = Unresolved AND parent = '" + parentIssue.key + "' AND key != '" + issue.key + "'"
+    query = jqlQueryParser.parseQuery(jqlSearch)
+    search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+
+    if (search.results.size()==0){
+        log.debug "CEO+CFO - approvo il padre perchè non ci sono altri step di approvazione"
+        //Group Controllig insight RDAFunction test 3175 - prod 2567
+		if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){
+            //Approved RDA test 101 - prod 11
+            workflowTransitionUtil.setAction(11);
+            if (workflowTransitionUtil.validate()) {
+                workflowTransitionUtil.progress();
+            }
+        }
+        else{
+            creaControllingFattura = true
+        }
+    }  
+}
+
+if (flowType.toString() == "General Manager"){
+    log.debug "flowType: " + flowType
+    log.debug "General manager - approvo il padre perchè non ci sono altri step di approvazione"
+    //Group Controllig insight RDAFunction test 3175 - prod 2567
+    if (DiffInvoice == false || objectFacade.loadObjectAttributeBean(objectsFunction[0].getId(), 2567) == null){
+        //Approved RDA test 101 - prod 11
+        workflowTransitionUtil.setAction(11);
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+    else{
+        creaControllingFattura = true
+    }
+}
+
+log.debug "approverRDA "+ approverRDA
+log.debug "displayName " + displayName
+def i = 0
+
+//creo ultimo step del controlling per le fatture
+if (creaControllingFattura == true){
+	log.debug "flowType: " + flowType
+    approverRDA = []
+    hide1=[]
+    FlowType='Controlling function'
+    
+    for (objContr in objectsControlling){
+        //Approver insight RDAControlling test 4415 - prod 2578
+        jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = 'Approval RDA' AND Status != 'OLD FLOW'  AND Status != 'DELETED' AND 'Approver RDA' = '" + returnApproverUsername(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue().toString()) + "' AND parent = '" + parentIssue.key + "'"
+        log.debug jqlSearch
+        query = jqlQueryParser.parseQuery(jqlSearch)
+        search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+		if (search.results.size()&gt;0){
+        	creaAutoSubTask = true
+        	hide1.add("No")
+        }
+        else{
+            hide1.add("Si")
+        }
+        approverRDA.add(objectFacade.loadObjectAttributeBean(objContr.getId(), 2578).getObjectAttributeValueBeans()[0].getValue())
+    }
+    //To Waiting For Controllers test 171 - prod 51
+    workflowTransitionUtil.setAction(51);
+    if (workflowTransitionUtil.validate()) {
+        workflowTransitionUtil.progress();
+    }
+
+    if (creaAutoSubTask==true){
+        def j = 0
+         for (appr in approverRDA){
+         	createSubTaskApproved(appr, currentUser, parentIssue, FlowType, hide1[j], issue)
+            j=j+1
+         }   
+        flowType = "Controlling function"
+        approverRDA = []
+        //se ho autotask allora devo chiudere la issue padre perchè non ci sono altri step approvativi
+        //Approver RDA test 101 - prod 11
+        workflowTransitionUtil.setAction(11);
+        if (workflowTransitionUtil.validate()) {
+            workflowTransitionUtil.progress();
+        }
+    }
+}
+
+//creo subtask per approver composti in precedenza
+for (obj in approverRDA){	
+    MutableIssue newSubTask = issueFactory.getIssue()
+    //newSubTask.setAssignee(apprUser)
+    newSubTask.setReporter(currentUser)
+    //Flow Type test 22801 - prod 22719
+    flowTypeField = customFieldManager.getCustomFieldObject(Long.parseLong("22719"))
+   	
+    def cfConfig = flowTypeField.getRelevantConfig(parentIssue)
+    value = ComponentAccessor.optionsManager.getOptions(cfConfig)?.find { it.toString() == FlowType }
+    newSubTask.setCustomFieldValue(flowTypeField, value)
+    
+    def appr = "\"" + obj + "\""
+	def objectsApprover = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAApprover\" AND objectid = " + appr)
+   
+	if (objectsApprover.size()&gt;0){
+        //Approver RDA test 23504 - prod 22721
+        //Name schema RDAApprover test 4407 - prod  2554
+        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22721")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue())   
+        //Display Name test 23505 - prod 22722
+        //Display Name schema RDAApprover test 4410 - prod 2586
+        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22722")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2586).getObjectAttributeValueBeans()[0].getValue())
+        //Approver Email test 23512 - prod 22723
+        //Email schema RDAApprover test 4411 - prod 2587
+        if (objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2587) != null)
+        	newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22723")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2587).getObjectAttributeValueBeans()[0].getValue())
+        //Name schema RDAApprover test 4407 - prod  2554
+        newSubTask.setSummary(FlowType + " - " + objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue() + " - " + parentIssue.getSummary())
+    }
+    else{
+         newSubTask.setSummary(FlowType + " - " + parentIssue.getSummary())
+	}
+     
+    newSubTask.setParentObject(parentIssue)
+    newSubTask.setProjectObject(parentIssue.getProjectObject())
+    
+    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{
+        it.getName() == "Approval RDA"
+    }.id)
+
+    def newIssueParams = ["issue" : newSubTask] as Map&lt;String,Object&gt;
+
+    issueManager.createIssueObject(currentUser, newIssueParams)
+    subTaskManager.createSubTaskIssueLink(parentIssue, newSubTask, currentUser)
+
+    issueIndexingService.reIndex(newSubTask)
+    parentIssue.setCustomFieldValue(flowTypeField, value)
+    ComponentAccessor.getIssueManager().updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);
+    issueIndexingService.reIndex(parentIssue)
+    i = i + 1
+}
+
+def createSubTaskApproved(Integer approver, ApplicationUser currentUser, MutableIssue parentIssue, String FlowType, String hide, MutableIssue currIssue) { 
+    UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+    IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+    IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+    
+    SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();
+    CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+    def issueFactory = ComponentAccessor.getIssueFactory()
+    def constantManager = ComponentAccessor.getConstantsManager()
+	
+    /* Get Insight IQL Facade from plugin accessor */
+    Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade"); 
+    def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);
+    /* Get Insight Object Facade from plugin accessor */
+    Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade");
+    def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);
+    
+    MutableIssue newSubTask = issueFactory.getIssue()
+
+    newSubTask.setReporter(currentUser)
+    //Flow Type test 22801 - prod 22719
+    def flowTypeField = customFieldManager.getCustomFieldObject(Long.parseLong("22719"))
+
+    def cfConfig = flowTypeField.getRelevantConfig(parentIssue)
+    def value = ComponentAccessor.optionsManager.getOptions(cfConfig)?.find { it.toString() == FlowType }
+    newSubTask.setCustomFieldValue(flowTypeField, value)
+    
+    //salvo displayname e approver RDA
+    
+    def appr = "\"" + approver + "\""
+	def objectsApprover = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAApprover\" AND objectid = " + appr)
+   
+	if (objectsApprover.size()&gt;0){
+        //Approver RDA test 23504 - prod 22721
+        //Name schema RDAApprover test 4407 - prod  2554
+    	newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22721")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue())   
+        //Display Name test 23505 - prod 22722
+        //Display Name schema RDAApprover test 4410 - prod 2586
+        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22722")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2586).getObjectAttributeValueBeans()[0].getValue())
+        //newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("23512")), objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 4411).getObjectAttributeValueBeans()[0].getValue())
+        //Name schema RDAApprover test 4407 - prod  2554
+        newSubTask.setSummary(FlowType + " - " + objectFacade.loadObjectAttributeBean(objectsApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue() + " - " + parentIssue.getSummary())
+    }
+    else{
+         newSubTask.setSummary(FlowType + " - " + parentIssue.getSummary())
+	}
+	//Hide test 23300 - prod 22720
+	if (hide == "Si")      
+        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong("22720")), [ComponentAccessor.optionsManager.getOptions(customFieldManager.getCustomFieldObject(Long.parseLong("22720")).getRelevantConfig(currIssue))?.find { it.toString() == "Yes" }])
+    	
+    newSubTask.setParentObject(parentIssue)
+    newSubTask.setProjectObject(parentIssue.getProjectObject())
+
+    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{
+        it.getName() == "Approval RDA"
+    }.id)
+
+    def newIssueParams = ["issue" : newSubTask] as Map&lt;String,Object&gt;
+
+    issueManager.createIssueObject(currentUser, newIssueParams)
+    subTaskManager.createSubTaskIssueLink(parentIssue, newSubTask, currentUser)
+
+    issueIndexingService.reIndex(newSubTask)
+    parentIssue.setCustomFieldValue(flowTypeField, value)
+    ComponentAccessor.getIssueManager().updateIssue(currentUser, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);
+    issueIndexingService.reIndex(parentIssue)
+    ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+    currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+	
+    WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+    workflowTransitionUtil.setIssue(newSubTask);
+	//ToApproved transazione subtask test 31 - prod 61
+    workflowTransitionUtil.setAction(61);
+    if (workflowTransitionUtil.validate()) {
+        workflowTransitionUtil.progress();
+    }	
+}
+
+def returnApproverUsername(String approver)
+{
+    /* Get Insight IQL Facade from plugin accessor */
+    Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade"); 
+    def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);
+    /* Get Insight Object Facade from plugin accessor */
+    Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade");
+    def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);
+
+    approver = "\"" + approver + "\""
+    def objectApprover = iqlFacade.findObjectsByIQLAndSchema(27, "objectType=\"RDAApprover\" AND objectid = " + approver )
+    //Name schema RDAApprover test 4407 - prod  2554
+    def approverUsername = objectFacade.loadObjectAttributeBean(objectApprover[0].getId(), 2554).getObjectAttributeValueBeans()[0].getValue()
+
+    return approverUsername
+}
+
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="21" name="Reject">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">cc3b764d-4f09-43d6-a12d-4b87670c081d</arg>
+                  <arg name="FIELD_NOTES">Se rigetto il subtask rigetto anche il padre</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.Issue;\nimport org.apache.commons.codec.binary.Base64;\nimport org.apache.log4j.Category\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.workflow.TransitionOptions\nimport com.atlassian.jira.bc.issue.IssueService\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\n\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\nIssueService issueService = ComponentAccessor.getIssueService()\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\n\nMutableIssue parentIssue = issue.parentObject;\n\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\n                                                            \ndef currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n\nIssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),31, issueService.newIssueInputParameters(), transitionOptions)\nif (result.isValid()) {\n    issueService.transition(currentUser, result)\n}\n\n\n/*\nWorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\nworkflowTransitionUtil.setIssue(parentIssue);\n//Rejected RDA test 51 - prod 31\nworkflowTransitionUtil.setAction(31);\nworkflowTransitionUtil.validate();\nworkflowTransitionUtil.progress();\n*/","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.bc.user.search.UserSearchService
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.Issue;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Category
+import com.atlassian.jira.user.util.UserManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+
+def issueFactory = ComponentAccessor.getIssueFactory()
+def constantManager = ComponentAccessor.getConstantsManager()
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+def LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()
+
+CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+
+/* Get issue "Group Assignee" custom field value */
+IssueManager issueManager = ComponentAccessor.getIssueManager()
+
+MutableIssue parentIssue = issue.parentObject;
+
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+                                                            
+def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+
+WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+workflowTransitionUtil.setIssue(parentIssue);
+//Rejected RDA test 51 - prod 31
+workflowTransitionUtil.setAction(31);
+workflowTransitionUtil.validate();
+workflowTransitionUtil.progress();
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="61" name="ToApproved ">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Set Resolution</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.status.Status
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.user.util.UserUtil
+import com.atlassian.jira.config.ResolutionManager
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import org.apache.log4j.Category
+
+SearchService 		searchService 		= ComponentAccessor.getComponent(SearchService.class)
+UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+
+CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+def issueFactory = ComponentAccessor.getIssueFactory()
+def constantManager = ComponentAccessor.getConstantsManager()
+
+//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase("RDA-1232")
+
+Category log = Category.getInstance("com.onresolve.jira.groovy.PostFunction")
+log.setLevel(org.apache.log4j.Level.DEBUG)
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+//Flow Type test 22801 - prod  22719
+def flowType = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(22719))
+
+def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)
+
+if (flowType.toString() == "Controlling function")
+	issue.setResolution(resolutionManager.getResolutionByName("Controlling function"))
+if (flowType.toString() == "Technical Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Technical Approval"))
+if (flowType.toString() == "Purchase by credit card")
+	issue.setResolution(resolutionManager.getResolutionByName("Purchase by credit card"))
+if (flowType.toString() == "First Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("First Level Approval"))
+if (flowType.toString() == "Second Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Second Level Approval"))
+if (flowType.toString() == "Third Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Third Level Approval"))
+if (flowType.toString() == "Group Level Approval")
+	issue.setResolution(resolutionManager.getResolutionByName("Group Level Approval"))
+if (flowType.toString() == "CEO+CFO")
+	issue.setResolution(resolutionManager.getResolutionByName("CEO+CFO"))
+if (flowType.toString() == "General Manager")
+	issue.setResolution(resolutionManager.getResolutionByName("General Manager"))
+
+issueManager.updateIssue(user, issue, EventDispatchOption.DO_NOT_DISPATCH, false)
+    </arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

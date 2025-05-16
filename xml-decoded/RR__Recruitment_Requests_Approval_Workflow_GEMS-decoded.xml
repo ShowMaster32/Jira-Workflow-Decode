@@ -1,0 +1,1355 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1632567444205</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11705</arg>
+              <arg name="FIELD_FUNCTION_ID">e032e5e4-b246-455b-9a88-c7f9edfd420b</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send email create RR</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">customfield_22749</arg>
+              <arg name="FIELD_FUNCTION_ID">6a53b198-fbdc-436b-9f50-5f37228d0368</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+                
+                &lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;b&gt;Recruitment Request Created&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+				
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment  (issue)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment  (issue).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #707070; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Recruitment Request CREATED</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2124\")\n\n//salesman\ndef value = issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\nlog.debug value[0].name\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    if ( objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null){ \n            \n        log.debug \"Email address: \" + objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue()\n\n        mail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n\t}\n}\n\ntrue","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RR-2231</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <common-actions>
+    <action id="41" name="Back to Candidate Search">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="1" name=":—§">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+        <action id="11" name="To Waiting for Approval">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">3e48af39-29ca-458a-8516-48236375715f</arg>
+                  <arg name="FIELD_NOTES">Crea primo subtask di approvazione in base al WF</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.Issue;\nimport org.apache.log4j.Category\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.issue.customfields.option.Option\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"RR-1934\")\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n//WF approval test 23407 - prod 23222\nCustomField WFRRApproval = customFieldManager.getCustomFieldObject(Long.parseLong(\"23222\"))\ndef WFRRApprovalV = issue.getCustomFieldValue(WFRRApproval)\n\n//Level test 22724 -  prod 22724\nCustomField Level = customFieldManager.getCustomFieldObject(Long.parseLong(\"22724\"))\ndef LevelV = issue.getCustomFieldValue(Level)\nlog.debug LevelV\nif (LevelV==null)\n\tLevelV=1\nelse\n    LevelV=LevelV+1\n\nlog.debug LevelV\n\nString queryParam = \"\\\"\" + WFRRApprovalV[0].getName() + \"\\\"\"\ndef objects = iqlFacade.findObjectsByIQLAndSchema(29, \"objectType=\\\"WF Approval\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); \nlog.debug  \"w\" + objects[0]\n\ndef Approver = \"\\\"\" + objectFacade.loadObjectAttributeBean(objects[0].getId(), \"Approver \" + LevelV).getObjectAttributeValueBeans()[0].getValue() + \"\\\"\"\nlog.debug \"objectType=\\\"Approver\\\" AND object HAVING outboundReferences(objectid = \" + Approver + \")\"\ndef objApprover = iqlFacade.findObjectsByIQLAndSchema(29, \"objectType=\\\"Approver\\\" AND objectid = \" + Approver + \"\")\nApplicationUser user\ndef value=\"\"\nCustomField flowTypeField\ndef i = 0\nlog.debug objApprover\nif (objApprover.size()&gt; 0){\n    MutableIssue newSubTask = issueFactory.getIssue()\n    newSubTask.setReporter(LoggedInUser)\n \n    //Approver RR test 23410 - prod 23217\n    //Tabella Approver name test 3685 - prod 3545\n   \tlog.debug objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3545).getObjectAttributeValueBeans()[0].getValue()\n    newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23217\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3545).getObjectAttributeValueBeans()[0].getValue())   \n    //Display Name test 22722 - prod 22722\n    //Tabella Approver display name test 3692 - prod 3569\n    newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22722\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3569).getObjectAttributeValueBeans()[0].getValue())\n     //Assignee RR test 23802 - prod 23230\n\tissue.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23230\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3569).getObjectAttributeValueBeans()[0].getValue())\n    \n    //Approver Email test 22723 - prod 22723\n    //Tabella Approver email test 3693 - prod 3570\n    newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22723\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3570).getObjectAttributeValueBeans()[0].getValue())\n\n    //Tabella Approver name test 3685 - prod 3545\n    newSubTask.setSummary(objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3545).getObjectAttributeValueBeans()[0].getValue() + \" - \" + issue.getSummary())\n\n   \tnewSubTask.setCustomFieldValue(Level, LevelV.toString())\n    \n    newSubTask.setParentObject(issue)\n    newSubTask.setProjectObject(issue.getProjectObject())\n    \n    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n        it.getName() == \"Approval RR\"\n    }.id)\n\n    def newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\n\n    issueManager.createIssueObject(LoggedInUser, newIssueParams)\n    subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\n\n    issueIndexingService.reIndex(newSubTask)\n    i = i + 1\n}\n\nComponentAccessor.getIssueManager().updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false);\nissueIndexingService.reIndex(issue)\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="v+nWù">false</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Waiting for Approval">
+      <meta name="jira.status.id">13527</meta>
+      <actions>
+        <action id="61" name="EèÞr×">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail Reject</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">customfield_22749 customfield_23223 group:RR-HR-team</arg>
+                  <arg name="FIELD_FUNCTION_ID">be8bef31-c52a-44c7-9a6b-3925b93d6bf3</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #A52019; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #A52019; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #A52019; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("HQ/BU")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("HQ/BU")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+				&lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;b&gt;Recruitment Request Rejected&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+				
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #FFFFFF; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Recruitment Request REJECTED</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2124\")\n\n//salesman\ndef value = issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\nlog.debug value[0].name\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    if ( objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null){ \n            \n        log.debug \"Email address: \" + objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue()\n\n        mail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n\t}\n}\ntrue","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">RR-2231</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="21" name="k¢÷">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send email approved</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">customfield_22749 customfield_23223 group:RR-HR-team</arg>
+                  <arg name="FIELD_FUNCTION_ID">de0ef3b0-73d9-435c-921b-277cb0704e24</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #14892C; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #14892C; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #14892C; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+				&lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;b&gt;Recruitment Request Approved&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+				
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #FFFFFF; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Recruitment Request APPROVED</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2124\")\n\n//salesman\ndef value = issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\nlog.debug value[0].name\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    if ( objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null){ \n            \n        log.debug \"Email address: \" + objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue()\n\n        mail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n\t}\n}\ntrue","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">RR-2231</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="Candidate Search">
+      <meta name="jira.status.id">11727</meta>
+      <actions>
+        <action id="31" name="Candidate selected" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">13700</meta>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail candidate selected</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">customfield_22749</arg>
+                  <arg name="FIELD_FUNCTION_ID">c4e715b6-8fc5-4cc9-974d-9a15c86d8b1a</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+				&lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;b&gt;Recruitment Request Candidate Selected&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+                
+                &lt;!-- Selected Candidate? --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Selected Candidate")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Selected Candidate&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Selected Candidate")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;% } %&gt;
+                
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #707070; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Recruitment Request CANDIDATE SELECTED</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2124\")\n\n//salesman\ndef value = issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\nlog.debug value[0].name\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    if ( objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null){ \n            \n        log.debug \"Email address: \" + objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue()\n\n        mail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n\t}\n}\ntrue","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">RR-2231</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="51" name="Cancel process" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">13100</meta>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail cancel process</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS">customfield_22749</arg>
+                  <arg name="FIELD_FUNCTION_ID">aaf422e8-0b66-4b3d-a3d8-3cea3ed5d0d2</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+				&lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;b&gt;Recruitment Request Cancel Process&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+				
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #707070; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Recruitment Request CANCEL PROCESS</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2124\")\n\n//salesman\ndef value = issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\nlog.debug value[0].name\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    if ( objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null){ \n            \n        log.debug \"Email address: \" + objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue()\n\n        mail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n\t}\n}\ntrue","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">RR-2231</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="&#09;©‹zWù">
+      <meta name="jira.status.id">11728</meta>
+      <actions>
+<common-action id="41" />
+      </actions>
+    </step>
+    <step id="5" name="Closed">
+      <meta name="jira.status.id">6</meta>
+      <actions>
+<common-action id="41" />
+      </actions>
+    </step>
+    <step id="6" name="EèÞr×">
+      <meta name="jira.status.id">11436</meta>
+    </step>
+  </steps>
+</workflow>

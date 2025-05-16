@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_8.dtd">
+<workflow>
+  <meta name="jira.description">Task Management workflow</meta>
+  <meta name="jira.update.author.key">JIRAUSER60711</meta>
+  <meta name="jira.updated.date">1676465701406</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <meta name="jira.i18n.submit">common.forms.create</meta>
+      <meta name="jira.i18n.title">common.forms.create</meta>
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="null" status="open" step="4">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">priority</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value">4</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">085495c979d891471da05bf687d1395039d1f738</arg>
+              <arg name="FIELD_NOTES">YCFgVXBkYXRlICJGcm9udCBPZmZpY2UgVXNlciIgY29waWVkIGZyb20gYXNzaWduZWU=</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uY3Jvd2QuZW1iZWRkZWQuYXBpLlVzZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5iYy5pc3N1ZS5zZWFyY2guU2VhcmNoU2VydmljZQppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3NvcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLklzc3VlCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWVNYW5hZ2VyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEudXNlci51dGlsLlVzZXJVdGlsCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEud2ViLmJlYW4uUGFnZXJGaWx0ZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuT3JkZXJhYmxlRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Nb2RpZmllZFZhbHVlCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUudXRpbC5Jc3N1ZUNoYW5nZUhvbGRlcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLnV0aWwuRGVmYXVsdElzc3VlQ2hhbmdlSG9sZGVyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuZXZlbnQudHlwZS5FdmVudERpc3BhdGNoT3B0aW9uCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuaW5kZXguSXNzdWVJbmRleGluZ1NlcnZpY2UKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS51c2VyLkFwcGxpY2F0aW9uVXNlcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZQppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLnVzZXIudXRpbC5Vc2VyTWFuYWdlcgoKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKCkNhdGVnb3J5IGxvZyA9IENhdGVnb3J5LmdldEluc3RhbmNlKCJjb20ub25yZXNvbHZlLmppcmEuZ3Jvb3Z5LlBvc3RGdW5jdGlvbiIpCgpsb2cuc2V0TGV2ZWwob3JnLmFwYWNoZS5sb2c0ai5MZXZlbC5ERUJVRykKCi8vIyMjIyMjIERldGVybWluYXppb25lIHByb2dldHRvICMjIyMjIwpTdHJpbmcgUHJqS2V5ID0gaXNzdWUuZ2V0UHJvamVjdE9iamVjdCgpLmtleQpTZWFyY2hTZXJ2aWNlIAkJc2VhcmNoU2VydmljZSAJCT0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q29tcG9uZW50KFNlYXJjaFNlcnZpY2UuY2xhc3MpClVzZXJVdGlsIAkJCXVzZXJVdGlsIAkJCT0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0VXNlclV0aWwoKQpJc3N1ZU1hbmFnZXIgCQlpc3N1ZU1hbmFnZXIgCQk9IENvbXBvbmVudEFjY2Vzc29yLmdldElzc3VlTWFuYWdlcigpCkN1c3RvbUZpZWxkTWFuYWdlciAJY3VzdG9tRmllbGRNYW5hZ2VyIAk9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpCklzc3VlQ2hhbmdlSG9sZGVyIAljaGFuZ2VIb2xkZXIgCQk9IG5ldyBEZWZhdWx0SXNzdWVDaGFuZ2VIb2xkZXIoKQpJc3N1ZUluZGV4aW5nU2VydmljZSBpc3N1ZUluZGV4aW5nU2VydmljZSA9IENvbXBvbmVudEFjY2Vzc29yLmdldENvbXBvbmVudChJc3N1ZUluZGV4aW5nU2VydmljZSkKQXBwbGljYXRpb25Vc2VyIHVzZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5qaXJhQXV0aGVudGljYXRpb25Db250ZXh0LmxvZ2dlZEluVXNlcgoKQ3VzdG9tRmllbGQgZnJvbnRPZmZpY2VVc2VyID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0KExvbmcucGFyc2VMb25nKCIxODgwMCIpKQoKQXBwbGljYXRpb25Vc2VyIG5ld3VzZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRVc2VyTWFuYWdlcigpLmdldFVzZXJCeUtleShpc3N1ZS5hc3NpZ25lZS5rZXkudG9TdHJpbmcoKSkKZnJvbnRPZmZpY2VVc2VyLnVwZGF0ZVZhbHVlKG51bGwsIGlzc3VlLCBuZXcgTW9kaWZpZWRWYWx1ZShpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKGZyb250T2ZmaWNlVXNlciksbmV3dXNlciksY2hhbmdlSG9sZGVyKQoKaXNzdWVNYW5hZ2VyLnVwZGF0ZUlzc3VlKHVzZXIsIGlzc3VlLCBFdmVudERpc3BhdGNoT3B0aW9uLkRPX05PVF9ESVNQQVRDSCwgZmFsc2UpCgppc3N1ZUluZGV4aW5nU2VydmljZS5yZUluZGV4KGlzc3VlKQo=</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE"></arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">f4b06f8f06c856fb858ee011500d355f3792f6b2</arg>
+              <arg name="FIELD_NOTES">YCFgVXBkYXRlIEVwaWMgTmFtZSAtIFNldCBpdCBlcXVhbHMgdG8gSXNzdWUgS2V5</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uY3Jvd2QuZW1iZWRkZWQuYXBpLlVzZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5iYy5pc3N1ZS5zZWFyY2guU2VhcmNoU2VydmljZQppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3NvcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLklzc3VlCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWVNYW5hZ2VyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEudXNlci51dGlsLlVzZXJVdGlsCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEud2ViLmJlYW4uUGFnZXJGaWx0ZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5DdXN0b21GaWVsZE1hbmFnZXIKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuT3JkZXJhYmxlRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5maWVsZHMuQ3VzdG9tRmllbGQKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Nb2RpZmllZFZhbHVlCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUudXRpbC5Jc3N1ZUNoYW5nZUhvbGRlcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLnV0aWwuRGVmYXVsdElzc3VlQ2hhbmdlSG9sZGVyCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuZXZlbnQudHlwZS5FdmVudERpc3BhdGNoT3B0aW9uCmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuaW5kZXguSXNzdWVJbmRleGluZ1NlcnZpY2UKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS51c2VyLkFwcGxpY2F0aW9uVXNlcgppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZQppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLnVzZXIudXRpbC5Vc2VyTWFuYWdlcgoKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKCkNhdGVnb3J5IGxvZyA9IENhdGVnb3J5LmdldEluc3RhbmNlKCJjb20ub25yZXNvbHZlLmppcmEuZ3Jvb3Z5LlBvc3RGdW5jdGlvbiIpCgpsb2cuc2V0TGV2ZWwob3JnLmFwYWNoZS5sb2c0ai5MZXZlbC5ERUJVRykKCi8vIyMjIyMjIERldGVybWluYXppb25lIHByb2dldHRvICMjIyMjIwpTdHJpbmcgUHJqS2V5ID0gaXNzdWUuZ2V0UHJvamVjdE9iamVjdCgpLmtleQpTZWFyY2hTZXJ2aWNlIAkJc2VhcmNoU2VydmljZSAJCT0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0Q29tcG9uZW50KFNlYXJjaFNlcnZpY2UuY2xhc3MpClVzZXJVdGlsIAkJCXVzZXJVdGlsIAkJCT0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0VXNlclV0aWwoKQpJc3N1ZU1hbmFnZXIgCQlpc3N1ZU1hbmFnZXIgCQk9IENvbXBvbmVudEFjY2Vzc29yLmdldElzc3VlTWFuYWdlcigpCkN1c3RvbUZpZWxkTWFuYWdlciAJY3VzdG9tRmllbGRNYW5hZ2VyIAk9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpCklzc3VlQ2hhbmdlSG9sZGVyIAljaGFuZ2VIb2xkZXIgCQk9IG5ldyBEZWZhdWx0SXNzdWVDaGFuZ2VIb2xkZXIoKQpJc3N1ZUluZGV4aW5nU2VydmljZSBpc3N1ZUluZGV4aW5nU2VydmljZSA9IENvbXBvbmVudEFjY2Vzc29yLmdldENvbXBvbmVudChJc3N1ZUluZGV4aW5nU2VydmljZSkKQXBwbGljYXRpb25Vc2VyIHVzZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5qaXJhQXV0aGVudGljYXRpb25Db250ZXh0LmxvZ2dlZEluVXNlcgoKQ3VzdG9tRmllbGQgRXBpY05hbWUgPSBjdXN0b21GaWVsZE1hbmFnZXIuZ2V0Q3VzdG9tRmllbGRPYmplY3QoTG9uZy5wYXJzZUxvbmcoIjEwMDA0IikpCgppZihpc3N1ZS5nZXRJc3N1ZVR5cGUoKS5uYW1lLmVxdWFscygiRXBpYyIpKXsKICAgIEVwaWNOYW1lLnVwZGF0ZVZhbHVlKG51bGwsIGlzc3VlLCBuZXcgTW9kaWZpZWRWYWx1ZShpc3N1ZS5nZXRDdXN0b21GaWVsZFZhbHVlKEVwaWNOYW1lKSxpc3N1ZS5rZXkpLGNoYW5nZUhvbGRlcikKfQoKaXNzdWVNYW5hZ2VyLnVwZGF0ZUlzc3VlKHVzZXIsIGlzc3VlLCBFdmVudERpc3BhdGNoT3B0aW9uLkRPX05PVF9ESVNQQVRDSCwgZmFsc2UpCgppc3N1ZUluZGV4aW5nU2VydmljZS5yZUluZGV4KGlzc3VlKQo=</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE"></arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <common-actions>
+    <action id="161" name="Send to II° Level (Sales)">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="6">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">assignee</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value"></arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="131" name="Resolve">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <restrict-to>
+        <conditions type="OR">
+          <condition type="class">
+            <arg name="class.name">com.atlassian.jira.workflow.condition.AllowOnlyAssignee</arg>
+          </condition>
+          <condition type="class">
+            <arg name="jira.projectrole.id">10002</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="null" status="null" step="13">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value">6</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="151" name="Close">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="14">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value">6</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="201" name="Back to In Progress (Sales)">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <restrict-to>
+        <conditions>
+          <condition type="class">
+            <arg name="FIELD_FUNCTION_ID">20ff4f3b69a7507a7461cc5155de5443ebf2f292</arg>
+            <arg name="FIELD_NOTES">YCFgQ2hlY2sgcHJldml1b3Mgc3RhdHVz</arg>
+            <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKCmRlZiBjaGFuZ2VIaXN0b3J5TWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldENoYW5nZUhpc3RvcnlNYW5hZ2VyKCkKY2hhbmdlSGlzdG9yeU1hbmFnZXIuZ2V0Q2hhbmdlSXRlbXNGb3JGaWVsZChpc3N1ZSwgInN0YXR1cyIpLmdldEF0KGNoYW5nZUhpc3RvcnlNYW5hZ2VyLmdldENoYW5nZUl0ZW1zRm9yRmllbGQoaXNzdWUsICJzdGF0dXMiKS5zaXplKCkgLSAxKS5nZXRGcm9tU3RyaW5nKCkuZXF1YWxzKCJJScKwIExldmVsIChTYWxlcykgLSBJbiBQcm9ncmVzcyIp</arg>
+            <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.CustomScriptCondition</arg>
+            <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+            <arg name="FIELD_SCRIPT_FILE"></arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="null" status="null" step="8">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value"></arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="61" name="Send to II° Level (Tech)">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <results>
+        <unconditional-result old-status="null" status="null" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">assignee</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value"></arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="141" name="Back to In Progress (Tech)">
+      <meta name="jira.description"></meta>
+      <meta name="jira.fieldscreen.id"></meta>
+      <restrict-to>
+        <conditions>
+          <condition type="class">
+            <arg name="FIELD_FUNCTION_ID">d6cb918287a6c8b1befb5c41ae09272970b54ee5</arg>
+            <arg name="FIELD_NOTES">YCFgQ2hlY2sgcHJldml1b3Mgc3RhdHVz</arg>
+            <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5jb21wb25lbnQuQ29tcG9uZW50QWNjZXNzb3IKaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnkKQ2F0ZWdvcnkgbG9nID0gQ2F0ZWdvcnkuZ2V0SW5zdGFuY2UoImNvbS5vbnJlc29sdmUuamlyYS5ncm9vdnkuUG9zdEZ1bmN0aW9uIikKbG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpCgpkZWYgY2hhbmdlSGlzdG9yeU1hbmFnZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDaGFuZ2VIaXN0b3J5TWFuYWdlcigpCgovL2xvZy5kZWJ1ZyBjaGFuZ2VIaXN0b3J5TWFuYWdlci5nZXRDaGFuZ2VJdGVtc0ZvckZpZWxkKGlzc3VlLCAic3RhdHVzIikuZ2V0QXQoY2hhbmdlSGlzdG9yeU1hbmFnZXIuZ2V0Q2hhbmdlSXRlbXNGb3JGaWVsZChpc3N1ZSwgInN0YXR1cyIpLnNpemUoKSAtIDEpLmdldEZyb21TdHJpbmcoKQpjaGFuZ2VIaXN0b3J5TWFuYWdlci5nZXRDaGFuZ2VJdGVtc0ZvckZpZWxkKGlzc3VlLCAic3RhdHVzIikuZ2V0QXQoY2hhbmdlSGlzdG9yeU1hbmFnZXIuZ2V0Q2hhbmdlSXRlbXNGb3JGaWVsZChpc3N1ZSwgInN0YXR1cyIpLnNpemUoKSAtIDEpLmdldEZyb21TdHJpbmcoKS5lcXVhbHMoIklJwrAgTGV2ZWwgKFRlY2huaWNhbCkgLSBJbiBQcm9ncmVzcyIp</arg>
+            <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.CustomScriptCondition</arg>
+            <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+            <arg name="FIELD_SCRIPT_FILE"></arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="null" status="null" step="7">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value"></arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="4" name="Open">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+<common-action id="61" />
+<common-action id="151" />
+<common-action id="161" />
+      </actions>
+    </step>
+    <step id="5" name="II° Level (Tech) - Backlog">
+      <meta name="jira.status.id">13127</meta>
+      <actions>
+        <action id="71" name="Start Progress">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowassigntocurrentuser-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.AssignToCurrentUserFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="6" name="II° Level (Sales) - Backlog">
+      <meta name="jira.status.id">13128</meta>
+      <actions>
+        <action id="171" name="Start Progress">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="8">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowassigntocurrentuser-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.AssignToCurrentUserFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="7" name="II° Level (Tech) - In Progress">
+      <meta name="jira.status.id">13129</meta>
+      <actions>
+<common-action id="161" />
+<common-action id="131" />
+        <action id="81" name="Click  to call">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">682f61bd9accc003affe0a6aaba7ad909f0c0119</arg>
+                  <arg name="FIELD_NOTES">YCFgQ2xpY2sgdG8gQ2FsbCAtIEFQSSBjYWxsIC0gR0VU</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">YCFgeyJzY3JpcHQiOiJpbXBvcnQgZ3Jvb3Z5Lmpzb24uSnNvblNsdXJwZXI7XG5pbXBvcnQgZ3Jvb3Z5Lmpzb24uU3RyZWFtaW5nSnNvbkJ1aWxkZXI7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLkN1c3RvbUZpZWxkTWFuYWdlcjtcbmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuZmllbGRzLkN1c3RvbUZpZWxkO1xuaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Jc3N1ZU1hbmFnZXI7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3NvcjtcbmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWU7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZVxuaW1wb3J0IG9yZy5hcGFjaGUuY29tbW9ucy5jb2RlYy5iaW5hcnkuQmFzZTY0O1xuaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnlcblxubG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpXG5cbmRlZiByZXF1ZXN0TWV0aG9kID0gXCJHRVRcIjtcblxuSXNzdWVNYW5hZ2VyIGlzc3VlTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldElzc3VlTWFuYWdlcigpO1xuQ3VzdG9tRmllbGRNYW5hZ2VyIGN1c3RvbUZpZWxkTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpO1xuQ3VzdG9tRmllbGQgY29udGFjdE51bWJlciA9IGN1c3RvbUZpZWxkTWFuYWdlci5nZXRDdXN0b21GaWVsZE9iamVjdHNCeU5hbWUoJ0NvbnRhY3QgTnVtYmVyJylbMF07XG5cblxuZGVmIGJhc2VVUkwgPSBcImh0dHA6Ly8xNzIuMjkuNTkuNDA6ODA4MC9tZXJjdXJ5L0V4dFRlbGVwaG9uZUNtZEFjdGlvbj9jb250cm9sPWNhbGwmdW5hbWU9XCIgKyBpc3N1ZS5hc3NpZ25lZS5uYW1lICsgXCImYWRkcmVzc3RvY2FsbD1cIiArIGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29udGFjdE51bWJlcikudG9TdHJpbmcoKVxuXG5cbmxvZy5kZWJ1ZyBcImJhc2VVcmw6IFwiICsgYmFzZVVSTFxuXG5VUkwgdXJsXG51cmwgPSBuZXcgVVJMKGJhc2VVUkwpXG5IdHRwVVJMQ29ubmVjdGlvbiBjb25uZWN0aW9uID0gKEh0dHBVUkxDb25uZWN0aW9uKXVybC5vcGVuQ29ubmVjdGlvbigpO1xuXG5jb25uZWN0aW9uLnNldFJlcXVlc3RNZXRob2QocmVxdWVzdE1ldGhvZCk7XG5jb25uZWN0aW9uLnNldFJlcXVlc3RQcm9wZXJ0eShcIkNvbnRlbnQtVHlwZVwiLCBcImFwcGxpY2F0aW9uL2pzb25cIik7XG5jb25uZWN0aW9uLnNldFJlcXVlc3RQcm9wZXJ0eShcIkFjY2VwdFwiLCBcIiovKlwiKTtcbmNvbm5lY3Rpb24uc2V0RG9PdXRwdXQodHJ1ZSk7XG5jb25uZWN0aW9uLnNldERvSW5wdXQodHJ1ZSk7XG5jb25uZWN0aW9uLmNvbm5lY3QoKTtcblxuLy9sb2cuZGVidWcgXCJ1cmw6IFwiICsgdXJsXG5sb2cuZGVidWcgXCJSZXNwb25zZUNvZGU6XCIgKyBjb25uZWN0aW9uLmdldFJlc3BvbnNlQ29kZSgpXG5sb2cuZGVidWcgXCJSZXNwb25zZU1lc3NhZ2U6XCIgKyBjb25uZWN0aW9uLmdldFJlc3BvbnNlTWVzc2FnZSgpXG4iLCJzY3JpcHRQYXRoIjpudWxsLCJwYXJhbWV0ZXJzIjp7fX0=</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGdyb292eS5qc29uLkpzb25TbHVycGVyOwppbXBvcnQgZ3Jvb3Z5Lmpzb24uU3RyZWFtaW5nSnNvbkJ1aWxkZXI7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuQ3VzdG9tRmllbGRNYW5hZ2VyOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLmZpZWxkcy5DdXN0b21GaWVsZDsKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Jc3N1ZU1hbmFnZXI7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLklzc3VlOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZQppbXBvcnQgb3JnLmFwYWNoZS5jb21tb25zLmNvZGVjLmJpbmFyeS5CYXNlNjQ7CmltcG9ydCBvcmcuYXBhY2hlLmxvZzRqLkNhdGVnb3J5CgpDYXRlZ29yeSBsb2cgPSBDYXRlZ29yeS5nZXRJbnN0YW5jZSgiY29tLm9ucmVzb2x2ZS5qaXJhLmdyb292eS5Qb3N0RnVuY3Rpb24iKQpsb2cuc2V0TGV2ZWwob3JnLmFwYWNoZS5sb2c0ai5MZXZlbC5ERUJVRykKCmRlZiByZXF1ZXN0TWV0aG9kID0gIkdFVCI7CgpJc3N1ZU1hbmFnZXIgaXNzdWVNYW5hZ2VyID0gQ29tcG9uZW50QWNjZXNzb3IuZ2V0SXNzdWVNYW5hZ2VyKCk7CkN1c3RvbUZpZWxkTWFuYWdlciBjdXN0b21GaWVsZE1hbmFnZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRDdXN0b21GaWVsZE1hbmFnZXIoKTsKQ3VzdG9tRmllbGQgY29udGFjdE51bWJlciA9IGN1c3RvbUZpZWxkTWFuYWdlci5nZXRDdXN0b21GaWVsZE9iamVjdHNCeU5hbWUoJ0NvbnRhY3QgTnVtYmVyJylbMF07CgoKZGVmIGJhc2VVUkwgPSAiaHR0cDovLzE3Mi4yOS41Ni4yMDY6ODA4MC9tZXJjdXJ5L0V4dFRlbGVwaG9uZUNtZEFjdGlvbj9jb250cm9sPWNhbGwmdW5hbWU9IiArIGlzc3VlLmFzc2lnbmVlLm5hbWUgKyAiJmFkZHJlc3N0b2NhbGw9IiArIGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29udGFjdE51bWJlcikudG9TdHJpbmcoKQoKCmxvZy5kZWJ1ZyAiYmFzZVVybDogIiArIGJhc2VVUkwKClVSTCB1cmwKdXJsID0gbmV3IFVSTChiYXNlVVJMKQpIdHRwVVJMQ29ubmVjdGlvbiBjb25uZWN0aW9uID0gKEh0dHBVUkxDb25uZWN0aW9uKXVybC5vcGVuQ29ubmVjdGlvbigpOwoKY29ubmVjdGlvbi5zZXRSZXF1ZXN0TWV0aG9kKHJlcXVlc3RNZXRob2QpOwpjb25uZWN0aW9uLnNldFJlcXVlc3RQcm9wZXJ0eSgiQ29udGVudC1UeXBlIiwgImFwcGxpY2F0aW9uL2pzb24iKTsKY29ubmVjdGlvbi5zZXRSZXF1ZXN0UHJvcGVydHkoIkFjY2VwdCIsICIqLyoiKTsKY29ubmVjdGlvbi5zZXREb091dHB1dCh0cnVlKTsKY29ubmVjdGlvbi5zZXREb0lucHV0KHRydWUpOwpjb25uZWN0aW9uLmNvbm5lY3QoKTsKCi8vbG9nLmRlYnVnICJ1cmw6ICIgKyB1cmwKbG9nLmRlYnVnICJSZXNwb25zZUNvZGU6IiArIGNvbm5lY3Rpb24uZ2V0UmVzcG9uc2VDb2RlKCkKbG9nLmRlYnVnICJSZXNwb25zZU1lc3NhZ2U6IiArIGNvbm5lY3Rpb24uZ2V0UmVzcG9uc2VNZXNzYWdlKCkK</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE"></arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="91" name="Hold for investigation">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="9">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="111" name="Transfer to Customer">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="11">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="231" name="Resend Tech Backoffice">
+          <meta name="jira.description">Lorsque le ticket a été pris par quelqu'un mais par erreur ou qu'il ne peut pas le traiter/suivre</meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="8" name="II° Level (Sales) - In Progress">
+      <meta name="jira.status.id">13130</meta>
+      <actions>
+<common-action id="61" />
+<common-action id="131" />
+        <action id="181" name="Click  to call">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="8">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">7e0b443dd19165a5a24ff165c170c44f245f1de0</arg>
+                  <arg name="FIELD_NOTES">YCFgQ2xpY2sgdG8gQ2FsbCAtIEFQSSBjYWxsIC0gR0VU</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">YCFgeyJzY3JpcHQiOiJpbXBvcnQgZ3Jvb3Z5Lmpzb24uSnNvblNsdXJwZXI7XG5pbXBvcnQgZ3Jvb3Z5Lmpzb24uU3RyZWFtaW5nSnNvbkJ1aWxkZXI7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLkN1c3RvbUZpZWxkTWFuYWdlcjtcbmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuZmllbGRzLkN1c3RvbUZpZWxkO1xuaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Jc3N1ZU1hbmFnZXI7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmNvbXBvbmVudC5Db21wb25lbnRBY2Nlc3NvcjtcbmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuSXNzdWU7XG5pbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZVxuaW1wb3J0IG9yZy5hcGFjaGUuY29tbW9ucy5jb2RlYy5iaW5hcnkuQmFzZTY0O1xuaW1wb3J0IG9yZy5hcGFjaGUubG9nNGouQ2F0ZWdvcnlcblxubG9nLnNldExldmVsKG9yZy5hcGFjaGUubG9nNGouTGV2ZWwuREVCVUcpXG5cbmRlZiByZXF1ZXN0TWV0aG9kID0gXCJHRVRcIjtcblxuSXNzdWVNYW5hZ2VyIGlzc3VlTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldElzc3VlTWFuYWdlcigpO1xuQ3VzdG9tRmllbGRNYW5hZ2VyIGN1c3RvbUZpZWxkTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpO1xuQ3VzdG9tRmllbGQgY29udGFjdE51bWJlciA9IGN1c3RvbUZpZWxkTWFuYWdlci5nZXRDdXN0b21GaWVsZE9iamVjdHNCeU5hbWUoJ0NvbnRhY3QgTnVtYmVyJylbMF07XG5cblxuZGVmIGJhc2VVUkwgPSBcImh0dHA6Ly8xNzIuMjkuNTkuNDA6ODA4MC9tZXJjdXJ5L0V4dFRlbGVwaG9uZUNtZEFjdGlvbj9jb250cm9sPWNhbGwmdW5hbWU9XCIgKyBpc3N1ZS5hc3NpZ25lZS5uYW1lICsgXCImYWRkcmVzc3RvY2FsbD1cIiArIGlzc3VlLmdldEN1c3RvbUZpZWxkVmFsdWUoY29udGFjdE51bWJlcikudG9TdHJpbmcoKVxuVVJMIHVybFxudXJsID0gbmV3IFVSTChiYXNlVVJMKVxuSHR0cFVSTENvbm5lY3Rpb24gY29ubmVjdGlvbiA9IChIdHRwVVJMQ29ubmVjdGlvbil1cmwub3BlbkNvbm5lY3Rpb24oKTtcblxuY29ubmVjdGlvbi5zZXRSZXF1ZXN0TWV0aG9kKHJlcXVlc3RNZXRob2QpO1xuY29ubmVjdGlvbi5zZXRSZXF1ZXN0UHJvcGVydHkoXCJDb250ZW50LVR5cGVcIiwgXCJhcHBsaWNhdGlvbi9qc29uXCIpO1xuY29ubmVjdGlvbi5zZXRSZXF1ZXN0UHJvcGVydHkoXCJBY2NlcHRcIiwgXCIqLypcIik7XG5jb25uZWN0aW9uLnNldERvT3V0cHV0KHRydWUpO1xuY29ubmVjdGlvbi5zZXREb0lucHV0KHRydWUpO1xuY29ubmVjdGlvbi5jb25uZWN0KCk7XG5cbi8vbG9nLmRlYnVnIFwidXJsOiBcIiArIHVybFxuLy9sb2cuZGVidWcgXCJSZXNwb25zZUNvZGU6XCIgKyBjb25uZWN0aW9uLmdldFJlc3BvbnNlQ29kZSgpXG4vL2xvZy5kZWJ1ZyBcIlJlc3BvbnNlTWVzc2FnZTpcIiArIGNvbm5lY3Rpb24uZ2V0UmVzcG9uc2VNZXNzYWdlKClcbi8vcHJpbnRsbihcImdldFJlc3BvbnNlTWVzc2FnZTpcIiArIGNvbm5lY3Rpb24uZ2V0UmVzcG9uc2VNZXNzYWdlKCkpIiwic2NyaXB0UGF0aCI6bnVsbCwicGFyYW1ldGVycyI6e319</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">YCFgaW1wb3J0IGdyb292eS5qc29uLkpzb25TbHVycGVyOwppbXBvcnQgZ3Jvb3Z5Lmpzb24uU3RyZWFtaW5nSnNvbkJ1aWxkZXI7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuaXNzdWUuQ3VzdG9tRmllbGRNYW5hZ2VyOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLmZpZWxkcy5DdXN0b21GaWVsZDsKaW1wb3J0IGNvbS5hdGxhc3NpYW4uamlyYS5pc3N1ZS5Jc3N1ZU1hbmFnZXI7CmltcG9ydCBjb20uYXRsYXNzaWFuLmppcmEuY29tcG9uZW50LkNvbXBvbmVudEFjY2Vzc29yOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLklzc3VlOwppbXBvcnQgY29tLmF0bGFzc2lhbi5qaXJhLmlzc3VlLk11dGFibGVJc3N1ZQppbXBvcnQgb3JnLmFwYWNoZS5jb21tb25zLmNvZGVjLmJpbmFyeS5CYXNlNjQ7CmltcG9ydCBvcmcuYXBhY2hlLmxvZzRqLkNhdGVnb3J5CkNhdGVnb3J5IGxvZyA9IENhdGVnb3J5LmdldEluc3RhbmNlKCJjb20ub25yZXNvbHZlLmppcmEuZ3Jvb3Z5LlBvc3RGdW5jdGlvbiIpCmxvZy5zZXRMZXZlbChvcmcuYXBhY2hlLmxvZzRqLkxldmVsLkRFQlVHKQoKZGVmIHJlcXVlc3RNZXRob2QgPSAiR0VUIjsKCklzc3VlTWFuYWdlciBpc3N1ZU1hbmFnZXIgPSBDb21wb25lbnRBY2Nlc3Nvci5nZXRJc3N1ZU1hbmFnZXIoKTsKQ3VzdG9tRmllbGRNYW5hZ2VyIGN1c3RvbUZpZWxkTWFuYWdlciA9IENvbXBvbmVudEFjY2Vzc29yLmdldEN1c3RvbUZpZWxkTWFuYWdlcigpOwpDdXN0b21GaWVsZCBjb250YWN0TnVtYmVyID0gY3VzdG9tRmllbGRNYW5hZ2VyLmdldEN1c3RvbUZpZWxkT2JqZWN0c0J5TmFtZSgnQ29udGFjdCBOdW1iZXInKVswXTsKCgpkZWYgYmFzZVVSTCA9ICJodHRwOi8vMTcyLjI5LjU2LjIwNjo4MDgwL21lcmN1cnkvRXh0VGVsZXBob25lQ21kQWN0aW9uP2NvbnRyb2w9Y2FsbCZ1bmFtZT0iICsgaXNzdWUuYXNzaWduZWUubmFtZSArICImYWRkcmVzc3RvY2FsbD0iICsgaXNzdWUuZ2V0Q3VzdG9tRmllbGRWYWx1ZShjb250YWN0TnVtYmVyKS50b1N0cmluZygpClVSTCB1cmwKdXJsID0gbmV3IFVSTChiYXNlVVJMKQpIdHRwVVJMQ29ubmVjdGlvbiBjb25uZWN0aW9uID0gKEh0dHBVUkxDb25uZWN0aW9uKXVybC5vcGVuQ29ubmVjdGlvbigpOwoKY29ubmVjdGlvbi5zZXRSZXF1ZXN0TWV0aG9kKHJlcXVlc3RNZXRob2QpOwpjb25uZWN0aW9uLnNldFJlcXVlc3RQcm9wZXJ0eSgiQ29udGVudC1UeXBlIiwgImFwcGxpY2F0aW9uL2pzb24iKTsKY29ubmVjdGlvbi5zZXRSZXF1ZXN0UHJvcGVydHkoIkFjY2VwdCIsICIqLyoiKTsKY29ubmVjdGlvbi5zZXREb091dHB1dCh0cnVlKTsKY29ubmVjdGlvbi5zZXREb0lucHV0KHRydWUpOwpjb25uZWN0aW9uLmNvbm5lY3QoKTsKCi8vbG9nLmRlYnVnICJ1cmw6ICIgKyB1cmwKLy9sb2cuZGVidWcgIlJlc3BvbnNlQ29kZToiICsgY29ubmVjdGlvbi5nZXRSZXNwb25zZUNvZGUoKQovL2xvZy5kZWJ1ZyAiUmVzcG9uc2VNZXNzYWdlOiIgKyBjb25uZWN0aW9uLmdldFJlc3BvbnNlTWVzc2FnZSgpCi8vcHJpbnRsbigiZ2V0UmVzcG9uc2VNZXNzYWdlOiIgKyBjb25uZWN0aW9uLmdldFJlc3BvbnNlTWVzc2FnZSgpKQ==</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE"></arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="191" name="Hold for investigation">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="10">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="211" name="Transfer to Customer">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="12">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="9" name="II° Level (Tech) - Hold for investigation">
+      <meta name="jira.status.id">13131</meta>
+      <actions>
+<common-action id="141" />
+      </actions>
+    </step>
+    <step id="10" name="II° Level (Sales) - Hold for investigation">
+      <meta name="jira.status.id">13132</meta>
+      <actions>
+<common-action id="201" />
+      </actions>
+    </step>
+    <step id="11" name="II° Level (Tech) - Waiting for customer">
+      <meta name="jira.status.id">13133</meta>
+      <actions>
+<common-action id="141" />
+      </actions>
+    </step>
+    <step id="12" name="II° Level (Sales) - Waiting for customer">
+      <meta name="jira.status.id">13134</meta>
+      <actions>
+<common-action id="201" />
+      </actions>
+    </step>
+    <step id="13" name="Resolved">
+      <meta name="jira.status.id">5</meta>
+      <actions>
+<common-action id="151" />
+<common-action id="201" />
+<common-action id="141" />
+      </actions>
+    </step>
+    <step id="14" name="Closed">
+      <meta name="jira.status.id">6</meta>
+      <actions>
+        <action id="221" name="ReOpen">
+          <meta name="jira.description"></meta>
+          <meta name="jira.fieldscreen.id"></meta>
+          <results>
+            <unconditional-result old-status="null" status="null" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+                  <arg name="field.value"></arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

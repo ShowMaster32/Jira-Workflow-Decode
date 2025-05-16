@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1672739906539</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11705</arg>
+              <arg name="FIELD_FUNCTION_ID">66677e02-31c3-4b88-943f-e249ae0ab9ed</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send mail to Assignee for approval</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">recruitment.requests@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">customfield_22723</arg>
+              <arg name="FIELD_FUNCTION_ID">8e559071-a48b-4318-bbc5-c6099e50abf8</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+ &lt;center&gt;
+  &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif; background-color: #f5f5f5; font-size: 16px; font-family:tahoma,geneva,sans-serif;"&gt;
+   &lt;tbody&gt;
+    &lt;tr&gt;
+     &lt;td align="center" id="email-wrap-cell" style="padding: 15px 10px 10px"&gt;
+      &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; width: 850px; font-family:tahoma,geneva,sans-serif; line-height: 1,500"&gt;
+       &lt;tbody&gt;
+        &lt;tr&gt;
+         &lt;td align="left"&gt;
+          &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+           &lt;tbody&gt;
+            &lt;tr&gt;
+             &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+              &lt;table border="0" style="width: 100%; font-family:tahoma,geneva,sans-serif;"&gt;
+				&lt;!-- Logo in base alla bu selezionata --&gt;
+                &lt;tr&gt;
+				  &lt;td colspan="2" align="left"&gt;
+					&lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Access Solutions") { %&gt;
+					  &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;                        
+					&lt;% } %&gt;
+                    &lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Parking") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_HUB_Parking.jpg"/&gt;
+					&lt;% }%&gt;
+                    &lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() == "Cross") { %&gt;
+                        &lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_FAAC_Group.png"/&gt;
+					&lt;% }%&gt;
+				  &lt;/td&gt;
+				  &lt;!--td&gt;
+					&amp;nbsp;
+				  &lt;/td--&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td width="40%"&gt;
+					&amp;nbsp;
+				  &lt;/td&gt;
+				  &lt;td width="60%" class="request-key" style="text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+					Reference: &lt;strong style="font-weight: bold"&gt;$issue.parentObject&lt;/strong&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				&lt;/tr&gt;
+                
+                &lt;tr&gt;
+				  &lt;td colspan="2"; font-size: 12px; line-height: 18px; text-decoration: none" &gt;
+					This email is to inform you about a Recruitment Request &lt;strong style="font-weight: bold"&gt;$issue.parentObject&lt;/strong&gt;. &lt;br&gt;
+                    &lt;b&gt;Action from your side is required.&lt;/b&gt; &lt;br&gt;
+                    For further information about Recruitment Request and to proceed with approval/rejection, please &lt;u&gt;&lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue.parentObject/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;&lt;/u&gt;
+
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+				&lt;!-- status --&gt;
+				&lt;tr&gt;
+				  &lt;td class="request-key" style="text-align: left; font-size: 16px; line-height: 18px; text-decoration: none"&gt;
+					  &lt;br&gt;&lt;b&gt;Approval For Recruitment Request&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;
+                      &lt;span class="request-status aui-lozenge aui-lozenge-current" style="background-color: #cccccd; border: 1px solid #cccccd; border-radius: 3px; color: #333; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 2px 5px 1px 5px; text-align: center; text-decoration: none; text-transform: uppercase; background-color: #f5f5f5; border-color: #f5f5f5; color: #594300; margin-left: 5px; font-weight: bold; font-size: 14px"&gt;$issue.parentObject.status.name&lt;/span&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                
+                
+                &lt;!-- Geography --&gt;
+				&lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Geography&lt;/u&gt;: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Company --&gt;
+				&lt;% if (issue.parentObject.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong())) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Company&lt;/u&gt;: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+                &lt;!-- Prevalent Business Impact --&gt;
+				&lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:#eed8cd"&gt;
+                        &lt;u&gt;Prevalent Business Impact&lt;/u&gt;: &lt;% out &lt;&lt;  issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt;
+                    &lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Department --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none; background-color:	#eed8cd"&gt;
+					&lt;u&gt;Department&lt;/u&gt;: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; 
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                
+                &lt;!-- Detailed Job Title --&gt;
+				&lt;% if (issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")) != null) { %&gt;
+				  &lt;tr&gt;
+					&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+					&lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					  &lt;u&gt;Job Title&lt;/u&gt;: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Detailed Job Title")).toString() %&gt;
+					&lt;/td&gt;
+				  &lt;/tr&gt;
+				&lt;% }%&gt;
+				&lt;!-- Job Description --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Job Description&lt;/u&gt;: 
+					&lt;% if(issue.parentObject.description != null){ %&gt;			
+						&lt;% out &lt;&lt; issue.parentObject.description %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Starting Date --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Starting Date&lt;/u&gt;: 
+					&lt;% if(issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().substring(0,issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Starting Date")).toString().indexOf("00:00")-1) %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;!-- Direct Manager --&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Direct Manager&lt;/u&gt;: 
+					&lt;% if(issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")) != null) { %&gt;
+						&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Direct Manager")).toString() %&gt;
+					&lt;% } %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Reporter&lt;/u&gt;: &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Display Name")).toString() %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				
+                &lt;!-- Reason of the employment --&gt;
+                &lt;% if(issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")) != null) { %&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+                    &lt;u&gt;Reason of the employment&lt;/u&gt;: 
+                        &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Reason of the employment")).toString() %&gt;
+                  &lt;/td&gt;
+
+                &lt;/tr&gt;
+                &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+                &lt;% } %&gt;
+                
+				&lt;!-- Expected in Budget? --&gt;
+				&lt;% if(issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")) != null) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				  &lt;td style="text-align: left; font-size: 14px; line-height: 20px; text-decoration: none"&gt;
+					&lt;u&gt;Expected in Budget?&lt;/u&gt;: 
+						&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Expected in Budget?")).toString() %&gt;
+                        &lt;br&gt;&lt;br&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+				
+				&lt;% if (com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue.parentObject)) { %&gt;
+				&lt;tr&gt;
+				  &lt;td&gt;&lt;b&gt;Last Comment&lt;/b&gt;&lt;/td&gt;
+				  &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+				  &lt;td colspan="2"&gt;
+					&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getCommentManager().getLastComment(issue.parentObject).body %&gt;
+				  &lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;% } %&gt;
+              	
+              	
+			  &lt;/table&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;br&gt;
+            &lt;tr&gt;
+             &lt;td class="email-actions email-content-important" style="text-align: center; font-size: 14px; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 20px; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+              &lt;b&gt;In order to validate the Recruitment Request, please &lt;a href="https://gems.faacgroup.com/faac-hrportal-ui/#/hr/recruitment-request/management/$issue.parentObject/details/1"&gt;view the full request&lt;/a&gt;&lt;/b&gt;
+             &lt;/td&gt;
+            &lt;/tr&gt;
+           &lt;/tbody&gt;
+          &lt;/table&gt;
+         &lt;/td&gt;
+        &lt;/tr&gt;
+       &lt;/tbody&gt;
+      &lt;/table&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+     &lt;td id="foot-note" style="padding-bottom: 20px; color: #707070; font-size: 12px; line-height: 1,200"&gt;
+      &lt;p style="width: 600px; text-align: center; margin: 0 auto"&gt;This message is automatically generated by FAAC Group Recruitment Request Portal.&lt;br /&gt;&lt;/p&gt;
+     &lt;/td&gt;
+    &lt;/tr&gt;
+   &lt;/tbody&gt;
+  &lt;/table&gt;
+ &lt;/center&gt;
+&lt;/body&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">&lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Geography")).toString() %&gt; - &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue( customFieldManager.getCustomFieldObject("23218".toLong()))[0].name %&gt; - &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Prevalent Business Impact")).toString() %&gt; - &lt;% out &lt;&lt; issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("Department/Job Title 2.0")).toString() %&gt; - Action Required</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="v+nWù">false</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"recruitment.requests@faacgroup.com\")\nimport com.atlassian.jira.component.ComponentAccessor\n\nimport com.atlassian.jira.issue.fields.CustomField\n\n\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\n\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n//Per test da console\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\n//issue = issueManager.getIssueByKeyIgnoreCase(\"RR-2125\")\n\n//salesman\ndef value = issue.parentObject.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName(\"Company 2.0\"))\n\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n\nif (value != null &amp;&amp; value != \"\"){\n     \n    String queryParam\n    \n    queryParam = \"\\\"\" + value[0].getName() + \"\\\"\"\n    \n    //Recupero il funzionario legato al site selezionato\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Company\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    \n    \n    // HR Region Email test 3738  - prod 3535 \n    \n\tif (objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535) != null)\n\t\tmail.setCc(objectFacade.loadObjectAttributeBean(objects[0].getId(), 3535).getObjectAttributeValueBeans()[0].getValue().toString())\n}\ntrue","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">RR-3168</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="2" name="Waiting for Approval">
+      <meta name="jira.status.id">13527</meta>
+      <actions>
+        <action id="11" name="Reject">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">13c7250e-501f-4514-9845-3f1cb7de9bd2</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.workflow.TransitionOptions\nimport com.atlassian.jira.bc.issue.IssueService\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nIssueService issueService = ComponentAccessor.getIssueService()\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n/* Get issue \"Group Assignee\" custom field value */\n\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"RR-1951\")\nMutableIssue parentIssue = issue.parentObject;\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\nIssueService.TransitionValidationResult result = issueService.validateTransition(user, parentIssue.getId(),61, issueService.newIssueInputParameters(), transitionOptions)\nif (result.isValid()) {\n    issueService.transition(user, result)\n}\n\n/*\nWorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\nworkflowTransitionUtil.setIssue(parentIssue);\n//ToApproved transazione subtask test 381 - prod 61\nworkflowTransitionUtil.setAction(61);\nif (workflowTransitionUtil.validate()) {\n    workflowTransitionUtil.progress();\n}\n*/","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="21" name="Approve RR" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">13200</meta>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">8d56777a-0919-47cb-9d16-eaad849eb7b2</arg>
+                  <arg name="FIELD_NOTES">crea nuovo sub task approvativo</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.workflow.TransitionOptions\nimport com.atlassian.jira.bc.issue.IssueService\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nIssueService issueService = ComponentAccessor.getIssueService()\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\n\n/* Get issue \"Group Assignee\" custom field value */\n\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"RR-1951\")\nMutableIssue parentIssue = issue.parentObject;\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n//WF approval test 23407 - prod 23222\nCustomField WFRRApproval = customFieldManager.getCustomFieldObject(Long.parseLong(\"23222\"))\ndef WFRRApprovalV = parentIssue.getCustomFieldValue(WFRRApproval)\n\n//Level test 22724 -  prod 22724\nCustomField Level = customFieldManager.getCustomFieldObject(Long.parseLong(\"22724\"))\n//def LevelV = issue.getCustomFieldValue(Level)\n\njqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = 'Approval RR'  AND parent = '\" + parentIssue.key + \"' order by cf[22724] DESC\"\nlog.debug jqlSearch\nquery = jqlQueryParser.parseQuery(jqlSearch)\nsearch = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\nlog.debug search\ndef LevelV\nif (search.results.size()&gt;0){\n    MutableIssue currIssue=issueManager.getIssueByKeyIgnoreCase(search.results[0].key)\n    log.debug search.results[0].key\n    CustomField curLevel = customFieldManager.getCustomFieldObject(Long.parseLong(\"22724\"))\n\tLevelV = currIssue.getCustomFieldValue(curLevel)\n    log.debug LevelV\n    LevelV = LevelV.toInteger() + 1 \n    log.debug LevelV\n    \n}\n\n\nString queryParam = \"\\\"\" + WFRRApprovalV[0].getName() + \"\\\"\"\ndef objects = iqlFacade.findObjectsByIQLAndSchema(29, \"objectType=\\\"WF Approval\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); \nlog.debug  \"w\" + objects[0]\n\nif (objectFacade.loadObjectAttributeBean(objects[0].getId(), \"Approver \" + LevelV)!=null)\n{\n\n    def Approver = \"\\\"\" + objectFacade.loadObjectAttributeBean(objects[0].getId(), \"Approver \" + LevelV).getObjectAttributeValueBeans()[0].getValue() + \"\\\"\"\n    log.debug \"objectType=\\\"Approver\\\" AND object HAVING outboundReferences(objectid = \" + Approver + \")\"\n    def objApprover = iqlFacade.findObjectsByIQLAndSchema(29, \"objectType=\\\"Approver\\\" AND objectid = \" + Approver + \"\")\n\n    def value=\"\"\n    CustomField flowTypeField\n    def i = 0\n    log.debug objApprover\n    if (objApprover.size()&gt; 0){\n        MutableIssue newSubTask = issueFactory.getIssue()\n        newSubTask.setReporter(user)\n\n        //Approver RR test 23410 - prod 23217\n        //Tabella Approver name test 3685 - prod 3545\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23217\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3545).getObjectAttributeValueBeans()[0].getValue())   \n        //Display Name test 22722 - prod 22722\n        //Tabella Approver display name test 3692 - prod 3569\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22722\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3569).getObjectAttributeValueBeans()[0].getValue())\n         //Assignee RR test 23802 - prod 23230\n\t\tparentIssue.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23230\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3569).getObjectAttributeValueBeans()[0].getValue())\n        \n        //Approver Email test 22723 - prod 22723\n        //Tabella Approver email test 3693 - prod 3570\n        newSubTask.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"22723\")), objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3570).getObjectAttributeValueBeans()[0].getValue())\n\t\t\n        //Tabella Approver name test 3685 - prod 3545\n        newSubTask.setSummary(objectFacade.loadObjectAttributeBean(objApprover[0].getId(), 3545).getObjectAttributeValueBeans()[0].getValue() + \" - \" + parentIssue.getSummary())\n        log.debug LevelV.toString()\n        newSubTask.setCustomFieldValue(Level, LevelV.toString())\n\n        newSubTask.setParentObject(parentIssue)\n        newSubTask.setProjectObject(parentIssue.getProjectObject())\n\n        newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n            it.getName() == \"Approval RR\"\n        }.id)\n\n        def newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\n\n        issueManager.createIssueObject(user, newIssueParams)\n        subTaskManager.createSubTaskIssueLink(parentIssue, newSubTask, user)\n\n        issueIndexingService.reIndex(newSubTask)\n        log.debug \"user \" + user\n        i = i + 1\n    }\n\n    ComponentAccessor.getIssueManager().updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);\n    issueIndexingService.reIndex(parentIssue)\n\t\n}\nelse{\n    //Assignee RR\n\tparentIssue.setCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"23230\")), \"\")\n\n    IssueService.TransitionValidationResult result = issueService.validateTransition(user, parentIssue.getId(),21, issueService.newIssueInputParameters(), transitionOptions)\n    if (result.isValid()) {\n        issueService.transition(user, result)\n    }\n    /*\n    WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n    workflowTransitionUtil.setIssue(parentIssue);\n\t//ToApproved transazione subtask test 371 - prod 21\n    workflowTransitionUtil.setAction(21);\n    if (workflowTransitionUtil.validate()) {\n        workflowTransitionUtil.progress();\n    }\n    */  \n    ComponentAccessor.getIssueManager().updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false);\n    issueIndexingService.reIndex(parentIssue)\n}","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="EèÞr×">
+      <meta name="jira.status.id">11436</meta>
+    </step>
+    <step id="4" name="Approved RR">
+      <meta name="jira.status.id">14628</meta>
+    </step>
+  </steps>
+</workflow>

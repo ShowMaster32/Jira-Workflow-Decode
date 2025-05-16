@@ -1,0 +1,2829 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1731052111582</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11201</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send mail to reporter</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS">customfield_22252</arg>
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">uю={ЭцСЭјчћ9уWµЌґг®;е¶ЫС¦ЭwЧц</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Change Request 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; Created &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        in regards to the request with subject &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; has been created.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        relativamente alla richiesta con oggetto &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, è stato creato il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: created</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("faacithelpdesk@faacgroup.com")|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <global-actions>
+    <action id="141" name="Cancel">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="12">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="201" name="Re-Open">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="221" name="Send Comment" view="fieldscreen">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">17609</meta>
+      <restrict-to>
+        <conditions>
+          <condition type="class">
+            <arg name="FIELD_FUNCTION_ID">b901e1ef-11cc-4779-bfe0-b486fc877ecf</arg>
+            <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+            <arg name="v+nWù">¶»ž</arg>
+            <arg name="FIELD_CONDITION">{"script":"currentUser.name == \"katia.chinaglia\" ","scriptPath":null}</arg>
+            <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="-1">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">92ae528c-0a93-4c12-9ec5-ed5e07bead58</arg>
+              <arg name="FIELD_NOTES">Update public comments and attachments tables on DB</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":null,"scriptPath":"customScripts/IDTS_UpdatePublicCommentsAttachments.groovy"}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send a custom email</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">03be30d6-5a78-4638-b475-c62068433398</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; -  &lt;% out &lt;&lt; issue.issueType.name  %&gt; 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; new comment &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                        Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        A comment has been added to the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        E' stato aggiunto un commento al ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: new comment</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"faacithelpdesk@faacgroup.com\")","scriptPath":null}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">IDTS-85513</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </global-actions>
+  <common-actions>
+    <action id="101" name="Closed" view="fieldscreen">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">17610</meta>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="10">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value">8</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT" />
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/IDTS_UpdatePublicCommentsAttachments.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS">customfield_22252</arg>
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">УЌqѕЪСЧ]чЏuЩѕ7пНЭз‡|kvќпNєгЭ4</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Change Request
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; closed &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                       	Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        The ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; has been closed.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Solution:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; è stato chiuso.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Soluzione:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: closed</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"faacithelpdesk@faacgroup.com\")","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="41" name="Më-">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="15">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="171" name="Ask Customer" view="fieldscreen">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">17609</meta>
+      <validators>
+        <validator name="" type="class">
+          <arg name="contextHandling" />
+          <arg name="hidFieldsList">comment@@</arg>
+          <arg name="jsuWorkflowParamsVersion-textValue">2.33.0</arg>
+          <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+          <arg name="customErrorMessage-textValue" />
+          <arg name="ºè">f44df30c-010d-4d80-9a01-5162618cf26c</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="13">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">b3a329cb-25df-4183-a463-153d7462d39c</arg>
+              <arg name="FIELD_NOTES">Update public comments and attachments tables on DB</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":null,"scriptPath":"customScripts/IDTS_UpdatePublicCommentsAttachments.groovy"}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send a custom email</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">71adceba-61ab-4f86-9b12-7aaa0fc10a86</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; -  &lt;% out &lt;&lt; issue.issueType.name  %&gt; 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; new comment &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                        Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        A comment has been added to the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        E' stato aggiunto un commento al ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: new comment</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"faacithelpdesk@faacgroup.com\")","scriptPath":null}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="31" name="In Progress">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Sent mail in progress al reporter</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">o_é­×üãk¾wÕÏ{í½tÙ¾½çV´éþz</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Change Request
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; in progress &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                        Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        The ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; is in progress and assigned to &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; è in lavorazione ed è stato preso in carico da &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: in progress</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">mail.setFrom("faacithelpdesk@faacgroup.com")|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="191" name="Back to Service Task">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="11">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value" />
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowassigntocurrentuser-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.AssignToCurrentUserFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">11001</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">ca288aba-dfd3-4ef0-a0d5-e1f6e60a99e0</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; -  &lt;% out &lt;&lt; issue.issueType.name  %&gt; 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; in progress &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                        Dear &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        The ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; is back to in progress.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; è tornato in lavorazione.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: in progress</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"faacithelpdesk@faacgroup.com\")","scriptPath":null}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="1" name=":—§">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+        <action id="131" name="Service Task">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="11">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="211" name="Evaluation">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="16">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="231" name="To Future Improvement">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="17">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="Waiting for Approval">
+      <meta name="jira.status.id">13527</meta>
+      <actions>
+        <action id="21" name="Approve">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">currentUser.name == "atlassian_faac_service_desk"|||</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail assignee e tutti gli approvatori della change request del flusso CR Approval per approvazione OK</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS">customfield_22257</arg>
+                  <arg name="FIELD_TO_USER_FIELDS">jË"w</arg>
+                  <arg name="FIELD_FUNCTION_ID">M[бќ:qЈс„Џл∆чуW№„¶хmЌљуљ^сґЏ</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Change Request 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; Approved &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        in regards to the request with subject &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; has been approved.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        relativamente alla richiesta con oggetto &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, è stato approvato il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: approved</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">mail.setFrom("faacithelpdesk@faacgroup.com")|||</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="111" name="Reject wf">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">currentUser.name == "atlassian_faac_service_desk"|||</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail assignee e tutti gli approvatori della change request del flusso CR Approval per approvazione KO</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS">customfield_22257</arg>
+                  <arg name="FIELD_TO_USER_FIELDS">jË"w</arg>
+                  <arg name="FIELD_FUNCTION_ID">{О»йэxуќ9Эѕ7Чџ:пЭьг·ќнЧwmзЮпmt</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Change Request 
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+											$issue.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; Rejectd &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+										Dear &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        in regards to the request with subject &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt; has been rejected.
+                                        &lt;br /&gt;
+                                        &lt;p class="author-comment"&gt;
+                                            &lt;b&gt;&lt;%  
+                                                def search =  com.atlassian.jira.component.ComponentAccessor.getComponent(com.atlassian.jira.bc.issue.search.SearchService.class).search(com.atlassian.jira.component.ComponentAccessor.jiraAuthenticationContext.loggedInUser, com.atlassian.jira.component.ComponentAccessor.getComponent(com.atlassian.jira.jql.parser.JqlQueryParser).parseQuery("project = '" + issue.getProjectObject().name + "' AND issuetype = 'Sub-WFStep' AND parent = '" + issue.key + "' ORDER BY updated"),  com.atlassian.jira.web.bean.PagerFilter.getUnlimitedFilter())
+                                                if (search.results.size()&gt;0){   
+                                                    def comments = com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(search.results[0])
+                                                    if (comments) {
+                                                        out &lt;&lt; comments.last().body.toString().substring(comments.last().body.toString().indexOf("{html}")+6, comments.last().body.toString().lastIndexOf("{html}"))
+                                                    }
+                                                } %&gt;
+                                            &lt;/b&gt;
+                                        &lt;/p&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.assignee?.displayName %&gt;,
+                                        &lt;br /&gt;
+                                        &lt;p class="author-comment"&gt;
+                                            &lt;b&gt;&lt;%  
+                                            	if (search.results.size()&gt;0){
+                                        			def comments = com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(search.results[0])
+                                        			if (comments) {
+                                        				out &lt;&lt; comments.last().body.toString().substring(comments.last().body.toString().indexOf("{html}")+6, comments.last().body.toString().lastIndexOf("{html}"))       
+                                        			}
+                                        		} %&gt;
+                                            &lt;/b&gt;
+                                        &lt;/p&gt;
+                                        &lt;br /&gt;
+                                        relativamente alla richiesta con oggetto &lt;b&gt;&lt;% out &lt;&lt; issue.summary %&gt;&lt;/b&gt;, è stato rigettato il ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue"&gt;$issue&lt;/a&gt;.
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.key] $issue.summary: rejected</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">mail.setFrom("faacithelpdesk@faacgroup.com")|||</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">IDTS-11897</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="EèÞr×">
+      <meta name="jira.status.id">11436</meta>
+    </step>
+    <step id="4" name="k¢÷">
+      <meta name="jira.status.id">10932</meta>
+      <actions>
+<common-action id="31" />
+      </actions>
+    </step>
+    <step id="5" name="In Progress">
+      <meta name="jira.status.id">3</meta>
+      <actions>
+<common-action id="41" />
+      </actions>
+    </step>
+    <step id="10" name="Closed">
+      <meta name="jira.status.id">6</meta>
+    </step>
+    <step id="11" name="In Progress Service Task">
+      <meta name="jira.status.id">14527</meta>
+      <actions>
+<common-action id="101" />
+<common-action id="171" />
+      </actions>
+    </step>
+    <step id="12" name="&#09;©‹zWù">
+      <meta name="jira.status.id">11728</meta>
+    </step>
+    <step id="13" name="Waiting for Customer">
+      <meta name="jira.status.id">10024</meta>
+      <actions>
+<common-action id="171" />
+<common-action id="191" />
+        <action id="181" name="Contact helpdesk" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">17609</meta>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="14">
+              <post-functions>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+                  <arg name="field.value" />
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="14" name="Waiting for Helpdesk">
+      <meta name="jira.status.id">13327</meta>
+      <actions>
+<common-action id="191" />
+      </actions>
+    </step>
+    <step id="15" name="User Acceptance Test">
+      <meta name="jira.status.id">15827</meta>
+      <actions>
+<common-action id="101" />
+        <action id="51" name="Test Failed">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="16" name="Evaluation">
+      <meta name="jira.status.id">10015</meta>
+      <actions>
+        <action id="11" name="Ask Approval" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">19427</meta>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">УЋЫл~ZiЮ]ЭЭwхНxчo9лл¦ёy®·ЯОц</arg>
+                  <arg name="FIELD_NOTES">Creazione automatica subtask in base ad approvatori Approval Workflow session</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.event.type.EventDispatchOption\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\ndef userManager = ComponentAccessor.getUserManager()\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"OPUT-2\")\n//21810 - Group Assignee\n//20901 - Production User\n//def value = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(21810))\n//def UserValue = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(20901))\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService)\n//IDTS WF Approval PROD 22257 - TEST 21900\nCustomField fieldWFApproval = customFieldManager.getCustomFieldObject(Long.parseLong(\"22257\"))\nCustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\nCustomField CRApplicationSubArea = customFieldManager.getCustomFieldObject(Long.parseLong(\"22243\"))\ndef CRApplicationSubAreaV = issue.getCustomFieldValue(CRApplicationSubArea)\n\n\ndef WfApprovals = issue.getCustomFieldValue(fieldWFApproval)\n\n/*ApplicationUser user1\nif (CRApplicationSubAreaV[0].toString() == \"Business Intelligence\"){\n\tuser1 = userManager.getUserByName(\"massimo.musu\")\n}\nelse{\n    user1 = userManager.getUserByName(\"ester.bergonzoni\")\n}*/\n    \nissue.setCustomFieldValue(fieldWFApproval, WfApprovals)\nComponentAccessor.getIssueManager().updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false);\nissueIndexingService.reIndex(issue)\ndef ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)\nlog.debug \"WfApproval \" + WfApprovals\n\nApplicationUser user\n\nfor (obj in WfApprovals){\n    //log.debug objectFacade.loadObjectAttributeBean(obj.getId(), 1100).getObjectAttributeValueBeans()[0].getValue() //attribute id    \n    //log.debug \"obj id: \" + obj.getId()\n    /*if (CRApplicationSubAreaV[0].toString() == \"Business Intelligence\"){\n        user = userManager.getUserByName(\"massimo.musu\")\n    }\n    else{\n        user = userManager.getUserByName(\"ester.bergonzoni\")\n    }*/\n    user=obj\n    /* Create sub-task to be assigned to user */\n    MutableIssue newSubTask = issueFactory.getIssue()\n    newSubTask.setAssignee(user)\n    newSubTask.setReporter(LoggedInUser)\n    //newSubTask.setSummary(issue.key.toString() + \" - Prod Task \" + counter)\n    \n    newSubTask.setSummary(obj.getUsername() + \" - \" + issue.getSummary())\n    \n    newSubTask.setParentObject(issue)\n    newSubTask.setProjectObject(issue.getProjectObject())\n    //Categoria approvazione PROD 22261 - TEST 21908\n    CustomField categoriaWF = customFieldManager.getCustomFieldObject(Long.parseLong(\"22261\"))\n   \n    newSubTask.setCustomFieldValue(categoriaWF,\"Approval Workflow\")\n \tnewSubTask.setCustomFieldValue(ReporterCompany,ReporterCompanyV)\n    \n    //issue.summary = newSummary\n    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n        it.getName() == \"Sub-WFStep\"\n    }.id)\n    \n    //def userObject = iqlFacade.findObjectsByIQLAndSchema(14, \"\\\"Employee User\\\" = \\\"\" + newSubTask.getAssignee().getEmailAddress() + \"\\\"\");\n    //log.debug \"object: \" + userObject\n    //newSubTask.setCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(20901), [objectFacade.loadObjectBean(userObject[0].getId())])\n\n    def newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\n\n    issueManager.createIssueObject(LoggedInUser, newIssueParams)\n    subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\n\n    log.debug \"Issue with summary ${newSubTask.summary} created\"\n\n    issueIndexingService.reIndex(newSubTask)\n    ComponentAccessor.getIssueManager().updateIssue(ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser(), newSubTask, EventDispatchOption.DO_NOT_DISPATCH, false)\n\n\n}\n\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.bc.user.search.UserSearchService
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import org.apache.log4j.Category
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.event.type.EventDispatchOption
+
+Category log = Category.getInstance("com.onresolve.jira.groovy.PostFunction")
+log.setLevel(org.apache.log4j.Level.DEBUG)
+
+def issueFactory = ComponentAccessor.getIssueFactory()
+def constantManager = ComponentAccessor.getConstantsManager()
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+def LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()
+def subTaskManager = ComponentAccessor.getSubTaskManager()
+CustomFieldManager 	customFieldManager 	= ComponentAccessor.getCustomFieldManager()
+/* Get Insight IQL Facade from plugin accessor */
+Class iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade"); 
+def iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);
+/* Get Insight Object Facade from plugin accessor */
+Class objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass("com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade");
+def objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+def userManager = ComponentAccessor.getUserManager()
+
+/* Get issue "Group Assignee" custom field value */
+IssueManager issueManager = ComponentAccessor.getIssueManager()
+//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase("OPUT-2")
+//21810 - Group Assignee
+//20901 - Production User
+//def value = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(21810))
+//def UserValue = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(20901))
+def userSearchService = ComponentAccessor.getComponent(UserSearchService)
+//IDTS WF Approval PROD 22257 - TEST 21900
+CustomField fieldWFApproval = customFieldManager.getCustomFieldObject(Long.parseLong("22257"))
+CustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong("20104"))
+
+def WfApprovals = issue.getCustomFieldValue(fieldWFApproval)
+ApplicationUser user1 = userManager.getUserByName("ester.bergonzoni")
+issue.setCustomFieldValue(fieldWFApproval, [user1])
+ComponentAccessor.getIssueManager().updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false);
+issueIndexingService.reIndex(issue)
+def ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)
+log.debug "WfApproval " + WfApprovals
+
+ApplicationUser user
+
+//for (obj in WfApprovals){
+    //log.debug objectFacade.loadObjectAttributeBean(obj.getId(), 1100).getObjectAttributeValueBeans()[0].getValue() //attribute id    
+    //log.debug "obj id: " + obj.getId()
+    user = userManager.getUserByName("ester.bergonzoni")
+
+    /* Create sub-task to be assigned to user */
+    MutableIssue newSubTask = issueFactory.getIssue()
+    newSubTask.setAssignee(user)
+    newSubTask.setReporter(LoggedInUser)
+    //newSubTask.setSummary(issue.key.toString() + " - Prod Task " + counter)
+    
+    newSubTask.setSummary(user.getKey() + " - " + issue.getSummary())
+    
+    newSubTask.setParentObject(issue)
+    newSubTask.setProjectObject(issue.getProjectObject())
+    //Categoria approvazione PROD 22261 - TEST 21908
+    CustomField categoriaWF = customFieldManager.getCustomFieldObject(Long.parseLong("22261"))
+   
+    newSubTask.setCustomFieldValue(categoriaWF,"Approval Workflow")
+ 	newSubTask.setCustomFieldValue(ReporterCompany,ReporterCompanyV)
+    
+    //issue.summary = newSummary
+    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{
+        it.getName() == "Sub-WFStep"
+    }.id)
+    
+    //def userObject = iqlFacade.findObjectsByIQLAndSchema(14, "\"Employee User\" = \"" + newSubTask.getAssignee().getEmailAddress() + "\"");
+    //log.debug "object: " + userObject
+    //newSubTask.setCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObject(20901), [objectFacade.loadObjectBean(userObject[0].getId())])
+
+    def newIssueParams = ["issue" : newSubTask] as Map&lt;String,Object&gt;
+
+    issueManager.createIssueObject(LoggedInUser, newIssueParams)
+    subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)
+
+    log.debug "Issue with summary ${newSubTask.summary} created"
+
+    issueIndexingService.reIndex(newSubTask)
+    //ComponentAccessor.getIssueManager().updateIssue(ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser(), newSubTask, EventDispatchOption.DO_NOT_DISPATCH, false)
+
+
+//}
+
+</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="v+nWù">false</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="17" name="FUTURE IMPROVEMENT">
+      <meta name="jira.status.id">15928</meta>
+      <actions>
+        <action id="241" name="Back Future Improvement">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="1">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

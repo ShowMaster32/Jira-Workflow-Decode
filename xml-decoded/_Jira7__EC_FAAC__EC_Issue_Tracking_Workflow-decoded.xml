@@ -1,0 +1,1667 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1706715873862</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+        <validator name="" type="class">
+          <arg name="FIELD_FUNCTION_ID">ηG{έο\Ϋ®ίλΎ7νΦΌqΗxη®ωΧ·άγ–ϋ{]w</arg>
+          <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.validators.SimpleScriptedValidator</arg>
+          <arg name="FIELD_CONDITION">{"script":"(cfValues['EC Type']?.value.toString() == 'Standard EC' &amp;&amp; cfValues['Reason for change']?.value.toString() != 'Component Obsolescence' &amp;&amp; cfValues['Reason for change']?.value.toString() != 'Cost reduction' &amp;&amp; cfValues['Reason for change']?.value.toString() != 'Alternative source for shortage' &amp;&amp; cfValues['Reason for change']?.value.toString() != 'Equipment Replacement' &amp;&amp; cfValues['Reason for change']?.value.toString() != 'Supply Chain Improvement') || (cfValues['EC Type']?.value.toString() != 'Standard EC' &amp;&amp; (cfValues['Reason for change']?.value.toString() == 'Component Obsolescence' || cfValues['Reason for change']?.value.toString() == 'Cost reduction' || cfValues['Reason for change']?.value.toString() == 'Alternative source for shortage' || cfValues['Reason for change']?.value.toString() == 'Equipment Replacement' || cfValues['Reason for change']?.value.toString() == 'Supply Chain Improvement'))","scriptPath":null,"parameters":{}}</arg>
+          <arg name="class.name">com.onresolve.jira.groovy.GroovyValidator</arg>
+          <arg name="FIELD_ERROR_MSG">Error: you cannot select 'Cost reduction' reason for change if you select to create a Standard EC, otherwise, if you select a CR issue you cannot select a reason for change different from 'Cost Reduction'</arg>
+          <arg name="FIELD_FORM_FIELD">customfield_12801</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">customfield_12846</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">10300</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION">issue.getProjectObject().key == 'EC'</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">10200</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION">issue.getProjectObject().key == 'KEY'</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">o·4ë]z×·6×Ý_Ó·ýo5ï^»ëý}¾øáÎ{</arg>
+              <arg name="FIELD_NOTES">`!`</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">`!`</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/EC_UpdateVisibilityGroups.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">iЌ5е„Юyньх«ч—оxлЌ&lt;sЧЏ{ѓ^iЁ7џMх</arg>
+              <arg name="FIELD_NOTES">`!`</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">`!`</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/EC_UpdateECNumber.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">w§÷mÇs·ßn÷çg×§uí§ùÛ7y®µkÎ</arg>
+              <arg name="FIELD_NOTES">`!`</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">`!`</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/EC_CreateCodesIssues.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10004</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <common-actions>
+    <action id="21" name="Jump to step 3">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <restrict-to>
+        <conditions type="OR">
+          <condition type="class">
+            <arg name="jira.projectrole.id">10002</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+          <condition type="class">
+            <arg name="jira.projectrole.id">10001</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="4">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12848</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Brand FAAC - Genius</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_FUNCTION_ID">çÏ4{µÛ~µéÍ{qÏ]w·áÇ_Õîá¾;m¯Z</arg>
+              <arg name="FIELD_TO_USER_FIELDS">projectlead</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+&lt;!--div style="background: #B0E0E6;  margin: 0 auto;  padding: 50px;/* border-radius */ -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; /* box-shadow */ -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;"--&gt;
+Dear Colleague,
+&lt;/br&gt;
+the &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("EC Type")) %&gt; &lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.key}&lt;/a&gt; has been moved to Step "3 - Queue to implement", please follow the link below to open it&lt;/br&gt;
+&lt;p align="center" style="font-size:16px"&gt;&lt;b&gt;&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;/br&gt;
+&lt;/br&gt;&lt;/br&gt;
+Regards
+&lt;/br&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [Moved to step 3] ${issue.summary}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport org.apache.log4j.Category\n \ndef Category log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef changeHistoryManager = ComponentAccessor.getChangeHistoryManager()\n\nif (issue.getCustomFieldValue(customFieldManager.getCustomFieldObjectsByName( \"Brand\" )[0])[0].toString()  == \"Magnetic\")\n    return false\nelse\n    return changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size()) != 0 &amp;&amp; changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size() - 2).getFromString().equals(\"1 - Queue to start\") || changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size() - 2).getFromString().equals(\"2 - Engineering WIP\") &amp;&amp; issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")[0]).value != \"Standard EC\"","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">KEY-20128</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Brand Magnetic</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES">CDraendle@ac-magnetic.de</arg>
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_FUNCTION_ID">çÏ4{µÛ~µéÍ{qÏ]w·áÇ_Õîá¾;m¯Z</arg>
+              <arg name="FIELD_TO_USER_FIELDS" />
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+&lt;!--div style="background: #B0E0E6;  margin: 0 auto;  padding: 50px;/* border-radius */ -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; /* box-shadow */ -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;"--&gt;
+Dear Colleague,
+&lt;/br&gt;
+the &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("EC Type")) %&gt; &lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.key}&lt;/a&gt; has been moved to Step "3 - Queue to implement", please follow the link below to open it&lt;/br&gt;
+&lt;p align="center" style="font-size:16px"&gt;&lt;b&gt;&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;/br&gt;
+&lt;/br&gt;&lt;/br&gt;
+Regards
+&lt;/br&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [Moved to step 3] ${issue.summary}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport org.apache.log4j.Category\n \ndef Category log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef changeHistoryManager = ComponentAccessor.getChangeHistoryManager()\n\nif (issue.getCustomFieldValue(customFieldManager.getCustomFieldObjectsByName( \"Brand\" )[0])[0].toString()  != \"Magnetic\")\n    return false\nelse\n    return changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size()) != 0 &amp;&amp; changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size() - 2).getFromString().equals(\"1 - Queue to start\") || changeHistoryManager.getChangeItemsForField(issue, \"status\").getAt(changeHistoryManager.getChangeItemsForField(issue, \"status\").size() - 2).getFromString().equals(\"2 - Engineering WIP\") &amp;&amp; issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")[0]).value != \"Standard EC\"","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">KEY-20014</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10101</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="71" name="Jump back to step 2">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <restrict-to>
+        <conditions type="OR">
+          <condition type="class">
+            <arg name="jira.projectrole.id">10002</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+          <condition type="class">
+            <arg name="jira.projectrole.id">10001</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">k¶Úã]4óoZm·ºyï]Ûg»åÆmZ×]yß~ß</arg>
+              <arg name="FIELD_NOTES">Mechanical CR going into Step 2 =&gt; add Claudio Miccoli as Watcher</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.startWatching(user, issue)
+    watcherManager.startWatching(user2, issue)
+    watcherManager.startWatching(user3, issue)
+    watcherManager.startWatching(user4, issue)
+} </arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE" />
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12847</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10101</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="41" name="Jump to step 7" view="fieldscreen">
+      <meta name="jira.field.resolution.include">10101,10102,10103,10104</meta>
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">11609</meta>
+      <restrict-to>
+        <conditions type="AND">
+          <conditions type="OR">
+            <condition type="class">
+              <arg name="jira.projectrole.id">10002</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+            </condition>
+            <condition type="class">
+              <arg name="jira.projectrole.id">10001</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+            </condition>
+          </conditions>
+          <condition type="class">
+            <arg name="²Ö­ºÇ¬">10007,10932,10933</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.SubTaskBlockingCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <validators>
+        <validator name="" type="class">
+          <arg name="FIELD_FUNCTION_ID">11b933f7-f533-4a1c-a0cb-4f0c5512a472</arg>
+          <arg name="FIELD_NOTES">Per EC Type== "Supply Chain EC (Ex CR) – Electronic" e ReasonChange=="Component Obsolescence" e resolution=="Closed with Negative Feedback") se non ho una EC (HUB) o  una EC collegata do errore</arg>
+          <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor;\r\nimport com.opensymphony.workflow.InvalidInputException\r\nimport com.atlassian.crowd.embedded.api.User\r\nimport com.atlassian.jira.user.util.UserManager\r\nimport com.atlassian.jira.util.ImportUtils\r\nimport com.atlassian.jira.issue.Issue\r\nimport com.atlassian.jira.issue.IssueManager\r\nimport com.atlassian.jira.issue.CustomFieldManager\r\nimport com.atlassian.jira.issue.fields.CustomField\r\nimport com.atlassian.jira.issue.link.IssueLink\r\nimport com.atlassian.jira.issue.link.IssueLinkManager\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.user.ApplicationUsers\r\n\r\ndef ecType = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")).toString()\r\ndef ReasonChange = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Reason for change\")).toString()\r\n\r\nlog.warn issue.resolution.name.toString()\r\nlog.warn ecType\r\nlog.warn ReasonChange\r\n\r\n// Decommentare le due righe sotto per il test da Script Console\r\nIssueManager issueManager = ComponentAccessor.getIssueManager();\r\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\r\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\r\ndef hasEC = false\r\n// Check for Outward links that are Open Code Issues\r\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\r\n    log.warn l\r\n\r\n    if ( l.destinationObject.issueType.name == \"Engineering Change\" ||  l.destinationObject.issueType.name == \"EC\") {    \r\n        hasEC = true\r\n        log.warn l.destinationObject.issueType.name\r\n        log.warn hasEC\r\n    }\r\n}\r\n\r\nif(hasEC== false &amp;&amp; ecType== \"Supply Chain EC (Ex CR) \u2013 Electronic\" &amp;&amp; ReasonChange==\"Component Obsolescence\" &amp;&amp; issue.resolution.name.toString()==\"Closed with Negative Feedback\") { \r\n    // verifico se linkata c'\u00e8 una ec o una HUB ec\r\n    log.warn ecType== \"Supply Chain EC (Ex CR) \u2013 Electronic\" &amp;&amp; ReasonChange==\"Component Obsolescence\" &amp;&amp; issue.getResolution().toString()==\"Closed with Negative Feedback\"\r\n    log.warn \"Missing linked EC\"\r\n    throw new InvalidInputException(\"Missing linked EC\")    \r\n    \r\n}\r\n","scriptPath":null,"parameters":{}}</arg>
+          <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.validators.CustomScriptValidator</arg>
+          <arg name="class.name">com.onresolve.jira.groovy.GroovyValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="8">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">mæ¼ë¿ßFõO]óg=ÓNxåÍ×®ù{Ç8k§}</arg>
+              <arg name="FIELD_NOTES">Mechanical CR going out from Step 2 =&gt; remove Claudio Miccoli from Watchers</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.stopWatching(user, issue)
+    watcherManager.stopWatching(user2, issue)
+    watcherManager.stopWatching(user3, issue)
+    watcherManager.stopWatching(user4, issue)
+} </arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE" />
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12852</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM" />
+              <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+              <arg name="FIELD_TO_ADDRESSES">martina.bergamini@faacgroup.com, alessandro.maresi@faacgroup.com</arg>
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_FUNCTION_ID">ÓÇ½×®Ù®|ßÛy§w´÷¶½}®wowçÍ</arg>
+              <arg name="FIELD_TO_USER_FIELDS" />
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family: sans-serif"&gt;
+        &lt;span class="preheader" style="display: none !important; font-size:1px; line-height: 1px; color: #cccccc;; display: none; font-size: 1px; line-height: 1px"&gt;Status of the request $issue.summary with key $issue has been changed... &lt;/span&gt;&lt;center&gt;
+            &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; background-color: #f5f5f5; font-size: 16px; font-family: sans-serif"&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" id="email-wrap-cell" style="padding: 20px 10px 10px"&gt;
+                            &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; width: 600px; line-height: 1,500"&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr&gt;
+                                        &lt;td align="left"&gt;
+                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif"&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+                                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; width: 100%"&gt;
+                                                                &lt;tbody&gt;
+                                                                    &lt;tr&gt;
+                                                                        &lt;td class="viewport-details" style="width: 50%"&gt;
+                                                                            &lt;a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"&gt;&lt;strong style="font-weight: bold"&gt;EC FAAC&lt;/strong&gt;&lt;/a&gt;
+                                                                        &lt;/td&gt;
+                                                                        &lt;td class="request-key" style="width: 50%; text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+                                                                            &lt;!-- &lt;a href="http://support.hubparking.com/servicedesk/customer/portal/2/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"&gt;Reference: &lt;strong style="font-weight: bold"&gt;[$issue]&lt;/strong&gt;&lt;/a&gt; --&gt;
+																			Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+                                                                        &lt;/td&gt;
+                                                                    &lt;/tr&gt;
+                                                                &lt;/tbody&gt;
+                                                            &lt;/table&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-content-important email-heading" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding-top: 10px; border-top-color: #f5f5f5"&gt;
+                                                            &lt;h1 style="margin: 0; line-height: 1,200; font-size: 22px; font-weight: bold; color: #111"&gt;&lt;a href="itatlass-app01:8080/browse/$issue" class="header-request-link" style="color: #111; text-decoration: none"&gt;$issue.summary&lt;/a&gt;&lt;/h1&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="latest-activity-container email-content-important" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding-top: 0; border-top-width: 0"&gt;
+                                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif"&gt;
+                                                                &lt;tbody&gt;
+                                                                    &lt;tr&gt;
+                                                                        &lt;td class="latest-activity activity-item status-update " style="padding: 20px 10px; border-top: solid 1px #ccc; display: block; margin: 0; border: solid 1px; border-radius: 3px; border-color: #14892C; background-color: #fffdf6"&gt;
+                                                                            &lt;div class="content" style="float: left; line-height: 1,600; clear: both"&gt;
+                                                                                Status changed to &lt;strong style="font-weight: bold"&gt;$issue.status.name&lt;/strong&gt; with Resolution &lt;strong style="font-weight: bold"&gt;$issue.resolution.name&lt;/strong&gt; &lt;/br&gt;
+                                                                            &lt;/div&gt;
+                                                                        &lt;/td&gt;
+                                                                    &lt;/tr&gt;
+                                                                &lt;/tbody&gt;
+                                                            &lt;/table&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-actions email-content-important" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 0; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+                                                            You can &lt;a href="itatlass-app01:8080/browse/$issue"&gt;view the full request&lt;/a&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/center&gt;
+    &lt;/body&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[EC FAAC] [$issue] [Step 7 - $issue.resolution.name] $issue.summary</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">issue.projectObject.key == 'KEY' &amp;&amp; (issue.resolution?.name == 'Failed' || issue.resolution?.name == 'Canceled') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.issueLinkType.name.contains('Cloners') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.destinationObject.issueType.name.contains('Task') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.destinationObject.project.key.contains('QCEL')</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE" />
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10301</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="11" name="Go to step 2">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <restrict-to>
+        <conditions type="OR">
+          <condition type="class">
+            <arg name="jira.projectrole.id">10002</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+          <condition type="class">
+            <arg name="jira.projectrole.id">10001</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">×ßåÇusßÛvùkw^ï~4y§öÓmºÓtÓ¯</arg>
+              <arg name="FIELD_NOTES">Mechanical CR going into Step 2 =&gt; add "claudio.miccoli, luigi.pasquali, thomas.kolbe, fabio.bardelli, carla.tabasso" as Watchers</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+ApplicationUser user5 = ComponentAccessor.getUserManager().getUserByKey("carla.tabasso")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.startWatching(user, issue)
+    watcherManager.startWatching(user2, issue)
+    watcherManager.startWatching(user3, issue)
+    watcherManager.startWatching(user4, issue)
+    watcherManager.startWatching(user5, issue)
+} </arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE" />
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12847</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10101</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="111" name="Go back to step 4">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <restrict-to>
+        <conditions type="OR">
+          <condition type="class">
+            <arg name="jira.projectrole.id">10002</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+          <condition type="class">
+            <arg name="jira.projectrole.id">10001</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12849</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10101</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="31" name="Jump to step 4" view="fieldscreen">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">19201</meta>
+      <restrict-to>
+        <conditions>
+          <condition type="class">
+            <arg name="FIELD_FUNCTION_ID">ÑÍ;÷ßß¿Zmþ¼ç½ÓN¼w§=éíyçÍwíß\</arg>
+            <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+            <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\n//ComponentManager \tcomponentManager = \tComponentManager.getInstance()\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n\n/* Rimossa condizione di check dello stato delle issue di tipo Involved Code */\n/*\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n*/\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes","scriptPath":null,"parameters":{}}</arg>
+            <arg name="FIELD_PREVIEW_ISSUE" />
+            <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <validators>
+        <validator name="" type="class">
+          <arg name="contextHandling" />
+          <arg name="hidFieldsList">customfield_21814@@customfield_21813@@customfield_21811@@customfield_21812@@</arg>
+          <arg name="jsuWorkflowParamsVersion-textValue">2.15.1</arg>
+          <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+          <arg name="customErrorMessage-textValue">All fields must be completed in order to proceed</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="5">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">mæ¼ë¿ßFõO]óg=ÓNxåÍ×®ù{Ç8k§}</arg>
+              <arg name="FIELD_NOTES">Mechanical CR going out from Step 2 =&gt; remove Claudio Miccoli from Watchers</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.stopWatching(user, issue)
+    watcherManager.stopWatching(user2, issue)
+    watcherManager.stopWatching(user3, issue)
+    watcherManager.stopWatching(user4, issue)
+} </arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE" />
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.name">customfield_12849</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+              <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">10300</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="2" name="1 - Queue to start">
+      <meta name="jira.status.id">10327</meta>
+      <actions>
+<common-action id="31" />
+<common-action id="41" />
+<common-action id="11" />
+<common-action id="21" />
+        <action id="151" name="Go to step 1.5">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">issue.getProjectObject().key == 'EC'</arg>
+                <arg name="FIELD_PREVIEW_ISSUE">EC-394</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="9">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="2 - Engineering WIP">
+      <meta name="jira.status.id">10328</meta>
+      <actions>
+<common-action id="31" />
+<common-action id="41" />
+        <action id="51" name="Go to step 3" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">19201</meta>
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">ßG¸éÆ½kMûÛG}Ñß^}Þ{8å¾ÜÛ½ø¾·</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes\n","scriptPath":null,"parameters":{}}</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <validators>
+            <validator name="" type="class">
+              <arg name="contextHandling" />
+              <arg name="hidFieldsList">customfield_21811@@customfield_21812@@customfield_21813@@customfield_21814@@</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.15.1</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+              <arg name="customErrorMessage-textValue">All fields must be completed in order to proceed</arg>
+            </validator>
+          </validators>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">mæ¼ë¿ßFõO]óg=ÓNxåÍ×®ù{Ç8k§}</arg>
+                  <arg name="FIELD_NOTES">Mechanical CR going out from Step 2 =&gt; remove "claudio.miccoli, luigi.pasquali, thomas.kolbe, fabio.bardelli, carla.tabasso" from Watchers</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+ApplicationUser user5 = ComponentAccessor.getUserManager().getUserByKey("carla.tabasso")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.stopWatching(user, issue)
+    watcherManager.stopWatching(user2, issue)
+    watcherManager.stopWatching(user3, issue)
+    watcherManager.stopWatching(user4, issue)
+    watcherManager.stopWatching(user5, issue)
+} </arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12848</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Brand FAAC - Genius</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">wq½»w~Ú{ÏwÝ¿tÑ§ýçÝ[ÙÇïº{]</arg>
+                  <arg name="FIELD_TO_USER_FIELDS">projectlead</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+&lt;!--div style="background: #B0E0E6;  margin: 0 auto;  padding: 50px;/* border-radius */ -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; /* box-shadow */ -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;"--&gt;
+Dear Colleague,
+&lt;/br&gt;
+the &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("EC Type")) %&gt; &lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.key}&lt;/a&gt; has been moved to Step "3 - Queue to implement", please follow the link below to open it&lt;/br&gt;
+&lt;p align="center" style="font-size:16px"&gt;&lt;b&gt;&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;/br&gt;
+&lt;/br&gt;&lt;/br&gt;
+Regards
+&lt;/br&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [Moved to step 3] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport org.apache.log4j.Category\n \ndef Category log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n  \ndef changeHistoryManager = ComponentAccessor.getChangeHistoryManager()\n\n\nissue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")[0]) != \"Standard EC\" &amp;&amp; issue.getCustomFieldValue(customFieldManager.getCustomFieldObjectsByName( \"Brand\" )[0])[0].toString()  != \"Magnetic\"\n\n\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">KEY-20094</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Brand magnetic</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES">CDraendle@ac-magnetic.de</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">wq½»w~Ú{ÏwÝ¿tÑ§ýçÝ[ÙÇïº{]</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+&lt;!--div style="background: #B0E0E6;  margin: 0 auto;  padding: 50px;/* border-radius */ -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; /* box-shadow */ -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px; box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;"--&gt;
+Dear Colleague,
+&lt;/br&gt;
+the &lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObjectByName("EC Type")) %&gt; &lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.key}&lt;/a&gt; has been moved to Step "3 - Queue to implement", please follow the link below to open it&lt;/br&gt;
+&lt;p align="center" style="font-size:16px"&gt;&lt;b&gt;&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;/br&gt;
+&lt;/br&gt;&lt;/br&gt;
+Regards
+&lt;/br&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [Moved to step 3] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport org.apache.log4j.Category\n \ndef Category log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n  \ndef changeHistoryManager = ComponentAccessor.getChangeHistoryManager()\n\nissue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")[0]) != \"Standard EC\" &amp;&amp; issue.getCustomFieldValue(customFieldManager.getCustomFieldObjectsByName( \"Brand\" )[0])[0].toString()  == \"Magnetic\"\n","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">KEY-20242</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10101</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="131" name="Jump to step 5">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">ßG¸éÆ½kMûÛG}Ñß^}Þ{8å¾ÜÛ½ø¾·</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes","scriptPath":null,"parameters":{}}</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">mæ¼ë¿ßFõO]óg=ÓNxåÍ×®ù{Ç8k§}</arg>
+                  <arg name="FIELD_NOTES">Mechanical CR going out from Step 2 =&gt; remove Claudio Miccoli from Watchers</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Supply Chain EC (Ex CR) – Mechanical")){
+    watcherManager.stopWatching(user, issue)
+    watcherManager.stopWatching(user2, issue)
+    watcherManager.stopWatching(user3, issue)
+    watcherManager.stopWatching(user4, issue)
+} </arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12850</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10101</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="3 - Queue to implement">
+      <meta name="jira.status.id">10329</meta>
+      <actions>
+<common-action id="41" />
+        <action id="61" name="Go to step 4" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">19201</meta>
+          <restrict-to>
+            <conditions type="OR">
+              <condition type="class">
+                <arg name="jira.projectrole.id">10002</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+              <condition type="class">
+                <arg name="jira.projectrole.id">10001</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <validators>
+            <validator name="" type="class">
+              <arg name="contextHandling" />
+              <arg name="hidFieldsList">customfield_21811@@customfield_21812@@customfield_21813@@customfield_21814@@</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.15.1</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+              <arg name="customErrorMessage-textValue">All fields must be completed in order to proceed</arg>
+            </validator>
+          </validators>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12849</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10300</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="161" name="Go back to step 2">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">л}tзЁщ—Ѓi≠ыйЁџWґбнЁхнzгЧ;iЌЇ</arg>
+                  <arg name="FIELD_NOTES">Mechanical CR going into Step 2 =&gt; add Claudio Miccoli as Watcher</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.crowd.embedded.api.User
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.fields.CustomField
+ 
+def watcherManager = ComponentAccessor.getWatcherManager()
+def userManager = ComponentAccessor.getUserManager()
+ 
+CustomField ecType = ComponentAccessor.getCustomFieldManager().getCustomFieldObject("12800".toLong())
+
+ApplicationUser user = ComponentAccessor.getUserManager().getUserByKey("claudio.miccoli")
+ApplicationUser user2 = ComponentAccessor.getUserManager().getUserByKey("luigi.pasquali")
+ApplicationUser user3 = ComponentAccessor.getUserManager().getUserByKey("thomas.kolbe")
+ApplicationUser user4 = ComponentAccessor.getUserManager().getUserByKey("fabio.bardelli")
+ApplicationUser user5 = ComponentAccessor.getUserManager().getUserByKey("carla.tabasso")
+if (user &amp;&amp; issue.getCustomFieldValue(ecType).toString().equals("Mechanical CR")){
+    watcherManager.startWatching(user, issue)
+    watcherManager.startWatching(user2, issue)
+    watcherManager.startWatching(user3, issue)
+    watcherManager.startWatching(user4, issue)
+    watcherManager.startWatching(user5, issue)
+} </arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE" />
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12847</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="5" name="4 - Implementation WIP">
+      <meta name="jira.status.id">10330</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="71" />
+        <action id="81" name="Jump to step 6">
+          <meta name="jira.field.resolution.include">10201</meta>
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">ßG¸éÆ½kMûÛG}Ñß^}Þ{8å¾ÜÛ½ø¾·</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes","scriptPath":null,"parameters":{}}</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12851</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+                  <arg name="field.value">10201</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">÷V¹mç¼öïN7o¾¸ñçµovøï¾·÷§[÷Ç[</arg>
+                  <arg name="FIELD_NOTES">`!`</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT">`!`</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts/QCEL_TransitionTaskFromEC.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send email to Product Managers when ECs with Instructions Update = Yes are moved to Step 6</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES">Giovanni.DAbramo@faacgroup.com, Danilo.Mascellani@faacgroup.com, maurizio.sammarchi@faacgroup.com, Davide.Querze@faacgroup.com, Giulia.Baldini@faacgroup.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">å¾Z¶·ÛÛÎÜÝ§õöÕ¶¹Ý¯{ó§=ëû</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+Dear Colleague,
+&lt;/br&gt;
+&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt; has been moved to step "6 – Feedback queue" so the changes are ready to be applied to production. 
+&lt;h3&gt;&lt;b&gt;PLEASE PAY ATTENTION TO MODIFIED PRODUCT INSTRUCTIONS&lt;/b&gt;&lt;/h3&gt;
+&lt;/br&gt;
+&lt;/br&gt;
+Best Regards&lt;/br&gt;
+EC Team
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [6 - Feedback queue =&gt; Instructions Update] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">cfValues['Instructions Update']?.value == 'Yes'</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">EC-697</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send email to Sandra Paola Ricci when ECs are moved to Step 6</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES">sandrapaola.ricci@faactechnologies.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">å¾Z¶·ÛÛÎÜÝ§õöÕ¶¹Ý¯{ó§=ëû</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+Dear Colleague,
+&lt;/br&gt;
+&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt; has been moved to step "6 - Feedback queue" so the changes are ready to be applied to production. 
+
+&lt;/br&gt;
+&lt;/br&gt;
+Best Regards&lt;/br&gt;
+EC Team
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [6 - Feedback queue] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION" />
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">EC-697</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10302</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="91" name="Go to step 5">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">ßG¸éÆ½kMûÛG}Ñß^}Þ{8å¾ÜÛ½ø¾·</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes","scriptPath":null,"parameters":{}}</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12850</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Email for Traceability D101</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+                  <arg name="FIELD_TO_ADDRESSES">Giuseppe.Palma@faacgroup.com, Roberto.Lipparini@faacgroup.com, tommaso.bagnacavalli@faacgroup.com, sanjay.pradhan@faacgroup.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+                  <arg name="FIELD_EMAIL_TEMPLATE">A new finish product has been created and it’s necessary to activate traceability on Sap. Please, update:
+
+
+- the production line parameters if needed
+- product labels according to traceability project
+
+If SAP traceability is not possible for the product please inform us.
+
+
+Thank you
+
+
+Engineering Change team</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Traceability request</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">cfValues['Sap Traceability']?.value == 'Yes' &amp;&amp; 'D101 - Bologna (IT)' in cfValues['Involved Plants']*.value</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">LEÓ</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Email for Traceability D149</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+                  <arg name="FIELD_TO_ADDRESSES">Giuseppe.Palma@faacgroup.com, Georgi.Georgiev@faacgroup.com, tommaso.bagnacavalli@faacgroup.com, sanjay.pradhan@faacgroup.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+                  <arg name="FIELD_EMAIL_TEMPLATE">A new finish product has been created and it’s necessary to activate traceability on Sap. Please, update:
+
+
+- the production line parameters if needed
+- product labels according to traceability project
+
+If SAP traceability is not possible for the product please inform us.
+
+
+Thank you
+
+
+Engineering Change team</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Traceability request</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">cfValues['Sap Traceability']?.value == 'Yes' &amp;&amp; 'D149 - Tutrakan (BG)' in cfValues['Involved Plants']*.value</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">LEÓ</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10101</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="101" name="Go back to step 3">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions type="OR">
+              <condition type="class">
+                <arg name="jira.projectrole.id">10002</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+              <condition type="class">
+                <arg name="jira.projectrole.id">10001</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12848</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10101</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="6" name="5 - Phase In/Out queue">
+      <meta name="jira.status.id">10331</meta>
+      <actions>
+<common-action id="41" />
+<common-action id="71" />
+<common-action id="111" />
+        <action id="121" name="Go to step 6">
+          <meta name="jira.field.resolution.include">10201</meta>
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions type="AND">
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">ßG¸éÆ½kMûÛG}Ñß^}Þ{8å¾ÜÛ½ø¾·</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.crowd.embedded.api.User\nimport com.atlassian.jira.user.util.UserManager\nimport com.atlassian.jira.util.ImportUtils\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.link.IssueLink\nimport com.atlassian.jira.issue.link.IssueLinkManager\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.user.ApplicationUsers\n\n// Decommentare le due righe sotto per il test da Script Console\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\n\ndef hasOpenCodes = true\n// Check for Outward links that are Open Code Issues\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\n                                                           if (l.issueLinkType?.getName() == \"Parent\" &amp;&amp; l.destinationObject.issueType.name == \"Involved Code\" &amp;&amp; l.destinationObject.status.name == \"Open\") {    \n                                                              hasOpenCodes = false\n                                                           }\n                                                       }\n\ndef groupManager = ComponentAccessor.getGroupManager()\n(groupManager.isUserInGroup(currentUser, 'Administrators') || groupManager.isUserInGroup(currentUser, 'EC-administrators') || isUserMemberOfRole('Developers')) &amp;&amp; hasOpenCodes","scriptPath":null,"parameters":{}}</arg>
+                <arg name="FIELD_PREVIEW_ISSUE" />
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+              <condition type="class">
+                <arg name="²Ö­ºÇ¬">10007,10932,10933</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.SubTaskBlockingCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12851</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+                  <arg name="field.value">10201</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES" />
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="FIELD_INLINE_SCRIPT" />
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_SCRIPT_FILE">customScripts\QCEL_TransitionTaskFromEC.groovy</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send email to Product Managers when ECs with Instructions Update = Yes are moved to Step 6</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES">Giovanni.DAbramo@faacgroup.com, Danilo.Mascellani@faacgroup.com, maurizio.sammarchi@faacgroup.com, Davide.Querze@faacgroup.com, Giulia.Baldini@faacgroup.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">å¾Z¶·ÛÛÎÜÝ§õöÕ¶¹Ý¯{ó§=ëû</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+Dear Colleague,
+&lt;/br&gt;
+&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt; has been moved to step "6 – Feedback queue" so the changes are ready to be applied to production. 
+&lt;h3&gt;&lt;b&gt;PLEASE PAY ATTENTION TO MODIFIED PRODUCT INSTRUCTIONS&lt;/b&gt;&lt;/h3&gt;
+&lt;/br&gt;
+&lt;/br&gt;
+Best Regards&lt;/br&gt;
+EC Team
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [6 - Feedback queue =&gt; Instructions Update] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">cfValues['Instructions Update']?.value == 'Yes'</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">KEY-2875</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send email to Sandra paolowhen ECs are moved to Step 6</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">cellEC@faacgroup.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+                  <arg name="FIELD_TO_ADDRESSES">sandrapaola.ricci@faactechnologies.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">å¾Z¶·ÛÛÎÜÝ§õöÕ¶¹Ý¯{ó§=ëû</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;body style="font-family:calibri;font-size:16px"&gt;
+Dear Colleague,
+&lt;/br&gt;
+&lt;a href="$baseUrl/browse/$issue.key"&gt;${issue.summary}&lt;/a&gt; has been moved to step "6 - Feedback queue" so the changes are ready to be applied to production. 
+&lt;/br&gt;
+&lt;/br&gt;
+Best Regards&lt;/br&gt;
+EC Team
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">(${issue.key}) [6 - Feedback queue] ${issue.summary}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION" />
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE">KEY-2875</arg>
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10302</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="7" name="6 - Feedback queue">
+      <meta name="jira.issue.editable">false</meta>
+      <meta name="jira.status.id">10332</meta>
+      <actions>
+<common-action id="111" />
+        <action id="141" name="Go to step 7" view="fieldscreen">
+          <meta name="jira.field.resolution.include">10101,10102,10103,10104</meta>
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">11609</meta>
+          <restrict-to>
+            <conditions type="OR">
+              <condition type="class">
+                <arg name="jira.projectrole.id">10002</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+              <condition type="class">
+                <arg name="jira.projectrole.id">10001</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <validators>
+            <validator name="" type="class">
+              <arg name="FIELD_FUNCTION_ID">f866fb7f-4ff7-4303-81b8-71f471adef4b</arg>
+              <arg name="FIELD_NOTES">Per EC Type== "Supply Chain EC (Ex CR) – Electronic" e ReasonChange=="Component Obsolescence" e resolution=="Closed with Negative Feedback") se non ho una EC (HUB) o una EC collegata do errore</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor;\r\nimport com.opensymphony.workflow.InvalidInputException\r\nimport com.atlassian.crowd.embedded.api.User\r\nimport com.atlassian.jira.user.util.UserManager\r\nimport com.atlassian.jira.util.ImportUtils\r\nimport com.atlassian.jira.issue.Issue\r\nimport com.atlassian.jira.issue.IssueManager\r\nimport com.atlassian.jira.issue.CustomFieldManager\r\nimport com.atlassian.jira.issue.fields.CustomField\r\nimport com.atlassian.jira.issue.link.IssueLink\r\nimport com.atlassian.jira.issue.link.IssueLinkManager\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.user.ApplicationUsers\r\n\r\ndef ecType = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"EC Type\")).toString()\r\ndef ReasonChange = issue.getCustomFieldValue(ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Reason for change\")).toString()\r\n\r\nlog.warn issue.resolution.name.toString()\r\nlog.warn ecType\r\nlog.warn ReasonChange\r\n\r\n// Decommentare le due righe sotto per il test da Script Console\r\nIssueManager issueManager = ComponentAccessor.getIssueManager();\r\nCustomFieldManager \t\t\tcustomFieldManager = \tComponentAccessor.getCustomFieldManager()\r\nIssueLinkManager \t\t\tissueLinkManager = \t\tComponentAccessor.getIssueLinkManager()\r\ndef hasEC = false\r\n// Check for Outward links that are Open Code Issues\r\nissueLinkManager.getOutwardLinks(issue.getId()).each() {l-&gt;\r\n    log.warn l\r\n\r\n    if ( l.destinationObject.issueType.name == \"Engineering Change\" ||  l.destinationObject.issueType.name == \"EC\") {    \r\n        hasEC = true\r\n        log.warn l.destinationObject.issueType.name\r\n        log.warn hasEC\r\n    }\r\n}\r\n\r\nif(hasEC== false &amp;&amp; ecType== \"Supply Chain EC (Ex CR) \u2013 Electronic\" &amp;&amp; ReasonChange==\"Component Obsolescence\" &amp;&amp; issue.resolution.name.toString()==\"Closed with Negative Feedback\") { \r\n    // verifico se linkata c'\u00e8 una ec o una HUB ec\r\n    log.warn ecType== \"Supply Chain EC (Ex CR) \u2013 Electronic\" &amp;&amp; ReasonChange==\"Component Obsolescence\" &amp;&amp; issue.getResolution().toString()==\"Closed with Negative Feedback\"\r\n    log.warn \"Missing linked EC\"\r\n    throw new InvalidInputException(\"Missing linked EC\")    \r\n    \r\n}\r\n","scriptPath":null}</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.validators.CustomScriptValidator</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyValidator</arg>
+            </validator>
+          </validators>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="8">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12852</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS" />
+                  <arg name="FIELD_TO_ADDRESSES">martina.bergamini@faacgroup.com, alessandro.maresi@faacgroup.com</arg>
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS" />
+                  <arg name="FIELD_FUNCTION_ID">ÓÇ½×®Ù®|ßÛy§w´÷¶½}®wowçÍ</arg>
+                  <arg name="FIELD_TO_USER_FIELDS" />
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK" />
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;body style="background-color: #f5f5f5; font-size: 16px; font-family: sans-serif"&gt;
+        &lt;span class="preheader" style="display: none !important; font-size:1px; line-height: 1px; color: #cccccc;; display: none; font-size: 1px; line-height: 1px"&gt;Status of the request $issue.summary with key $issue has been changed... &lt;/span&gt;&lt;center&gt;
+            &lt;table id="email-wrap" valign="top" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; background-color: #f5f5f5; font-size: 16px; font-family: sans-serif"&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td align="center" id="email-wrap-cell" style="padding: 20px 10px 10px"&gt;
+                            &lt;table id="email-container" border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; width: 600px; line-height: 1,500"&gt;
+                                &lt;tbody&gt;
+                                    &lt;tr&gt;
+                                        &lt;td align="left"&gt;
+                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif"&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-header" style="padding: 10px 20px; border: solid #ddd; border-width: 1px 2px 1px 1px; border-bottom-color: #f5f5f5; background-color: #fff; font-weight: normal; line-height: 1,200"&gt;
+                                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif; width: 100%"&gt;
+                                                                &lt;tbody&gt;
+                                                                    &lt;tr&gt;
+                                                                        &lt;td class="viewport-details" style="width: 50%"&gt;
+                                                                            &lt;a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"&gt;&lt;strong style="font-weight: bold"&gt;EC FAAC&lt;/strong&gt;&lt;/a&gt;
+                                                                        &lt;/td&gt;
+                                                                        &lt;td class="request-key" style="width: 50%; text-align: right; font-size: 12px; line-height: 18px; text-decoration: none"&gt;
+                                                                            &lt;!-- &lt;a href="http://support.hubparking.com/servicedesk/customer/portal/2/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"&gt;Reference: &lt;strong style="font-weight: bold"&gt;[$issue]&lt;/strong&gt;&lt;/a&gt; --&gt;
+																			Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+                                                                        &lt;/td&gt;
+                                                                    &lt;/tr&gt;
+                                                                &lt;/tbody&gt;
+                                                            &lt;/table&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-content-important email-heading" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding-top: 10px; border-top-color: #f5f5f5"&gt;
+                                                            &lt;h1 style="margin: 0; line-height: 1,200; font-size: 22px; font-weight: bold; color: #111"&gt;&lt;a href="itatlass-app01:8080/browse/$issue" class="header-request-link" style="color: #111; text-decoration: none"&gt;$issue.summary&lt;/a&gt;&lt;/h1&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="latest-activity-container email-content-important" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding-top: 0; border-top-width: 0"&gt;
+                                                            &lt;table border="0" cellpadding="0" cellspacing="0" style="width: 100%; font-family: sans-serif"&gt;
+                                                                &lt;tbody&gt;
+                                                                    &lt;tr&gt;
+                                                                        &lt;td class="latest-activity activity-item status-update " style="padding: 20px 10px; border-top: solid 1px #ccc; display: block; margin: 0; border: solid 1px; border-radius: 3px; border-color: #14892C; background-color: #fffdf6"&gt;
+                                                                            &lt;div class="content" style="float: left; line-height: 1,600; clear: both"&gt;
+                                                                                Status changed to &lt;strong style="font-weight: bold"&gt;$issue.status.name&lt;/strong&gt; with Resolution &lt;strong style="font-weight: bold"&gt;$issue.resolution.name&lt;/strong&gt; &lt;/br&gt;
+                                                                            &lt;/div&gt;
+                                                                        &lt;/td&gt;
+                                                                    &lt;/tr&gt;
+                                                                &lt;/tbody&gt;
+                                                            &lt;/table&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class="email-actions email-content-important" style="text-align: left; padding: 20px; border-style: solid; border-width: 0 2px 0 1px; border-color: #fff #ddd #ddd; background-color: #fff; padding: 20px; padding-top: 0; padding-bottom: 20px; border-top-width: 0; border-bottom-width: 2px"&gt;
+                                                            You can &lt;a href="itatlass-app01:8080/browse/$issue"&gt;view the full request&lt;/a&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/center&gt;
+    &lt;/body&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[EC FAAC] [$issue] [Step 7 - $issue.resolution.name] $issue.summary</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">issue.projectObject.key == 'KEY' &amp;&amp; (issue.resolution?.name == 'Failed' || issue.resolution?.name == 'Canceled') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.issueLinkType.name.contains('Cloners') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.destinationObject.issueType.name.contains('Task') &amp;&amp; issueLinkManager.getOutwardLinks(issue.getId())*.destinationObject.project.key.contains('QCEL')</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10301</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="171" name="Go back to step 5">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions type="OR">
+              <condition type="class">
+                <arg name="jira.projectrole.id">10002</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+              <condition type="class">
+                <arg name="jira.projectrole.id">10001</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.InProjectRoleCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="field.name">customfield_12850</arg>
+                  <arg name="full.module.key">com.googlecode.jira-suite-utilitiesupdateIssueCustomField-function</arg>
+                  <arg name="field.value">%%CURRENT_DATETIME%%</arg>
+                  <arg name="class.name">com.googlecode.jsu.workflow.function.UpdateIssueCustomFieldPostFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">10101</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="8" name="7 - Database">
+      <meta name="jira.issue.editable">false</meta>
+      <meta name="jira.status.id">10333</meta>
+    </step>
+    <step id="9" name="1.5 - QCell">
+      <meta name="jira.status.id">10727</meta>
+      <actions>
+<common-action id="11" />
+<common-action id="21" />
+<common-action id="41" />
+      </actions>
+    </step>
+  </steps>
+</workflow>

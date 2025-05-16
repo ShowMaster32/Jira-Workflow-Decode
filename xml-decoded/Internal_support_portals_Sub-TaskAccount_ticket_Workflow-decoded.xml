@@ -1,0 +1,875 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">katia.chinaglia</meta>
+  <meta name="jira.updated.date">1734096643112</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <meta name="jira.i18n.submit">common.forms.create</meta>
+      <meta name="jira.i18n.title">common.forms.create</meta>
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">11201</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <global-actions>
+    <action id="81" name="Request Approval Auditor">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id" />
+      <restrict-to>
+        <conditions type="AND">
+          <conditions type="AND">
+            <condition type="class">
+              <arg name="conditionList">6</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.33.0</arg>
+              <arg name="comparisonType">1</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.condition.ValueFieldCondition</arg>
+              <arg name="ºè">ba8330d7-8b5e-4ab9-ac03-ffb6a9e24df7</arg>
+              <arg name="fieldValue">‰Þ</arg>
+              <arg name="fieldsList">status</arg>
+            </condition>
+            <condition type="class">
+              <arg name="conditionList">3</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.43.0</arg>
+              <arg name="comparisonType">1</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.condition.ValueFieldCondition</arg>
+              <arg name="ºè">fb49876a-2668-4e34-962c-9d435112060b</arg>
+              <arg name="fieldValue">SAP Account</arg>
+              <arg name="fieldsList">customfield_22253</arg>
+            </condition>
+          </conditions>
+          <condition type="class">
+            <arg name="FIELD_FUNCTION_ID">e97a8d79-216f-4157-8d29-34310da9a84d</arg>
+            <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+            <arg name="FIELD_CONDITION">{"script":"currentUser.name == \"katia.chinaglia\" || currentUser.name == \"stefania.landuzzi\" || currentUser.name == \"atlassian_faac_service_desk\"  ","scriptPath":null}</arg>
+            <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="-1">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">08b07766-77e1-42ad-ad73-c374643f8093</arg>
+              <arg name="FIELD_NOTES">creao nuovo task approvativo per audit subtask SAP</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.crowd.embedded.api.User\r\nimport com.atlassian.jira.bc.issue.search.SearchService\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.issue.Issue\r\nimport com.atlassian.jira.issue.IssueManager\r\nimport com.atlassian.jira.user.util.UserUtil\r\nimport com.atlassian.jira.issue.CustomFieldManager\r\nimport com.atlassian.jira.issue.fields.CustomField\r\nimport com.atlassian.jira.issue.MutableIssue\r\nimport com.atlassian.jira.jql.parser.JqlQueryParser\r\nimport com.atlassian.jira.web.bean.PagerFilter\r\nimport org.apache.log4j.Category\r\nimport com.atlassian.jira.util.JiraUtils;\r\nimport com.atlassian.jira.issue.status.Status\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport java.util.ArrayList;\r\nimport com.atlassian.jira.issue.index.IssueIndexingService\r\nimport com.atlassian.jira.user.ApplicationUser\r\nimport com.atlassian.jira.event.type.EventDispatchOption\r\nimport com.atlassian.jira.issue.ModifiedValue\r\nimport com.atlassian.jira.issue.util.IssueChangeHolder\r\nimport com.atlassian.jira.issue.util.DefaultIssueChangeHolder\r\nimport com.atlassian.jira.issue.customfields.option.Option\r\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\r\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\r\n\r\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\r\n\r\nlog.setLevel(org.apache.log4j.Level.DEBUG)\r\ndef issueFactory = ComponentAccessor.getIssueFactory()\r\ndef constantManager = ComponentAccessor.getConstantsManager()\r\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\r\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\r\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\r\nIssueChangeHolder \tchangeHolder \t\t= new DefaultIssueChangeHolder()\r\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\r\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\r\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\r\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-41160\")\r\n\r\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\r\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\r\n\r\nMutableIssue issueParent = issue.parentObject;\r\n\r\n /* Create sub-task to be assigned to user */\r\nMutableIssue newSubTask = issueFactory.getIssue()\r\n//dobbiamo mettere il direct manager proveniente da teams\r\ndef directManagerList = []\r\ndef userManager = ComponentAccessor.getUserManager()\r\n\r\n\r\n// CC USER\r\nCustomField CCUser = customFieldManager.getCustomFieldObject(Long.parseLong(\"22252\"))\r\ndef CCUserV = issueParent.getCustomFieldValue(CCUser)\r\n\r\nCustomField CCUserAuditor = customFieldManager.getCustomFieldObject(Long.parseLong(\"25202\"))\r\ndef CCUserAuditorV = issue.getCustomFieldValue(CCUserAuditor)\r\n\r\ndef CCUserList = []\r\nuser = userManager.getUserByName(\"anna.tassinari\")\r\nlog.debug user\r\nCCUserList.add(user)\r\nuser = userManager.getUserByName(\"monica.montecalvo\")\r\nCCUserList.add(user)\r\nlog.debug CCUserList\r\nissueParent.setCustomFieldValue(CCUser, CCUserList)\r\nissueManager.updateIssue(LoggedInUser, issueParent, EventDispatchOption.DO_NOT_DISPATCH, false)\r\nissueIndexingService.reIndex(issueParent)\r\n\r\n//issue.setCustomFieldValue(CCUserAuditor, CCUserList)\r\n//issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\r\n//issueIndexingService.reIndex(issue)\r\n//END CC USER\r\n\r\nuser = userManager.getUserByName(\"katia.marinangeli\")\r\ndirectManagerList.add(user)\r\n\r\nCustomField WFAccount = customFieldManager.getCustomFieldObject(Long.parseLong(\"22256\"))\r\ndef WFAccountV = issueParent.getCustomFieldValue(WFAccount)\r\n\r\n\r\nWFAccountV.add(user)\r\nlog.debug WFAccountV\r\nissueParent.setCustomFieldValue(WFAccount, WFAccountV)\r\nissueManager.updateIssue(LoggedInUser, issueParent, EventDispatchOption.DO_NOT_DISPATCH, false)\r\nissueIndexingService.reIndex(issueParent)\r\n\r\nnewSubTask.setAssignee(user)\r\nnewSubTask.setReporter(LoggedInUser)\r\nnewSubTask.setSummary(user.getUsername() + \" - \" + issueParent.getSummary())\r\n\r\nCustomField fieldSoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\r\ndef fieldSoftHardV = issue.getCustomFieldValue(fieldSoftHard)\r\nCustomField fieldSoftHard1 = customFieldManager.getCustomFieldObject(Long.parseLong(\"22260\"))\r\ndef fieldSoftHard1V = issue.getCustomFieldValue(fieldSoftHard1)\r\n\r\nnewSubTask.setCustomFieldValue(fieldSoftHard, fieldSoftHardV)\r\nnewSubTask.setCustomFieldValue(fieldSoftHard1, fieldSoftHardV)\r\n\r\nCustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\r\ndef ReporterCompanyV = issueParent.getCustomFieldValue(ReporterCompany)\r\n\r\nnewSubTask.setCustomFieldValue(ReporterCompany, ReporterCompanyV)\r\nnewSubTask.setCustomFieldValue(CCUserAuditor, CCUserList)\r\n\r\nnewSubTask.setParentObject(issueParent)\r\nnewSubTask.setProjectObject(issueParent.getProjectObject())\r\n\r\nnewSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\r\n    it.getName() == \"Sub-ApprAccount\"\r\n}.id)\r\n\r\ndef newIssueParams = [\"issue\" : newSubTask] as Map&lt;String,Object&gt;\r\n\r\nissueManager.createIssueObject(LoggedInUser, newIssueParams)\r\nsubTaskManager.createSubTaskIssueLink(issueParent, newSubTask, LoggedInUser)\r\nissueIndexingService.reIndex(newSubTask)\r\n\r\ndef AuditApproval = issueParent.getCustomFieldValue(customFieldManager.getCustomFieldObject(Long.parseLong(\"24100\")))\r\ncustomFieldManager.getCustomFieldObject(Long.parseLong(\"24100\")).updateValue(null, issueParent, new ModifiedValue(AuditApproval, \"1\"), new DefaultIssueChangeHolder());\r\n    \r\nissueIndexingService.reIndex(issueParent)\r\n\r\n","scriptPath":null,"parameters":{}}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">a5de446f-aed0-49be-a7dc-737d3a26e627</arg>
+              <arg name="FIELD_ACTION">111 Go To Done</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.FasttrackTransition</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_TRANSITION_OPTIONS">FIELD_SKIP_CONDITIONS</arg>
+              <arg name="events" />
+              <arg name="FIELD_ADDITIONAL_SCRIPT" />
+            </function>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+              <arg name="field.value">10005</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="field.copyFieldSource1" />
+              <arg name="textValue">-1</arg>
+              <arg name="scopeSource-linkEnd" />
+              <arg name="maxAllowed-integerValue">50</arg>
+              <arg name="ºè">b56c9308-5e24-471f-9762-d3924530e9df</arg>
+              <arg name="workflowName-textValue">Internal support portals Account ticket Workflow</arg>
+              <arg name="performTransitionAsUser-user" />
+              <arg name="scopeType">PARENT</arg>
+              <arg name="destination-scopeTarget">PARENT</arg>
+              <arg name="full.module.key">com.googlecode.jira-suite-utilitieslinkedtransition-function</arg>
+              <arg name="scopeDestination-linkEnd" />
+              <arg name="preconditionAwareFunctionMode-textValue">ALWAYS</arg>
+              <arg name="source-scopeTarget">ISSUE_IN_TRANSITION</arg>
+              <arg name="{^êÕj[">231</arg>
+              <arg name="scopeDestination-jql" />
+              <arg name="class.name">ch.beecom.jira.jsu.workflow.function.linkedtransition.LinkedTransitionFunction</arg>
+              <arg name="scopeSource-jql" />
+              <arg name="status" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </global-actions>
+  <common-actions>
+    <action id="51" name="Reopen">
+      <meta name="jira.i18n.submit">jira.issuetracking.simple.workflow.action.reopen.name</meta>
+      <meta name="jira.description" />
+      <meta name="jira.i18n.title">jira.issuetracking.simple.workflow.action.reopen.name</meta>
+      <restrict-to>
+        <conditions>
+          <condition type="class">
+            <arg name="permission">resolve</arg>
+            <arg name="class.name">com.atlassian.jira.workflow.condition.PermissionCondition</arg>
+          </condition>
+        </conditions>
+      </restrict-to>
+      <results>
+        <unconditional-result old-status="Not Done" status="‰Þ" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="field.value" />
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdateissuestatus-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowcreatecomment-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowgeneratechangehistory-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowreindexissue-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+    <action id="41" name="‰Þ" view="fieldscreen">
+      <meta name="jira.i18n.submit">jira.issuetracking.simple.workflow.action.done.name</meta>
+      <meta name="jira.description" />
+      <meta name="jira.i18n.title">jira.issuetracking.simple.workflow.action.done.name</meta>
+      <meta name="jira.fieldscreen.id">17609</meta>
+      <results>
+        <unconditional-result old-status="Not Done" status="‰Þ" step="3">
+          <post-functions>
+            <function type="class">
+              <arg name="field.name">resolution</arg>
+              <arg name="field.value">8</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdateissuestatus-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowcreatecomment-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowgeneratechangehistory-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowreindexissue-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT" />
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="v+nWù">false</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE">customScripts/IDTS_UpdatePublicCommentsAttachments.groovy</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_DISABLE_VALIDATION">on</arg>
+              <arg name="FIELD_FROM">faacithelpdesk@faacgroup.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS" />
+              <arg name="FIELD_FUNCTION_ID">óNí­Ýíý]Ùý÷n]uöíÎÛoíÞëMÝ</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"Verdana";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.aa-summary{
+        	color:#000000;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Verdana";
+            font-size:14pt;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"Verdana";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Verdana";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Verdana";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#FFFFFF;
+			padding:10px 10px 10px 10px;
+			font-family:"Verdana";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Verdana";
+			font-size:11pt;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:11pt;
+			font-family:"Verdana";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		a.title-mail-reference{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		a.title-mail-portal{
+			font-family:"Verdana";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#CF6400;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"Verdana";
+			font-size:11pt;
+			display: inline-block;
+			color:#000000;
+		}
+		p.type-above{
+			font-family:"Verdana";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-aa{
+			border-radius: 3px; 
+			font-size: 8pt; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #FFFFFF; 
+			border: 1px solid #CF6400; 
+			color: #000000; 
+			margin-left: 5px; 
+			font-weight: bold; 
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+	&lt;p class="type-above"&gt;##Please type your reply above this line##&lt;/p&gt;
+&lt;/div&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2"&gt;
+													&lt;img src="&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.getApplicationProperties().getString("jira.baseurl") %&gt;/images/loghi/logo_Access_Automation.png"/&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td colspan="2" width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-portal" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26"&gt;
+                                                              &lt;b&gt;IDTS Support Portal&lt;/b&gt;
+															&lt;/a&gt; - Account
+															
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold;font-size:11pt;color:#CF6400;"&gt;$issue.parentObject&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+										&lt;br/&gt;
+										&lt;a class="aa-summary" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue.parentObject"&gt;
+											$issue.parentObject.summary
+										&lt;/a&gt;
+										&lt;!-- Custom field: Next Status Description --&gt;
+										&lt;!-- ID Svil: 15801 --&gt;
+										&lt;!-- ID Prod: ????? --&gt;
+										&lt;span class="status-name-aa"&gt; new comment &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue.parentObject"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="details-field-value"&gt;									
+                                		&lt;br /&gt;
+                                        Dear &lt;% out &lt;&lt; issue.parentObject.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        A comment has been added to the ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue.parentObject"&gt;$issue.parentObject&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Kind regards&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        Below repeated in italian&lt;br /&gt;
+                                        --------------------------------&lt;br /&gt;
+                                        &lt;br /&gt;
+                                        Gentile &lt;% out &lt;&lt; issue.parentObject.reporter?.displayName %&gt;,
+                                        &lt;br /&gt;&lt;br /&gt;
+                                        E' stato aggiunto un commento al ticket &lt;a href="https://helpdesk.faacgroup.com/servicedesk-ui/customer/portal/26/myrequests/$issue.parentObject"&gt;$issue.parentObject&lt;/a&gt;:
+                                        &lt;br /&gt;
+                                        &lt;% if (lastComment) out &lt;&lt; lastComment %&gt;
+                                        &lt;br /&gt;
+                                        Cordiali saluti
+                                        &lt;br /&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Verdana";color:#000000'&gt;This message is automatically generated by FAAC IDTS Support Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">Ticket [$issue.parentObject.key] $issue.parentObject.summary: new comment</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">mail.setTo(issue.parentObject.getReporter().getEmailAddress())
+mail.setFrom("faacithelpdesk@faacgroup.com") 
+
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.comments.Comment
+import com.atlassian.jira.issue.comments.CommentManager
+
+import com.atlassian.jira.component.ComponentAccessor
+
+def commentManager = ComponentAccessor.getCommentManager()
+
+def comment = commentManager.getLastComment (issue)
+if (comment == null )
+	return false
+else
+    return true|||</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">IDTS-15320</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">×güóõ{Íu}­öm÷^oM]Ù·}ÓtãG5×m</arg>
+              <arg name="FIELD_NOTES">chiudo il padre se tuttti i sub task sono chiusi</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.MutableIssue\nimport com.opensymphony.workflow.WorkflowContext;\nimport com.atlassian.jira.config.SubTaskManager\nimport com.atlassian.jira.util.JiraUtils;\nimport com.atlassian.jira.issue.status.Status\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.jql.parser.JqlQueryParser\nimport com.atlassian.jira.web.bean.PagerFilter\nimport com.atlassian.jira.bc.issue.search.SearchService\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.user.util.UserUtil\nimport com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.Issue\nimport com.atlassian.jira.config.ResolutionManager\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.workflow.TransitionOptions\nimport com.atlassian.jira.bc.issue.IssueService\n\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\nSearchService \t\tsearchService \t\t= ComponentAccessor.getComponent(SearchService.class)\nUserUtil \t\t\tuserUtil \t\t\t= ComponentAccessor.getUserUtil()\nIssueManager \t\tissueManager \t\t= ComponentAccessor.getIssueManager()\n\nMutableIssue parentIssue = issue.parentObject;\n\nSubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();\nCollection subTasks = parentIssue.getSubTaskObjects();\ndef jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)\nissueManager = ComponentAccessor.getIssueManager()\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\nIssueService issueService = ComponentAccessor.getIssueService()\nTransitionOptions transitionOptions = new TransitionOptions.Builder().skipConditions().skipPermissions().skipValidators().build()\n\nApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\nApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser\n\ndef jqlSearch = \"project = '\" + issue.getProjectObject().name + \"' AND issuetype = Sub-TaskAccount AND (status != Done AND status != Canceled) AND parent = '\" + parentIssue.key + \"' AND key != '\" + issue.key + \"'\"\n\ndef query = jqlQueryParser.parseQuery(jqlSearch)\ndef search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())\n\nlog.debug \"size \" + search.results.size()\n\ndef changeTransaction= true\n//devo cercare se i subtask sono tutti done allora chiudo il padre\nif (search.results.size()==0)\n{\n    //if (parentIssue.getStatus().getName() == \"In Progress\")\n    //{\n        def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)\n\n        parentIssue.setResolution(resolutionManager.getResolutionByName(\"Completed\"))\n\n        issueManager.updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false)\n        issueIndexingService.reIndex(parentIssue)\n\n        ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\n        def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();\n\n        IssueService.TransitionValidationResult result = issueService.validateTransition(currentUser, parentIssue.getId(),221, issueService.newIssueInputParameters(), transitionOptions)\n        if (result.isValid()) {\n            issueService.transition(currentUser, result)\n        }\n        /*\n        WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);\n        workflowTransitionUtil.setIssue(parentIssue);\n\n        workflowTransitionUtil.setAction(221);\n\n        workflowTransitionUtil.validate();\n        workflowTransitionUtil.progress();\n        */\n    //}\n}\n","scriptPath":null,"parameters":{}}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerrungroovy-function</arg>
+              <arg name="FIELD_INLINE_SCRIPT">import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.MutableIssue
+import com.opensymphony.workflow.WorkflowContext;
+import com.atlassian.jira.config.SubTaskManager
+import com.atlassian.jira.workflow.WorkflowTransitionUtil;
+import com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;
+import com.atlassian.jira.util.JiraUtils;
+import com.atlassian.jira.issue.status.Status
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.user.ApplicationUser
+import com.atlassian.jira.issue.MutableIssue
+import com.atlassian.jira.jql.parser.JqlQueryParser
+import com.atlassian.jira.web.bean.PagerFilter
+import com.atlassian.jira.bc.issue.search.SearchService
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.issue.IssueManager
+import com.atlassian.jira.issue.CustomFieldManager
+import com.atlassian.jira.issue.fields.CustomField
+import com.atlassian.jira.user.util.UserUtil
+import com.atlassian.jira.component.ComponentAccessor
+import com.atlassian.jira.issue.Issue
+import com.atlassian.jira.config.ResolutionManager
+import com.atlassian.jira.event.type.EventDispatchOption
+import com.atlassian.jira.issue.index.IssueIndexingService
+import org.apache.log4j.Category
+
+Category log = Category.getInstance("com.onresolve.jira.groovy.PostFunction")
+log.setLevel(org.apache.log4j.Level.DEBUG)
+
+SearchService 		searchService 		= ComponentAccessor.getComponent(SearchService.class)
+UserUtil 			userUtil 			= ComponentAccessor.getUserUtil()
+IssueManager 		issueManager 		= ComponentAccessor.getIssueManager()
+
+MutableIssue parentIssue = issue.parentObject;
+
+SubTaskManager subTaskManager = ComponentAccessor.getSubTaskManager();
+Collection subTasks = parentIssue.getSubTaskObjects();
+def jqlQueryParser = ComponentAccessor.getComponent(JqlQueryParser)
+issueManager = ComponentAccessor.getIssueManager()
+IssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)
+
+ApplicationUser oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+ApplicationUser user = ComponentAccessor.jiraAuthenticationContext.loggedInUser
+
+
+def jqlSearch = "project = '" + issue.getProjectObject().name + "' AND issuetype = Sub-TaskAccount AND status != Done AND parent = '" + parentIssue.key + "' AND key != '" + issue.key + "'"
+
+def query = jqlQueryParser.parseQuery(jqlSearch)
+def search = searchService.search(user, query, PagerFilter.getUnlimitedFilter())
+
+log.debug "size " + search.results.size()
+
+def changeTransaction= true
+//devo cercare se i subtask sono tutti done allora chiudo il padre
+if (search.results.size()==0)
+{
+    //if (parentIssue.getStatus().getName() == "In Progress")
+    //{
+        def resolutionManager = ComponentAccessor.getComponent(ResolutionManager)
+
+        parentIssue.setResolution(resolutionManager.getResolutionByName("Completed"))
+
+        issueManager.updateIssue(user, parentIssue, EventDispatchOption.DO_NOT_DISPATCH, false)
+        issueIndexingService.reIndex(parentIssue)
+
+        ComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey("atlassian_faac_service_desk"))
+        def currentUser = ComponentAccessor.jiraAuthenticationContext.getLoggedInUser();
+
+        WorkflowTransitionUtil workflowTransitionUtil = (WorkflowTransitionUtil) JiraUtils.loadComponent(WorkflowTransitionUtilImpl.class);
+        workflowTransitionUtil.setIssue(parentIssue);
+
+        workflowTransitionUtil.setAction(221);
+
+        workflowTransitionUtil.validate();
+        workflowTransitionUtil.progress();
+    //}
+}
+</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_SCRIPT_FILE" />
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="1" name="To Do">
+      <meta name="jira.status.id">10008</meta>
+      <actions>
+        <action id="11" name="Start Progress">
+          <meta name="jira.i18n.submit">startprogress.title</meta>
+          <meta name="jira.description" />
+          <meta name="jira.i18n.title">startprogress.title</meta>
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="permission">assignable</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.PermissionCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="Not Done" status="‰Þ" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdateissuestatus-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowcreatecomment-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowgeneratechangehistory-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowreindexissue-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="101" name="&#09;©‹zWù">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="111" name="Go To Done">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">7e33c0e4-d900-4ec6-9dc9-c048b43a07c7</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"currentUser.name == \"katia.chinaglia\" || currentUser.name == \"stefania.landuzzi\" || currentUser.name == \"atlassian_faac_service_desk\"  ","scriptPath":null}</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="In Progress">
+      <meta name="jira.status.id">3</meta>
+      <actions>
+<common-action id="41" />
+        <action id="31" name="Stop Progress">
+          <meta name="jira.i18n.submit">stopprogress.title</meta>
+          <meta name="jira.description" />
+          <meta name="jira.i18n.title">stopprogress.title</meta>
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="permission">assignable</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.PermissionCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="Not Done" status="‰Þ" step="1">
+              <post-functions>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdateissuestatus-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowcreatecomment-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowgeneratechangehistory-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowreindexissue-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="91" name="Add License">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <restrict-to>
+            <conditions type="AND">
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">b0f93554-fe93-4629-bbe7-37bd2b38d734</arg>
+                <arg name="FIELD_INVERT_CONDITION" />
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.UserCondition</arg>
+                <arg name="v+nWù">¶»ž</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+                <arg name="FIELD_USER_IDS">katia.chinaglia</arg>
+              </condition>
+              <condition type="class">
+                <arg name="FIELD_FUNCTION_ID">f2d95322-d16f-4f3b-a6c5-76664d430d88</arg>
+                <arg name="FIELD_NOTES">Visualizzo solo se è un account di tipo create</arg>
+                <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.conditions.SimpleScriptedCondition</arg>
+                <arg name="FIELD_CONDITION">{"script":"import com.atlassian.jira.component.ComponentAccessor\r\nimport org.apache.log4j.Level\r\ndef operation = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Operation\")\r\n\r\ndef operationV=issue.parentObject.getCustomFieldValue(operation)\r\nlog.debug operationV\r\nif (operationV.toString()==\"Create\")\r\n    return true\r\nelse \r\n    return false","scriptPath":null,"parameters":{}}</arg>
+                <arg name="class.name">com.onresolve.jira.groovy.GroovyCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">6f81ba84-83db-4861-a584-379dce7e76f3</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"import com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.issue.Issue\r\nimport com.atlassian.jira.issue.MutableIssue;\r\nimport com.atlassian.jira.event.type.EventDispatchOption;\r\nimport org.apache.log4j.Level\r\nimport com.atlassian.jira.issue.IssueManager\r\n\r\n\r\nProperties properties = new Properties()\r\nFile propertiesFile = new File('/var/atlassian/application-data/shared/scripts/opproject.properties')\r\npropertiesFile.withInputStream {\r\n\tproperties.load(it)\r\n}\r\n/* Get Insight Object Facade from plugin accessor */\r\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\"); \r\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\r\n  \r\n/* Get Insight Object Type Facade from plugin accessor */\r\nClass objectTypeFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectTypeFacade\"); \r\ndef objectTypeFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectTypeFacadeClass);\r\n  \r\n/* Get Insight Object Attribute Facade from plugin accessor */\r\nClass objectTypeAttributeFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectTypeAttributeFacade\"); \r\ndef objectTypeAttributeFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectTypeAttributeFacadeClass);\r\n  \r\nClass objectAttributeBeanFactoryClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.services.model.factory.ObjectAttributeBeanFactory\"); \r\ndef objectAttributeBeanFactory = ComponentAccessor.getOSGiComponentInstanceOfType(objectAttributeBeanFactoryClass);\r\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \r\ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\r\n\r\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\r\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\r\n\r\nIssueManager issueManager = ComponentAccessor.getIssueManager()\r\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-49804\")\r\ndef asset = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Software/Hardware\")\r\n\r\n\r\ndef assID=issue.getCustomFieldValue(asset)[0].toString()\r\ndef ass= assID.substring(assID.lastIndexOf('(')+1,assID.lastIndexOf(')')) \r\n\r\ndef ApplicationLicense = new ArrayList();\r\n\r\ndef ExternalFAACUser = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"External FAAC User\")\r\ndef ExternalFAACUserV=issue.parentObject.getCustomFieldValue(ExternalFAACUser).toString()\r\n\r\ndef TypeAsset = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Type Account\")\r\ndef TypeAssetV=issue.getCustomFieldValue(TypeAsset).toString()\r\n\r\nlog.debug \"TypeAssetVExternalFAACUserV \" + ExternalFAACUserV\r\n\r\n//aggiungo licenza peremployee interni\r\nif (ExternalFAACUserV == 'No' || ExternalFAACUserV == \"null\"){\r\n    log.debug \"1\"\r\n    def ReferenceEmployeeID = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Reference Employee ID\")\r\n    def RefEmpIDValues=issue.parentObject.getCustomFieldValue(ReferenceEmployeeID)\r\n    def typeHardSoft = 6590\r\n    if (TypeAssetV.toString() == \"Infrastructure\")\r\n        typeHardSoft = 6591\r\n\r\n    if (RefEmpIDValues == null){\r\n        def EmployeeSystemId  = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"Employee System ID\")\r\n        def EmployeeSystemIdV=issue.parentObject.getCustomFieldValue(EmployeeSystemId).toString()\r\n      \r\n        RefEmpIDValues = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=Employee AND \\\"TEAMS ID\\\" = \" + EmployeeSystemIdV ); // See the complete list of possible IQL on the Insight Query Language documentation page\r\n\r\n    } \r\n\r\n    log.debug RefEmpIDValues\r\n    for (RefEmpID in RefEmpIDValues)\r\n    {\r\n        RefEmpID=RefEmpID.toString()\r\n        \r\n        def RefEmp= RefEmpID.substring(RefEmpID.lastIndexOf('(')+1,RefEmpID.lastIndexOf(')')) \r\n\r\n        def objectUpdate = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=Employee AND key = \" + RefEmp ); // See the complete list of possible IQL on the Insight Query Language documentation page\r\n\r\n        def objectTypeAttributeBean = objectTypeAttributeFacade.loadObjectTypeAttributeBean(typeHardSoft).createMutable() \r\n        \r\n        if (objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft) != \"\" &amp;&amp; objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft) != null ){\r\n            for (objAppl in objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft).getObjectAttributeValueBeans()){\r\n                ApplicationLicense.add(objAppl.getValue());\r\n            }\r\n        }\r\n        ApplicationLicense.add(ass)\r\n\r\n        /* Create the new attribute bean based on the value */\r\n        def newObjectAttributeBean = objectAttributeBeanFactory.createObjectAttributeBeanForObject(objectUpdate[0], objectTypeAttributeBean, ApplicationLicense as String[]);\r\n\r\n        /* Load the attribute bean */\r\n        def objectAttributeBean = objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), objectTypeAttributeBean.getId());\r\n\r\n\r\n        objectTypeAttributeBean = objectFacade.storeObjectAttributeBean(newObjectAttributeBean);\r\n    }\r\n} //aggiungo licenza per employee esterni\r\nelse{\r\n    ApplicationLicense = []\r\n    def typeHardSoft = 6588\r\n    if (TypeAssetV.toString() == \"Infrastructure\")\r\n        typeHardSoft =6589\r\n    def ExternalEmail = ComponentAccessor.getCustomFieldManager().getCustomFieldObjectsByName(\"External Email\")\r\n    def ExternalEmailV=issue.parentObject.getCustomFieldValue(ExternalEmail).toString()\r\n    def queryParam = \"\\\"\" + ExternalEmailV + \"\\\"\"\r\n\r\n    def objectUpdate = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"External Employee\\\" AND Name = \" + queryParam ); // See the complete list of possible IQL on the Insight Query Language documentation page\r\n    log.debug \"objectType=\\\"External Employee\\\" AND Name = \" + queryParam \r\n    def objectTypeAttributeBean = objectTypeAttributeFacade.loadObjectTypeAttributeBean(typeHardSoft).createMutable() \r\n    \r\n    if (objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft) != \"\" &amp;&amp; objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft) != null ){\r\n        for (objAppl in objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), typeHardSoft).getObjectAttributeValueBeans()){\r\n            ApplicationLicense.add(objAppl.getValue());\r\n        }\r\n    }\r\n    ApplicationLicense.add(ass)\r\n\r\n    /* Create the new attribute bean based on the value */\r\n    def newObjectAttributeBean = objectAttributeBeanFactory.createObjectAttributeBeanForObject(objectUpdate[0], objectTypeAttributeBean, ApplicationLicense as String[]);\r\n\r\n    /* Load the attribute bean */\r\n    def objectAttributeBean = objectFacade.loadObjectAttributeBean(objectUpdate[0].getId(), objectTypeAttributeBean.getId());\r\n\r\n\r\n    objectTypeAttributeBean = objectFacade.storeObjectAttributeBean(newObjectAttributeBean);\r\n}","scriptPath":null}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="‰Þ">
+      <meta name="jira.status.id">10007</meta>
+      <actions>
+<common-action id="51" />
+        <action id="61" name="Reopen and start progress">
+          <meta name="jira.i18n.submit">jira.issuetracking.simple.workflow.action.reopenandstartprogress.name</meta>
+          <meta name="jira.description" />
+          <meta name="jira.i18n.title">jira.issuetracking.simple.workflow.action.reopenandstartprogress.name</meta>
+          <restrict-to>
+            <conditions>
+              <condition type="class">
+                <arg name="permission">assignable</arg>
+                <arg name="class.name">com.atlassian.jira.workflow.condition.PermissionCondition</arg>
+              </condition>
+            </conditions>
+          </restrict-to>
+          <results>
+            <unconditional-result old-status="Not Done" status="‰Þ" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="field.value" />
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdateissuestatus-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowassigntocurrentuser-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.AssignToCurrentUserFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowcreatecomment-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowgeneratechangehistory-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowreindexissue-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowfireevent-function</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="License Added">
+      <meta name="jira.status.id">15727</meta>
+      <actions>
+<common-action id="41" />
+      </actions>
+    </step>
+    <step id="5" name="&#09;©‹zWù">
+      <meta name="jira.status.id">11728</meta>
+      <actions>
+<common-action id="51" />
+      </actions>
+    </step>
+  </steps>
+</workflow>

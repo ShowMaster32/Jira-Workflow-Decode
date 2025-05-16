@@ -1,0 +1,1402 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+  <meta name="jira.description" />
+  <meta name="jira.update.author.key">arianna.fabbri</meta>
+  <meta name="jira.updated.date">1734106017062</meta>
+  <initial-actions>
+    <action id="1" name="Create">
+      <validators>
+        <validator name="" type="class">
+          <arg name="permission">Create Issue</arg>
+          <arg name="class.name">com.atlassian.jira.workflow.validator.PermissionValidator</arg>
+        </validator>
+      </validators>
+      <results>
+        <unconditional-result old-status="žée" status="¢—§" step="1">
+          <post-functions>
+            <function type="class">
+              <arg name="FIELD_SECURITY_LEVEL_ID">12100</arg>
+              <arg name="FIELD_FUNCTION_ID">d5d285af-3dd1-4966-b237-d8f209bc6f09</arg>
+              <arg name="FIELD_NOTES">Solutions Engineering Portal security scheme</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SetIssueSecurity</arg>
+              <arg name="FIELD_CONDITION" />
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueCreateFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">72017a2a-acc5-49e7-96b6-569e837e800b</arg>
+              <arg name="FIELD_NOTES">Define Request Participants, Team Managers &amp; CC Addresses</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":"//Aggiornamento \"Request Participants\"\r\nimport com.atlassian.jira.util.ImportUtils\r\nimport com.atlassian.jira.issue.util.IssueChangeHolder\r\nimport com.atlassian.jira.issue.util.DefaultIssueChangeHolder\r\nimport com.atlassian.jira.issue.Issue\r\nimport com.atlassian.jira.issue.ModifiedValue\r\nimport com.atlassian.jira.issue.CustomFieldManager\r\nimport com.atlassian.jira.issue.fields.CustomField\r\nimport com.atlassian.jira.issue.index.IssueIndexManager\r\nimport com.atlassian.jira.index.Index.Manager\r\nimport com.atlassian.jira.event.type.EventDispatchOption\r\nimport com.atlassian.crowd.embedded.api.User\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.user.ApplicationUser\r\nimport com.atlassian.crowd.embedded.api.User\r\nimport com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.user.util.UserManager\r\nimport com.atlassian.crowd.embedded.api.Group\r\nimport com.atlassian.jira.issue.index.IssueIndexingService\r\n//import com.atlassian.jira.issue.IssueManager\r\n\r\nimport org.apache.log4j.Category\r\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\r\n\r\nlog.setLevel(org.apache.log4j.Level.DEBUG)\r\n\r\ndef groupManager = ComponentAccessor.getGroupManager()\r\n\r\ndef customFieldManager = ComponentAccessor.getCustomFieldManager()\r\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\r\nIssueChangeHolder changeHolder = new DefaultIssueChangeHolder()\r\n\r\n//Per test da console\r\n//IssueManager issueManager = ComponentAccessor.getIssueManager()\r\n//Issue issue = issueManager.getIssueByKeyIgnoreCase(\"HS-4300\")\r\n\r\n//27.12.2016: sostituito campo Request participants - 14100 - del plugin Service Desk con il nuovo campo custom 17100\r\nCustomField requestParticipants = customFieldManager.getCustomFieldObject(\"17100\".toLong())\r\nCustomField ccAddresses = customFieldManager.getCustomFieldObject(\"14404\".toLong())\r\nCustomField teamManagers = customFieldManager.getCustomFieldObject(\"17105\".toLong())\r\n\r\n\r\n//In produzione aggiungere il cambio utente in modo che la modifica la faccia 'atlassian'\r\ndef oldUser = ComponentAccessor.jiraAuthenticationContext.loggedInUser\r\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian\"))\r\n\r\ndef userUtil = ComponentAccessor.getUserUtil()\r\nList&lt;ApplicationUser&gt; requestParticipantsList = []\r\nList&lt;ApplicationUser&gt; ccAddressesList = []\r\nList&lt;ApplicationUser&gt; teamManagersList = []\r\ndef v_jiraGroup = \"\"\r\ndef n_jiraGroup = null\r\ndef tm_jiraGroup \r\ncom.atlassian.crowd.embedded.api.Group not_jiraGroup = null\r\ndef retValue\r\n\r\n//estrazione da DB JSD del gruppo associato alla request type che ho creato\r\n//aesempio request type software -&gt; gruppo HS\r\n//esempio request type project -&gt; gruppo HS-SE-Project\r\n//If gruppo = HS-SE-Visibility allora da qui fino alla riga 99\r\n\r\nuserUtil.getGroupNamesForUser(issue.reporter.name).each { group -&gt;\r\n    // Ricerco il gruppo di appartenenza dell'utente - non HS-SE-customers a cui appartengono tutti gli utenti, ma quello specifico del team di visibilit\u00e0\r\n\tif(group != \"HS-SE-customers\" &amp;&amp; group.contains(\"HS-SE-Visibility-\")){\r\n        v_jiraGroup = group\r\n        retValue = groupManager.getUsersInGroup(group).each{ user -&gt;\r\n            if(user.getName() != issue.reporter.name){\r\n            \trequestParticipantsList.add(ComponentAccessor.getUserManager().getUserByName(user.getName()));\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n//Verifico se le issue create dal current reporter devono essere supervisionate da un gruppo di Team Managers:\r\n//OLD 02.12.24 Se l'utente reporter appartiene a un gruppo HS-SE-teamManagers-XXXX significa che tutti gli utenti del gruppo HS-SE-Visibility-XXXX devono essere aggiunti al campo Team Managers della issue creata\r\n//NEW 02.12.24 AF Estraggo dal gruppo HS-SE-Visibility-XXXX a cui appartiene il reporter il suffisso XXXX e verifico se esiste un gruppo HS-SE-teamManagers-XXXX. \r\n//                Se esiste significa che tutte le issue create dagli utenti del gruppo HS-SE-Visibility-XXXX devono essere supervisionate dagli utenti del gruppo HS-SE-teamManagers-XXXX\r\nif (v_jiraGroup != null &amp;&amp; v_jiraGroup.contains(\"Visibility-\")){\r\n    userUtil.getGroupNamesForUser(issue.reporter.name).each { group -&gt;\r\n        //log.debug \"Team managers group: \" + v_jiraGroup.substring('HS-SE-Visibility-'.length())\r\n        tm_jiraGroup = \"HS-SE-teamManagers-\" + v_jiraGroup.substring('HS-SE-Visibility-'.length())\r\n\r\n        retValue = groupManager.getUsersInGroup(tm_jiraGroup).each{ user -&gt;\r\n            if(user.getName() != issue.reporter.name){\r\n                teamManagersList.add(ComponentAccessor.getUserManager().getUserByName(user.getName()));\r\n            }\r\n        }\r\n        /*if(group != \"HS-SE-customers\" &amp;&amp; group.contains(\"HS-SE-teamManagers-\")){\r\n            log.debug \"HS-SE-visibility-\"+group.toString().substring(16,group.size())\r\n            tm_jiraGroup = \"HS-SE-visibility-\"+group.toString().substring(16,group.size())\r\n            retValue = groupManager.getUsersInGroup(tm_jiraGroup).each{ user -&gt;\r\n                if(user.getName() != issue.reporter.name){\r\n                    teamManagersList.add(ComponentAccessor.getUserManager().getUserByName(user.getName()));\r\n                }\r\n            }\r\n        }*/\r\n    }\r\n}\r\n\r\nif (v_jiraGroup != null &amp;&amp; v_jiraGroup.contains(\"Visibility-\")){\r\n\tn_jiraGroup = \"HS-SE-Notifications-\" + v_jiraGroup.substring(0+v_jiraGroup.indexOf(\"Visibility-\")+11,v_jiraGroup.size())\r\n\tnot_jiraGroup = ComponentAccessor.getUserManager().getGroup(n_jiraGroup);\r\n}    \r\n\r\nif (not_jiraGroup != null){\r\n    retValue = groupManager.getUsersInGroup(not_jiraGroup).each{ user -&gt;\r\n           \tccAddressesList.add(ComponentAccessor.getUserManager().getUserByName(user.getName()));\r\n    }\r\n}\r\n// else \r\n// cerco cnei gruppi associati all'utente un gruppo che contenga il nome del gruppo estratto da JSD esempio HS-SE-Project-HUBUSA\r\n// valorizzo la variabile requestpartecipantlist con gli utenti di HS-SE-Project-HUBUSA tranne il reporter\r\n\r\nif(teamManagersList.size() &gt; 0){\r\n\tteamManagers.updateValue(null, issue, new ModifiedValue(issue.getCustomFieldValue(teamManagers),teamManagersList),changeHolder)\r\n    issue.setCustomFieldValue(teamManagers, teamManagersList)\r\n    //issueIndexingService.reIndex(issue)\r\n}\r\n/*13.12.2024 non valorizziamo il campo Request Participants in modo tale che a supervisionare le request siano solo gli utenti nel gruppo teamManagers - tutti gli altri vedono sono le proprie*/\r\n/*if(requestParticipantsList.size() &gt; 0){\r\n\trequestParticipants.updateValue(null, issue, new ModifiedValue(issue.getCustomFieldValue(requestParticipants),requestParticipantsList),changeHolder)\r\n    issue.setCustomFieldValue(requestParticipants, requestParticipantsList)\r\n    //issueIndexingService.reIndex(issue)\r\n}*/\r\n\r\nif(ccAddressesList.size() &gt; 0){\r\n\tccAddresses.updateValue(null, issue, new ModifiedValue(issue.getCustomFieldValue(ccAddresses),ccAddressesList),changeHolder)\r\n    issue.setCustomFieldValue(ccAddresses, ccAddressesList)\r\n    //issueIndexingService.reIndex(issue)\r\n}\r\n\r\nissueIndexingService.reIndex(issue)\r\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(oldUser)","scriptPath":null,"parameters":{}}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_FUNCTION_ID">ffe64399-5daa-44fc-9f2f-a9a28eef581a</arg>
+              <arg name="FIELD_NOTES">Add new request to PORTALREQUESTS table on JIRA_ServiceDesk DB</arg>
+              <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":null,"scriptPath":"customScripts/HS_AddPortalRequest.groovy"}</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+            </function>
+            <function type="class">
+              <arg name="FIELD_NOTES">Send mail to Reporter (status changed)</arg>
+              <arg name="FIELD_DISABLE_VALIDATION" />
+              <arg name="FIELD_FROM">solutionsengineering@faactechnologies.com</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NONE</arg>
+              <arg name="FIELD_TO_ADDRESSES" />
+              <arg name="FIELD_CC_ADDRESSES" />
+              <arg name="FIELD_CC_USER_FIELDS" />
+              <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+              <arg name="FIELD_FUNCTION_ID">49c3d92b-fb76-4efb-b70c-4cceb2d1138f</arg>
+              <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+              <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"calibri";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.hub-summary{
+        	color:#6BA539;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Segoe UI Symbol";
+            font-size:18pt;
+            font-weight:bold;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#F2F2F2;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Segoe UI Symbol";
+			font-size:11pt;
+			font-weight:bold;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.hub-header-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			padding-bottom: 0px;
+		}
+		span.hub-content-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:8pt;
+			padding-top: 0px;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-blue{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#003050;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-green{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#6BA539;
+		}
+		a.title-mail-reference{
+			font-family:"calibri";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#003050;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"calibri";
+			font-size:11pt;
+			display: inline-block;
+			color:#003050;
+		}
+		p.type-above{
+			font-family:"calibri";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-yellow{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #ffd351; 
+			border: 1px solid #ffd351; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-green{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #14892C; 
+			border: 1px solid #14892C; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-blue{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #4A6785; 
+			border: 1px solid #4A6785; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48"&gt;
+                                                              &lt;b&gt;Solutions Engineering Portal&lt;/b&gt; - Support Request
+															&lt;/a&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+												&lt;a class="hub-summary" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+													$issue.summary
+												&lt;/a&gt;
+												&lt;span class="status-name-blue"&gt; Open &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										&lt;p&gt;&lt;/p&gt;&lt;b&gt;New request has been created&lt;/b&gt;&lt;/p&gt; You can 										
+											&lt;a class="td-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="comment-box"&gt;
+									&lt;p class="details-box-title"&gt;
+										&lt;b&gt;&lt;span style='font-family:"Segoe UI Symbol"'&gt;Request Details&lt;/span&gt;&lt;/b&gt;
+										
+									&lt;/p&gt;
+									&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%;'&gt;
+									
+										&lt;% if (issue.description != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Description&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% if(issue.description.toString().contains("{html}")) { %&gt;
+														&lt;% out &lt;&lt; issue.description.toString().substring(issue.description.toString().indexOf("{html}")+6, issue.description.toString().lastIndexOf("{html}")) %&gt;
+													&lt;% } %&gt;
+													&lt;% if(!issue.description.toString().contains("{html}")) { %&gt;
+														$issue.description
+													&lt;% } %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Brand --&gt;
+										&lt;!-- ID Svil: 26916 --&gt;
+										&lt;!-- ID Prod: 26804 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+													  &lt;b&gt;Brand &lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")).toString() %&gt; 
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Opportunity Type --&gt;
+										&lt;!-- ID Svil: 26939
+										&lt;!-- ID Prod: 26813 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Opportunity Type&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")).toString() %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										&lt;!-- Custom field: Customer Name --&gt;
+										&lt;!-- ID Svil: 26919 --&gt;
+										&lt;!-- ID Prod: 15701 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Customer Name&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701"))%&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+									&lt;/table&gt;
+									
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;!--tr&gt;
+								&lt;td&gt;
+								&lt;p class="hub-header-firma"&gt;
+									&lt;span class="hub-header-firma-green"&gt;FAAC Parking&lt;/span&gt;&lt;br/&gt;
+									&lt;span class="hub-content-firma"&gt;a Business Unit of the FAAC Group&lt;/span&gt;
+								&lt;/p&gt;
+								&lt;/td&gt;
+							&lt;/tr--!&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Segoe UI Symbol";color:#003050'&gt;This message is automatically generated by Solutions Engineering Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+              <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[Solutions Engineering Portal - New request created][$issue.key] $issue.summary</arg>
+              <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+              <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"solutionsengineering@faactechnologies.com\")\r\n\r\nimport com.atlassian.jira.component.ComponentAccessor\r\n\r\ndef groupManager = ComponentAccessor.getGroupManager()\r\nissue.projectObject.name == 'HUB Support' &amp;&amp; groupManager.isUserInGroup(issue.reporter, 'HS-SE-customers')","scriptPath":null,"parameters":{}}</arg>
+              <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+              <arg name="FIELD_PREVIEW_ISSUE">HS-34421</arg>
+              <arg name="FIELD_EMAIL_FORMAT">3</arg>
+              <arg name="events" />
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">1</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </initial-actions>
+  <common-actions>
+    <action id="11" name="Start Progress" view="fieldscreen">
+      <meta name="jira.description" />
+      <meta name="jira.fieldscreen.id">21000</meta>
+      <results>
+        <unconditional-result old-status="žée" status="žée" step="2">
+          <post-functions>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowassigntocurrentuser-function</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.AssignToCurrentUserFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+            </function>
+            <function type="class">
+              <arg name="eventTypeId">13</arg>
+              <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+            </function>
+          </post-functions>
+        </unconditional-result>
+      </results>
+    </action>
+  </common-actions>
+  <steps>
+    <step id="1" name="Eç÷">
+      <meta name="jira.status.id">1</meta>
+      <actions>
+<common-action id="11" />
+      </actions>
+    </step>
+    <step id="2" name="In Progress">
+      <meta name="jira.status.id">3</meta>
+      <actions>
+        <action id="21" name="IÈ^vé^">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="3">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="31" name="Send message to Submitter" view="fieldscreen">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id">20908</meta>
+          <validators>
+            <validator name="" type="class">
+              <arg name="contextHandling" />
+              <arg name="hidFieldsList">comment@@</arg>
+              <arg name="jsuWorkflowParamsVersion-textValue">2.43.0</arg>
+              <arg name="class.name">com.googlecode.jsu.workflow.validator.FieldsRequiredValidator</arg>
+              <arg name="customErrorMessage-textValue">Add comment to be sent to the Submitter</arg>
+              <arg name="ºè">b3ecdd84-00a5-40c7-9d07-77a678c9eed8</arg>
+            </validator>
+          </validators>
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="4">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail to Reporter (status changed)</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">solutionsengineering@faactechnologies.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS">customfield_14404</arg>
+                  <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+                  <arg name="FIELD_FUNCTION_ID">0e886b22-4c5b-4336-a3b2-b8922ca58416</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"calibri";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.hub-summary{
+        	color:#6BA539;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Segoe UI Symbol";
+            font-size:18pt;
+            font-weight:bold;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#F2F2F2;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Segoe UI Symbol";
+			font-size:11pt;
+			font-weight:bold;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.hub-header-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			padding-bottom: 0px;
+		}
+		span.hub-content-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:8pt;
+			padding-top: 0px;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-blue{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#003050;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-green{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#6BA539;
+		}
+		a.title-mail-reference{
+			font-family:"calibri";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#003050;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"calibri";
+			font-size:11pt;
+			display: inline-block;
+			color:#003050;
+		}
+		p.type-above{
+			font-family:"calibri";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-yellow{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #ffd351; 
+			border: 1px solid #ffd351; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-green{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #14892C; 
+			border: 1px solid #14892C; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-blue{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #4A6785; 
+			border: 1px solid #4A6785; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48"&gt;
+                                                              &lt;b&gt;Solutions Engineering Portal&lt;/b&gt; - Support Request
+															&lt;/a&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+												&lt;a class="hub-summary" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+													$issue.summary
+												&lt;/a&gt;
+												&lt;span class="status-name-yellow"&gt; Waiting on Submitter &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="comment-box"&gt;									
+									&lt;% if (com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue).size() != 0 &amp;&amp; lastComment != null &amp;&amp; lastComment != "") { %&gt;
+										&lt;p class="title-comment"&gt;
+											&lt;b&gt;&lt;u&gt;New comment added to the request&lt;/u&gt;&lt;/b&gt;
+										&lt;/p&gt;
+										&lt;p class="author-comment"&gt;
+											&lt;b&gt;&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue).last().authorFullName %&gt;&lt;/b&gt;
+											&lt;b&gt;&lt;span style='font-size:10.0pt;font-family:"Segoe UI Symbol";color:#1F497D'&gt;&lt;/span&gt;&lt;/b&gt;
+										&lt;/p&gt;
+										&lt;p style='margin-top:6.0pt'&gt;
+											&lt;span style='font-family:"Segoe UI Symbol";color:#003050'&gt;
+												&lt;% out &lt;&lt; lastComment %&gt;
+											&lt;/span&gt;
+										&lt;/p&gt;
+									&lt;% } %&gt;
+									&lt;p class="details-box-title"&gt;
+										&lt;b&gt;&lt;span style='font-family:"Segoe UI Symbol"'&gt;Request Details&lt;/span&gt;&lt;/b&gt;
+										
+									&lt;/p&gt;
+									&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%;'&gt;
+									
+										&lt;% if (issue.description != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Description&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% if(issue.description.toString().contains("{html}")) { %&gt;
+														&lt;% out &lt;&lt; issue.description.toString().substring(issue.description.toString().indexOf("{html}")+6, issue.description.toString().lastIndexOf("{html}")) %&gt;
+													&lt;% } %&gt;
+													&lt;% if(!issue.description.toString().contains("{html}")) { %&gt;
+														$issue.description
+													&lt;% } %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Brand --&gt;
+										&lt;!-- ID Svil: 26916 --&gt;
+										&lt;!-- ID Prod: 26804 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+													  &lt;b&gt;Brand &lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")).toString() %&gt; 
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Opportunity Type --&gt;
+										&lt;!-- ID Svil: 26939
+										&lt;!-- ID Prod: 26813 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Opportunity Type&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")).toString() %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										&lt;!-- Custom field: Customer Name --&gt;
+										&lt;!-- ID Svil: 26919 --&gt;
+										&lt;!-- ID Prod: 15701 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Customer Name&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701"))%&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+									&lt;/table&gt;
+									
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;!--tr&gt;
+								&lt;td&gt;
+								&lt;p class="hub-header-firma"&gt;
+									&lt;span class="hub-header-firma-green"&gt;FAAC Parking&lt;/span&gt;&lt;br/&gt;
+									&lt;span class="hub-content-firma"&gt;a Business Unit of the FAAC Group&lt;/span&gt;
+								&lt;/p&gt;
+								&lt;/td&gt;
+							&lt;/tr--!&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Segoe UI Symbol";color:#003050'&gt;This message is automatically generated by Solutions Engineering Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[Solutions Engineering Portal - New comment added][$issue.key] $issue.summary</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"solutionsengineering@faactechnologies.com\")\r\n\r\nimport com.atlassian.jira.component.ComponentAccessor\r\n\r\ndef groupManager = ComponentAccessor.getGroupManager()\r\nissue.projectObject.name == 'HUB Support' &amp;&amp; groupManager.isUserInGroup(issue.reporter, 'HS-SE-customers')","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">13993d5d-18f2-43e8-98bd-2899a29c6b39</arg>
+                  <arg name="FIELD_NOTES">Update public comments and attachments tables on DB</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":null,"scriptPath":"customScripts/HS_UpdatePublicCommentsAttachments.groovy"}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="51" name="Ask Legal Review">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="5">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="71" name="Completed">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="6">
+              <post-functions>
+                <function type="class">
+                  <arg name="field.name">resolution</arg>
+                  <arg name="full.module.key">com.atlassian.jira.plugin.system.workflowupdate-issue-field-function</arg>
+                  <arg name="field.value">6</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueFieldFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_NOTES">Send mail to Reporter (status changed)</arg>
+                  <arg name="FIELD_DISABLE_VALIDATION" />
+                  <arg name="FIELD_FROM">solutionsengineering@faactechnologies.com</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS">FIELD_INCLUDE_ATTACHMENTS_NEW</arg>
+                  <arg name="FIELD_TO_ADDRESSES" />
+                  <arg name="FIELD_CC_ADDRESSES" />
+                  <arg name="FIELD_CC_USER_FIELDS">customfield_14404</arg>
+                  <arg name="FIELD_TO_USER_FIELDS">­êh®×«</arg>
+                  <arg name="FIELD_FUNCTION_ID">f7203c4a-ba01-4de0-ab79-994a9829468b</arg>
+                  <arg name="FIELD_INCLUDE_ATTACHMENTS_CALLBACK">`!`</arg>
+                  <arg name="FIELD_EMAIL_TEMPLATE">&lt;html&gt;
+&lt;head&gt;
+	&lt;style&gt;
+    	table.custom-outgoing-mail{
+        	font-family:"calibri";
+        	width:100%;
+        	border-spacing: 8px 2px;
+        }
+        a.hub-summary{
+        	color:#6BA539;
+        	text-decoration:none;
+        }
+        td.td-spaced{
+        	padding:15.0pt 7.5pt 7.5pt 7.5pt;
+        }
+        td.td-summary{
+        	font-family:"Segoe UI Symbol";
+            font-size:18pt;
+            font-weight:bold;
+        	border-top:whitesmoke 1.0pt;
+        	border-left:#DDDDDD 1.0pt;
+        	border-bottom:#DDDDDD 1.0pt;
+        	border-right:#DDDDDD 1.5pt;
+        	border-style:solid;
+        	background:white;
+			padding-left:10px;
+        }
+		td.td-reference{
+			border-top:white 1.0pt;
+			border-left:#DDDDDD 1.0pt;
+			border-bottom:#DDDDDD 1.5pt;
+			border-right:#DDDDDD 1.5pt;
+			border-style:solid;
+			background:white;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+		}
+		a.td-reference{
+			font-family:"calibri";
+			color:#003050;
+			font-size:11pt;
+			text-decoration:underline;
+		}
+		p.title-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:12pt;
+            font-weight:bold;
+			text-decoration:underline;
+		}
+		p.author-comment{
+			font-family:"Segoe UI Symbol";
+            font-size:11pt;
+            font-weight:bold;
+		}
+		td.comment-box{
+			background:#F2F2F2;
+			padding:10px 10px 10px 10px;
+			font-family:"calibri";
+			font-size:11pt;
+		}
+		td.details-field-name{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.details-box-title{
+			font-family:"Segoe UI Symbol";
+			font-size:11pt;
+			font-weight:bold;
+			padding-top: 15px;
+			padding-bottom: 10px;
+		}
+		td.details-field-value{
+			font-size:10pt;
+			font-family:"Segoe UI Symbol";
+			vertical-align:middle;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		p.hub-header-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			padding-bottom: 0px;
+		}
+		span.hub-content-firma{
+			font-family:"Segoe UI Symbol";
+			font-size:8pt;
+			padding-top: 0px;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-blue{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#003050;
+			padding-left: 10px;
+		}
+		span.hub-header-firma-green{
+			font-family:"Segoe UI Symbol";
+			font-size:10pt;
+			font-weight:bold;
+			color:#6BA539;
+		}
+		a.title-mail-reference{
+			font-family:"calibri";
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 10px;
+			display: inline-block;
+			font-size:11pt;
+			color:#003050;
+		}
+		p.title-mail-reference{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			text-align:right;
+			line-height:13pt;
+			font-family:"calibri";
+			font-size:11pt;
+			display: inline-block;
+			color:#003050;
+		}
+		p.type-above{
+			font-family:"calibri";
+			font-size:8pt;
+			font-weight:bold;
+			color:#505050;
+		}
+		span.status-name-yellow{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #ffd351; 
+			border: 1px solid #ffd351; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-green{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #14892C; 
+			border: 1px solid #14892C; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+		span.status-name-blue{
+			border-radius: 3px; 
+			font-size: 11px; 
+			text-align: center; 
+			text-transform: uppercase; 
+			background-color: #4A6785; 
+			border: 1px solid #4A6785; 
+			color: #ffffff; 
+			margin-left: 5px; 
+			font-weight: bold; 
+			font-size: 14px;
+		}
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div align="center"&gt;
+&lt;table class="custom-outgoing-mail" border=0 cellspacing=0 cellpadding=0 width="100%"&gt;
+	&lt;tr&gt;
+		&lt;td class="td-spaced"&gt;
+			&lt;div align="center"&gt;
+				&lt;table border=0 cellspacing=0 cellpadding=0 width=600 style='width:450pt'&gt;
+					&lt;tr&gt;
+						&lt;td style='padding:0cm 0cm 0cm 0cm'&gt;
+							&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+								&lt;tr&gt;
+									&lt;td&gt;
+										&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+											&lt;tr&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm'&gt;
+													&lt;p&gt;
+															&lt;a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48"&gt;
+                                                              &lt;b&gt;Solutions Engineering Portal&lt;/b&gt; - Support Request
+															&lt;/a&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+												&lt;td width="50%" style='width:50.0%;padding:0cm 0cm 0cm 0cm;text-align:right;'&gt;
+													&lt;p class="title-mail-reference" &gt;
+															Reference: &lt;strong style="font-weight: bold"&gt;$issue&lt;/strong&gt;
+													&lt;/p&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-summary"&gt;
+												&lt;a class="hub-summary" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+													$issue.summary
+												&lt;/a&gt;
+												&lt;span class="status-name-green"&gt; Closed &lt;/span&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+								&lt;tr&gt;
+									&lt;td class="td-reference"&gt;
+										You can 										
+											&lt;a class="td-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48/myrequests/$issue"&gt;
+												view the full request
+											&lt;/a&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/table&gt;
+
+						&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%'&gt;
+							&lt;tr&gt;
+								&lt;td class="comment-box"&gt;									
+									&lt;% if (com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue).size() != 0 &amp;&amp; lastComment != null &amp;&amp; lastComment != "") { %&gt;
+										&lt;p class="title-comment"&gt;
+											&lt;b&gt;&lt;u&gt;New comment added to the request&lt;/u&gt;&lt;/b&gt;
+										&lt;/p&gt;
+										&lt;p class="author-comment"&gt;
+											&lt;b&gt;&lt;% out &lt;&lt; com.atlassian.jira.component.ComponentAccessor.commentManager.getComments(issue).last().authorFullName %&gt;&lt;/b&gt;
+											&lt;b&gt;&lt;span style='font-size:10.0pt;font-family:"Segoe UI Symbol";color:#1F497D'&gt;&lt;/span&gt;&lt;/b&gt;
+										&lt;/p&gt;
+										&lt;p style='margin-top:6.0pt'&gt;
+											&lt;span style='font-family:"Segoe UI Symbol";color:#003050'&gt;
+												&lt;% out &lt;&lt; lastComment %&gt;
+											&lt;/span&gt;
+										&lt;/p&gt;
+									&lt;% } %&gt;
+									&lt;p class="details-box-title"&gt;
+										&lt;b&gt;&lt;span style='font-family:"Segoe UI Symbol"'&gt;Request Details&lt;/span&gt;&lt;/b&gt;
+										
+									&lt;/p&gt;
+									&lt;table border=0 cellspacing=0 cellpadding=0 width="100%" style='width:100%;'&gt;
+									
+										&lt;% if (issue.description != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Description&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% if(issue.description.toString().contains("{html}")) { %&gt;
+														&lt;% out &lt;&lt; issue.description.toString().substring(issue.description.toString().indexOf("{html}")+6, issue.description.toString().lastIndexOf("{html}")) %&gt;
+													&lt;% } %&gt;
+													&lt;% if(!issue.description.toString().contains("{html}")) { %&gt;
+														$issue.description
+													&lt;% } %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Brand --&gt;
+										&lt;!-- ID Svil: 26916 --&gt;
+										&lt;!-- ID Prod: 26804 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+													  &lt;b&gt;Brand &lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+													&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26804")).toString() %&gt; 
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										
+										&lt;!-- Custom field: Opportunity Type --&gt;
+										&lt;!-- ID Svil: 26939
+										&lt;!-- ID Prod: 26813 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Opportunity Type&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_26813")).toString() %&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+										&lt;!-- Custom field: Customer Name --&gt;
+										&lt;!-- ID Svil: 26919 --&gt;
+										&lt;!-- ID Prod: 15701 --&gt;
+										&lt;% if (issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701")) != null) { %&gt;
+											&lt;tr&gt;
+												&lt;td width="30%" class="details-field-name"&gt;
+												  &lt;b&gt;Customer Name&lt;/b&gt;
+												&lt;/td&gt;
+												&lt;td class="details-field-value"&gt;
+												&lt;% out &lt;&lt; issue.getCustomFieldValue(com.atlassian.jira.component.ComponentAccessor.getCustomFieldManager().getCustomFieldObject("customfield_15701"))%&gt;
+												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;% } %&gt;
+									&lt;/table&gt;
+									
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;!--tr&gt;
+								&lt;td&gt;
+								&lt;p class="hub-header-firma"&gt;
+									&lt;span class="hub-header-firma-green"&gt;FAAC Parking&lt;/span&gt;&lt;br/&gt;
+									&lt;span class="hub-content-firma"&gt;a Business Unit of the FAAC Group&lt;/span&gt;
+								&lt;/p&gt;
+								&lt;/td&gt;
+							&lt;/tr--!&gt;
+						&lt;/table&gt;
+						
+						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/table&gt;
+			&lt;/div&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td style='padding:0cm 0cm 15.0pt 0cm;'&gt;
+			&lt;p align=center style='margin:0cm;margin-bottom:.0001pt;text-align:center'&gt;
+				&lt;span style='font-size:9.0pt;font-family:"Segoe UI Symbol";color:#003050'&gt;This message is automatically generated by Solutions Engineering Portal.&lt;/span&gt;
+			&lt;/p&gt;
+		&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</arg>
+                  <arg name="FIELD_EMAIL_SUBJECT_TEMPLATE">[Solutions Engineering Portal - Request closed][$issue.key] $issue.summary</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.SendCustomEmail</arg>
+                  <arg name="FIELD_CONDITION">{"script":"mail.setFrom(\"solutionsengineering@faactechnologies.com\")\r\n\r\nimport com.atlassian.jira.component.ComponentAccessor\r\n\r\ndef groupManager = ComponentAccessor.getGroupManager()\r\nissue.projectObject.name == 'HUB Support' &amp;&amp; groupManager.isUserInGroup(issue.reporter, 'HS-SE-customers')","scriptPath":null,"parameters":{}}</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                  <arg name="FIELD_PREVIEW_ISSUE" />
+                  <arg name="FIELD_EMAIL_FORMAT">3</arg>
+                  <arg name="events" />
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="FIELD_FUNCTION_ID">13993d5d-18f2-43e8-98bd-2899a29c6b39</arg>
+                  <arg name="FIELD_NOTES">Update public comments and attachments tables on DB</arg>
+                  <arg name="FIELD_SCRIPT_FILE_OR_SCRIPT">{"script":null,"scriptPath":"customScripts/HS_UpdatePublicCommentsAttachments.groovy"}</arg>
+                  <arg name="full.module.key">com.onresolve.jira.groovy.groovyrunnerscriptrunner-workflow-function-com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="canned-script">com.onresolve.scriptrunner.canned.jira.workflow.postfunctions.CustomScriptFunction</arg>
+                  <arg name="class.name">com.onresolve.jira.groovy.GroovyFunctionPlugin</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+        <action id="81" name="Review Technical Requirements">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="7">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="Scheduled">
+      <meta name="jira.status.id">15931</meta>
+      <actions>
+<common-action id="11" />
+      </actions>
+    </step>
+    <step id="4" name="Waiting on Submitter">
+      <meta name="jira.status.id">15932</meta>
+      <actions>
+        <action id="41" name="Submitter feedback received">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="5" name="Waiting on Legal Review">
+      <meta name="jira.status.id">15933</meta>
+      <actions>
+        <action id="61" name="Legal feedback received">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="6" name="Closed">
+      <meta name="jira.status.id">6</meta>
+    </step>
+    <step id="7" name="Waiting on Tech Requirements Review">
+      <meta name="jira.status.id">15935</meta>
+      <actions>
+        <action id="91" name="Review Completed">
+          <meta name="jira.description" />
+          <meta name="jira.fieldscreen.id" />
+          <results>
+            <unconditional-result old-status="žée" status="žée" step="2">
+              <post-functions>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.UpdateIssueStatusFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.misc.CreateCommentFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.GenerateChangeHistoryFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="class.name">com.atlassian.jira.workflow.function.issue.IssueReindexFunction</arg>
+                </function>
+                <function type="class">
+                  <arg name="eventTypeId">13</arg>
+                  <arg name="class.name">com.atlassian.jira.workflow.function.event.FireIssueEventFunction</arg>
+                </function>
+              </post-functions>
+            </unconditional-result>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>
