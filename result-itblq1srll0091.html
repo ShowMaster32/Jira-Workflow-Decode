@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Workflow Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        .search-result {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        .search-header {
+            background-color: #0052cc;
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -20px 20px -20px;
+        }
+        .search-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .search-header .timestamp {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        th {
+            background-color: #f7f8f9;
+            color: #172b4d;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dfe1e6;
+            font-size: 14px;
+        }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #dfe1e6;
+            color: #172b4d;
+            vertical-align: top;
+            font-size: 14px;
+        }
+        tr:hover {
+            background-color: #f4f5f7;
+        }
+        .file-name {
+            color: #0052cc;
+            font-weight: 500;
+        }
+        .workflow-name {
+            color: #36b37e;
+            font-weight: 500;
+        }
+        .transition-name {
+            color: #ff5630;
+            font-weight: 500;
+        }
+        .function-id {
+            color: #6554c0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        .type-tag {
+            background-color: #dfe1e6;
+            color: #5e6c84;
+            padding: 4px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .location-path {
+            color: #6b778c;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        .content-snippet {
+            background-color: #f4f5f7;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #091e42;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .truncated {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .clickable:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        .modal-header {
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        .detail-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #172b4d;
+            min-width: 120px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .detail-value {
+            flex: 1;
+            color: #5e6c84;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            background-color: #f4f5f7;
+            padding: 8px;
+            border-radius: 4px;
+            overflow-wrap: break-word;
+            max-width: calc(100% - 135px);
+        }
+        .highlight {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .no-results {
+            text-align: center;
+            color: #6b778c;
+            font-style: italic;
+            padding: 40px;
+        }
+        .result-count {
+            text-align: right;
+            color: #6b778c;
+            font-size: 14px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .export-button {
+            background-color: #0052cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 20px;
+            float: right;
+        }
+        .export-button:hover {
+            background-color: #0747a6;
+        }
+        .na-value {
+            color: #97a0af;
+            font-style: italic;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+            }
+            .detail-row {
+                flex-direction: column;
+            }
+            .detail-label {
+                margin-bottom: 5px;
+            }
+            .detail-value {
+                max-width: 100%;
+            }
+            th, td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+            .truncated {
+                max-width: 150px;
+            }
+            .content-snippet {
+                max-width: 200px;
+            }
+        }
+        @media (max-width: 480px) {
+            .truncated {
+                max-width: 100px;
+            }
+            .content-snippet {
+                max-width: 150px;
+            }
+            th, td {
+                padding: 6px 2px;
+                font-size: 11px;
+            }
+        }
+        .highlight {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .no-results {
+            text-align: center;
+            color: #6b778c;
+            font-style: italic;
+            padding: 40px;
+        }
+        .result-count {
+            text-align: right;
+            color: #6b778c;
+            font-size: 14px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        .export-button {
+            background-color: #0052cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 20px;
+            float: right;
+        }
+        .export-button:hover {
+            background-color: #0747a6;
+        }
+        .na-value {
+            color: #97a0af;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        // Store results data globally
+        const searchResultsData = [{"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Create", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Create", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Ask customer ", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/global-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Ask customer ", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/global-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Back to progress", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Back to progress", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Start working", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Start working", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Reopen ticket", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Reopen ticket", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Approve", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Approve", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Done", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Done", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Ask customer", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "1HR-HR__Task_Management_Workflow", "transition": "Ask customer", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "1HR-HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Create", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Create", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Ask customer ", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/global-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Ask customer ", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/global-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Back to progress", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Back to progress", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Start working", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Start working", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/common-actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Reopen ticket", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Reopen ticket", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Approve", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Approve", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Done", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Done", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Ask customer", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}, {"workflow": "HR__Task_Management_Workflow", "transition": "Ask customer", "function_id": "unconditional-result", "type": "FIELD_EMAIL_TEMPLATE", "line": "workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg", "filename": "HR__Task_Management_Workflow.xml", "content": "<a class=\"aa-summary\" href=\"http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue\">"}];
+        const searchTerm = "itblq1srll0091";
+        
+        function stripHtml(html) {
+            // Al momento voglio mostrare il testo HTML originale
+            return html;
+        }
+        
+        function exportToText() {
+            let text = 'JIRA WORKFLOW SEARCH RESULTS\n';
+            text += '========================\n\n';
+            text += 'Search Term: ' + searchTerm + '\n';
+            text += 'Generated on: ' + new Date().toLocaleString() + '\n\n';
+            
+            searchResultsData.forEach((result, index) => {
+                text += '--- Result ' + (index + 1) + ' ---\n';
+                text += 'File: ' + result.filename + '\n';
+                text += 'Workflow: ' + result.workflow + '\n';
+                text += 'Transition: ' + result.transition + '\n';
+                text += 'Function ID: ' + result.function_id + '\n';
+                text += 'Type: ' + result.type + '\n';
+                text += 'Content: ' + stripHtml(result.content) + '\n';
+                text += 'Location: ' + result.line + '\n\n';
+            });
+            
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'search_results_' + searchTerm.replace(/[^a-z0-9]/gi, '_') + '_' + Date.now() + '.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+        
+        function truncateText(text, maxLength) {
+            if (text.length <= maxLength) return text;
+            return text.substring(0, maxLength) + '...';
+        }
+        
+        function showDetails(index) {
+            const result = searchResultsData[index];
+            const modal = document.getElementById('detailModal');
+            const modalContent = document.getElementById('modalDetails');
+            
+            // Mostra HTML come testo escapato
+            const htmlEscaped = result.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            let contentHtml = `
+                <div class="detail-row">
+                    <div class="detail-label">File:</div>
+                    <div class="detail-value">${result.filename}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Workflow:</div>
+                    <div class="detail-value">${result.workflow}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Transition:</div>
+                    <div class="detail-value">${result.transition}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Function ID:</div>
+                    <div class="detail-value">${result.function_id}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Type:</div>
+                    <div class="detail-value">${result.type}</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Content:</div>
+                    <div class="detail-value">
+                        <pre style="background-color: #f0f0f0; padding: 8px; border-radius: 4px; overflow-x: auto; margin: 0;">${htmlEscaped}</pre>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Location:</div>
+                    <div class="detail-value">${result.line}</div>
+                </div>
+            `;
+            
+            modalContent.innerHTML = contentHtml;
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #172b4d; text-align: center; margin-bottom: 30px;">
+            <svg style="width: 32px; height: 32px; vertical-align: middle; margin-right: 10px;" viewBox="0 0 24 24" fill="#0052cc">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Jira Workflow Search Results
+        </h1>
+        
+        <!-- Modal -->
+        <div id="detailModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="modal-header">
+                    <h2>Result Details</h2>
+                </div>
+                <div class="modal-body" id="modalDetails">
+                    <!-- Details will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-result">
+        <div class="search-header">
+            <h2>Search Results for: "itblq1srll0091"</h2>
+            <div class="timestamp">Generated on: 2025-05-21 17:03:04</div>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 18%;">Workflow</th>
+                        <th style="width: 17%;">Transition</th>
+                        <th style="width: 17%;">Function ID</th>
+                        <th style="width: 10%;">Type</th>
+                        <th style="width: 25%;">Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(0)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(0)" title="Click for details">Create</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(0)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(0)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(1)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(1)" title="Click for details">Create</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(1)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(1)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(2)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(2)" title="Click for details">Ask customer </span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(2)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(2)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(3)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(3)" title="Click for details">Ask customer </span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(3)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(3)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(4)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(4)" title="Click for details">Back to progress</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(4)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(4)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(5)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(5)" title="Click for details">Back to progress</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(5)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(5)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(6)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(6)" title="Click for details">Start working</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(6)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(6)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(7)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(7)" title="Click for details">Start working</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(7)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(7)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(8)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(8)" title="Click for details">Reopen ticket</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(8)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(8)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(9)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(9)" title="Click for details">Reopen ticket</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(9)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(9)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(10)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(10)" title="Click for details">Approve</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(10)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(10)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(11)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(11)" title="Click for details">Approve</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(11)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(11)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(12)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(12)" title="Click for details">Done</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(12)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(12)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(13)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(13)" title="Click for details">Done</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(13)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(13)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(14)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(14)" title="Click for details">Ask customer</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(14)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(14)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(15)" title="Click for details">1HR-HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(15)" title="Click for details">Ask customer</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(15)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(15)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(16)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(16)" title="Click for details">Create</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(16)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(16)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(17)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(17)" title="Click for details">Create</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(17)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(17)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(18)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(18)" title="Click for details">Ask customer </span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(18)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(18)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(19)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(19)" title="Click for details">Ask customer </span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(19)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(19)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(20)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(20)" title="Click for details">Back to progress</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(20)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(20)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(21)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(21)" title="Click for details">Back to progress</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(21)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(21)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(22)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(22)" title="Click for details">Start working</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(22)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(22)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(23)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(23)" title="Click for details">Start working</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(23)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(23)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(24)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(24)" title="Click for details">Reopen ticket</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(24)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(24)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(25)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(25)" title="Click for details">Reopen ticket</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(25)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(25)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(26)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(26)" title="Click for details">Approve</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(26)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(26)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(27)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(27)" title="Click for details">Approve</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(27)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(27)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(28)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(28)" title="Click for details">Done</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(28)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(28)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(29)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(29)" title="Click for details">Done</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(29)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(29)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(30)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(30)" title="Click for details">Ask customer</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(30)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(30)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                <tr>
+                    <td><span class="workflow-name truncated clickable" onclick="showDetails(31)" title="Click for details">HR__Task_Management_Workflow</span></td>
+                    <td><span class="transition-name truncated clickable" onclick="showDetails(31)" title="Click for details">Ask customer</span></td>
+                    <td><span class="function-id truncated clickable" onclick="showDetails(31)" title="Click for details">unconditional-result</span></td>
+                    <td><span class="type-tag">FIELD_EMAIL_TEMPLATE</span></td>
+                    <td><div class="content-snippet clickable" onclick="showDetails(31)" title="Click for details">&lt;a class="aa-summary" href="http://<span class="highlight"><span class="highlight">itblq1srll0091</span></span>.faacspa.local:808...</div></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="result-count">Total results found: 32</div>
+        <button class="export-button" onclick="exportToText()">Export to Text</button>
+        </div>
+    </div>
+</body>
+</html>

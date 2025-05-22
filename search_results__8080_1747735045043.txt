@@ -1,0 +1,2319 @@
+JIRA WORKFLOW SEARCH RESULTS
+========================
+
+Search Term: :8080
+Generated on: 20/05/2025, 11:57:25
+
+--- Result 1 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 2 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 3 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 4 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 5 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 6 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 7 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 8 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 9 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 10 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 11 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 12 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 13 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 14 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 15 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 16 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 17 ---
+File: Backup_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__updated_Define_Request_Participants__Team_Managers___CC_Addresses_.xml
+Workflow: Backup_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__updated_Define_Request_Participants__Team_Managers___CC_Addresses_
+Transition: To Operation Wait License
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="td-reference" href="http://itatlass-app01.faacspa.local:8080/browse/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 18 ---
+File: Copy_of_EC_FAAC__EC_Issue_Tracking_Workflow.xml
+Workflow: Copy_of_EC_FAAC__EC_Issue_Tracking_Workflow
+Transition: Jump to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 19 ---
+File: Copy_of_EC_FAAC__EC_Issue_Tracking_Workflow.xml
+Workflow: Copy_of_EC_FAAC__EC_Issue_Tracking_Workflow
+Transition: Go to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 20 ---
+File: Copy_of_FFCS__Task_Epic_Management_Workflow.xml
+Workflow: Copy_of_FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def baseURL = "http://172.29.56.206:8080/mercury/ExtTelephoneCmdAction?control=call&uname=" + issue.assignee.name + "&addresstocall=" + issue.getCustomFieldValue(contactNumber).toString()
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 21 ---
+File: Copy_of_FFCS__Task_Epic_Management_Workflow.xml
+Workflow: Copy_of_FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def baseURL = "http://172.29.56.206:8080/mercury/ExtTelephoneCmdAction?control=call&uname=" + issue.assignee.name + "&addresstocall=" + issue.getCustomFieldValue(contactNumber).toString()
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 22 ---
+File: Copy_of__Jira7__EC_FAAC__EC_Issue_Tracking_Workflow_PRIMA_DI_CAMBIO_Supply_Chain_EC__Ex_CR__-_Mechanical.xml
+Workflow: Copy_of__Jira7__EC_FAAC__EC_Issue_Tracking_Workflow_PRIMA_DI_CAMBIO_Supply_Chain_EC__Ex_CR__-_Mechanical
+Transition: Jump to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 23 ---
+File: Copy_of__Jira7__EC_FAAC__EC_Issue_Tracking_Workflow_PRIMA_DI_CAMBIO_Supply_Chain_EC__Ex_CR__-_Mechanical.xml
+Workflow: Copy_of__Jira7__EC_FAAC__EC_Issue_Tracking_Workflow_PRIMA_DI_CAMBIO_Supply_Chain_EC__Ex_CR__-_Mechanical
+Transition: Go to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 24 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 25 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 26 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 27 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 28 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 29 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 30 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 31 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 32 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 33 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 34 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 35 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 36 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 37 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 38 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 39 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 40 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 41 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 42 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 43 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 44 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 45 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 46 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 47 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 48 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 49 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 50 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 51 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 52 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_adding_conn_close__
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 53 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 54 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 55 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 56 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 57 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 58 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 59 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 60 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 61 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 62 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 63 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 64 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 65 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 66 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 67 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 68 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 69 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 70 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 71 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 72 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 73 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 74 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 75 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 76 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 77 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 78 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 79 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 80 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 81 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_before_chenges_for_budget_checking_in_temporary
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 82 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 83 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 84 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 85 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 86 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 87 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 88 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 89 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 90 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 91 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 92 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 93 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 94 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 95 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 96 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 97 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 98 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 99 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 100 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 101 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 102 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 103 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 104 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 105 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 106 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 107 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 108 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 109 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 110 ---
+File: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner.xml
+Workflow: Copy_of__Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0_without_implementing_HR_Business_partner
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 111 ---
+File: FFCS__Task_Epic_Management_Workflow.xml
+Workflow: FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport com.atlassian.jira.issue.CustomFieldManager;\nimport com.atlassian.jira.issue.fields.CustomField;\nimport com.atlassian.jira.issue.IssueManager;\nimport com.atlassian.jira.component.ComponentAccessor;\nimport com.atlassian.jira.issue.Issue;\nimport com.atlassian.jira.issue.MutableIssue\nimport org.apache.commons.codec.binary.Base64;\nimport org.apache.log4j.Category\n\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef requestMethod = \"GET\";\n\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager customFieldManager = ComponentAccessor.getCustomFieldManager();\nCustomField contactNumber = customFieldManager.getCustomFieldObjectsByName('Contact Number')[0];\n\n\ndef baseURL = \"http://172.29.59.40:8080/mercury/ExtTelephoneCmdAction?control=call&uname=\" + issue.assignee.name + \"&addresstocall=\" + issue.getCustomFieldValue(contactNumber).toString()\n\n\nlog.debug \"baseUrl: \" + baseURL\n\nURL url\nurl = new URL(baseURL)\nHttpURLConnection connection = (HttpURLConnection)url.openConnection();\n\nconnection.setRequestMethod(requestMethod);\nconnection.setRequestProperty(\"Content-Type\", \"application/json\");\nconnection.setRequestProperty(\"Accept\", \"*/*\");\nconnection.setDoOutput(true);\nconnection.setDoInput(true);\nconnection.connect();\n\n//log.debug \"url: \" + url\nlog.debug \"ResponseCode:\" + connection.getResponseCode()\nlog.debug \"ResponseMessage:\" + connection.getResponseMessage()\n","scriptPath":null,"parameters":{}}
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 112 ---
+File: FFCS__Task_Epic_Management_Workflow.xml
+Workflow: FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def baseURL = "http://172.29.56.206:8080/mercury/ExtTelephoneCmdAction?control=call&uname=" + issue.assignee.name + "&addresstocall=" + issue.getCustomFieldValue(contactNumber).toString()
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 113 ---
+File: FFCS__Task_Epic_Management_Workflow.xml
+Workflow: FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport com.atlassian.jira.issue.CustomFieldManager;\nimport com.atlassian.jira.issue.fields.CustomField;\nimport com.atlassian.jira.issue.IssueManager;\nimport com.atlassian.jira.component.ComponentAccessor;\nimport com.atlassian.jira.issue.Issue;\nimport com.atlassian.jira.issue.MutableIssue\nimport org.apache.commons.codec.binary.Base64;\nimport org.apache.log4j.Category\n\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef requestMethod = \"GET\";\n\nIssueManager issueManager = ComponentAccessor.getIssueManager();\nCustomFieldManager customFieldManager = ComponentAccessor.getCustomFieldManager();\nCustomField contactNumber = customFieldManager.getCustomFieldObjectsByName('Contact Number')[0];\n\n\ndef baseURL = \"http://172.29.59.40:8080/mercury/ExtTelephoneCmdAction?control=call&uname=\" + issue.assignee.name + \"&addresstocall=\" + issue.getCustomFieldValue(contactNumber).toString()\nURL url\nurl = new URL(baseURL)\nHttpURLConnection connection = (HttpURLConnection)url.openConnection();\n\nconnection.setRequestMethod(requestMethod);\nconnection.setRequestProperty(\"Content-Type\", \"application/json\");\nconnection.setRequestProperty(\"Accept\", \"*/*\");\nconnection.setDoOutput(true);\nconnection.setDoInput(true);\nconnection.connect();\n\n//log.debug \"url: \" + url\n//log.debug \"ResponseCode:\" + connection.getResponseCode()\n//log.debug \"ResponseMessage:\" + connection.getResponseMessage()\n//println(\"getResponseMessage:\" + connection.getResponseMessage())","scriptPath":null,"parameters":{}}
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 114 ---
+File: FFCS__Task_Epic_Management_Workflow.xml
+Workflow: FFCS__Task_Epic_Management_Workflow
+Transition: Click  to call
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def baseURL = "http://172.29.56.206:8080/mercury/ExtTelephoneCmdAction?control=call&uname=" + issue.assignee.name + "&addresstocall=" + issue.getCustomFieldValue(contactNumber).toString()
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 115 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 116 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 117 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 118 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 119 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 120 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 121 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 122 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 123 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 124 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 125 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 126 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 127 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 128 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 129 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 130 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 131 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 132 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Send message to Submitter
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 133 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Completed
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 134 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport com.atlassian.jira.issue.Issue;\nimport org.apache.commons.codec.binary.Base64;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport org.apache.log4j.Category\nimport com.atlassian.jira.user.util.UserManager\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n\ndef groupManager = ComponentAccessor.getGroupManager()\ndef daTeams=false\ndef EmployeeReferenceMail = \"\"\ndef IDTEAMSV = null\ndef creaSubTask\ndef dManagerList = []\ndef userPropertyManager = ComponentAccessor.getUserPropertyManager()\ndef userManager = ComponentAccessor.getUserManager()\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService.class)\n\nCustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\ndef ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)\n//Reference Employee ID PROD 22301 - TEST 23001\nCustomField EmployeeReference = customFieldManager.getCustomFieldObject(Long.parseLong(\"22301\"))\ndef EmployeeReferenceMailV = issue.getCustomFieldValue(EmployeeReference)\nlog.debug EmployeeReferenceMailV\n\nif ( EmployeeReferenceMailV != null &&  EmployeeReferenceMailV != \"\"){\n    def objectCompany = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND objectId = \" + EmployeeReferenceMailV[0].getId() + \" AND \\\"Company\\\" IN (\\\"FAAC France S.A.S\\\",\\\"FAAC S.p.A.\\\",\\\"FAAC Entrance Solutions France Sas\\\",\\\"FAAC Entrance Solutions UK\\\",\\\"HUB Parking Technology Canada Ltd.\\\",\\\"HUB Parking Technology USA Inc.\\\",\\\"FAAC Electronics Ltd.\\\",\\\"CoMETA S.p.A.\\\",\\\"CICOS S.c.r.l.\\\",\\\"FAAC UK Ltd.\\\",\\\"FAAC Doors & Shutters UK Limited\\\",\\\"Magnetic Autocontrol GmbH\\\")\"); \n     log.debug objectCompany\n    if (objectCompany.size()>0)\n        creaSubTask=true\n    else\n        creaSubTask=false\n} \nelse{\n    log.debug ReporterCompanyV\n\tif (ReporterCompanyV==\"FAAC S.p.A.\" || ReporterCompanyV==\"FAAC France S.A.S\" || ReporterCompanyV == 'Magnetic Autocontrol GmbH' || ReporterCompanyV == 'HUB Parking Technology Canada Ltd.' || ReporterCompanyV == 'FAAC Electronics Ltd.' || ReporterCompanyV == 'FAAC Entrance Solutions France Sas' || ReporterCompanyV == 'FAAC Entrance Solutions UK' || ReporterCompanyV == 'CoMETA S.p.A.' || ReporterCompanyV == 'CICOS S.c.r.l.' || ReporterCompanyV == 'FAAC UK Ltd.' ||  ReporterCompanyV == 'FAAC Doors & Shutters UK Limited' || ReporterCompanyV == 'HUB Parking Technology USA Inc.') \n\t\tcreaSubTask=true\n    else\n\t\tcreaSubTask=false\n} \nlog.debug \"creaSubTask \" + creaSubTask\ndef isVIP\n\nif (EmployeeReferenceMailV != null) {\n\tdef queryParam = \"\\\"\" + EmployeeReferenceMailV[0].getName() + \"\\\"\"\n    log.debug queryParam\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    log.debug objects\n    if (objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239) != null && objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239) != \"\")\n        isVIP = objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239).getObjectAttributeValueBeans()[0].getValue()    \n    \n    if (isVIP==true)\n    \tcreaSubTask =false\n}\n\nlog.debug creaSubTask\nif (creaSubTask) {\n    if(!groupManager.getUsersInGroup(\"Helpdesk VIP\").contains(issue.getReporter())){\n        //MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-6118\")\n        log.debug \"crea sub\"\n        // Employee System ID uguale PROD E TEST\n        CustomField IDTEAMS = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\n        def IDTEAMSV_daTeams = issue.getCustomFieldValue(IDTEAMS)\n        \n        if (IDTEAMSV_daTeams != null)\n        {\n            daTeams=true\n           \n            //imposto la mail che leggo dal campo direct manager\n            CustomField directManagerDaTeams = customFieldManager.getCustomFieldObject(Long.parseLong(\"14411\"))\n            def directManagerDaTeamsV = issue.getCustomFieldValue(directManagerDaTeams)\n            EmployeeReferenceMail = directManagerDaTeamsV \n        } \n\n\n\t\n        if (IDTEAMSV == null && daTeams==false)\n        {\n            if (EmployeeReferenceMailV == null || EmployeeReferenceMailV==\"\")\n            {\n                EmployeeReferenceMail = issue.reporter.getEmailAddress()\n                log.debug \"EmployeeReferenceMail\" + EmployeeReferenceMail\n            }\n            else {\n                def idTeamsEmployee= EmployeeReferenceMailV[0].getName().split(\"-\")\n                IDTEAMSV = idTeamsEmployee[0].trim()\n           }     \n        }\n        def requestMethod = \"GET\";\n\n        def baseURL=\"\"\n        //se ho IDTEAMS perch\u00e8 arrivo da WF di TEAMS allora chiamo questo:\n        //TEST http://172.30.3.230:8080\n        //PROD https://gems.faacgroup.com\n\t\tif (daTeams==false){\n            if (IDTEAMSV == null)\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/directManager?email=\" + EmployeeReferenceMail\t\n            else\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/employee/\" + IDTEAMSV.toString() + \"/directManager\"\n\n            URL url\n            url = new URL(baseURL)\n            \n            log.debug baseURL\n            \n            HttpURLConnection connection = (HttpURLConnection)url.openConnection();\n\t\t\t\n            connection.setRequestMethod(requestMethod);\n            connection.setRequestProperty(\"Content-Type\", \"application/json\");\n            connection.setRequestProperty(\"Accept\", \"*/*\");\n            connection.setDoOutput(true);\n            connection.setDoInput(true);\n            connection.connect();\n\n            log.debug \"ResponseCode:\" + connection.getResponseCode();\n\n            def httpResponseScanner = new Scanner(connection.getInputStream())\n\n            def jsonResp =  httpResponseScanner.nextLine()\n            def json = new JsonSlurper().parseText(jsonResp)\n\n        \tdManagerList = userSearchService.findUsersByEmail(json.email)\n            httpResponseScanner.close()\n        } \n        else{\n             dManagerList = userSearchService.findUsersByEmail(EmployeeReferenceMail)\n        }\n        \n        ApplicationUser directManager\n\n        //se ho piu user utilizzo quello che ha il gruppo IDTS-customers altrimenti uso l'unico utente che c'\u00e8\n        if (dManagerList.size()>1) {\n            for (directM in dManagerList){\n               if (groupManager.getUsersInGroup(\"IDTS-customers\").contains(directM)){\n                    directManager=(ApplicationUser) directM\n                }\t\n           } \n        }\n        else {\n            directManager=dManagerList.getAt(0)\n        }\n\n        //se ho piu user e non ne ho nemmeno uno con IDTS-customers allora prendo quello che appartiere alla directory di crowd\n        if (directManager == null){\n            for (directM in dManagerList){\n\n               log.debug (directM.getDirectoryId() == 10000)\n                if (directM.getDirectoryId() == 10000){\n                    directManager=(ApplicationUser) directM\n                }\t\n            } \n        }\n\n\n        /* Create sub-task to be assigned to user */\n        MutableIssue newSubTask = issueFactory.getIssue()\n        //dobbiamo mettere il direct manager proveniente da teams\n        def directManagerList = []\n        directManagerList.add(directManager)\n        log.debug directManagerList\n        \n        // IDTS WF Account PROD 22256 - TEST 22100\n        CustomField WFAccount = customFieldManager.getCustomFieldObject(Long.parseLong(\"22256\"))\n        issue.setCustomFieldValue(WFAccount, directManagerList)\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n\n        newSubTask.setAssignee(directManager)\n        newSubTask.setReporter(LoggedInUser)\n        newSubTask.setSummary(directManager.getUsername() + \" - \" + issue.getSummary())\n        // Software/Hardware PROD 22253 - TYEST 22023\n        CustomField fieldSoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n        //Software/Hardware Approvation PROD 22260 - TEST 22343\n        CustomField SoftHardAppr = customFieldManager.getCustomFieldObject(Long.parseLong(\"22260\"))\n\n       \n\n        def fieldSoftHardV = issue.getCustomFieldValue(fieldSoftHard)\n\n        newSubTask.setCustomFieldValue(fieldSoftHard, fieldSoftHardV)\n        newSubTask.setCustomFieldValue(SoftHardAppr, fieldSoftHardV)\n        newSubTask.setCustomFieldValue(ReporterCompany, ReporterCompanyV)\n\n        newSubTask.setParentObject(issue)\n        newSubTask.setProjectObject(issue.getProjectObject())\n\n        newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n            it.getName() == \"Sub-ApprAccount\"\n        }.id)\n\n        def newIssueParams = [\"issue\" : newSubTask] as Map<String,Object>\n\t\t\n        issueManager.createIssueObject(LoggedInUser, newIssueParams)\n        subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\n        issueIndexingService.reIndex(newSubTask)\n        //Software/Hardware PROD 22253 - TEST 22023\n        //CustomField SoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n        //def SoftHardV = issue.getCustomFieldValue(SoftHard)\n        //issue.setCustomFieldValue(SoftHardAppr, SoftHard)\n\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n        issueIndexingService.reIndex(issue)      \n    }\n}\n\n","scriptPath":null,"parameters":{}}
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 135 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: //TEST http://172.30.3.230:8080
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 136 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport com.atlassian.jira.issue.Issue;\nimport org.apache.commons.codec.binary.Base64;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport org.apache.log4j.Category\nimport com.atlassian.jira.user.util.UserManager\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\nlog.setLevel(org.apache.log4j.Level.DEBUG)\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-91558\")\ndef groupManager = ComponentAccessor.getGroupManager()\ndef daTeams=false\ndef EmployeeReferenceMail = \"\"\ndef IDTEAMSV = null\ndef creaSubTask\ndef dManagerList = []\ndef userPropertyManager = ComponentAccessor.getUserPropertyManager()\ndef userManager = ComponentAccessor.getUserManager()\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService.class)\n\nCustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\ndef ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)\n//Reference Employee ID PROD 22301 - TEST 23001\nCustomField EmployeeReference = customFieldManager.getCustomFieldObject(Long.parseLong(\"22301\"))\ndef EmployeeReferenceMailV = issue.getCustomFieldValue(EmployeeReference)\nlog.debug EmployeeReferenceMailV\n\nif ( EmployeeReferenceMailV != null &&  EmployeeReferenceMailV != \"\" && EmployeeReferenceMailV.size()==1){\n    def objectCompany = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND objectId = \" + EmployeeReferenceMailV[0].getId() + \" AND \\\"Company\\\" IN (\\\"FAAC France S.A.S\\\",\\\"FAAC S.p.A.\\\",\\\"FAAC Entrance Solutions France Sas\\\",\\\"FAAC Entrance Solutions UK\\\",\\\"HUB Parking Technology Canada Ltd.\\\",\\\"HUB Parking Technology USA Inc.\\\",\\\"FAAC International Inc.\\\",\\\"Associated Time Instruments Company Inc.\\\",\\\"TIBA LLC\\\",\\\"FAAC Electronics Ltd.\\\",\\\"CoMETA S.p.A.\\\",\\\"CICOS S.c.r.l.\\\",\\\"FAAC UK Ltd.\\\",\\\"FAAC Doors & Shutters UK Limited\\\",\\\"Magnetic Faac India Pvt Ltd\\\",\\\"Magnetic Autocontrol GmbH\\\")\"); \n     log.debug objectCompany\n    if (objectCompany.size()>0)\n        creaSubTask=true\n    else\n        creaSubTask=false\n} \nelse{\n    log.debug ReporterCompanyV\n\tif (ReporterCompanyV==\"FAAC S.p.A.\" || ReporterCompanyV==\"FAAC France S.A.S\" || ReporterCompanyV == 'Magnetic Autocontrol GmbH' || ReporterCompanyV == 'HUB Parking Technology Canada Ltd.' || ReporterCompanyV == 'FAAC Electronics Ltd.' || ReporterCompanyV == 'FAAC Entrance Solutions France Sas' || ReporterCompanyV == 'FAAC Entrance Solutions UK' || ReporterCompanyV == 'CoMETA S.p.A.' || ReporterCompanyV == 'CICOS S.c.r.l.' || ReporterCompanyV == 'FAAC UK Ltd.' ||  ReporterCompanyV == 'FAAC Doors & Shutters UK Limited' ||  ReporterCompanyV == 'Magnetic Faac India Pvt Ltd' || ReporterCompanyV == 'HUB Parking Technology USA Inc.'|| ReporterCompanyV == 'Associated Time Instruments Company Inc.'|| ReporterCompanyV == 'FAAC International Inc.'|| ReporterCompanyV == 'TIBA LLC') \n\t\tcreaSubTask=true\n    else\n\t\tcreaSubTask=false\n} \n\nif (issue.getSummary().toString()==\"AutomaticalDismissalFromInsight\"){\n    creaSubTask=false\n}\n\nlog.debug \"creaSubTask \" + creaSubTask\ndef isVIP\n\nif (EmployeeReferenceMailV != null && EmployeeReferenceMailV.size()==1) {\n\tdef queryParam = \"\\\"\" + EmployeeReferenceMailV[0].getName() + \"\\\"\"\n    log.debug queryParam\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\n    log.debug objects\n    if (objectFacade.loadObjectAttributeBean(objects[0].getId(), 6541) != null && objectFacade.loadObjectAttributeBean(objects[0].getId(), 6541) != \"\")\n        isVIP = objectFacade.loadObjectAttributeBean(objects[0].getId(), 6541).getObjectAttributeValueBeans()[0].getValue()    \n    \n    if (isVIP==true)\n    \tcreaSubTask =false\n}\n\nlog.debug creaSubTask\nif (creaSubTask) {\n    if(!groupManager.getUsersInGroup(\"Helpdesk VIP\").contains(issue.getReporter())){\n        //MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-6118\")\n        log.debug \"crea sub\"\n        // Employee System ID uguale PROD E TEST\n        CustomField IDTEAMS = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\n        def IDTEAMSV_daTeams = issue.getCustomFieldValue(IDTEAMS)\n        \n        if (IDTEAMSV_daTeams != null)\n        {\n            daTeams=true\n           \n            //imposto la mail che leggo dal campo direct manager\n            CustomField directManagerDaTeams = customFieldManager.getCustomFieldObject(Long.parseLong(\"14411\"))\n            def directManagerDaTeamsV = issue.getCustomFieldValue(directManagerDaTeams)\n            EmployeeReferenceMail = directManagerDaTeamsV \n        } \n\n\n\t\n        if (IDTEAMSV == null && daTeams==false)\n        {\n            if (EmployeeReferenceMailV == null || EmployeeReferenceMailV==\"\" || EmployeeReferenceMailV.size()!=1)\n            {\n                EmployeeReferenceMail = issue.reporter.getEmailAddress()\n                log.debug \"EmployeeReferenceMail\" + EmployeeReferenceMail\n            }\n            else {\n                def idTeamsEmployee= EmployeeReferenceMailV[0].getName().split(\"-\")\n                IDTEAMSV = idTeamsEmployee[0].trim()\n           }     \n        }\n        def requestMethod = \"GET\";\n\n        def baseURL=\"\"\n        //se ho IDTEAMS perch\u00e8 arrivo da WF di TEAMS allora chiamo questo:\n        //TEST http://172.30.3.230:8080\n        //PROD https://gems.faacgroup.com\n\t\tif (daTeams==false){\n            if (IDTEAMSV == null)\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/directManager?email=\" + EmployeeReferenceMail\t\n            else\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/employee/\" + IDTEAMSV.toString() + \"/directManager\"\n\n            URL url\n            url = new URL(baseURL)\n            \n            log.debug baseURL\n            \n            HttpURLConnection connection = (HttpURLConnection)url.openConnection();\n\t\t\t\n            connection.setRequestMethod(requestMethod);\n            connection.setRequestProperty(\"Content-Type\", \"application/json\");\n            connection.setRequestProperty(\"Accept\", \"*/*\");\n            connection.setDoOutput(true);\n            connection.setDoInput(true);\n            connection.connect();\n\n            log.debug \"ResponseCode:\" + connection.getResponseCode();\n\n            def httpResponseScanner = new Scanner(connection.getInputStream())\n\n            def jsonResp =  httpResponseScanner.nextLine()\n            def json = new JsonSlurper().parseText(jsonResp)\n\n        \tdManagerList = userSearchService.findUsersByEmail(json.email)\n            httpResponseScanner.close()\n        } \n        else{\n             dManagerList = userSearchService.findUsersByEmail(EmployeeReferenceMail)\n        }\n        \n        ApplicationUser directManager\n\n        //se ho piu user utilizzo quello che ha il gruppo IDTS-customers altrimenti uso l'unico utente che c'\u00e8\n        if (dManagerList.size()>1) {\n            for (directM in dManagerList){\n               if (groupManager.getUsersInGroup(\"IDTS-customers\").contains(directM)){\n                    directManager=(ApplicationUser) directM\n                }\t\n           } \n        }\n        else {\n            directManager=dManagerList.getAt(0)\n        }\n\n        //se ho piu user e non ne ho nemmeno uno con IDTS-customers allora prendo quello che appartiere alla directory di crowd\n        if (directManager == null){\n            for (directM in dManagerList){\n\n               log.debug (directM.getDirectoryId() == 10000)\n                if (directM.getDirectoryId() == 10000){\n                    directManager=(ApplicationUser) directM\n                    break\n                }\t\n            } \n        }\n\n\n        /* Create sub-task to be assigned to user */\n        MutableIssue newSubTask = issueFactory.getIssue()\n        //dobbiamo mettere il direct manager proveniente da teams\n        def directManagerList = []\n        directManagerList.add(directManager)\n        log.debug directManagerList\n        \n        // IDTS WF Account PROD 22256 - TEST 22100\n        CustomField WFAccount = customFieldManager.getCustomFieldObject(Long.parseLong(\"22256\"))\n        issue.setCustomFieldValue(WFAccount, directManagerList)\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n\n        newSubTask.setAssignee(directManager)\n        newSubTask.setReporter(LoggedInUser)\n        newSubTask.setSummary(directManager.getUsername() + \" - \" + issue.getSummary())\n        // Software/Hardware PROD 22253 - TYEST 22023\n        CustomField fieldSoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n        //Software/Hardware Approvation PROD 22260 - TEST 22343\n        CustomField SoftHardAppr = customFieldManager.getCustomFieldObject(Long.parseLong(\"22260\"))\n\n       \n\n        def fieldSoftHardV = issue.getCustomFieldValue(fieldSoftHard)\n\n        newSubTask.setCustomFieldValue(fieldSoftHard, fieldSoftHardV)\n        newSubTask.setCustomFieldValue(SoftHardAppr, fieldSoftHardV)\n        newSubTask.setCustomFieldValue(ReporterCompany, ReporterCompanyV)\n\n\n        //new license \n        CustomField EmployeeSystemID = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\n        def EmployeeSystemIDV = issue.getCustomFieldValue(EmployeeSystemID)\n        newSubTask.setCustomFieldValue(EmployeeSystemID, EmployeeSystemIDV)\n        //new license \n        \n        newSubTask.setParentObject(issue)\n        newSubTask.setProjectObject(issue.getProjectObject())\n\n        newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n            it.getName() == \"Sub-ApprAccount\"\n        }.id)\n\n        def newIssueParams = [\"issue\" : newSubTask] as Map<String,Object>\n\t\t\n        issueManager.createIssueObject(LoggedInUser, newIssueParams)\n        subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\n        issueIndexingService.reIndex(newSubTask)\n        //Software/Hardware PROD 22253 - TEST 22023\n        //CustomField SoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n        //def SoftHardV = issue.getCustomFieldValue(SoftHard)\n        //issue.setCustomFieldValue(SoftHardAppr, SoftHard)\n\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n        issueIndexingService.reIndex(issue)      \n    }\n}\n\n","scriptPath":null,"parameters":{}}
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 137 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: //TEST http://172.30.3.230:8080
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 138 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Crea Appr.Man.
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import com.atlassian.jira.component.ComponentAccessor\r\nimport com.atlassian.jira.issue.MutableIssue\r\nimport com.atlassian.jira.issue.IssueManager\r\nimport com.atlassian.jira.bc.user.search.UserSearchService\r\nimport com.atlassian.jira.user.ApplicationUser\r\nimport com.atlassian.jira.event.type.EventDispatchOption\r\nimport com.atlassian.jira.issue.index.IssueIndexingService\r\nimport org.apache.log4j.Category\r\nimport com.atlassian.jira.issue.fields.CustomField\r\nimport com.atlassian.jira.issue.CustomFieldManager\r\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\r\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\r\nimport com.atlassian.jira.util.JiraUtils;\r\nimport groovy.json.JsonSlurper;\r\nimport groovy.json.StreamingJsonBuilder;\r\nimport com.atlassian.jira.issue.Issue;\r\nimport org.apache.commons.codec.binary.Base64;\r\nimport groovy.json.JsonSlurper;\r\nimport groovy.json.StreamingJsonBuilder;\r\nimport org.apache.log4j.Category\r\nimport com.atlassian.jira.user.util.UserManager\r\n\r\ndef issueFactory = ComponentAccessor.getIssueFactory()\r\ndef constantManager = ComponentAccessor.getConstantsManager()\r\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\r\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\r\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\r\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\r\n/* Get Insight IQL Facade from plugin accessor */\r\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \r\ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\r\n/* Get Insight Object Facade from plugin accessor */\r\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\r\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\r\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\r\n\r\n/* Get issue \"Group Assignee\" custom field value */\r\nIssueManager issueManager = ComponentAccessor.getIssueManager()\r\nCategory log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\r\nlog.setLevel(org.apache.log4j.Level.DEBUG)\r\n//MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-72772\")\r\ndef groupManager = ComponentAccessor.getGroupManager()\r\ndef daTeams=false\r\ndef EmployeeReferenceMail = \"\"\r\ndef IDTEAMSV = null\r\ndef creaSubTask\r\ndef dManagerList = []\r\ndef userPropertyManager = ComponentAccessor.getUserPropertyManager()\r\ndef userManager = ComponentAccessor.getUserManager()\r\ndef userSearchService = ComponentAccessor.getComponent(UserSearchService.class)\r\n\r\nCustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\r\ndef ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)\r\n//Reference Employee ID PROD 22301 - TEST 23001\r\nCustomField EmployeeReference = customFieldManager.getCustomFieldObject(Long.parseLong(\"22301\"))\r\ndef EmployeeReferenceMailV = issue.getCustomFieldValue(EmployeeReference)\r\nlog.debug EmployeeReferenceMailV\r\n\r\nif ( EmployeeReferenceMailV != null &&  EmployeeReferenceMailV != \"\" && EmployeeReferenceMailV.size()==1){\r\n    def objectCompany = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND objectId = \" + EmployeeReferenceMailV[0].getId() + \" AND \\\"Company\\\" IN (\\\"FAAC France S.A.S\\\",\\\"FAAC S.p.A.\\\",\\\"FAAC Entrance Solutions France Sas\\\",\\\"FAAC Entrance Solutions UK\\\",\\\"HUB Parking Technology Canada Ltd.\\\",\\\"HUB Parking Technology USA Inc.\\\",\\\"FAAC International Inc.\\\",\\\"Associated Time Instruments Company Inc.\\\",\\\"TIBA LLC\\\",\\\"FAAC Electronics Ltd.\\\",\\\"CoMETA S.p.A.\\\",\\\"CICOS S.c.r.l.\\\",\\\"FAAC UK Ltd.\\\",\\\"FAAC Doors & Shutters UK Limited\\\",\\\"Magnetic Faac India Pvt Ltd\\\",\\\"Magnetic Autocontrol GmbH\\\")\"); \r\n     log.debug objectCompany\r\n    if (objectCompany.size()>0)\r\n        creaSubTask=true\r\n    else\r\n        creaSubTask=false\r\n} \r\nelse{\r\n    log.debug ReporterCompanyV\r\n\tif (ReporterCompanyV==\"FAAC S.p.A.\" || ReporterCompanyV==\"FAAC France S.A.S\" || ReporterCompanyV == 'Magnetic Autocontrol GmbH' || ReporterCompanyV == 'HUB Parking Technology Canada Ltd.' || ReporterCompanyV == 'FAAC Electronics Ltd.' || ReporterCompanyV == 'FAAC Entrance Solutions France Sas' || ReporterCompanyV == 'FAAC Entrance Solutions UK' || ReporterCompanyV == 'CoMETA S.p.A.' || ReporterCompanyV == 'CICOS S.c.r.l.' || ReporterCompanyV == 'FAAC UK Ltd.' ||  ReporterCompanyV == 'FAAC Doors & Shutters UK Limited' || ReporterCompanyV == 'HUB Parking Technology USA Inc.'|| ReporterCompanyV == 'Magnetic Faac India Pvt Ltd'|| ReporterCompanyV == 'Associated Time Instruments Company Inc.'|| ReporterCompanyV == 'FAAC International Inc.'|| ReporterCompanyV == 'TIBA LLC') \r\n\t\tcreaSubTask=true\r\n    else\r\n\t\tcreaSubTask=false\r\n} \r\n\r\nif (issue.getSummary().toString()==\"AutomaticalDismissalFromInsight\"){\r\n    creaSubTask=false\r\n}\r\n\r\nlog.debug \"creaSubTask \" + creaSubTask\r\ndef isVIP\r\n\r\nif (EmployeeReferenceMailV != null && EmployeeReferenceMailV.size()==1) {\r\n\tdef queryParam = \"\\\"\" + EmployeeReferenceMailV[0].getName() + \"\\\"\"\r\n    log.debug queryParam\r\n    def objects = iqlFacade.findObjectsByIQLAndSchema(9, \"objectType=\\\"Employee\\\" AND \\\"Name\\\" IN (\" + queryParam + \")\"); // See the complete list of possible IQL on the Insight Query Language documentation page\r\n    log.debug objects\r\n    if (objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239) != null && objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239) != \"\")\r\n        isVIP = objectFacade.loadObjectAttributeBean(objects[0].getId(), 2239).getObjectAttributeValueBeans()[0].getValue()    \r\n    \r\n    if (isVIP==true)\r\n    \tcreaSubTask =false\r\n}\r\n\r\nlog.debug creaSubTask\r\nif (creaSubTask) {\r\n    if(!groupManager.getUsersInGroup(\"Helpdesk VIP\").contains(issue.getReporter())){\r\n        //MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-6118\")\r\n        log.debug \"crea sub\"\r\n        // Employee System ID uguale PROD E TEST\r\n        CustomField IDTEAMS = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\r\n        def IDTEAMSV_daTeams = issue.getCustomFieldValue(IDTEAMS)\r\n        \r\n        if (IDTEAMSV_daTeams != null)\r\n        {\r\n            daTeams=true\r\n           \r\n            //imposto la mail che leggo dal campo direct manager\r\n            CustomField directManagerDaTeams = customFieldManager.getCustomFieldObject(Long.parseLong(\"14411\"))\r\n            def directManagerDaTeamsV = issue.getCustomFieldValue(directManagerDaTeams)\r\n            EmployeeReferenceMail = directManagerDaTeamsV \r\n        } \r\n\r\n\r\n\t\r\n        if (IDTEAMSV == null && daTeams==false)\r\n        {\r\n            if (EmployeeReferenceMailV == null || EmployeeReferenceMailV==\"\" || EmployeeReferenceMailV.size()!=1)\r\n            {\r\n                EmployeeReferenceMail = issue.reporter.getEmailAddress()\r\n                log.debug \"EmployeeReferenceMail\" + EmployeeReferenceMail\r\n            }\r\n            else {\r\n                def idTeamsEmployee= EmployeeReferenceMailV[0].getName().split(\"-\")\r\n                IDTEAMSV = idTeamsEmployee[0].trim()\r\n           }     \r\n        }\r\n        def requestMethod = \"GET\";\r\n\r\n        def baseURL=\"\"\r\n        //se ho IDTEAMS perch\u00e8 arrivo da WF di TEAMS allora chiamo questo:\r\n        //TEST http://172.30.3.230:8080\r\n        //PROD https://gems.faacgroup.com\r\n\t\tif (daTeams==false){\r\n            if (IDTEAMSV == null)\r\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/directManager?email=\" + EmployeeReferenceMail\t\r\n            else\r\n                baseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/employee/\" + IDTEAMSV.toString() + \"/directManager\"\r\n\r\n            URL url\r\n            url = new URL(baseURL)\r\n            \r\n            log.debug baseURL\r\n            \r\n            HttpURLConnection connection = (HttpURLConnection)url.openConnection();\r\n\t\t\t\r\n            connection.setRequestMethod(requestMethod);\r\n            connection.setRequestProperty(\"Content-Type\", \"application/json\");\r\n            connection.setRequestProperty(\"Accept\", \"*/*\");\r\n            connection.setDoOutput(true);\r\n            connection.setDoInput(true);\r\n            connection.connect();\r\n\r\n            log.debug \"ResponseCode:\" + connection.getResponseCode();\r\n\r\n            def httpResponseScanner = new Scanner(connection.getInputStream())\r\n\r\n            def jsonResp =  httpResponseScanner.nextLine()\r\n            def json = new JsonSlurper().parseText(jsonResp)\r\n\r\n        \tdManagerList = userSearchService.findUsersByEmail(json.email)\r\n            httpResponseScanner.close()\r\n        } \r\n        else{\r\n             dManagerList = userSearchService.findUsersByEmail(EmployeeReferenceMail)\r\n        }\r\n        \r\n        ApplicationUser directManager\r\n\r\n        //se ho piu user utilizzo quello che ha il gruppo IDTS-customers altrimenti uso l'unico utente che c'\u00e8\r\n        if (dManagerList.size()>1) {\r\n            for (directM in dManagerList){\r\n               if (groupManager.getUsersInGroup(\"IDTS-customers\").contains(directM)){\r\n                    directManager=(ApplicationUser) directM\r\n                }\t\r\n           } \r\n        }\r\n        else {\r\n            directManager=dManagerList.getAt(0)\r\n        }\r\n\r\n        //se ho piu user e non ne ho nemmeno uno con IDTS-customers allora prendo quello che appartiere alla directory di crowd\r\n        if (directManager == null){\r\n            for (directM in dManagerList){\r\n\r\n               log.debug (directM.getDirectoryId() == 10000)\r\n                if (directM.getDirectoryId() == 10000){\r\n                    directManager=(ApplicationUser) directM\r\n                }\t\r\n            } \r\n        }\r\n\r\n\r\n        /* Create sub-task to be assigned to user */\r\n        MutableIssue newSubTask = issueFactory.getIssue()\r\n        //dobbiamo mettere il direct manager proveniente da teams\r\n        def directManagerList = []\r\n        directManagerList.add(directManager)\r\n        log.debug directManagerList\r\n        \r\n        // IDTS WF Account PROD 22256 - TEST 22100\r\n        CustomField WFAccount = customFieldManager.getCustomFieldObject(Long.parseLong(\"22256\"))\r\n        issue.setCustomFieldValue(WFAccount, directManagerList)\r\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\r\n\r\n        newSubTask.setAssignee(directManager)\r\n        newSubTask.setReporter(LoggedInUser)\r\n        newSubTask.setSummary(directManager.getUsername() + \" - \" + issue.getSummary())\r\n        // Software/Hardware PROD 22253 - TYEST 22023\r\n        CustomField fieldSoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\r\n        //Software/Hardware Approvation PROD 22260 - TEST 22343\r\n        CustomField SoftHardAppr = customFieldManager.getCustomFieldObject(Long.parseLong(\"22260\"))\r\n\r\n       \r\n\r\n        def fieldSoftHardV = issue.getCustomFieldValue(fieldSoftHard)\r\n\r\n        newSubTask.setCustomFieldValue(fieldSoftHard, fieldSoftHardV)\r\n        newSubTask.setCustomFieldValue(SoftHardAppr, fieldSoftHardV)\r\n        newSubTask.setCustomFieldValue(ReporterCompany, ReporterCompanyV)\r\n\r\n\r\n        //new license \r\n        CustomField EmployeeSystemID = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\r\n        def EmployeeSystemIDV = issue.getCustomFieldValue(EmployeeSystemID)\r\n        newSubTask.setCustomFieldValue(EmployeeSystemID, EmployeeSystemIDV)\r\n        //new license \r\n        \r\n        newSubTask.setParentObject(issue)\r\n        newSubTask.setProjectObject(issue.getProjectObject())\r\n\r\n        newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\r\n            it.getName() == \"Sub-ApprAccount\"\r\n        }.id)\r\n\r\n        def newIssueParams = [\"issue\" : newSubTask] as Map<String,Object>\r\n\t\t\r\n        issueManager.createIssueObject(LoggedInUser, newIssueParams)\r\n        subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\r\n        issueIndexingService.reIndex(newSubTask)\r\n        //Software/Hardware PROD 22253 - TEST 22023\r\n        //CustomField SoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\r\n        //def SoftHardV = issue.getCustomFieldValue(SoftHard)\r\n        //issue.setCustomFieldValue(SoftHardAppr, SoftHard)\r\n\r\n        issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\r\n        issueIndexingService.reIndex(issue)      \r\n    }\r\n}\r\n\r\n","scriptPath":null,"parameters":{}}
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 139 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Crea Appr.Man.
+Function ID: unconditional-result
+Type: FIELD_SCRIPT_FILE_OR_SCRIPT
+Content: {"script":"import com.atlassian.jira.component.ComponentAccessor\nimport com.atlassian.jira.issue.MutableIssue\nimport com.atlassian.jira.issue.IssueManager\nimport com.atlassian.jira.bc.user.search.UserSearchService\nimport com.atlassian.jira.user.ApplicationUser\nimport com.atlassian.jira.event.type.EventDispatchOption\nimport com.atlassian.jira.issue.index.IssueIndexingService\nimport org.apache.log4j.Category\nimport com.atlassian.jira.issue.fields.CustomField\nimport com.atlassian.jira.issue.CustomFieldManager\nimport com.atlassian.jira.workflow.WorkflowTransitionUtil;\nimport com.atlassian.jira.workflow.WorkflowTransitionUtilImpl;\nimport com.atlassian.jira.util.JiraUtils;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport com.atlassian.jira.issue.Issue;\nimport org.apache.commons.codec.binary.Base64;\nimport groovy.json.JsonSlurper;\nimport groovy.json.StreamingJsonBuilder;\nimport org.apache.log4j.Category\nimport com.atlassian.jira.user.util.UserManager\n\ndef issueFactory = ComponentAccessor.getIssueFactory()\ndef constantManager = ComponentAccessor.getConstantsManager()\nComponentAccessor.jiraAuthenticationContext.setLoggedInUser(ComponentAccessor.getUserManager().getUserByKey(\"atlassian_faac_service_desk\"))\ndef LoggedInUser = ComponentAccessor.getJiraAuthenticationContext().getLoggedInUser()\ndef subTaskManager = ComponentAccessor.getSubTaskManager()\nCustomFieldManager \tcustomFieldManager \t= ComponentAccessor.getCustomFieldManager()\n/* Get Insight IQL Facade from plugin accessor */\nClass iqlFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.IQLFacade\"); \ndef iqlFacade = ComponentAccessor.getOSGiComponentInstanceOfType(iqlFacadeClass);\n/* Get Insight Object Facade from plugin accessor */\nClass objectFacadeClass = ComponentAccessor.getPluginAccessor().getClassLoader().findClass(\"com.riadalabs.jira.plugins.insight.channel.external.api.facade.ObjectFacade\");\ndef objectFacade = ComponentAccessor.getOSGiComponentInstanceOfType(objectFacadeClass);\nIssueIndexingService issueIndexingService = ComponentAccessor.getComponent(IssueIndexingService)\n\n/* Get issue \"Group Assignee\" custom field value */\nIssueManager issueManager = ComponentAccessor.getIssueManager()\n\ndef groupManager = ComponentAccessor.getGroupManager()\n\nif(!groupManager.getUsersInGroup(\"Helpdesk VIP\").contains(issue.getReporter())){\n    //MutableIssue issue = issueManager.getIssueByKeyIgnoreCase(\"IDTS-6118\")\n    Category log = Category.getInstance(\"com.onresolve.jira.groovy.PostFunction\")\n    log.setLevel(org.apache.log4j.Level.DEBUG)\n    // Employee System ID uguale PROD E TEST\n    CustomField IDTEAMS = customFieldManager.getCustomFieldObject(Long.parseLong(\"20500\"))\n    def IDTEAMSV = issue.getCustomFieldValue(IDTEAMS)\n\n    //Reference Employee ID PROD 22301 - TEST 23001\n    CustomField EmployeeReference = customFieldManager.getCustomFieldObject(Long.parseLong(\"22301\"))\n    def EmployeeReferenceMailV = issue.getCustomFieldValue(EmployeeReference)\n    def EmployeeReferenceMail = \"\"\n\n    if (IDTEAMSV == null)\n    {\n        if (EmployeeReferenceMailV == null || EmployeeReferenceMailV==\"\")\n        {\n            EmployeeReferenceMail = issue.reporter.getEmailAddress()\n            log.debug \"EmployeeReferenceMail\" + EmployeeReferenceMail\n        }\n        else {\n        \tdef idTeamsEmployee= EmployeeReferenceMailV[0].getName().split(\"-\")\n        \tIDTEAMSV = idTeamsEmployee[0].trim()\n       }     \n    }\n\n    def requestMethod = \"GET\";\n\n    def baseURL=\"\"\n    //se ho IDTEAMS perch\u00e8 arrivo da WF di TEAMS allora chiamo questo:\n    //TEST http://172.30.3.230:8080\n    //PROD https://gems.faacgroup.com\n\n    if (IDTEAMSV == null)\n    \tbaseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/directManager?email=\" + EmployeeReferenceMail\t\n    else\n    \tbaseURL = \"https://gems.faacgroup.com/faac-hrportal-web/rest/jira/employee/\" + IDTEAMSV.toString() + \"/directManager\"\n\n    URL url\n    url = new URL(baseURL)\n    HttpURLConnection connection = (HttpURLConnection)url.openConnection();\n\n    connection.setRequestMethod(requestMethod);\n    connection.setRequestProperty(\"Content-Type\", \"application/json\");\n    connection.setRequestProperty(\"Accept\", \"*/*\");\n    connection.setDoOutput(true);\n    connection.setDoInput(true);\n    log.debug connection\n    connection.connect();\n\n    log.debug \"ResponseCode:\" + connection.getResponseCode();\n\n    def httpResponseScanner = new Scanner(connection.getInputStream())\n\n    def jsonResp =  httpResponseScanner.nextLine()\n    def json = new JsonSlurper().parseText(jsonResp)\n\n    def userPropertyManager = ComponentAccessor.getUserPropertyManager()\n    def userManager = ComponentAccessor.getUserManager()\n    def userSearchService = ComponentAccessor.getComponent(UserSearchService.class)\n\n    def dManagerList = []\n    dManagerList = userSearchService.findUsersByEmail(json.email)\n    ApplicationUser directManager\n\t\n    //se ho piu user utilizzo quello che ha il gruppo IDTS-customers altrimenti uso l'unico utente che c'\u00e8\n    if (dManagerList.size()>1) {\n        for (directM in dManagerList){\n           if (groupManager.getUsersInGroup(\"IDTS-customers\").contains(directM)){\n                directManager=(ApplicationUser) directM\n            }\t\n       } \n    }\n    else {\n        directManager=dManagerList.getAt(0)\n    }\n\t\n    //se ho piu user e non ne ho nemmeno uno con IDTS-customers allora prendo quello che appartiere alla directory di crowd\n    if (directManager == null){\n        for (directM in dManagerList){\n\n           log.debug (directM.getDirectoryId() == 10000)\n            if (directM.getDirectoryId() == 10000){\n                directManager=(ApplicationUser) directM\n            }\t\n        } \n    }\n    \n    //ApplicationUser directManager = userSearchService.findUsersByEmail(json.email).getAt(0)\n    httpResponseScanner.close()\n\n    /* Create sub-task to be assigned to user */\n    MutableIssue newSubTask = issueFactory.getIssue()\n    //dobbiamo mettere il direct manager proveniente da teams\n    def directManagerList = []\n    directManagerList.add(directManager)\n    // IDTS WF Account PROD 22256 - TEST 22100\n    CustomField WFAccount = customFieldManager.getCustomFieldObject(Long.parseLong(\"22256\"))\n    issue.setCustomFieldValue(WFAccount, directManagerList)\n    issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n\n    newSubTask.setAssignee(directManager)\n    newSubTask.setReporter(LoggedInUser)\n    newSubTask.setSummary(directManager.getUsername() + \" - \" + issue.getSummary())\n    // Software/Hardware PROD 22253 - TYEST 22023\n    CustomField fieldSoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n    //Software/Hardware Approvation PROD 22260 - TEST 22343\n    CustomField SoftHardAppr = customFieldManager.getCustomFieldObject(Long.parseLong(\"22260\"))\n\n    CustomField ReporterCompany = customFieldManager.getCustomFieldObject(Long.parseLong(\"20104\"))\n    def ReporterCompanyV = issue.getCustomFieldValue(ReporterCompany)\n\n    def fieldSoftHardV = issue.getCustomFieldValue(fieldSoftHard)\n\n    newSubTask.setCustomFieldValue(fieldSoftHard, fieldSoftHardV)\n    newSubTask.setCustomFieldValue(SoftHardAppr, fieldSoftHardV)\n    newSubTask.setCustomFieldValue(ReporterCompany, ReporterCompanyV)\n\n    newSubTask.setParentObject(issue)\n    newSubTask.setProjectObject(issue.getProjectObject())\n\n    newSubTask.setIssueTypeId(constantManager.getAllIssueTypeObjects().find{\n        it.getName() == \"Sub-ApprAccount\"\n    }.id)\n\n    def newIssueParams = [\"issue\" : newSubTask] as Map<String,Object>\n\n    issueManager.createIssueObject(LoggedInUser, newIssueParams)\n    subTaskManager.createSubTaskIssueLink(issue, newSubTask, LoggedInUser)\n    issueIndexingService.reIndex(newSubTask)\n    //Software/Hardware PROD 22253 - TEST 22023\n    //CustomField SoftHard = customFieldManager.getCustomFieldObject(Long.parseLong(\"22253\"))\n    //def SoftHardV = issue.getCustomFieldValue(SoftHard)\n    //issue.setCustomFieldValue(SoftHardAppr, SoftHard)\n\n    issueManager.updateIssue(LoggedInUser, issue, EventDispatchOption.DO_NOT_DISPATCH, false)\n    issueIndexingService.reIndex(issue)\n}\n\n\n","scriptPath":null,"parameters":{}}
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 140 ---
+File: Internal_support_portals_Account_ticket_Workflow.xml
+Workflow: Internal_support_portals_Account_ticket_Workflow
+Transition: Crea Appr.Man.
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: //TEST http://172.30.3.230:8080
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 141 ---
+File: Jira_8_-_FAAC_Service_Desk_Workflow_for_HS.xml
+Workflow: Jira_8_-_FAAC_Service_Desk_Workflow_for_HS
+Transition: To Operation Wait License
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="td-reference" href="http://itatlass-app01.faacspa.local:8080/browse/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 142 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 143 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 144 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 145 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 146 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 147 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 148 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 149 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 150 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 151 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 152 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 153 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 154 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 155 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 156 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 157 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 158 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 159 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 160 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 161 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 162 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 163 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 164 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 165 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 166 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 167 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 168 ---
+File: RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 169 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 170 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 171 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 172 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 173 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 174 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 175 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 176 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 177 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 178 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 179 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 180 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 181 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 182 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 183 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 184 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 185 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 186 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 187 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 188 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 189 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 190 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 191 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 192 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 193 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 194 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 195 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 196 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 197 ---
+File: RR__Recruitment_Requests_Approval_Workflow_Rev__02.xml
+Workflow: RR__Recruitment_Requests_Approval_Workflow_Rev__02
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 198 ---
+File: _Jira7__EC_FAAC__EC_Issue_Tracking_Workflow.xml
+Workflow: _Jira7__EC_FAAC__EC_Issue_Tracking_Workflow
+Transition: Jump to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 199 ---
+File: _Jira7__EC_FAAC__EC_Issue_Tracking_Workflow.xml
+Workflow: _Jira7__EC_FAAC__EC_Issue_Tracking_Workflow
+Transition: Go to step 7
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a href="itatlass-app01:8080/browse/$issue" style="font-size: 14px; font-weight: normal; text-decoration: none; color: #707070"><strong style="font-weight: bold">EC FAAC</strong></a>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 200 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 201 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 202 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 203 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 204 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 205 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 206 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 207 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 208 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 209 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 210 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 211 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 212 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 213 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 214 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 215 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 216 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 217 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 218 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 219 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 220 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 221 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 222 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 223 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 224 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 225 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 226 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 227 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 228 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app03:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 229 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 230 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 231 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 232 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruiment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 233 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 234 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 235 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 236 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 237 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask  Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 238 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask   Approval
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 239 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 240 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve  
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 241 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 242 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 243 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 244 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 245 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 246 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 247 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 248 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Budget checked
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 249 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 250 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 251 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Approve 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to validate the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 252 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 253 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Reject
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 254 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 255 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Ask  Clarifications
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to review the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 256 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Candidate selected
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 257 ---
+File: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0.xml
+Workflow: _Jira7__RR__Recruitment_Requests_Approval_Workflow_v__2_0
+Transition: Cancel process
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <b>In order to view the Recruitment Request, please <a href="http://itatlass-app01.faacspa.local:8080/browse/$issue">view the full request</a></b>
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+

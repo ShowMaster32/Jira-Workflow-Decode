@@ -15,6 +15,10 @@ def is_base64(s):
         if re.match(r'^[A-Za-z0-9+/=]+$', s):
             # Additional length check - base64 strings are typically multiples of 4
             if len(s) % 4 == 0:
+                # Skip short alphabetic words like "Done", "Test", etc.
+                if len(s) <= 8 and s.isalpha():
+                    return False
+                    
                 try:
                     # Try to decode and catch exceptions
                     base64.b64decode(s, validate=True)
@@ -221,7 +225,7 @@ def search_in_file(tree, search_term, filename):
                 if term.lower() in line.lower():
                     matching_line = line.strip()
                     break
-            context['content'] = matching_line if matching_line else elem.text.strip()[:100]
+            context['content'] = matching_line if matching_line else elem.text.strip()
             search_results.append(context)
             print(f"  Found in element '{elem.tag}' text: {elem.text[:100]}...")
         
@@ -572,9 +576,8 @@ def write_results_to_file(search_term, all_results):
         const searchTerm = "{js_search_term}";
         
         function stripHtml(html) {{
-            const tmp = document.createElement("DIV");
-            tmp.innerHTML = html;
-            return tmp.textContent || tmp.innerText || "";
+            // Al momento voglio mostrare il testo HTML originale
+            return html;
         }}
         
         function exportToText() {{
@@ -615,6 +618,9 @@ def write_results_to_file(search_term, all_results):
             const modal = document.getElementById('detailModal');
             const modalContent = document.getElementById('modalDetails');
             
+            // Mostra HTML come testo escapato
+            const htmlEscaped = result.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
             let contentHtml = `
                 <div class="detail-row">
                     <div class="detail-label">File:</div>
@@ -638,7 +644,9 @@ def write_results_to_file(search_term, all_results):
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Content:</div>
-                    <div class="detail-value">${{result.content}}</div>
+                    <div class="detail-value">
+                        <pre style="background-color: #f0f0f0; padding: 8px; border-radius: 4px; overflow-x: auto; margin: 0;">${{htmlEscaped}}</pre>
+                    </div>
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Location:</div>
@@ -809,7 +817,7 @@ def main():
         print("Please place your XML files in the ./xml directory and run the script again.")
         return
     
-    print(f"Found {len(xml_files)} XML files to process.")  # Ora xml_files è definito
+    print(f"Found {len(xml_files)} XML files to process.")
     
     # Process each XML file
     decoded_trees = {}
