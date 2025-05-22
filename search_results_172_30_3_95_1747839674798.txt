@@ -1,0 +1,96 @@
+JIRA WORKFLOW SEARCH RESULTS
+========================
+
+Search Term: 172.30.3.95
+Generated on: 21/05/2025, 17:01:14
+
+--- Result 1 ---
+File: Backup_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__updated_Define_Request_Participants__Team_Managers___CC_Addresses_.xml
+Workflow: Backup_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__updated_Define_Request_Participants__Team_Managers___CC_Addresses_
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 2 ---
+File: Copy_of_Jira7_-_FAAC_Service_Desk_Workflow_for_HS.xml
+Workflow: Copy_of_Jira7_-_FAAC_Service_Desk_Workflow_for_HS
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 3 ---
+File: Copy_of_Jira7_-_FAAC_Service_Desk_Workflow_for_HS_-_tutte_modifiche_per_auto_notifications.xml
+Workflow: Copy_of_Jira7_-_FAAC_Service_Desk_Workflow_for_HS_-_tutte_modifiche_per_auto_notifications
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 4 ---
+File: Copy_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__con_JMS_License_.xml
+Workflow: Copy_of_Jira_8_-_FAAC_Service_Desk_Workflow_for_HS__con_JMS_License_
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 5 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 6 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Send message to Submitter
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 7 ---
+File: HS__Solutions_Engineering_Portal.xml
+Workflow: HS__Solutions_Engineering_Portal
+Transition: Completed
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="title-mail-reference" href="http://172.30.3.95:8080/servicedesk-ui/customer/portal/48">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 8 ---
+File: Jira7_-_FAAC_Service_Desk_Workflow_for_HS.xml
+Workflow: Jira7_-_FAAC_Service_Desk_Workflow_for_HS
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 9 ---
+File: Jira_8_-_FAAC_Service_Desk_Workflow_for_HS.xml
+Workflow: Jira_8_-_FAAC_Service_Desk_Workflow_for_HS
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 10 ---
+File: _Jira7__FAAC_Service_Desk_Workflow_for_HS.xml
+Workflow: _Jira7__FAAC_Service_Desk_Workflow_for_HS
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_INLINE_SCRIPT
+Content: def conn = driver.connect("jdbc:mysql://172.30.3.95:3306/JIRA_ServiceDesk", props)
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+

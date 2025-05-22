@@ -1,0 +1,294 @@
+JIRA WORKFLOW SEARCH RESULTS
+========================
+
+Search Term: itblq1srll0091
+Generated on: 21/05/2025, 17:03:18
+
+--- Result 1 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 2 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 3 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 4 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 5 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 6 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 7 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 8 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 9 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 10 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 11 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 12 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 13 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 14 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 15 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 16 ---
+File: 1HR-HR__Task_Management_Workflow.xml
+Workflow: 1HR-HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 17 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 18 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Create
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/initial-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 19 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 20 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer 
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080//servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/global-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 21 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 22 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Back to progress
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 23 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 24 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Start working
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/common-actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 25 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 26 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Reopen ticket
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 27 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 28 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Approve
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/26/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 29 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 30 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Done
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 31 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
+--- Result 32 ---
+File: HR__Task_Management_Workflow.xml
+Workflow: HR__Task_Management_Workflow
+Transition: Ask customer
+Function ID: unconditional-result
+Type: FIELD_EMAIL_TEMPLATE
+Content: <a class="aa-summary" href="http://itblq1srll0091.faacspa.local:8080/servicedesk-ui/customer/portal/49/myrequests/$issue">
+Location: workflow/steps/step/actions/action/results/unconditional-result/post-functions/function/arg
+
